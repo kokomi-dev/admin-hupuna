@@ -1,0 +1,74 @@
+<section class="d-grid gap-2 gap-md-3 gap-lg-4">
+    <!-- tiêu đề -->
+    <div class="d-grid gap-1">
+        <h1 class="fs-3 fw-semibold">Danh mục bài viết</h1>
+        <p class="fs-6 text-black-sub">Quản lý bài viết</p>
+    </div>
+    <!-- table-->
+    <div class="d-grid gap-3 bg-white rounded-3 p-3 ">
+        <h4 class="fs-5">Danh sách bài viết</h4>
+        <div class="row d-flex align-items-center mt-2 g-2 fs-14">
+
+            <div class="col-6 col-sm-4 col-lg-2">
+                <label for="">Từ ngày:</label>
+                <input type="date" class="form-control input_outline fs-14" placeholder="Từ ngày">
+            </div>
+
+            <div class="col-6 col-sm-4 col-lg-2">
+                <label for="">Đến ngày:</label>
+                <input type="date" class="form-control input_outline fs-14" placeholder="Đến ngày">
+            </div>
+
+            <div class="col-6 col-sm-4 col-lg-2">
+                <label for="">Trạng thái:</label>
+                <select name="status" class="form-select input_outline fs-14">
+                    <option value="">Tất cả</option>
+                    <option value="">Còn hoạt đông</option>
+                    <option value="">Đã xóa</option>
+                </select>
+            </div>
+
+            <div class="col-6 col-sm-4 col-lg-2">
+                <label for="">Thơì gian:</label>
+                <select name="status" class="form-select input_outline fs-14">
+                    <option value="">Tất cả</option>
+                    <option value="">ngày</option>
+                    <option value="">Tuần</option>
+                    <option value="">Tháng</option>
+                    <option value="">Năm</option>
+                </select>
+            </div>  
+        </div>
+
+        <div class="row d-flex align-items-center mt-2 fs-14">
+            <div class="col-8 col-sm-7 col-lg-4">
+                <label for="">Tìm kiếm:</label>
+                <input type="search" class="form-control input_outline fs-14" placeholder="Tìm kiếm...">
+            </div>
+
+            <div class="col-3 col-sm-5 col-lg-2">
+                <button type="submit" class="btn btn-primary mt-4 px-4 fs-14">Lọc</button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
+            <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
+                <button class="btn bg-blue text-white btn__cancel__hover fs-14">Tạo mới</button>
+                <button class="btn bg-danger text-white fs-14">Xóa(0)</button>
+            </div>
+    
+            <div class="d-none d-sm-flex align-items-center gap-2">
+                Hiển thị:
+                <div class="d-flex align-items-center gap-2">
+                    <div class="bg-white size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm">
+                        <img class="size-20" src="../assets/icons/grid-4-svgrepo-com.svg"/>
+                    </div>
+                    <div class="rounded-2 size-30 d-flex align-items-center justify-content-center">
+                        <img class="size-20"src="../assets/icons/list-ul-alt-svgrepo-com.svg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  

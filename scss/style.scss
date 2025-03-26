@@ -9,6 +9,12 @@
 body {
   font-family: "Outfit", sans-serif;
 }
+
+// input
+.input_outline:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 // BORDER
 .br-1-main {
   border: solid #e1e5eb;
@@ -89,7 +95,6 @@ body {
 }
 .sidebar__menu > ul > li > a {
   text-decoration: none;
-  // color: $black-main;
   font-weight: 500;
   padding: 12px 6px;
   display: block;
@@ -181,35 +186,17 @@ body {
   min-height: 100vh;
   background-color: $bg-gray;
 }
-
 .btn__cancel__hover {
   &:hover {
     background-color: $bg-blue_main !important;
     opacity: 0.9;
   }
 }
-.filter__search {
-  // min-width: 300px;
-}
 // end sidebar mobile
-@media (max-width: 992px) {
-}
-
 /* RESPONSIVE */
 @media (max-width: 1200px) {
 }
 @media (max-width: 992px) {
-  //   #sidebar {
-  //   position: fixed;
-  //   right: -250px;
-  //   width: 250px;
-  //   z-index: 1050;
-  //   transition: right 0.3s;
-  // }
-
-  // #sidebar.show {
-  //   right: 0;
-  // }
 }
 @media (max-width: 768px) {
 }

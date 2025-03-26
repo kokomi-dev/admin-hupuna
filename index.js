@@ -48,7 +48,6 @@ function handleEventSidebar() {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("sanpham");
   handleEventSidebar();
   handleEnventNav();
 });
