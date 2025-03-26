@@ -214,11 +214,6 @@ p {
   isolation: isolate;
 }
 
-#input_outline:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
 *,
 *::before,
 *::after {
@@ -889,4 +884,4 @@ body {
   .auth__form {
     width: 95% !important;
   }
-}
+}/*# sourceMappingURL=style.css.map */
