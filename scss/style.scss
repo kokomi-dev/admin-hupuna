@@ -63,6 +63,14 @@ body {
 .bg-blue {
   background-color: $bg-blue_main;
 }
+// curosr
+.cursor-pointer {
+  cursor: pointer;
+}
+// select
+.select-none {
+  user-select: none;
+}
 /* auth */
 .authform__container {
   background-color: $bg-gray;
@@ -146,6 +154,22 @@ body {
   &:hover {
     cursor: pointer;
     box-shadow: 0px 0px 4px #999;
+  }
+}
+.dropdown__user {
+  ul {
+    list-style: none;
+    li {
+      a {
+        text-decoration: none;
+        color: $black-main;
+        padding: 6px 12px;
+        display: block;
+        &:hover {
+          color: $blue_main;
+        }
+      }
+    }
   }
 }
 // side bar mobile

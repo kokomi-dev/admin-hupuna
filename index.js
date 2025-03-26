@@ -48,6 +48,7 @@ function handleEventSidebar() {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
+  loadPage("trangchu");
   handleEventSidebar();
   handleEnventNav();
 });
