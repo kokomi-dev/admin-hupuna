@@ -1,4 +1,373 @@
-<section>
-  <h1 class="fs-3 fw-semibold">Danh mục sản phẩm</h1>
-  <div></div>
+<section class="d-grid gap-3 gap-lg-4">
+  <!-- tiêu đề -->
+  <div class="d-grid gap-1">
+    <h1 class="fs-3 fw-semibold">Danh mục sản phẩm</h1>
+    <p class="fs-6 text-black-sub">Tất cả các sản phẩm</p>
+  </div>
+  <div class="bg-white p-3 rounded-3 d-grid gap-4 shadow-sm">
+    <!-- bộ lọc -->
+    <div class="d-grid gap-2">
+      <h4
+        class="filter__gr fs-5 d-flex align-items-center justify-content-start gap-1"
+      >
+        Bộ lọc
+        <img class="size-20" src="../assets/icons/filter-svgrepo-com.svg" />
+      </h4>
+      <div class="d-grid gap-3">
+        <!-- chọn ngày -->
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-start gap-4"
+        >
+          <div
+            class="fs-14 d-flex flex-column align-items-center justify-content-start gap-3"
+          >
+            <div
+              class="d-flex flex-column align-items-start justify-content-start"
+            >
+              <label for="startDate">Từ ngày:</label>
+              <input
+                id="startDate"
+                type="date"
+                class="bg-transparent p-2 br-1-main rounded-2"
+              />
+            </div>
+            <div
+              class="d-flex flex-column align-items-start justify-content-start"
+            >
+              <label for="endDate">đến ngày:</label>
+              <input
+                id="endDate"
+                type="date"
+                class="bg-transparent p-2 br-1-main rounded-2"
+              />
+            </div>
+          </div>
+          <!-- select theo loại -->
+          <div
+            class="btn-group filter__gr__select d-flex flex-column align-items-start justify-content-start"
+          >
+            <label class="fs-14">Chọn</label>
+            <button
+              type="button"
+              class="btn dropdown-toggle text-white rounded-2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn thể loại
+            </button>
+            <div class="dropdown-menu">
+              <ul>
+                <li><a href="#">Caton</a></li>
+                <li><a href="#">Giấy mỏng</a></li>
+                <li><a href="#">Bìa cứng</a></li>
+                <li><a href="#">Bìa bóng</a></li>
+                <li><a href="#">Túi giấy</a></li>
+                <li><a href="#">Băng dính</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- search and show view -->
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-between gap-2"
+        >
+          <div class="d-flex flex-column align-items-start">
+            Tìm kiếm:
+            <input
+              class="p-2 rounded-3 br-1-main filter__search"
+              placeholder="...aaa"
+            />
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            Hiển thị:
+            <div class="d-flex align-items-center gap-2">
+              <div
+                class="bg-white size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm"
+              >
+                <img
+                  class="size-20"
+                  src="../assets/icons/grid-4-svgrepo-com.svg"
+                />
+              </div>
+              <div
+                class="rounded-2 size-30 d-flex align-items-center justify-content-center"
+              >
+                <img
+                  class="size-20"
+                  src="../assets/icons/list-ul-alt-svgrepo-com.svg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row fs-14">
+        <div class="col-3">
+          <div
+            class="d-flex flex-column align-items-start justify-content-start"
+          >
+            <label for="startDate">Từ ngày:</label>
+            <input
+              id="startDate"
+              type="date"
+              class="bg-transparent p-2 br-1-main rounded-2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- button action -->
+    <div
+      class="d-flex align-items-center justify-content-start gap-2 flex-wrap"
+    >
+      <button class="btn bg-blue text-white btn__cancel__hover">Tạo mới</button>
+      <button class="btn bg-danger text-white">Xóa(0)</button>
+    </div>
+    <!-- danh mục sản phẩm -->
+    <!-- <div class="d-grid gap-2">
+      <h4 class="fs-5">Tất cả sản phẩm</h4>
+      <div class="list__wrapper__product">
+        <div class="card">
+          <div class="card-header bg-white">
+            <div class="d-flex align-items-center gap-1">
+              Nhập tên sản phẩm:
+              <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+            </div>
+          </div>
+          <div class="table-responsive overflow-scroll">
+            <table class="table table-striped table-hover mb-0 fs-14">
+              <thead>
+                <tr>
+                  <th class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </th>
+                  <th>ID</th>
+                  <th>Tên</th>
+                  <th>Mã sản phẩm</th>
+                  <th>Mô tả</th>
+                  <th>Loại</th>
+                  <th>Giá sản phẩm (VNĐ)</th>
+                  <th>Số lượng</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>
+                    <button
+                      type="button"
+                      class="btn bg-transparent"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      data-bs-title="This top tooltip is themed via CSS variables."
+                    >
+                      <img
+                        src="../assets/icons/filter-svgrepo-com.svg"
+                        class="size-20"
+                      />
+                    </button>
+                  </th>
+                  <th></th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th>
+                    <input
+                      class="p-2 rounded-3 br-1-main"
+                      placeholder="...aaa"
+                    />
+                  </th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>1</td>
+                  <td>Nguyễn Văn A</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-success">Hoạt động</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>299,000</td>
+                  <td>2000</td>
+
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>1</td>
+                  <td>Nguyễn Văn A</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-success">Hoạt động</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>800,000</td>
+                  <td>2000</td>
+
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>2</td>
+                  <td>Nguyễn Thị B</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-success">Hoạt động</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>299,000</td>
+                  <td>2000</td>
+
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>3</td>
+                  <td>Trịnh Trần Phương Tuấn</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-danger">Dừng HĐ</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>299,000</td>
+                  <td>2000</td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>4</td>
+                  <td>Ngọc Trinh</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-success">Hoạt động</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>299,000</td>
+                  <td>2000</td>
+
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="position-relative">
+                    <input
+                      type="checkbox"
+                      class="size-20 position-absolute top-50 start-50 translate-middle"
+                    />
+                  </td>
+                  <td>5</td>
+                  <td>Jack J97</td>
+                  <td>nguyenvana@example.com</td>
+                  <td class="text-center">
+                    <span class="badge bg-danger">Dừng HĐ</span>
+                  </td>
+                  <td>Bìa cứng</td>
+                  <td>299,000</td>
+                  <td>2000</td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-primary">
+                        Sửa
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
 </section>

@@ -12,18 +12,23 @@ async function loadPage(pageName) {
     document.getElementById("content").innerHTML = `
            <div class="error">
                <h2>Lỗi</h2>
-               <p>Đéo load nổi trang đâu</p>
+               <p>Đéo load nổi trang r</p>
            </div>
        `;
   }
 }
-// handle event change page
-document.querySelector(".sidebar__menu").addEventListener("click", (event) => {
-  if (event.target.tagName === "A") {
-    const pageName = event.target.getAttribute("data-page");
-    loadPage(pageName);
-  }
-});
+// handle event change page pc
+function handleEnventNav() {
+  document
+    .querySelector(".sidebar__menu")
+    .addEventListener("click", (event) => {
+      if (event.target.tagName === "A") {
+        const pageName = event.target.getAttribute("data-page");
+        loadPage(pageName);
+      }
+    });
+}
+// handleEvent change page mobile
 function handleEventSidebar() {
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const mobileSidebar = document.getElementById("mobileSidebar");
@@ -35,10 +40,15 @@ function handleEventSidebar() {
   mobileMenuToggle.addEventListener("click", toggleSidebar);
   sidebarOverlay.addEventListener("click", toggleSidebar);
   mobileSidebar.addEventListener("click", (event) => {
-    if (event.target.tagName === "A") toggleSidebar();
+    if (event.target.tagName === "A") {
+      const pageName = event.target.getAttribute("data-page");
+      loadPage(pageName);
+      toggleSidebar();
+    }
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("trangchu");
+  loadPage("sanpham");
   handleEventSidebar();
+  handleEnventNav();
 });

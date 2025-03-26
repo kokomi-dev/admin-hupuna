@@ -1,2 +1,30 @@
 @import "../scss/variables";
 @import "../scss/reset";
+
+.filter__gr__select {
+  button {
+    background-color: $blue-main !important;
+    &:hover {
+      background-color: $blue-main;
+      opacity: 0.9;
+    }
+  }
+  .dropdown-menu {
+    ul {
+      display: grid;
+      gap: 2px;
+      list-style: none;
+      li {
+        padding: 4px 6px;
+        a {
+          color: $black-sub;
+          text-decoration: none;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            color: $blue-main;
+          }
+        }
+      }
+    }
+  }
+}
