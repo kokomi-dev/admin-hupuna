@@ -39,6 +39,6 @@ function handleEventSidebar() {
   });
 }
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("trangchu");
+  loadPage("baiviet");
   handleEventSidebar();
 });

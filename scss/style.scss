@@ -9,14 +9,28 @@
 body {
   font-family: "Outfit", sans-serif;
 }
+
+// input 
+.input_outline:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
 // BORDER
 .br-1-main {
   border: solid #e1e5eb;
 }
 // SIZE
+.size-20 {
+  width: 20px;
+  height: 20px;
+}
 .size-24 {
   width: 24px;
   height: 24px;
+}
+.size-30 {
+  width: 30px;
+  height: 30px;
 }
 /* FONT SIZE */
 .fs-12 {
@@ -39,6 +53,14 @@ body {
 .text-blue-main {
   color: $blue_main;
 }
+// backgr color
+.bg-gray {
+  background-color: $bg-gray;
+}
+.bg-blue {
+  background-color: $bg-blue_main;
+}
+
 /* auth */
 .authform__container {
   background-color: $bg-gray;

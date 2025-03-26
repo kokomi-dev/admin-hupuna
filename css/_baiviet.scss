@@ -1,2 +1,7 @@
 @import "../scss/variables";
 @import "../scss/reset";
+
+#input_outline:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
