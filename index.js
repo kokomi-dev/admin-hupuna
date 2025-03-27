@@ -1,3 +1,87 @@
+// handle load chart dashboard
+function handleLoadChartDashboard() {
+  const chartElement = document.getElementById("visitChart");
+  if (chartElement) {
+    var ctx = chartElement.getContext("2d");
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["Tuần 1", "Tuần 2", "Tuần 3", "Tuần 4"],
+        datasets: [
+          {
+            label: "Lượng Truy Cập",
+            data: [1200, 1900, 1500, 2200],
+            borderColor: "rgb(75, 192, 192)",
+            tension: 0.1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Thống Kê Truy Cập",
+          },
+        },
+      },
+    });
+  } else {
+    console.error("lỗi");
+  }
+}
+// handle event view detail
+function handleEventShowDetail() {
+  document.querySelectorAll(".product__view__detail").forEach((item) => {
+    item.addEventListener("click", () => {
+      loadPage("chitietsanpham");
+    });
+  });
+}
+// handle action back to list
+function handleBackToListProduct() {
+  document
+    .getElementById("btn__back__listproduct")
+    .addEventListener("click", () => {
+      loadPage("sanpham");
+    });
+}
+// handle load editor
+function handleLoadEditor() {
+  tinymce.init({
+    selector: "#myEditor",
+    language: "vi",
+    height: 300,
+    plugins: [
+      "advlist",
+      "autolink",
+      "lists",
+      "link",
+      "image",
+      "charmap",
+      "preview",
+      "anchor",
+      "searchreplace",
+      "visualblocks",
+      "code",
+      "fullscreen",
+      "insertdatetime",
+      "media",
+      "table",
+      "help",
+      "wordcount",
+    ],
+    toolbar:
+      "undo redo | blocks | " +
+      "bold italic underline | alignleft aligncenter " +
+      "alignright alignjustify | " +
+      "bullist numlist outdent indent | " +
+      "removeformat | help",
+  });
+}
 // load page show content
 async function loadPage(pageName) {
   try {
@@ -8,6 +92,16 @@ async function loadPage(pageName) {
     }
     const content = await response.text();
     contentDiv.innerHTML = content;
+    if (pageName === "trangchu") {
+      handleLoadChartDashboard();
+    }
+    if (pageName === "sanpham") {
+      handleEventShowDetail();
+      handleLoadEditor();
+    }
+    if (pageName === "chitietsanpham") {
+      handleBackToListProduct();
+    }
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
@@ -18,7 +112,7 @@ async function loadPage(pageName) {
   }
 }
 // handle event change page pc
-function handleEnventNav() {
+function handleEventNav() {
   document
     .querySelector(".sidebar__menu")
     .addEventListener("click", (event) => {
@@ -50,5 +144,5 @@ function handleEventSidebar() {
 document.addEventListener("DOMContentLoaded", () => {
   loadPage("trangchu");
   handleEventSidebar();
-  handleEnventNav();
+  handleEventNav();
 });
