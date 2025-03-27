@@ -4,21 +4,19 @@
         <h1 class="fs-3 fw-semibold">Danh mục bài viết</h1>
         <p class="fs-6 text-black-sub">Quản lý bài viết</p>
     </div>
-    <!-- table-->
+    <!--bo loc and table -->
     <div class="d-grid gap-3 bg-white rounded-3 p-3 ">
         <h4 class="fs-5">Danh sách bài viết</h4>
+        <!-- boloc -->
         <div class="row d-flex align-items-center mt-2 g-2 fs-14">
-
             <div class="col-6 col-sm-4 col-lg-2">
                 <label for="">Từ ngày:</label>
-                <input type="date" class="form-control input_outline fs-14" placeholder="Từ ngày">
+                <input type="date" class="form-control input_outline fs-14 " placeholder="Từ ngày">
             </div>
-
             <div class="col-6 col-sm-4 col-lg-2">
                 <label for="">Đến ngày:</label>
                 <input type="date" class="form-control input_outline fs-14" placeholder="Đến ngày">
             </div>
-
             <div class="col-6 col-sm-4 col-lg-2">
                 <label for="">Trạng thái:</label>
                 <select name="status" class="form-select input_outline fs-14">
@@ -27,7 +25,6 @@
                     <option value="">Đã xóa</option>
                 </select>
             </div>
-
             <div class="col-6 col-sm-4 col-lg-2">
                 <label for="">Thơì gian:</label>
                 <select name="status" class="form-select input_outline fs-14">
@@ -39,24 +36,20 @@
                 </select>
             </div>  
         </div>
-
-        <div class="row d-flex align-items-center mt-2 fs-14">
-            <div class="col-8 col-sm-7 col-lg-4">
+        <div class="row d-flex align-items-center fs-14">
+            <div class="col-8 col-sm-7 col-lg-4 pt-1">
                 <label for="">Tìm kiếm:</label>
                 <input type="search" class="form-control input_outline fs-14" placeholder="Tìm kiếm...">
             </div>
-
-            <div class="col-3 col-sm-5 col-lg-2">
-                <button type="submit" class="btn btn-primary mt-4 px-4 fs-14">Lọc</button>
+            <div class="col-3 col-sm-5 col-lg-2 pt-4">
+                <button type="submit" class="btn btn-primary px-4 fs-14">Lọc</button>
             </div>
         </div>
-
         <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
             <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
                 <button class="btn bg-blue text-white btn__cancel__hover fs-14">Tạo mới</button>
                 <button class="btn bg-danger text-white fs-14">Xóa(0)</button>
             </div>
-    
             <div class="d-none d-sm-flex align-items-center gap-2">
                 Hiển thị:
                 <div class="d-flex align-items-center gap-2">
@@ -69,6 +62,134 @@
                 </div>
             </div>
         </div>
+        <!-- table -->
+        <div class="table-responsive">
+            <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
+                <div class=" d-flex align-items-center gap-2">
+                    <label for="">Dòng:</label>
+                    <select name="status" class="form-select input_outline fs-14">
+                        <option value="">Tùy chỉnh</option>
+                        <option value="">5</option>
+                        <option value="">10</option>
+                        <option value="">25</option>
+                        <option value="">50</option>
+                        <option value="">100</option>
+                        <option value="">Hiển thị tất cả</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary px-4 fs-14">Tạo bài viết mới</button>
+            </div>
+            <table class="table table-blog table-striped table-hover lh-lg">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Ngày tạo</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">1</td>
+                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
+                        <td>Tiêu đè bài viết 1</td>
+                        <td>mô tả bài viết 1</td>
+                        <td>12/11/2002</td>
+                        <td class="text-primary">Hoạt động</td>
+                        <td >
+                            <div class="gap-2">
+                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
+                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
+                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">2</td>
+                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
+                        <td>Tiêu đè bài viết 2</td>
+                        <td>Mô tả bài viết 2</td>
+                        <td>12/11/2002</td>
+                        <td class="text-danger">Đã xóa</td>
+                        <td >
+                            <div class="gap-2">
+                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
+                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
+                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">3</td>
+                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
+                        <td>Tiêu đè bài viết 3</td>
+                        <td>Mô tả bài viết 3</td>
+                        <td>12/11/2002</td>
+                        <td class="text-primary">Hoạt động</td>
+                        <td >
+                            <div class="gap-2">
+                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
+                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
+                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">4</td>
+                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
+                        <td>Tiêu đè bài viết 4</td>
+                        <td>Mô tả bài viết 4</td>
+                        <td>12/11/2002</td>
+                        <td class="text-danger">Đã xóa</td>
+                        <td >
+                            <div class="gap-2">
+                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
+                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
+                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">5</td>
+                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
+                        <td>Tiêu đè bài viết 5</td>
+                        <td>Mô tả bài viết 5</td>
+                        <td>12/11/2002</td>
+                        <td class="text-primary">Hoạt động</td>
+                        <td >
+                            <div class="gap-2">
+                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
+                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
+                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- pagination -->
+        <div aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><<</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">>></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </section>
   

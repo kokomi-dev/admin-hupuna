@@ -214,9 +214,14 @@ p {
   isolation: isolate;
 }
 
-#input_outline:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.table-blog tbody tr td {
+  vertical-align: middle !important;
+}
+
+.table-blog tbody tr td img,
+.table-blog tbody tr td div {
+  display: flex;
+  align-items: center;
 }
 
 *,
@@ -932,4 +937,4 @@ body {
   .auth__form {
     width: 95% !important;
   }
-}
+}/*# sourceMappingURL=style.css.map */
