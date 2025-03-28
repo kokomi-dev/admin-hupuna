@@ -1,19 +1,21 @@
 <section>
-  <div class="container d-grid gap-2 gap-md-3">
+  <div class="container d-grid gap-3 gap-lg-4">
     <!-- thanh quay lại -->
     <div class="w-100">
       <span id="btn__back__listproduct" class="btn btn-outline-secondary">
-        &larr; Quay lại trang sản phẩm
+        &larr; Quay lại
       </span>
     </div>
+    <!-- head -->
     <div
       class="bg-white w-100 p-2 p-md-3 rounded-3 d-grid gap-3 gap-md-4 shadow-sm"
     >
-      <div class="row g-2">
+      <div class="row g-3">
         <!-- ảnh -->
         <div class="col-md-5 text-center">
+          <span class="mb-3 fs-14 fw-semibold">Ảnh chính</span>
           <img
-            src="https://images.pexels.com/photos/5647656/pexels-photo-5647656.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/6169030/pexels-photo-6169030.jpeg?auto=compress&cs=tinysrgb&w=1200"
             class="img-fluid rounded"
             alt="Ảnh sản phẩm"
           />
@@ -29,13 +31,135 @@
           </p>
           <p>Loại sản phẩm: Loại 1</p>
           <p class="text-black-sub">
-            Mô tả: Đây là sản phẩm điện tử chất lượng cao, phù hợp với nhu cầu
-            sử dụng hàng ngày, giá thành hợp lí nhiều ưu đãi hấp dẫn dành cho
-            bạn.
+            Mô tả: Đây là sản phẩm chất lượng cao, phù hợp với nhu cầu sử dụng
+            hàng ngày, giá thành hợp lí nhiều ưu đãi hấp dẫn dành cho bạn.
           </p>
-          <button class="btn btn-primary">Chỉnh sửa</button>
         </div>
       </div>
+    </div>
+    <div
+      class="bg-white w-100 p-2 p-md-3 rounded-3 d-grid gap-3 gap-md-4 shadow-sm"
+    >
+      Tất cả ảnh
+      <div class="row">
+        <div class="col-6 col-md-4 col-lg-3">
+          <img
+            class="img-fluid"
+            src="https://images.pexels.com/photos/6170458/pexels-photo-6170458.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img
+            class="img-fluid"
+            src="https://images.pexels.com/photos/6170458/pexels-photo-6170458.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img
+            class="img-fluid"
+            src="https://images.pexels.com/photos/6170458/pexels-photo-6170458.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-white w-100 p-2 p-md-3 rounded-3 d-grid gap-3 gap-md-4 shadow-sm"
+    >
+      Chi tiết loại sản phẩm
+      <div class="table-responsive">
+        <!-- table-striped -->
+        <table class="table table__main table__detail__product mb-0 fs-14">
+          <thead>
+            <tr>
+              <th class="position-relative">
+                <input
+                  type="checkbox"
+                  class="size-20 position-absolute top-50 start-50 translate-middle"
+                />
+              </th>
+              <th>ID</th>
+              <th>Loại</th>
+              <th>Hình ảnh</th>
+              <th>Mô tả</th>
+              <th>Giá (VNĐ)</th>
+              <th>Số lượng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- bộ lọc -->
+            <tr>
+              <th>
+                <button
+                  type="button"
+                  class="btn bg-transparent"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-title="This top tooltip is themed via CSS variables."
+                >
+                  <img
+                    src="../assets/icons/filter-svgrepo-com.svg"
+                    class="size-20"
+                  />
+                </button>
+              </th>
+              <th></th>
+              <th>
+                <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+              </th>
+              <th>
+                <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+              </th>
+              <th>
+                <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+              </th>
+              <th>
+                <select class="p-2 rounded-3 br-1-main">
+                  <option>Loại 1</option>
+                  <option>Loại 2</option>
+                  <option>Loại 3</option>
+                </select>
+              </th>
+              <th>
+                <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+              </th>
+              <th>
+                <input
+                  style="width: 90px"
+                  type="number"
+                  class="p-2 rounded-3 br-1-main"
+                  placeholder="...aaa"
+                />
+              </th>
+              <th></th>
+            </tr>
+            <!-- item -->
+            <tr>
+              <td class="position-relative">
+                <input
+                  type="checkbox"
+                  class="size-20 position-absolute top-50 start-50 translate-middle"
+                />
+              </td>
+              <td>1</td>
+              <td>Loại A</td>
+              <td class="text-center">
+                <img
+                  class="img-fluid"
+                  src="https://images.pexels.com/photos/5025503/pexels-photo-5025503.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                />
+              </td>
+              <td>Sản phẩm A</td>
+              <td>Loại sản phẩm rẻ</td>
+              <td>500,000</td>
+              <td>120</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- sửa -->
+    <div class="d-felx align-items-center justify-content-start">
+      <button class="btn btn-outline-primary btn-sm">Sửa sản phẩm</button>
     </div>
   </div>
 </section>

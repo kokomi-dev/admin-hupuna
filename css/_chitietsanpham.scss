@@ -1,2 +1,7 @@
 @import "../scss/variables";
 @import "../scss/reset";
+.table__detail__product > tbody > tr > td > img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}

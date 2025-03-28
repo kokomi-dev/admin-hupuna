@@ -572,6 +572,13 @@ p {
   isolation: isolate;
 }
 
+.table__detail__product > tbody > tr > td > img {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 *,
 *::before,
 *::after {
@@ -981,6 +988,9 @@ select:focus {
 .table__main tr:hover {
   background-color: #f9fafb;
   cursor: pointer;
+}
+.table__main tr td {
+  vertical-align: middle;
 }
 
 /* RESPONSIVE */

@@ -279,6 +279,9 @@ select:focus {
       background-color: $bg-gray;
       cursor: pointer;
     }
+    td {
+      vertical-align: middle;
+    }
   }
 }
 /* RESPONSIVE */
