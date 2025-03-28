@@ -19,11 +19,16 @@
     <title>Đăng nhập</title>
   </head>
   <body>
-    <section class="authform__container">
+    <!-- <section class="authform__container">
       <form
         class="auth__form w-100 br-1-main d-grid gap-2 gap-md-3 gap-lg-4 p-3 p-lg-4 rounded-4 position-absolute top-50 start-50 translate-middle bg-white shadow-sm"
       >
-        <h2 class="text-center fs-3 fw-semibold">Đăng nhập</h2>
+        <div>
+          <h2 class="text-start fs-3 fw-semibold">Đăng nhập</h2>
+          <span class="fs-14 text-black-sub mt-2"
+            >Nhập tên và mật khẩu để đăng nhập</span
+          >
+        </div>
         <div class="form__item d-grid gap-1">
           <label for="inputName" class="text-black-sub fs-14 fw-semibold"
             >Tên</label
@@ -58,13 +63,107 @@
             <span class="fs-14 text-gray">Bạn chưa có tài khoản!</span>
             <a
               href="./register.html"
-              class="fs-14 text-blue text-decoration-underline"
+              class="fs-14 text-blue text-decoration-none"
               >Đăng ký</a
             >
           </div>
         </div>
       </form>
-    </section>
+    </section> -->
+    <div class="authform__container">
+      <div
+        class="auth__form w-100 d-grid rounded-4 position-absolute top-50 start-50 translate-middle"
+      >
+        <div class="card mb-4 mt-5 mx-2 mx-sm-0 position-relative">
+          <div class="card-body p-sm-5">
+            <h2 class="fs-5 fw-bolder mb-4">Đăng nhập</h2>
+            <p class="fs-12 fw-medium text-black-sub">
+              Nhập tài khoản mật khẩu để đăng nhập !
+            </p>
+            <form class="w-100 mt-4 pt-2">
+              <div class="mb-4">
+                <input
+                  type="email"
+                  class="form-control fs-14"
+                  placeholder="Email / Tên"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control fs-14"
+                  placeholder="Password"
+                  value=""
+                  required
+                />
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-1"
+                  >
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="rememberMe"
+                    />
+                    <label
+                      class="cursor-pointer select-none fs-14 fw-medium"
+                      for="rememberMe"
+                      >Nhớ tài khoản</label
+                    >
+                  </div>
+                </div>
+                <div>
+                  <a class="fs-12 text-primary">Quên mật khẩu ?</a>
+                </div>
+              </div>
+              <div class="mt-5">
+                <button
+                  type="submit"
+                  class="btn btn-lg btn-primary w-100 fw-semibold fs-14 py-2 bg-blue"
+                >
+                  Đăng nhập
+                </button>
+              </div>
+            </form>
+            <div class="w-100 mt-5 text-center mx-auto">
+              <div class="mb-4 border-bottom position-relative">
+                <span
+                  class="fs-12 py-1 px-3 text-uppercase text-black-sub bg-white position-absolute translate-middle"
+                  >hoặc</span
+                >
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-center gap-2"
+              >
+                <button
+                  class="btn button-primary text-white d-flex align-items-center justify-content-center"
+                >
+                  <img
+                    class="size-30"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/640px-Facebook_Logo_%282019%29.png"
+                  />
+                </button>
+                <button
+                  class="btn button-primary text-white d-flex align-items-center justify-content-center"
+                >
+                  <img
+                    class="size-30"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="mt-5 text-black-sub fs-14">
+              <span> Bạn chưa có tài khoản?</span>
+              <a href="./register.html" class="fw-bold fs-14">Đăng ký</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

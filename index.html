@@ -22,27 +22,27 @@
   </head>
   <body>
     <main class="w-100 h-100">
-      <div class="row g-0">
+      <div class="row g-0 grid__common">
         <!-- sidebar -->
         <aside
-          class="col-md-3 col-xl-2 border-bottom-0 d-none d-md-block sidebar h-auto br-1-main bg-white p-0"
+          class="border-bottom-0 d-none d-md-block sidebar h-auto br-1-main bg-white p-0"
         >
-          <div class="w-100 h-100 d-flex flex-column gap-2">
+          <div class="w-100 h-100 d-flex flex-column gap-1">
             <!-- logo -->
             <div
-              class="logo__wrapper p-3 d-flex align-items-center justify-content-start gap-2"
+              class="logo__wrapper p-3 d-flex align-items-center justify-content-start gap-2 mt-2"
             >
               <img
-                style="width: 100px; height: 100px"
-                class=""
-                src="https://tr.rbxcdn.com/180DAY-566d44adfb1c8ea6de54900db4ef71f7/420/420/Image/Png/noFilter"
-              />
-              <img
-                style="width: 50px; height: 50px"
+                style="width: 30px; height: 30px"
                 class=""
                 src="https://cdn-icons-png.flaticon.com/512/8220/8220992.png"
               />
-              <!-- <span class="fs-4 fw-bold text-primary">Admin</span> -->
+              <!-- <img
+                style="width: 80px; height: 80px"
+                class=""
+                src="https://tr.rbxcdn.com/180DAY-566d44adfb1c8ea6de54900db4ef71f7/420/420/Image/Png/noFilter"
+              /> -->
+              <span class="fs-5 fw-bold text-black">Quản trị</span>
             </div>
             <!-- menu -->
             <nav class="sidebar__menu ps-3">
@@ -52,21 +52,18 @@
                 </li>
                 <li>
                   <a data-page="trangchu" href="#">
-                    <img src="./assets/icons/dashboard-svgrepo-com.svg" />Trang
-                    chủ
+                    <img src="./assets/icons/home.svg" />Trang chủ
                   </a>
                 </li>
                 <li>
                   <a data-page="baiviet" href="#">
-                    <img
-                      src="./assets/icons/blog-comment-edit-svgrepo-com.svg"
-                    />
+                    <img src="./assets/icons/blog-pencil.svg" />
                     Bài viết
                   </a>
                 </li>
                 <li>
                   <a data-page="sanpham" href="#">
-                    <img src="./assets/icons/product-svgrepo-com.svg" />
+                    <img src="./assets/icons/box-open.svg" />
                     Sản phẩm
                   </a>
                 </li>
@@ -75,20 +72,19 @@
                   <span>TÀI KHOẢN</span>
                 </li>
                 <li>
-                  <a href="#">
-                    <img src="./assets/icons/setting-4-svgrepo-com.svg" />
+                  <a data-page="quanlitaikhoan" href="#">
+                    <img src="./assets/icons/lead-management.svg" />
                     Quản lí tài khoản
                   </a>
                 </li>
                 <li>
                   <a href="./login.html">
-                    <img src="./assets/icons/login-svgrepo-com-3.svg" />Đăng
-                    nhập
+                    <img src="./assets/icons/insert-alt.svg" />Đăng nhập
                   </a>
                 </li>
                 <li>
                   <a href="./register.html">
-                    <img src="./assets/icons/login-svgrepo-com-6.svg" />
+                    <img src="./assets/icons/sign-out-alt.svg" />
                     Đăng ký
                   </a>
                 </li>
@@ -97,15 +93,15 @@
                   <span>VỀ CHÚNG TÔI</span>
                 </li>
                 <li>
-                  <a href="#">
-                    <img src="./assets/icons/contact-svgrepo-com.svg" />
+                  <a data-page="lienhe" href="#">
+                    <img src="./assets/icons/headset.svg" />
                     Liên hệ
                   </a>
                 </li>
                 <li>
-                  <a href="./login.html">
+                  <a data-page="dieukhoandichvu" href="./login.html">
                     <img
-                      src="./assets/icons/privacy-tips-svgrepo-com.svg"
+                      src="./assets/icons/confidential-discussion.svg"
                     />Quyền riêng tư
                   </a>
                 </li>
@@ -130,21 +126,18 @@
                 </li>
                 <li>
                   <a data-page="trangchu" href="#">
-                    <img src="./assets/icons/dashboard-svgrepo-com.svg" />Trang
-                    chủ
+                    <img src="./assets/icons/home.svg" />Trang chủ
                   </a>
                 </li>
                 <li>
                   <a data-page="baiviet" href="#">
-                    <img
-                      src="./assets/icons/blog-comment-edit-svgrepo-com.svg"
-                    />
+                    <img src="./assets/icons/blog-pencil.svg" />
                     Bài viết
                   </a>
                 </li>
                 <li>
                   <a data-page="sanpham" href="#">
-                    <img src="./assets/icons/product-svgrepo-com.svg" />
+                    <img src="./assets/icons/box-open.svg" />
                     Sản phẩm
                   </a>
                 </li>
@@ -153,20 +146,19 @@
                   <span>TÀI KHOẢN</span>
                 </li>
                 <li>
-                  <a href="#">
-                    <img src="./assets/icons/setting-4-svgrepo-com.svg" />
-                    Cài đặt tài khoản
+                  <a data-page="quanlitaikhoan" href="#">
+                    <img src="./assets/icons/lead-management.svg" />
+                    Quản lí tài khoản
                   </a>
                 </li>
                 <li>
                   <a href="./login.html">
-                    <img src="./assets/icons/login-svgrepo-com-3.svg" />Đăng
-                    nhập
+                    <img src="./assets/icons/insert-alt.svg" />Đăng nhập
                   </a>
                 </li>
                 <li>
                   <a href="./register.html">
-                    <img src="./assets/icons/login-svgrepo-com-6.svg" />
+                    <img src="./assets/icons/sign-out-alt.svg" />
                     Đăng ký
                   </a>
                 </li>
@@ -175,15 +167,15 @@
                   <span>VỀ CHÚNG TÔI</span>
                 </li>
                 <li>
-                  <a href="#">
-                    <img src="./assets/icons/contact-svgrepo-com.svg" />
+                  <a data-page="lienhe" href="#">
+                    <img src="./assets/icons/headset.svg" />
                     Liên hệ
                   </a>
                 </li>
                 <li>
-                  <a href="./login.html">
+                  <a data-page="dieukhoandichvu" href="./login.html">
                     <img
-                      src="./assets/icons/privacy-tips-svgrepo-com.svg"
+                      src="./assets/icons/confidential-discussion.svg"
                     />Quyền riêng tư
                   </a>
                 </li>
@@ -194,10 +186,10 @@
         <!-- overlay -->
         <div class="overlay" id="sidebarOverlay"></div>
         <!-- main-->
-        <div class="col-md-9 col-xl-10">
+        <div class="">
           <!-- header -->
           <header
-            class="header py-2 px-4 d-flex justify-content-between justify-content-md-end align-items-center"
+            class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-md-end align-items-center"
           >
             <div
               id="mobileMenuToggle"
@@ -205,23 +197,32 @@
             >
               <img src="./assets/icons/menu-svgrepo-com.svg" class="size-24" />
             </div>
+
             <div class="d-flex align-items-center justify-content-end gap-2">
               <!-- thông báo và tin nhắn -->
               <div
-                class="d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
+                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
               >
                 <img
                   src="./assets/icons/message-square-dots-svgrepo-com.svg"
                   class="size-18 fill__black-sub"
                 />
+                <span
+                  class="position-absolute top-0 start-100 translate-middle bg-primary text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
+                  >1</span
+                >
               </div>
               <div
-                class="d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
+                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
               >
                 <img
                   src="./assets/icons/notification-svgrepo-com.svg"
                   class="size-18 fill__black-sub"
                 />
+                <span
+                  class="position-absolute top-0 start-100 translate-middle bg-danger text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
+                  >1</span
+                >
               </div>
               <!-- action header -->
               <div class="d-flex align-items-center">
