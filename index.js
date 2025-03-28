@@ -59,6 +59,7 @@ function handleLoadEditor() {
     tinymce.init({
       selector: `#${editorId}`,
       height: 500,
+      license_key: "gpl",
       plugins: [
         "advlist",
         "autolink",
@@ -98,6 +99,7 @@ async function loadPage(pageName) {
     }
     const content = await response.text();
     contentDiv.innerHTML = content;
+    sessionStorage.setItem("currenPage", pageName);
     if (pageName === "trangchu") {
       handleLoadChartDashboard();
     }
@@ -108,6 +110,7 @@ async function loadPage(pageName) {
           loadPage("taosanpham");
         });
       }
+      handleLoadEditor();
       handleEventShowDetail();
     }
     if (pageName === "chitietsanpham") {
@@ -120,8 +123,8 @@ async function loadPage(pageName) {
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
-               <h2>Lỗi</h2>
-               <p>Đéo load nổi trang r</p>
+               <h2>Not Foud</h2>
+               <p>Hiện tại chưa có nội dung cho trang này ! </p>
            </div>
        `;
   }
@@ -131,7 +134,10 @@ function checkToolgeActiveDefault() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
   const currentPage = sessionStorage.getItem("currenPage");
   listItemNav.forEach((item) => {
-    if (currentPage && item.getAttribute("data-page") === currentPage) {
+    if (
+      (currentPage && item.getAttribute("data-page") === currentPage) ||
+      currentPage.includes(item.getAttribute("data-page"))
+    ) {
       return item.classList.add("active");
     } else {
       if (!currentPage && item.getAttribute("data-page") === "trangchu") {
@@ -149,7 +155,6 @@ function handleEventNav() {
     .addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
         const pageName = event.target.getAttribute("data-page");
-        sessionStorage.setItem("currenPage", pageName);
         loadPage(pageName);
         listItemNav.forEach((item) => {
           if (item.classList.contains("active")) {

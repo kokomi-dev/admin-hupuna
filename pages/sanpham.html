@@ -6,7 +6,7 @@
     <!-- bộ lọc -->
     <div class="d-grid gap-4 bg-white rounded-3 p-2 p-md-3 rounded-3 shadow-sm">
       <h4 class="fs-6">Bộ lọc</h4>
-      <div class="row g-3">
+      <div class="row g-4 g-lg-5">
         <div class="col-12 col-sm-6 col-md-6 col-xl-3">
           <div class="d-grid gap-1 fs-14">
             <label for="searchInput">Tìm kiếm:</label>
@@ -32,9 +32,8 @@
           <div class="d-grid gap-1 fs-14">
             <label for="">Trạng thái:</label>
             <select
-              style="height: 44px"
               name="status"
-              class="form-select input_outline fs-14"
+              class="form-select input_outline fs-14 h-btn-i"
             >
               <option value="">Tất cả</option>
               <option value="">Còn hoạt đông</option>
@@ -608,46 +607,72 @@
           ></button>
         </div>
         <div class="w-100 modal-body">
-          <form>
+          <form class="d-grid gap-3">
             <div class="row">
-              <div class="mb-3 col-md-6">
-                <label for="productId" class="form-label fs-14">ID</label>
-                <input
-                  type="text"
-                  class="form-control fs-14"
-                  id="productId"
-                  disabled
-                />
-              </div>
-              <div class="mb-3 col-md-6">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <label for="productName" class="form-label fs-14">Tên</label>
                 <input
                   type="text"
-                  class="form-control fs-14"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
                   id="productName"
                   required
                 />
               </div>
-            </div>
-            <div class="row">
-              <div class="mb-3 col-md-6">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <label for="productCode" class="form-label fs-14"
                   >Mã sản phẩm</label
                 >
                 <input
                   type="text"
-                  class="form-control fs-14"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
                   id="productCode"
                   required
                 />
               </div>
-              <div class="mb-3 col-md-6">
+            </div>
+            <div class="row">
+              <div class="col-6 col-sm-4 col-md-6 col-lg-3">
+                <label for="colorProduct" class="form-label fs-14">Màu</label>
+                <input
+                  type="text"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+                  id="colorProduct"
+                  required
+                />
+              </div>
+              <div class="col-6 col-sm-4 col-md-6 col-lg-3">
+                <label for="colorProduct" class="form-label fs-14"
+                  >Thuộc tính</label
+                >
+                <input
+                  type="text"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+                  id="colorProduct"
+                  required
+                />
+              </div>
+              <div class="col-6 col-sm-4 col-md-6 col-lg-3">
                 <label for="productType" class="form-label fs-14">Loại</label>
-                <select class="form-select" id="productType" required>
-                  <option value="">Loại 1</option>
-                  <option value="1">Loại 2</option>
-                  <option value="2">Loại 3</option>
-                  <option value="3">Chung</option>
+                <select class="form-select h-btn-i" id="productType" required>
+                  <option class="fs-14 p-3" value="">Chọn loại</option>
+                  <option class="fs-14 p-3" value="1">Loại 1</option>
+                  <option class="fs-14 p-3" value="2">Loại 2</option>
+                  <option class="fs-14 p-3" value="3">Loại 3</option>
+                </select>
+              </div>
+              <div class="col-6 col-sm-4 col-md-6 col-lg-3">
+                <label for="kichThuoc" class="form-label fs-14"
+                  >Kích thước</label
+                >
+                <select
+                  class="form-select h-btn-i fs-14"
+                  id="kichThuoc"
+                  required
+                >
+                  <option class="fs-14" value="">15-25</option>
+                  <option class="fs-14" value="1">20-35</option>
+                  <option class="fs-14" value="2">40-45</option>
+                  <option class="fs-14" value="3">Tùy chọn</option>
                 </select>
               </div>
             </div>
@@ -655,32 +680,57 @@
               <label for="productDescription" class="form-label fs-14"
                 >Mô tả</label
               >
+              <!-- -->
               <textarea
-                class="form-control fs-14"
+                class="w-100 fs-14 p-2 p-lg-3 rounded-3"
+                rows="5"
                 id="myEditor"
-                rows="3"
-                required
               ></textarea>
             </div>
             <div class="row">
-              <div class="mb-3 col-md-6">
+              <div class="col-6 col-md-4 col-lg-3">
+                <span class="fs-14 form-label"> Ảnh nổi bật</span>
+                <label
+                  for="imageUpload"
+                  class="form-label block fs-14 py-2 py-md-3 br-1-main rounded-4 d-flex align-items-center justify-content-center cursor-pointer gap-2"
+                >
+                  Tải ảnh lên
+                  <img
+                    src="../assets/icons/upload-minimalistic-svgrepo-com.svg"
+                    class="size-24"
+                  />
+                </label>
+                <input
+                  hidden
+                  type="file"
+                  lang="vi"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+                  id="imageUpload"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <label for="productPrice" class="form-label fs-14"
                   >Giá sản phẩm (VNĐ)</label
                 >
                 <input
+                  min="0"
                   type="number"
-                  class="form-control fs-14"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
                   id="productPrice"
                   required
                 />
               </div>
-              <div class="mb-3 col-md-6">
+              <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <label for="productQuantity" class="form-label fs-14"
                   >Số lượng</label
                 >
                 <input
+                  min="0"
                   type="number"
-                  class="form-control fs-14"
+                  class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
                   id="productQuantity"
                   required
                 />
@@ -691,12 +741,14 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-secondary fs-14"
             data-bs-dismiss="modal"
           >
             Đóng
           </button>
-          <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+          <button type="button" class="btn btn-primary fs-14">
+            Lưu thay đổi
+          </button>
         </div>
       </div>
     </div>
@@ -731,7 +783,7 @@
           >
             Hủy
           </button>
-          <button type="button" class="btn btn-primary">Ok xóa</button>
+          <button type="button" class="btn btn-primary">Xóa</button>
         </div>
       </div>
     </div>

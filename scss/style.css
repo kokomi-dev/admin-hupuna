@@ -738,11 +738,11 @@ select:focus {
 }
 
 .max-h-44 {
-  max-height: 44px;
+  max-height: 40px;
 }
 
 .h-btn-i {
-  height: 44px;
+  height: 40px;
 }
 
 .size-30 {
@@ -756,7 +756,7 @@ select:focus {
 }
 
 .fs-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 /* FONT WEIGHT */
@@ -814,7 +814,7 @@ select:focus {
 }
 
 .auth__form {
-  max-width: 520px;
+  max-width: 460px;
 }
 .auth__form .form__btn {
   background-color: #465fff;
@@ -823,10 +823,16 @@ select:focus {
   opacity: 0.9;
 }
 
+.grid__common {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
 .sidebar__menu > ul {
   display: grid;
   gap: 6px;
   list-style: none;
+  padding-right: 24px;
 }
 
 .sidebar__menu > ul > li {
@@ -835,18 +841,19 @@ select:focus {
 
 .sidebar__menu > ul > li > a.active {
   color: #465fff;
+  background-color: #ecf3ff;
 }
 
 .sidebar__menu > ul > li > a {
   text-decoration: none;
   font-weight: 500;
-  padding: 12px 6px;
+  padding: 11px 12px;
   display: block;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 8px;
+  gap: 12px;
   font-size: 14px;
   color: #344055;
   transition: all 0.2s ease-in-out;
@@ -876,8 +883,8 @@ select:focus {
 }
 
 .sidebar__menu > ul > li > a > img {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   filter: invert(1) brightness(0.6);
 }
 
@@ -982,16 +989,24 @@ select:focus {
   opacity: 0.9;
 }
 
+.obf-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .resize__modal > div {
   min-width: 70vw !important;
 }
 
+.table__main {
+  border-collapse: collapse;
+}
 .table__main th {
   background-color: #f9fafb;
   cursor: default;
 }
 .table__main tr {
-  padding: 6px 0px;
+  padding: 8px 0px !important;
   font-size: 14px;
   transition: all 0.1s ease-in-out;
 }
@@ -1003,15 +1018,44 @@ select:focus {
   vertical-align: middle;
 }
 
+.table__main.table > :not(caption) > * > * {
+  padding: 0.8rem 0.5rem;
+}
+
+.btn-group-lg > .btn,
+.btn-lg {
+  --bs-btn-padding-y: 0.3rem !important;
+}
+
 /* RESPONSIVE */
+@media (max-width: 1200px) {
+  .grid__common {
+    grid-template-columns: 24% 76%;
+  }
+}
 @media (max-width: 992px) {
   .resize__modal > div {
     width: 80vw !important;
+  }
+  .grid__common {
+    grid-template-columns: 25% 75%;
   }
 }
 @media (max-width: 768px) {
   .resize__modal > div {
     width: 90vw;
+  }
+  .grid__common {
+    grid-template-columns: 100%;
+  }
+}
+@media (max-width: 576px) {
+  .auth__form {
+    padding: 1.2rem !important;
+  }
+  .size-18 {
+    width: 16px;
+    height: 16px;
   }
 }
 @media (max-width: 424px) {
