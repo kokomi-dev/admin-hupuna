@@ -6,7 +6,7 @@
         <label for="productName" class="form-label fs-14">Tên</label>
         <input
           type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="productName"
           required
         />
@@ -15,46 +15,41 @@
         <label for="productCode" class="form-label fs-14">Mã sản phẩm</label>
         <input
           type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="productCode"
           required
         />
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-md-6 col-lg-3">
+      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
         <label for="colorProduct" class="form-label fs-14">Màu</label>
         <input
           type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="colorProduct"
           required
         />
       </div>
-      <div class="col-sm-4 col-md-6 col-lg-3">
+      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
         <label for="colorProduct" class="form-label fs-14">Thuộc tính</label>
         <input
           type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="colorProduct"
           required
         />
       </div>
-      <div class="col-sm-4 col-md-6 col-lg-3">
+      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
         <label for="productType" class="form-label fs-14">Loại</label>
-        <select
-          style="height: 44px"
-          class="form-select max-h-44"
-          id="productType"
-          required
-        >
+        <select class="form-select h-btn-i" id="productType" required>
           <option class="fs-14 p-3" value="">Chọn loại</option>
           <option class="fs-14 p-3" value="1">Loại 1</option>
           <option class="fs-14 p-3" value="2">Loại 2</option>
           <option class="fs-14 p-3" value="3">Loại 3</option>
         </select>
       </div>
-      <div class="col-sm-4 col-md-6 col-lg-3">
+      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
         <label for="kichThuoc" class="form-label fs-14">Kích thước</label>
         <select
           style="height: 44px"
@@ -71,15 +66,15 @@
     </div>
     <div class="mb-3">
       <label for="productDescription" class="form-label fs-14">Mô tả</label>
+      <!-- -->
       <textarea
         class="w-100 fs-14 p-2 p-lg-3 rounded-3"
+        rows="5"
         id="myEditor"
-        rows="10"
-        required
       ></textarea>
     </div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-6 col-md-4 col-lg-3">
         <label
           for="imageUpload"
           class="form-label block fs-14 py-2 py-md-3 br-1-main rounded-4 d-flex align-items-center justify-content-center cursor-pointer gap-2"
@@ -94,7 +89,7 @@
           hidden
           type="file"
           lang="vi"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="imageUpload"
           required
         />
@@ -108,7 +103,7 @@
         <input
           min="0"
           type="number"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="productPrice"
           required
         />
@@ -118,7 +113,7 @@
         <input
           min="0"
           type="number"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 max-h-44"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
           id="productQuantity"
           required
         />
@@ -132,40 +127,3 @@
     <button type="button" class="btn btn-primary">Thêm mới sản phẩm</button>
   </div>
 </div>
-<script>
-  // Tải script TinyMCE
-  var script = document.createElement("script");
-  script.onload = function () {
-    tinymce.init({
-      selector: "#myEditor",
-      height: 500,
-      plugins: [
-        "advlist",
-        "autolink",
-        "lists",
-        "link",
-        "image",
-        "charmap",
-        "preview",
-        "anchor",
-        "searchreplace",
-        "visualblocks",
-        "code",
-        "fullscreen",
-        "insertdatetime",
-        "media",
-        "table",
-        "help",
-        "wordcount",
-      ],
-      toolbar:
-        "undo redo | blocks | " +
-        "bold italic backcolor | alignleft aligncenter " +
-        "alignright alignjustify | bullist numlist outdent indent | " +
-        "removeformat | help",
-      content_style:
-        "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
-    });
-  };
-  document.head.appendChild(script);
-</script>

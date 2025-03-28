@@ -41,6 +41,9 @@ select:focus {
 .max-h-44 {
   max-height: 44px;
 }
+.h-btn-i {
+  height: 44px;
+}
 .size-30 {
   width: 30px;
   height: 30px;
@@ -130,6 +133,7 @@ select:focus {
   gap: 8px;
   font-size: 14px;
   color: #344055;
+  transition: all 0.2s ease-in-out;
   &:hover {
     color: $blue_main;
   }
@@ -158,6 +162,10 @@ select:focus {
 .sidebar__menu > ul > li:hover {
   background-color: #f8f9fa;
   cursor: pointer;
+}
+.sidebar__menu > ul > li:hover > a > img {
+  filter: invert(32%) sepia(98%) saturate(3000%) hue-rotate(220deg)
+    brightness(95%) contrast(100%);
 }
 .header {
   border-bottom: 1px solid #e1e5eb;

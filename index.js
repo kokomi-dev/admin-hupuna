@@ -51,7 +51,7 @@ function handleBackToListProduct() {
 }
 // handle load editor
 function handleLoadEditor() {
-  if (document.getElementById("#myEditor")) {
+  if (document.getElementById("myEditor")) {
     tinymce.init({
       selector: "#myEditor",
       height: 500,
@@ -102,13 +102,15 @@ async function loadPage(pageName) {
       if (btnCreateProduct) {
         btnCreateProduct.addEventListener("click", () => {
           loadPage("taosanpham");
-          handleLoadEditor();
         });
       }
       handleEventShowDetail();
     }
     if (pageName === "chitietsanpham") {
       handleBackToListProduct();
+    }
+    if (pageName === "taosanpham") {
+      handleLoadEditor();
     }
   } catch (error) {
     document.getElementById("content").innerHTML = `

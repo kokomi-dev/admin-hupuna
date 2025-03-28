@@ -13,7 +13,7 @@
             <input
               id="searchInput"
               type="search"
-              class="form-control fs-14 input_outline fs-14"
+              class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
               placeholder="Tìm kiếm..."
             />
           </div>
@@ -23,7 +23,7 @@
             <label for="">Từ ngày:</label>
             <input
               type="date"
-              class="form-control fs-14 input_outline fs-14"
+              class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
               placeholder="Từ ngày"
             />
           </div>
@@ -31,7 +31,11 @@
         <div class="col-12 col-sm-6 col-md-6 col-xl-3">
           <div class="d-grid gap-1 fs-14">
             <label for="">Trạng thái:</label>
-            <select name="status" class="form-select input_outline fs-14">
+            <select
+              style="height: 44px"
+              name="status"
+              class="form-select input_outline fs-14"
+            >
               <option value="">Tất cả</option>
               <option value="">Còn hoạt đông</option>
               <option value="">Đã xóa</option>
@@ -44,7 +48,7 @@
           >
             <button
               type="submit"
-              class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1"
+              class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1 py-2 h-btn-i"
             >
               <img
                 src="../assets/icons/filter-svgrepo-com.svg"
@@ -54,7 +58,7 @@
             </button>
             <button
               type="submit"
-              class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap"
+              class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i"
             >
               Xóa lọc
             </button>
@@ -69,7 +73,7 @@
       >
         <button
           id="btn__create__product"
-          class="btn bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1"
+          class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1"
         >
           Thêm mới
           <img
@@ -77,7 +81,7 @@
             class="size-20 icon__white"
           />
         </button>
-        <button class="btn bg-danger text-white fs-14">Xóa (0)</button>
+        <button class="btn bg-danger text-white fs-14 btn-lg">Xóa (0)</button>
       </div>
       <div class="d-none d-sm-flex align-items-center gap-2">
         Hiển thị:
@@ -718,7 +722,7 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body"></div>
+        <div class="modal-body">Tên sản phẩm: Bìa cứng đẹp</div>
         <div class="modal-footer">
           <button
             type="button"
