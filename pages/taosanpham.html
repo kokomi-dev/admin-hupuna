@@ -1,4 +1,13 @@
-<div onload="handleLoadEditor()" class="d-grid gap-4">
+<div class="d-grid gap-4">
+  <div class="d-flex align-items-center justify-content-start">
+    <button
+      id="btn__back__listproduct"
+      class="btn btn-sm btn-outline-primary float-start"
+    >
+      &larr; Quay lại
+    </button>
+  </div>
+
   <h5 class="fs-5 fw-medium">Thêm mới sản phẩm</h5>
   <form class="d-grid gap-3">
     <div class="row">
@@ -51,12 +60,7 @@
       </div>
       <div class="col-6 col-sm-4 col-md-6 col-lg-3">
         <label for="kichThuoc" class="form-label fs-14">Kích thước</label>
-        <select
-          style="height: 44px"
-          class="form-select"
-          id="kichThuoc"
-          required
-        >
+        <select class="form-select h-btn-i" id="kichThuoc" required>
           <option class="fs-14" value="">15-25</option>
           <option class="fs-14" value="1">20-35</option>
           <option class="fs-14" value="2">40-45</option>
@@ -75,6 +79,7 @@
     </div>
     <div class="row">
       <div class="col-6 col-md-4 col-lg-3">
+        <span class="fs-14 form-label"> Ảnh nổi bật</span>
         <label
           for="imageUpload"
           class="form-label block fs-14 py-2 py-md-3 br-1-main rounded-4 d-flex align-items-center justify-content-center cursor-pointer gap-2"

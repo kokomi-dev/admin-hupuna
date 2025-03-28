@@ -51,9 +51,13 @@ function handleBackToListProduct() {
 }
 // handle load editor
 function handleLoadEditor() {
-  if (document.getElementById("myEditor")) {
+  const editorId = "myEditor";
+  if (tinymce.get(editorId)) {
+    tinymce.get(editorId).destroy();
+  }
+  if (document.getElementById(editorId)) {
     tinymce.init({
-      selector: "#myEditor",
+      selector: `#${editorId}`,
       height: 500,
       plugins: [
         "advlist",
@@ -110,6 +114,7 @@ async function loadPage(pageName) {
       handleBackToListProduct();
     }
     if (pageName === "taosanpham") {
+      handleBackToListProduct();
       handleLoadEditor();
     }
   } catch (error) {
@@ -121,21 +126,37 @@ async function loadPage(pageName) {
        `;
   }
 }
+// remove active nav
+function checkToolgeActiveDefault() {
+  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+  const currentPage = sessionStorage.getItem("currenPage");
+  listItemNav.forEach((item) => {
+    if (currentPage && item.getAttribute("data-page") === currentPage) {
+      return item.classList.add("active");
+    } else {
+      if (!currentPage && item.getAttribute("data-page") === "trangchu") {
+        return item.classList.add("active");
+      } else return;
+    }
+  });
+}
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+  checkToolgeActiveDefault();
   document
     .querySelector(".sidebar__menu")
     .addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
+        const pageName = event.target.getAttribute("data-page");
+        sessionStorage.setItem("currenPage", pageName);
+        loadPage(pageName);
         listItemNav.forEach((item) => {
           if (item.classList.contains("active")) {
             item.classList.remove("active");
           }
           event.target.classList.add("active");
         });
-        const pageName = event.target.getAttribute("data-page");
-        loadPage(pageName);
       }
     });
 }
@@ -145,7 +166,6 @@ function handleEventSidebar() {
   const mobileSidebar = document.getElementById("mobileSidebar");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-
   function toggleSidebar() {
     mobileSidebar.classList.toggle("show");
     sidebarOverlay.classList.toggle("show");
@@ -162,13 +182,22 @@ function handleEventSidebar() {
       });
       const pageName = event.target.getAttribute("data-page");
       loadPage(pageName);
+      sessionStorage.setItem("currenPage", pageName);
       toggleSidebar();
     }
   });
 }
-// add active nav
+// check handle load
+function handleCheckLoadPage() {
+  const currentPage = sessionStorage.getItem("currenPage");
+  if (!currentPage) {
+    return loadPage("trangchu");
+  } else {
+    return loadPage(currentPage);
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("trangchu");
+  handleCheckLoadPage();
   handleEventSidebar();
   handleEventNav();
 });
