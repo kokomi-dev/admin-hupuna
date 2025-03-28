@@ -206,3 +206,29 @@ document.addEventListener("DOMContentLoaded", () => {
   handleEventSidebar();
   handleEventNav();
 });
+
+// handle event upload image
+function previewImage(event) {
+  const input = event.target;
+  const preview = document.getElementById("preview");
+  const fileNameInput = document.getElementById("file-name");
+
+  if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      // Hiển thị tên file
+      fileNameInput.value = file.name;
+
+      // Đọc ảnh và hiển thị
+      const reader = new FileReader();
+      reader.onload = function (e) {
+          preview.src = e.target.result;
+          preview.classList.remove("d-none"); 
+      };
+      reader.readAsDataURL(file);
+  } else {
+      preview.src = "";
+      preview.classList.add("d-none"); 
+      fileNameInput.value = "Chưa có file nào";
+  }
+}

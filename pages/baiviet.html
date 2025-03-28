@@ -1,193 +1,467 @@
 <section class="d-grid gap-2 gap-md-3 gap-lg-4">
     <!-- tiêu đề -->
     <div class="d-grid gap-1">
-        <h1 class="fs-3 fw-semibold">Danh mục bài viết</h1>
+        <h4 class="fw-semibold">Danh mục bài viết</h4>
         <p class="fs-6 text-black-sub">Quản lý bài viết</p>
     </div>
-    <!--bo loc and table -->
-    <div class="d-grid gap-3 bg-white rounded-3 p-3 ">
-        <h4 class="fs-5">Danh sách bài viết</h4>
-        <!-- boloc -->
-        <div class="row d-flex align-items-center mt-2 g-2 fs-14">
-            <div class="col-6 col-sm-4 col-lg-2">
-                <label for="">Từ ngày:</label>
-                <input type="date" class="form-control input_outline fs-14 " placeholder="Từ ngày">
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2">
-                <label for="">Đến ngày:</label>
-                <input type="date" class="form-control input_outline fs-14" placeholder="Đến ngày">
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2">
-                <label for="">Trạng thái:</label>
-                <select name="status" class="form-select input_outline fs-14">
-                    <option value="">Tất cả</option>
-                    <option value="">Còn hoạt đông</option>
-                    <option value="">Đã xóa</option>
-                </select>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2">
-                <label for="">Thơì gian:</label>
-                <select name="status" class="form-select input_outline fs-14">
-                    <option value="">Tất cả</option>
-                    <option value="">ngày</option>
-                    <option value="">Tuần</option>
-                    <option value="">Tháng</option>
-                    <option value="">Năm</option>
-                </select>
-            </div>  
-        </div>
-        <div class="row d-flex align-items-center fs-14">
-            <div class="col-8 col-sm-7 col-lg-4 pt-1">
-                <label for="">Tìm kiếm:</label>
-                <input type="search" class="form-control input_outline fs-14" placeholder="Tìm kiếm...">
-            </div>
-            <div class="col-3 col-sm-5 col-lg-2 pt-4">
-                <button type="submit" class="btn btn-primary px-4 fs-14">Lọc</button>
+    <!-- main -->
+    <div class="d-grid gap-4">
+        <!-- bộ lọc -->
+        <div class="d-grid gap-4 bg-white rounded-3 p-2 p-md-3 rounded-3 shadow-sm">
+            <h4 class="fs-6">Bộ lọc</h4>
+            <div class="row g-3">
+                <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+                    <div class="d-grid gap-1 fs-14">
+                        <label for="searchInput">Tìm kiếm:</label>
+                        <input id="searchInput" type="search" class="form-control fs-14 input_outline max-h-44 p-3"placeholder="Tìm kiếm..."/>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+                    <div class="d-grid gap-1 fs-14">
+                        <label for="">Từ ngày:</label>
+                        <input type="date" class="form-control input_outline fs-14 max-h-44 p-3"placeholder="Từ ngày"/>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+                    <div class="d-grid gap-1 fs-14">
+                        <label for="">Trạng thái:</label>
+                        <select name="status" class="form-select input_outline h-btn-i fs-14">
+                            <option value="">Tất cả</option>
+                            <option value="">Hoạt động</option>
+                            <option value="">Đã tắt</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+                    <div class="w-100 h-100 d-flex align-items-end justify-content-start gap-2">
+                        <button type="submit" class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1 py-2 h-btn-i">
+                            <img src="../assets/icons/filter-svgrepo-com.svg" class="size-20 icon__white"/>
+                            Lọc
+                        </button>
+                        <button type="submit" class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i">Xóa lọc</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
+
+        <!-- button thêm mới -->
+        <div class="w-100 d-flex justify-content-between align-items-center mt-2 fs-14">
             <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                <button class="btn bg-blue text-white btn__cancel__hover fs-14">Tạo mới</button>
-                <button class="btn bg-danger text-white fs-14">Xóa(0)</button>
+                <button id="btn__create__product" class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#news_blog">
+                    Tạo bài mới
+                    <img src="../assets/icons/add-svgrepo-com.svg" class="size-20 icon__white"/>
+                </button>
             </div>
             <div class="d-none d-sm-flex align-items-center gap-2">
                 Hiển thị:
-                <div class="d-flex align-items-center gap-2">
-                    <div class="bg-white size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm">
-                        <img class="size-20" src="../assets/icons/grid-4-svgrepo-com.svg"/>
+                <div class="d-flex align-items-center gap-2 select-none">
+                    <div class="bg-white cursor-pointer size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm">
+                        <img class="size-20" src="../assets/icons/grid-4-svgrepo-com.svg" />
                     </div>
-                    <div class="rounded-2 size-30 d-flex align-items-center justify-content-center">
-                        <img class="size-20"src="../assets/icons/list-ul-alt-svgrepo-com.svg"/>
+                    <div class="rounded-2 cursor-pointer size-30 d-flex align-items-center justify-content-center">
+                        <img class="size-20" src="../assets/icons/list-ul-alt-svgrepo-com.svg"/>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- table -->
-        <div class="table-responsive">
-            <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
-                <div class=" d-flex align-items-center gap-2">
-                    <label for="">Dòng:</label>
-                    <select name="status" class="form-select input_outline fs-14">
-                        <option value="">Tùy chỉnh</option>
-                        <option value="">5</option>
-                        <option value="">10</option>
-                        <option value="">25</option>
-                        <option value="">50</option>
-                        <option value="">100</option>
-                        <option value="">Hiển thị tất cả</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary px-4 fs-14">Tạo bài viết mới</button>
-            </div>
-            <table class="table table-blog table-striped table-hover lh-lg">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Hình ảnh</th>
-                        <th scope="col">Tiêu đề</th>
-                        <th scope="col">Mô tả</th>
-                        <th scope="col">Ngày tạo</th>
-                        <th scope="col">Trạng thái</th>
-                        <th scope="col">Hành động</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
-                        <td>Tiêu đè bài viết 1</td>
-                        <td>mô tả bài viết 1</td>
-                        <td>12/11/2002</td>
-                        <td class="text-primary">Hoạt động</td>
-                        <td >
-                            <div class="gap-2">
-                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
-                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
-                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
-                        <td>Tiêu đè bài viết 2</td>
-                        <td>Mô tả bài viết 2</td>
-                        <td>12/11/2002</td>
-                        <td class="text-danger">Đã xóa</td>
-                        <td >
-                            <div class="gap-2">
-                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
-                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
-                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">3</td>
-                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
-                        <td>Tiêu đè bài viết 3</td>
-                        <td>Mô tả bài viết 3</td>
-                        <td>12/11/2002</td>
-                        <td class="text-primary">Hoạt động</td>
-                        <td >
-                            <div class="gap-2">
-                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
-                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
-                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">4</td>
-                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
-                        <td>Tiêu đè bài viết 4</td>
-                        <td>Mô tả bài viết 4</td>
-                        <td>12/11/2002</td>
-                        <td class="text-danger">Đã xóa</td>
-                        <td >
-                            <div class="gap-2">
-                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
-                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
-                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">5</td>
-                        <td><img src="/assets/images/logo-img.png" alt="" class="size-30"></td>
-                        <td>Tiêu đè bài viết 5</td>
-                        <td>Mô tả bài viết 5</td>
-                        <td>12/11/2002</td>
-                        <td class="text-primary">Hoạt động</td>
-                        <td >
-                            <div class="gap-2">
-                                <a href=""><img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-24"></a>
-                                <a href=""><img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"></a>
-                                <a href=""><img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-24"></a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- bảng -->
+        <div class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 rounded-3 shadow-sm mb-5">
+            <h5>Danh sách bài viết</h5>
+            <div class="card">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center mt-2 fs-14">
+                        <span class="text-blue-main fw-medium">Có tất cả 1000 bài viết</span>
+                        <div class=" d-flex align-items-center gap-2">
+                            <label for="">Dòng:</label>
+                            <select name="status" class="form-select input_outline fs-14">
+                                <option value="">Tùy chỉnh</option>
+                                <option value="">5</option>
+                                <option value="">10</option>
+                                <option value="">25</option>
+                                <option value="">50</option>
+                                <option value="">100</option>
+                                <option value="">Hiển thị tất cả</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <!-- table-striped -->
+                    <table class="table table__main mb-0 fs-14">
+                        <thead>
+                            <tr>
+                                <th class="position-relative"></th>
+                                <th>ID</th>
+                                <th>Hình ảnh</th>
+                                <th>Tiêu đề</th>
+                                <th>Mô tả</th>
+                                <th>Ngày tạo</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- item_1 -->
+                            <tr>
+                                <td class="position-relative"></td>
+                                <td>1</td>
+                                <td>
+                                    <img src="/assets/images/logo-img.png" alt="" class="size-30">
+                                </td>
+                                <td>Tiêu đề bài viết 1</td>
+                                <td>Mô tả bài viết 1</td>
+                                <td>12/11/2002</td>
+                                <td class="text-blue-main">Hoạt động</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                            <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog">
+                                            <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                                            <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- item_2 -->
+                            <tr>
+                                <td class="position-relative"></td>
+                                <td>2</td>
+                                <td>
+                                    <img src="/assets/images/logo-img.png" alt="" class="size-30">
+                                </td>
+                                <td>Tiêu đề bài viết 2</td>
+                                <td>Mô tả bài viết 2</td>
+                                <td>12/11/2002</td>
+                                <td class="text-danger">Đã tắt</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                            <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog">
+                                            <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                                            <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- item_3 -->
+                            <tr>
+                                <td class="position-relative"></td>
+                                <td>3</td>
+                                <td>
+                                    <img src="/assets/images/logo-img.png" alt="" class="size-30">
+                                </td>
+                                <td>Tiêu đề bài viết 3</td>
+                                <td>Mô tả bài viết 3</td>
+                                <td>12/11/2002</td>
+                                <td class="text-blue-main">Hoạt động</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                            <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog">
+                                            <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                                            <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- item_4 -->
+                            <tr>
+                                <td class="position-relative"></td>
+                                <td>4</td>
+                                <td>
+                                    <img src="/assets/images/logo-img.png" alt="" class="size-30">
+                                </td>
+                                <td>Tiêu đề bài viết 4</td>
+                                <td>Mô tả bài viết 4</td>
+                                <td>12/11/2002</td>
+                                <td class="text-danger">Đã tắt</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                            <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog">
+                                            <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                                            <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- item_5 -->
+                            <tr>
+                                <td class="position-relative"></td>
+                                <td>5</td>
+                                <td>
+                                    <img src="/assets/images/logo-img.png" alt="" class="size-30">
+                                </td>
+                                <td>Tiêu đề bài viết 5</td>
+                                <td>Mô tả bài viết 5</td>
+                                <td>12/11/2002</td>
+                                <td class="text-blue-main">Hoạt động</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                            <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog">
+                                            <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                                            <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- pagination -->
+            <div aria-label="Page navigation example">
+                <ul class="pagination justify-content-end fs-14">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true"><<</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link text-black-sub" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link text-black-sub" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">>></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- pagination -->
-        <div aria-label="Page navigation example">
-            <ul class="pagination justify-content-end">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true"><<</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">>></span>
-                    </a>
-                </li>
-            </ul>
+
+        <!-- model view_detail -->
+        <div class="modal fade" id="view_detail_blog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Thông tin chi tiết bài viết</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row fs-14">
+                            <div class="col-md-12">
+                                <img src="/assets/images/logo-img.png" alt="" class="shadow-sm" style="width: 100%; height: 300px; object-fit: cover; border-radius: 20px;" class="mt-2">
+                            </div>
+                            <div class="col-md-6 border-end mt-4">
+                                <h5>Thông tin chung</h5>
+                                <div class="border-bottom mt-2 p-3 shadow-sm">
+                                    <p><strong>Tiêu đề: </strong>Tiêu đề bài viết 1</p>
+                                </div>
+                                <div class="border-bottom p-3 shadow-sm">
+                                    <p><strong>Mô tả: </strong>Mô tả bào viết 1</p>
+                                </div>
+                                <div class="border-bottom p-3 shadow-sm">
+                                    <p><strong>Ngày tạo: </strong>12/11/2002</p>
+                                </div>
+                                <div class="border-bottom p-3 shadow-sm">
+                                    <p><strong>Trạng thái: </strong>Hoạt động</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-4">
+                                <h5>Thống kê chi tiết</h5>
+                                <div class="d-flex justify-content-between border-bottom mt-2 p-3 shadow-sm">
+                                    <p><strong>Lượt xem: </strong>10000</p>
+                                    <a href="">Xem</a>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom p-3 shadow-sm">
+                                    <p><strong>Lượt thích: </strong>10000</p>
+                                    <a href="">Xem</a>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom p-3 shadow-sm">
+                                    <p><strong>Lượt bình luận: </strong>10000</p>
+                                    <a href="">Xem</a>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom p-3 shadow-sm">
+                                    <p><strong>Lượt chia sẻ: </strong>10000</p>
+                                    <a href="">Xem</a>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom p-3 shadow-sm">
+                                    <p><strong>Lượt lưu: </strong>10000</p>
+                                    <a href="">Xem</a>
+                                </div>
+                            </div>
+                            <div class="col-12 border-bottom mt-3 p-3">
+                                <strong>Nội dung: </strong>
+                                <p>Nội dung bài viết 1 là một đoạn văn dài</p>
+                            </div>
+                            <div class="col-12 border-bottom mt-3 ">
+                                <h5>Lịch sử thay đổi</h5>
+                                <table class="table table-striped table-bordered mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Người sửa</th>
+                                            <th scope="col">Thời gian</th>
+                                            <th scope="col">Mục sửa đổi</th>
+                                            <th scope="col">Chi tiết</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>admin_1</td>
+                                            <td>12/11/2002</td>
+                                            <td>Nội dung</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm " data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                                        <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>admin_2</td>
+                                            <td>12/11/2002</td>
+                                            <td>Hình ảnh</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                                                        <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20">
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-primary fs-14" data-bs-toggle="modal" data-bs-target="#edit_blog">Chỉnh sửa bài viết</button>
+                        <button type="button" class="btn btn-secondary fs-14" data-bs-dismiss="modal">Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- model edit_blog -->
+        <div class="modal fade" id="edit_blog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Chỉnh sửa bài viết</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="row fs-14">
+                                <div class="col-md-6 ">
+                                    <div class="mt-1">
+                                        <label for="title" class="form-label">Tiêu đề</label>
+                                        <input type="text" class="form-control input_outline shadow-sm" id="title" name="title" placeholder="Tiêu đề bài viết">
+                                    </div>
+                                    <div class="mt-2">
+                                        <label for="description" class="form-label">Mô tả ngắn</label>
+                                        <textarea class="form-control input_outline shadow-sm" id="description" name="description" rows="2" placeholder="Mô tả bài viết"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="mt-1">
+                                        <label for="image" class="form-label">Hình ảnh</label>
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-primary" onclick="document.getElementById('image').click()">Chọn ảnh</button>
+                                            <input type="text" id="file-name" class="form-control" placeholder="Chưa có file nào" readonly>
+                                        </div>
+                                        <input type="file" class="d-none" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                                        <img id="preview" src="" alt="Ảnh xem trước" class="mt-2 rounded shadow-sm d-none" style="max-width: 100%; height: 100px; object-fit: cover;">
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <label for="content" class="form-label">Nội dung</label>
+                                    <textarea class="form-control input_outline shadow-sm" id="description" name="content" rows="3" placeholder="Nội dung bài viết" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                </div>
+                                <div class= "col-6 mt-2">
+                                    <label for="status" class="form-label">Trạng thái</label>
+                                    <select name="status" class="form-select input_outline shadow-sm">
+                                        <option value="">Bật</option>
+                                        <option value="">Tắt</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary fs-14" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary fs-14">Lưu thay đổi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal newss_blog -->
+        <div class="modal fade" id="news_blog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Tạo bài viết mới</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="row fs-14">
+                                <div class="col-md-6 ">
+                                    <div class="mt-1">
+                                        <label for="title" class="form-label">Tiêu đề</label>
+                                        <input type="text" class="form-control input_outline shadow-sm" id="title" name="title" placeholder="Tiêu đề bài viết">
+                                    </div>
+                                    <div class="mt-2">
+                                        <label for="description" class="form-label">Mô tả ngắn</label>
+                                        <textarea class="form-control input_outline shadow-sm" id="description" name="description" rows="2" placeholder="Mô tả bài viết"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="mt-1">
+                                        <label for="image" class="form-label">Hình ảnh</label>
+                                        <input type="file" class="form-control input_outline shadow-sm" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                                        <img id="preview" src="" alt="Ảnh xem trước" class="mt-2 rounded shadow-sm d-none" style="max-width: 100%; height: 100px; object-fit: cover;">
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-2">
+                                    <label for="content" class="form-label">Nội dung</label>
+                                    <textarea class="form-control input_outline shadow-sm" id="description" name="content" rows="3" placeholder="Nội dung bài viết" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                </div>
+                                <div class= "col-6 mt-2">
+                                    <label for="status" class="form-label">Trạng thái</label>
+                                    <select name="status" class="form-select input_outline shadow-sm">
+                                        <option value="">Bật</option>
+                                        <option value="">Tắt</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary fs-14" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary fs-14">Tạo mới</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
