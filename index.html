@@ -25,22 +25,33 @@
       <div class="row g-0">
         <!-- sidebar -->
         <aside
-          class="col-md-3 col-xl-2 border-bottom-0 d-none d-md-block sidebar h-100 br-1-main bg-white p-0"
+          class="col-md-3 col-xl-2 border-bottom-0 d-none d-md-block sidebar h-auto br-1-main bg-white p-0"
         >
-          <div class="d-flex flex-column gap-2">
+          <div class="w-100 h-100 d-flex flex-column gap-2">
             <!-- logo -->
             <div
               class="logo__wrapper p-3 d-flex align-items-center justify-content-start gap-2"
             >
-              <img src="./assets/images/logo-img.png" />
-              <span class="fs-4 fw-bold text-primary">Admin</span>
+              <img
+                style="width: 100px; height: 100px"
+                class=""
+                src="https://tr.rbxcdn.com/180DAY-566d44adfb1c8ea6de54900db4ef71f7/420/420/Image/Png/noFilter"
+              />
+              <img
+                style="width: 50px; height: 50px"
+                class=""
+                src="https://cdn-icons-png.flaticon.com/512/8220/8220992.png"
+              />
+              <!-- <span class="fs-4 fw-bold text-primary">Admin</span> -->
             </div>
             <!-- menu -->
-            <span class="text-black-sub ms-3 d-block fs-12 py-2">MENU</span>
             <nav class="sidebar__menu ps-3">
               <ul>
                 <li>
-                  <a data-page="trangchu" href="#">
+                  <span>MENU</span>
+                </li>
+                <li>
+                  <a data-page="trangchu" href="#" class="active">
                     <img src="./assets/icons/dashboard-svgrepo-com.svg" />Trang
                     chủ
                   </a>
@@ -59,17 +70,14 @@
                     Sản phẩm
                   </a>
                 </li>
-              </ul>
-            </nav>
-            <span class="text-black-sub ms-3 d-block fs-12 py-2"
-              >TÀI KHOẢN</span
-            >
-            <nav class="sidebar__menu ps-3">
-              <ul>
+                <!--  -->
+                <li>
+                  <span>TÀI KHOẢN</span>
+                </li>
                 <li>
                   <a href="#">
                     <img src="./assets/icons/setting-4-svgrepo-com.svg" />
-                    Cài đặt tài khoản
+                    Quản lí tài khoản
                   </a>
                 </li>
                 <li>
@@ -84,13 +92,10 @@
                     Đăng ký
                   </a>
                 </li>
-              </ul>
-            </nav>
-            <span class="text-black-sub ms-3 d-block fs-12 py-2"
-              >VỀ CHÚNG TÔI</span
-            >
-            <nav class="sidebar__menu ps-3">
-              <ul>
+                <!--  -->
+                <li>
+                  <span>VỀ CHÚNG TÔI</span>
+                </li>
                 <li>
                   <a href="#">
                     <img src="./assets/icons/contact-svgrepo-com.svg" />
@@ -118,11 +123,13 @@
               <span class="fs-3 fw-bold text-primary">Admin</span>
             </div>
             <!-- menu -->
-            <span class="text-black-sub ms-3 d-block fs-12 py-2">MENU</span>
             <nav class="sidebar__menu ps-3">
               <ul>
                 <li>
-                  <a data-page="trangchu" href="#">
+                  <span>MENU</span>
+                </li>
+                <li>
+                  <a data-page="trangchu" href="#" class="active">
                     <img src="./assets/icons/dashboard-svgrepo-com.svg" />Trang
                     chủ
                   </a>
@@ -141,13 +148,10 @@
                     Sản phẩm
                   </a>
                 </li>
-              </ul>
-            </nav>
-            <span class="text-black-sub ms-3 d-block fs-12 py-2"
-              >TÀI KHOẢN</span
-            >
-            <nav class="sidebar__menu ps-3">
-              <ul>
+                <!--  -->
+                <li>
+                  <span>TÀI KHOẢN</span>
+                </li>
                 <li>
                   <a href="#">
                     <img src="./assets/icons/setting-4-svgrepo-com.svg" />
@@ -166,13 +170,10 @@
                     Đăng ký
                   </a>
                 </li>
-              </ul>
-            </nav>
-            <span class="text-black-sub ms-3 d-block fs-12 py-2"
-              >VỀ CHÚNG TÔI</span
-            >
-            <nav class="sidebar__menu ps-3">
-              <ul>
+                <!--  -->
+                <li>
+                  <span>VỀ CHÚNG TÔI</span>
+                </li>
                 <li>
                   <a href="#">
                     <img src="./assets/icons/contact-svgrepo-com.svg" />
@@ -196,75 +197,83 @@
         <div class="col-md-9 col-xl-10">
           <!-- header -->
           <header
-            class="header py-2 px-4 d-flex justify-content-between align-items-center"
+            class="header py-2 px-4 d-flex justify-content-between justify-content-md-end align-items-center"
           >
-            <!-- icon mobile -->
             <div
               id="mobileMenuToggle"
               class="d-flex align-items-center justify-content-center d-md-none"
             >
               <img src="./assets/icons/menu-svgrepo-com.svg" class="size-24" />
             </div>
-            <!-- search -->
-            <div class="col-3 d-none d-md-block">
+            <div class="d-flex align-items-center justify-content-end gap-2">
+              <!-- thông báo và tin nhắn -->
               <div
-                class="input-group rounded-5 br-1-main d-flex align-items-center justify-content-start gap-2 px-2"
+                class="d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
               >
                 <img
-                  src="./assets/icons/search-svgrepo-com.svg"
-                  class="size-24"
-                />
-                <input
-                  type="text"
-                  class="header__search form-control border-0 rounded-5"
-                  placeholder="Tìm kiếm..."
+                  src="./assets/icons/message-square-dots-svgrepo-com.svg"
+                  class="size-18 fill__black-sub"
                 />
               </div>
-            </div>
-            <!-- action header -->
-            <div class="d-flex align-items-center">
-              <!-- profile -->
-              <div class="dropdown">
-                <div
-                  class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-2 text-decoration-none dropdown-toggle select-none"
-                  id="dropdownUser1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+              <div
+                class="d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
+              >
+                <img
+                  src="./assets/icons/notification-svgrepo-com.svg"
+                  class="size-18 fill__black-sub"
+                />
+              </div>
+              <!-- action header -->
+              <div class="d-flex align-items-center">
+                <!-- profile -->
+                <div class="dropdown">
                   <div
-                    class="action__img d-flex align-items-center justify-content-center rounded-circle br-1-main flex-shrink-0 select-none"
+                    class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-2 text-decoration-none dropdown-toggle select-none"
+                    id="dropdownUser1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
-                    <img
-                      src="./assets/icons/user-alt-1-svgrepo-com.svg"
-                      alt="Profile"
-                      class="size-24"
-                    />
+                    <div
+                      class="action__img d-flex align-items-center justify-content-center select-none"
+                    >
+                      <img
+                        src="https://demo.tailadmin.com/src/images/user/owner.jpg"
+                        alt="Profile"
+                        style="width: 35px; height: 35px"
+                        class="object-fit-cover rounded-circle"
+                      />
+                    </div>
+                    <span class="d-none d-md-block">Admin</span>
                   </div>
-                  <span class="d-none d-md-block">Admin</span>
-                </div>
-                <div
-                  aria-labelledby="dropdownUser1"
-                  class="dropdown-menu dropdown-menu-end dropdown__user"
-                >
-                  <ul>
-                    <li><a href="#">Trang cá nhân</a></li>
-                    <li>
-                      <a href="./login.html">Đăng nhập</a>
-                    </li>
-                    <li><a href="#">Logout</a></li>
-                  </ul>
+                  <div
+                    aria-labelledby="dropdownUser1"
+                    class="dropdown-menu dropdown-menu-end dropdown__user"
+                  >
+                    <ul>
+                      <li><a href="#">Trang cá nhân</a></li>
+                      <li>
+                        <a href="./login.html">Đăng nhập</a>
+                      </li>
+                      <li><a href="#">Đăng xuất</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </header>
           <!-- show content page -->
-          <div id="content" class="p-3 px-3 px-md-4 w-100 h-100"></div>
+          <div id="content" class="p-3 px-3 px-md-4 w-100 h-auto"></div>
         </div>
       </div>
+      <!-- footer -->
+      <footer class="bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
+        <p class="fs-14 text-center w-100 text-black-sub">
+          © 2025 Admin - Bản quyền thuộc về chưa có bản quyền.
+        </p>
+      </footer>
     </main>
     <!-- ui -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.13"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <!-- bootraps -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

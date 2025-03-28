@@ -11,7 +11,11 @@ body {
   font-weight: 400;
   font-style: normal;
 }
-
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 // input
 .input_outline:focus {
   outline: none !important;
@@ -22,6 +26,10 @@ body {
   border: solid #e1e5eb;
 }
 // SIZE
+.size-18 {
+  width: 18px;
+  height: 18px;
+}
 .size-20 {
   width: 20px;
   height: 20px;
@@ -29,6 +37,12 @@ body {
 .size-24 {
   width: 24px;
   height: 24px;
+}
+.max-h-44 {
+  max-height: 44px;
+}
+.h-btn-i {
+  height: 44px;
 }
 .size-30 {
   width: 30px;
@@ -61,6 +75,9 @@ body {
 .fill__black-sub {
   filter: invert(1) brightness(0.4);
 }
+.icon__white {
+  filter: invert(1) brightness(1000%);
+}
 // backgr color
 .bg-gray {
   background-color: $bg-gray;
@@ -92,9 +109,6 @@ body {
   }
 }
 // sidebar
-.sidebar {
-  min-height: 100vh;
-}
 .sidebar__menu > ul {
   display: grid;
   gap: 6px;
@@ -106,6 +120,7 @@ body {
 .sidebar__menu > ul > li > a.active {
   color: $blue_main;
 }
+
 .sidebar__menu > ul > li > a {
   text-decoration: none;
   font-weight: 500;
@@ -118,6 +133,26 @@ body {
   gap: 8px;
   font-size: 14px;
   color: #344055;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    color: $blue_main;
+  }
+}
+.sidebar__menu > ul > li > span {
+  color: $black-sub;
+  font-size: 12px;
+  padding: 8px 0px;
+  display: block;
+  user-select: none;
+  cursor: default;
+}
+.sidebar__menu > ul > li > a.active {
+  color: $blue_main;
+  font-weight: 600;
+}
+.sidebar__menu > ul > li > a.active > img {
+  filter: invert(32%) sepia(98%) saturate(3000%) hue-rotate(220deg)
+    brightness(95%) contrast(100%);
 }
 .sidebar__menu > ul > li > a > img {
   width: 24px;
@@ -127,6 +162,10 @@ body {
 .sidebar__menu > ul > li:hover {
   background-color: #f8f9fa;
   cursor: pointer;
+}
+.sidebar__menu > ul > li:hover > a > img {
+  filter: invert(32%) sepia(98%) saturate(3000%) hue-rotate(220deg)
+    brightness(95%) contrast(100%);
 }
 .header {
   border-bottom: 1px solid #e1e5eb;
@@ -225,6 +264,22 @@ body {
 // resize modal
 .resize__modal > div {
   min-width: 70vw !important;
+}
+// Table css
+.table__main {
+  th {
+    background-color: $bg-gray;
+    cursor: default;
+  }
+  tr {
+    padding: 6px 0px;
+    font-size: 14px;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      background-color: $bg-gray;
+      cursor: pointer;
+    }
+  }
 }
 /* RESPONSIVE */
 @media (max-width: 1200px) {

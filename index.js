@@ -41,7 +41,7 @@ function handleEventShowDetail() {
     });
   });
 }
-// handle action back to list
+// handle action back to list prodcut
 function handleBackToListProduct() {
   document
     .getElementById("btn__back__listproduct")
@@ -51,36 +51,38 @@ function handleBackToListProduct() {
 }
 // handle load editor
 function handleLoadEditor() {
-  tinymce.init({
-    selector: "#myEditor",
-    language: "vi",
-    height: 300,
-    plugins: [
-      "advlist",
-      "autolink",
-      "lists",
-      "link",
-      "image",
-      "charmap",
-      "preview",
-      "anchor",
-      "searchreplace",
-      "visualblocks",
-      "code",
-      "fullscreen",
-      "insertdatetime",
-      "media",
-      "table",
-      "help",
-      "wordcount",
-    ],
-    toolbar:
-      "undo redo | blocks | " +
-      "bold italic underline | alignleft aligncenter " +
-      "alignright alignjustify | " +
-      "bullist numlist outdent indent | " +
-      "removeformat | help",
-  });
+  if (document.getElementById("myEditor")) {
+    tinymce.init({
+      selector: "#myEditor",
+      height: 500,
+      plugins: [
+        "advlist",
+        "autolink",
+        "lists",
+        "link",
+        "image",
+        "charmap",
+        "preview",
+        "anchor",
+        "searchreplace",
+        "visualblocks",
+        "code",
+        "fullscreen",
+        "insertdatetime",
+        "media",
+        "table",
+        "help",
+        "wordcount",
+      ],
+      toolbar:
+        "undo redo | blocks | " +
+        "bold italic backcolor | alignleft aligncenter " +
+        "alignright alignjustify | bullist numlist outdent indent | " +
+        "removeformat | help",
+      content_style:
+        "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
+    });
+  }
 }
 // load page show content
 async function loadPage(pageName) {
@@ -96,11 +98,19 @@ async function loadPage(pageName) {
       handleLoadChartDashboard();
     }
     if (pageName === "sanpham") {
+      const btnCreateProduct = document.getElementById("btn__create__product");
+      if (btnCreateProduct) {
+        btnCreateProduct.addEventListener("click", () => {
+          loadPage("taosanpham");
+        });
+      }
       handleEventShowDetail();
-      handleLoadEditor();
     }
     if (pageName === "chitietsanpham") {
       handleBackToListProduct();
+    }
+    if (pageName === "taosanpham") {
+      handleLoadEditor();
     }
   } catch (error) {
     document.getElementById("content").innerHTML = `
@@ -113,10 +123,17 @@ async function loadPage(pageName) {
 }
 // handle event change page pc
 function handleEventNav() {
+  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
   document
     .querySelector(".sidebar__menu")
     .addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
+        listItemNav.forEach((item) => {
+          if (item.classList.contains("active")) {
+            item.classList.remove("active");
+          }
+          event.target.classList.add("active");
+        });
         const pageName = event.target.getAttribute("data-page");
         loadPage(pageName);
       }
@@ -127,6 +144,8 @@ function handleEventSidebar() {
   const mobileMenuToggle = document.getElementById("mobileMenuToggle");
   const mobileSidebar = document.getElementById("mobileSidebar");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
+  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+
   function toggleSidebar() {
     mobileSidebar.classList.toggle("show");
     sidebarOverlay.classList.toggle("show");
@@ -135,14 +154,21 @@ function handleEventSidebar() {
   sidebarOverlay.addEventListener("click", toggleSidebar);
   mobileSidebar.addEventListener("click", (event) => {
     if (event.target.tagName === "A") {
+      listItemNav.forEach((item) => {
+        if (item.classList.contains("active")) {
+          item.classList.remove("active");
+        }
+        event.target.classList.add("active");
+      });
       const pageName = event.target.getAttribute("data-page");
       loadPage(pageName);
       toggleSidebar();
     }
   });
 }
+// add active nav
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("baiviet");
+  loadPage("trangchu");
   handleEventSidebar();
   handleEventNav();
 });
