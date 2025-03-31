@@ -1,3 +1,14 @@
+const channel = new BroadcastChannel("notify-admin");
+
+function handleLoadEventNotify() {
+  console.log("load");
+  channel.addEventListener("message", (event) => {
+    const messagesDiv = document.getElementById("message-div");
+    const newMessage = document.createElement("p");
+    newMessage.textContent = `Tin nhắn: ${event.data}`;
+    messagesDiv.appendChild(newMessage);
+  });
+}
 // handle load chart dashboard
 function handleLoadChartDashboard() {
   const chartElement = document.getElementById("visitChart");
@@ -58,9 +69,12 @@ function handleLoadEditor() {
   if (document.getElementById(editorId)) {
     tinymce.init({
       selector: `#${editorId}`,
-      height: 500,
+      min_height: 400,
+      height: "400px",
       license_key: "gpl",
       plugins: [
+        "autoresize",
+        "image imagetools",
         "advlist",
         "autolink",
         "lists",
@@ -81,13 +95,98 @@ function handleLoadEditor() {
       ],
       toolbar:
         "undo redo | blocks | " +
-        "bold italic backcolor | alignleft aligncenter " +
+        "bold italic backcolor | image imagetools | alignleft aligncenter " +
         "alignright alignjustify | bullist numlist outdent indent | " +
         "removeformat | help",
       content_style:
         "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
+      file_picker_types: "image",
+      image_uploadtab: true,
+      automatic_uploads: true,
+      images_reuse_filename: true,
+      file_picker_callback: function (callback, value, meta) {
+        // Chỉ cho loại file ảnh
+        if (meta.filetype === "image") {
+          // Tạo một phần tử input
+          var input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
+
+          input.onchange = function () {
+            var file = this.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function () {
+              // Khi đọc file xong, sẽ gọi callback với data URL của ảnh
+              callback(reader.result, {
+                alt: file.name,
+              });
+            };
+
+            // Đọc file dưới dạng data URL (base64)
+            reader.readAsDataURL(file);
+          };
+
+          // Mở hộp thoại chọn file
+          input.click();
+        }
+      },
+      setup: function (editor) {
+        editor.ui.registry.addButton("insertImageWithLayout", {
+          icon: "gallery",
+          tooltip: "Chèn ảnh với bố cục",
+          onAction: function () {
+            editor.windowManager.open({
+              title: "Chọn bố cục ảnh",
+              body: {
+                type: "panel",
+                items: [
+                  {
+                    type: "selectbox",
+                    name: "layout",
+                    label: "Chọn kiểu sắp xếp",
+                    items: [
+                      { text: "Grid", value: "image-grid" },
+                      { text: "Masonry", value: "image-masonry" },
+                      { text: "Flexbox", value: "image-flex" },
+                    ],
+                  },
+                ],
+              },
+              buttons: [
+                {
+                  text: "Chèn ảnh",
+                  type: "submit",
+                },
+                {
+                  text: "Hủy",
+                  type: "cancel",
+                },
+              ],
+              onSubmit: function (dialog) {
+                let data = dialog.getData();
+                editor.insertContent(
+                  `<div class="${
+                    data.layout
+                  }">${editor.selection.getContent()}</div>`
+                );
+                dialog.close();
+              },
+            });
+          },
+        });
+      },
     });
   }
+}
+// post notify
+function handlePostNotify() {
+  const messageInput = document.getElementById("click-notify");
+  messageInput.addEventListener("click", () => {
+    console.log("clicl");
+    channel.postMessage("có tin nhắn");
+    handleLoadEventNotify();
+  });
 }
 // load page show content
 async function loadPage(pageName) {
@@ -120,6 +219,8 @@ async function loadPage(pageName) {
       handleBackToListProduct();
       handleLoadEditor();
     }
+    if (pageName === "quanlikhohang") {
+    }
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
@@ -136,7 +237,7 @@ function checkToolgeActiveDefault() {
   listItemNav.forEach((item) => {
     if (
       (currentPage && item.getAttribute("data-page") === currentPage) ||
-      currentPage.includes(item.getAttribute("data-page"))
+      (currentPage && currentPage?.includes(item.getAttribute("data-page")))
     ) {
       return item.classList.add("active");
     } else {
@@ -171,6 +272,7 @@ function handleEventSidebar() {
   const mobileSidebar = document.getElementById("mobileSidebar");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+  checkToolgeActiveDefault();
   function toggleSidebar() {
     mobileSidebar.classList.toggle("show");
     sidebarOverlay.classList.toggle("show");
@@ -201,12 +303,6 @@ function handleCheckLoadPage() {
     return loadPage(currentPage);
   }
 }
-document.addEventListener("DOMContentLoaded", () => {
-  handleCheckLoadPage();
-  handleEventSidebar();
-  handleEventNav();
-});
-
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
@@ -214,21 +310,27 @@ function previewImage(event) {
   const fileNameInput = document.getElementById("file-name");
 
   if (input.files && input.files[0]) {
-      const file = input.files[0];
+    const file = input.files[0];
 
-      // Hiển thị tên file
-      fileNameInput.value = file.name;
+    // Hiển thị tên file
+    fileNameInput.value = file.name;
 
-      // Đọc ảnh và hiển thị
-      const reader = new FileReader();
-      reader.onload = function (e) {
-          preview.src = e.target.result;
-          preview.classList.remove("d-none"); 
-      };
-      reader.readAsDataURL(file);
+    // Đọc ảnh và hiển thị
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+      preview.classList.remove("d-none");
+    };
+    reader.readAsDataURL(file);
   } else {
-      preview.src = "";
-      preview.classList.add("d-none"); 
-      fileNameInput.value = "Chưa có file nào";
+    preview.src = "";
+    preview.classList.add("d-none");
+    fileNameInput.value = "Chưa có file nào";
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  handleCheckLoadPage();
+  handleEventSidebar();
+  handleEventNav();
+});
