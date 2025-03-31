@@ -95,7 +95,7 @@ function handleLoadEditor() {
       ],
       toolbar:
         "undo redo | blocks | " +
-        "bold italic backcolor | image imagetools | alignleft aligncenter " +
+        "bold italic backcolor | image | alignleft aligncenter " +
         "alignright alignjustify | bullist numlist outdent indent | " +
         "removeformat | help",
       content_style:
@@ -179,15 +179,6 @@ function handleLoadEditor() {
     });
   }
 }
-// post notify
-function handlePostNotify() {
-  const messageInput = document.getElementById("click-notify");
-  messageInput.addEventListener("click", () => {
-    console.log("clicl");
-    channel.postMessage("có tin nhắn");
-    handleLoadEventNotify();
-  });
-}
 // load page show content
 async function loadPage(pageName) {
   try {
@@ -209,17 +200,24 @@ async function loadPage(pageName) {
           loadPage("taosanpham");
         });
       }
-      handleLoadEditor();
       handleEventShowDetail();
     }
     if (pageName === "chitietsanpham") {
       handleBackToListProduct();
     }
-    if (pageName === "taosanpham") {
-      handleBackToListProduct();
+    if (pageName === "baiviet") {
+      const btnCreateBlog = document.getElementById("btn__create__product");
+      btnCreateBlog.addEventListener("click", () => {
+        loadPage("taobaiviet");
+      });
+      selectRowScreen();
+      pagination();
+    }
+    if (pageName === "taosanpham" || pageName === "taobaiviet") {
       handleLoadEditor();
     }
-    if (pageName === "quanlikhohang") {
+    if (pageName === "taosanpham") {
+      handleBackToListProduct();
     }
   } catch (error) {
     document.getElementById("content").innerHTML = `
@@ -230,7 +228,7 @@ async function loadPage(pageName) {
        `;
   }
 }
-// remove active nav
+// toogle active nav
 function checkToolgeActiveDefault() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
   const currentPage = sessionStorage.getItem("currenPage");
@@ -306,8 +304,10 @@ function handleCheckLoadPage() {
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
-  const preview = document.getElementById("preview");
-  const fileNameInput = document.getElementById("file-name");
+  const container = input.closest(".image-upload-container");
+
+  const fileNameInput = container.querySelector("input[type='text']");
+  const preview = container.querySelector("img");
 
   if (input.files && input.files[0]) {
     const file = input.files[0];
@@ -327,6 +327,89 @@ function previewImage(event) {
     preview.classList.add("d-none");
     fileNameInput.value = "Chưa có file nào";
   }
+}
+// select opiton row screen
+function selectRowScreen() {
+  const rowSelect = document.getElementById("rowSelect");
+  const tableBody = document.getElementById("tableBody");
+
+  const tableRows = tableBody.querySelectorAll("tr");
+
+  function updateTableRows(rows) {
+    tableRows.forEach((row, index) => {
+      if (rows === "all" || index < rows) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  }
+
+  rowSelect.addEventListener("change", function () {
+    updateTableRows(rowSelect.value);
+  });
+
+  updateTableRows(5);
+}
+// pagination
+function pagination() {
+  const tableBody = document.getElementById("tableBody");
+  const tableRows = Array.from(tableBody.querySelectorAll("tr"));
+  const rowsPerPage = 5;
+  let currentPage = 1;
+  const pageNumbersContainer = document.getElementById("pageNumbers");
+  let totalPages = Math.ceil(tableRows.length / rowsPerPage);
+
+  // view row tab
+  function renderTable(page) {
+    tableRows.forEach((row, index) => {
+      if (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  }
+  // view page number
+  function updatePagination() {
+    pageNumbersContainer.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      let pageItem = document.createElement("li");
+      pageItem.className = "page-item";
+      pageItem.innerHTML = `<a class="page-link input_outline rounded-0 ${
+        i === currentPage ? "active" : ""
+      }" href="#">${i}</a>`;
+
+      pageItem.addEventListener("click", function (e) {
+        e.preventDefault();
+        currentPage = i;
+        renderTable(currentPage);
+        updatePagination();
+      });
+
+      pageNumbersContainer.appendChild(pageItem);
+    }
+  }
+  //click prev page
+  prevPage.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable(currentPage);
+      updatePagination();
+    }
+  });
+  //click next page
+  nextPage.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable(currentPage);
+      updatePagination();
+    }
+  });
+  renderTable(currentPage);
+  updatePagination();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
