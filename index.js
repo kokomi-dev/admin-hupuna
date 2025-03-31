@@ -116,6 +116,11 @@ async function loadPage(pageName) {
     if (pageName === "chitietsanpham") {
       handleBackToListProduct();
     }
+    if( pageName === "baiviet") {
+      selectRowScreen();
+      pagination();
+      handleLoadEditor();
+    }
     if (pageName === "taosanpham") {
       handleBackToListProduct();
       handleLoadEditor();
@@ -210,8 +215,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
-  const preview = document.getElementById("preview");
-  const fileNameInput = document.getElementById("file-name");
+  const container = input.closest(".image-upload-container");
+  
+  const fileNameInput = container.querySelector("input[type='text']"); 
+  const preview = container.querySelector("img");
 
   if (input.files && input.files[0]) {
       const file = input.files[0];
@@ -223,12 +230,158 @@ function previewImage(event) {
       const reader = new FileReader();
       reader.onload = function (e) {
           preview.src = e.target.result;
-          preview.classList.remove("d-none"); 
+          preview.classList.remove("d-none");
       };
       reader.readAsDataURL(file);
   } else {
       preview.src = "";
-      preview.classList.add("d-none"); 
+      preview.classList.add("d-none");
       fileNameInput.value = "Chưa có file nào";
   }
 }
+
+// select opiton row screen
+function selectRowScreen() {
+  const rowSelect = document.getElementById("rowSelect");
+      const tableBody = document.getElementById("tableBody");
+
+      const tableRows = tableBody.querySelectorAll("tr");
+
+      function updateTableRows(rows) {
+          tableRows.forEach((row, index) => {
+              if (rows === "all" || index < rows) {
+                  row.style.display = "";
+              } else {
+                  row.style.display = "none";
+              }
+          });
+      }
+
+      rowSelect.addEventListener("change", function () {
+          updateTableRows(rowSelect.value);
+      });
+
+      updateTableRows(5);
+}
+
+// pagination 
+function pagination() {
+    const tableBody = document.getElementById("tableBody");
+    const tableRows = Array.from(tableBody.querySelectorAll("tr"));
+    const rowsPerPage = 5;
+    let currentPage = 1; 
+    const pageNumbersContainer = document.getElementById("pageNumbers"); 
+    let totalPages = Math.ceil(tableRows.length / rowsPerPage);
+
+    // view row tab 
+    function renderTable(page) {
+        tableRows.forEach((row, index) => {
+            if (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage) {
+                row.style.display = ""; 
+            } else {
+                row.style.display = "none"; 
+            }
+        });
+    }
+    // view page number
+    function updatePagination() {
+        pageNumbersContainer.innerHTML = ""; 
+        for (let i = 1; i <= totalPages; i++) {
+            let pageItem = document.createElement("li");
+            pageItem.className = "page-item";
+            pageItem.innerHTML = `<a class="page-link input_outline rounded-0 ${i === currentPage ? 'active' : ''}" href="#">${i}</a>`;
+            
+            pageItem.addEventListener("click", function (e) {
+                e.preventDefault();
+                currentPage = i;
+                renderTable(currentPage);
+                updatePagination();   
+            });
+    
+            pageNumbersContainer.appendChild(pageItem);
+        }
+    }
+    //click prev page
+    prevPage.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable(currentPage);
+            updatePagination();
+        }
+    });
+    //click next page
+    nextPage.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderTable(currentPage);
+            updatePagination();
+        }
+    });
+    renderTable(currentPage);
+    updatePagination();
+}
+
+//   setTimeout(() => {
+//     const tableBody = document.getElementById("tableBody");
+//     const tableRows = Array.from(tableBody.querySelectorAll("tr"));
+//     const rowsPerPage = 5;
+//     let currentPage = 1; 
+//     const pageNumbersContainer = document.getElementById("pageNumbers"); 
+//     let totalPages = Math.ceil(tableRows.length / rowsPerPage);
+
+//     // 
+//     function renderTable(page) {
+//         tableRows.forEach((row, index) => {
+//             if (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage) {
+//                 row.style.display = ""; 
+//             } else {
+//                 row.style.display = "none"; 
+//             }
+//         });
+//     }
+
+//     // 
+//     function updatePagination() {
+//         pageNumbersContainer.innerHTML = ""; 
+//         for (let i = 1; i <= totalPages; i++) {
+//             let pageItem = document.createElement("li");
+//             pageItem.className = "page-item";
+//             pageItem.innerHTML = `<a class="page-link input_outline rounded-0 ${i === currentPage ? 'active' : ''}" href="#">${i}</a>`;
+            
+//             pageItem.addEventListener("click", function (e) {
+//                 e.preventDefault();
+//                 currentPage = i;
+//                 renderTable(currentPage);
+//                 updatePagination();   
+//             });
+    
+//             pageNumbersContainer.appendChild(pageItem);
+//         }
+//     }
+
+//     prevPage.addEventListener("click", function (e) {
+//         e.preventDefault();
+//         if (currentPage > 1) {
+//             currentPage--;
+//             renderTable(currentPage);
+//             updatePagination();
+//         }
+//     });
+
+//     nextPage.addEventListener("click", function (e) {
+//         e.preventDefault();
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             renderTable(currentPage);
+//             updatePagination();
+//         }
+//     });
+
+//     renderTable(currentPage);
+//     updatePagination();
+
+//   }, 1000);
+
+// });

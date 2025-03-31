@@ -3,18 +3,33 @@
 
 #news_blog .modal-dialog,
 #view_detail_blog .modal-dialog,
-#edit_blog .modal-dialog {
-    max-width: 50% !important;
-    width: 50%;
+#edit_blog .modal-dialog,
+#view_history_edit .modal-dialog {
+    max-width: 70% !important;
+    width: 70%;
 }
-#view_detail_blog strong {
+#view_detail_blog strong,
+#view_history_edit strong {
     font-size: 16px;
     font-weight: 410;
 }
+#view_history_edit .highlight { 
+    background-color: #fff3cd; 
+} 
+#view_history_edit .old-value {
+    // color: #dc3545;
+    text-decoration: line-through; 
+    opacity: 0.5;
+} 
+#view_history_edit .new-value {
+    color: #198754; 
+}
+
 @media  screen and (max-width: 900px) {
     #news_blog .modal-dialog,
     #view_detail_blog .modal-dialog,
-    #edit_blog .modal-dialog {
+    #edit_blog .modal-dialog,
+    #view_history_edit .modal-dialog{
         max-width: 96% !important;
         width: 96%;
     }
