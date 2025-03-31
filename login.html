@@ -16,150 +16,109 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="scss/style.css" />
+    <style>
+      .input__login {
+        border: 0.5px solid #e0d9d9;
+      }
+    </style>
     <title>Đăng nhập</title>
   </head>
   <body>
-    <!-- <section class="authform__container">
-      <form
-        class="auth__form w-100 br-1-main d-grid gap-2 gap-md-3 gap-lg-4 p-3 p-lg-4 rounded-4 position-absolute top-50 start-50 translate-middle bg-white shadow-sm"
-      >
-        <div>
-          <h2 class="text-start fs-3 fw-semibold">Đăng nhập</h2>
-          <span class="fs-14 text-black-sub mt-2"
-            >Nhập tên và mật khẩu để đăng nhập</span
-          >
-        </div>
-        <div class="form__item d-grid gap-1">
-          <label for="inputName" class="text-black-sub fs-14 fw-semibold"
-            >Tên</label
-          >
-          <input
-            id="inputName"
-            placeholder="Nhập tên"
-            class="p-2 p-md-3 rounded-3 fs-14 br-1-main input_outline shadow-sm max-h-44"
-          />
-        </div>
-        <div class="form__item d-grid gap-1">
-          <label for="inputPass" class="text-black-sub fs-14 fw-semibold"
-            >Mật khẩu</label
-          >
-          <input
-            id="inputPass"
-            placeholder="Nhập mật khẩu"
-            class="p-2 p-md-3 rounded-3 fs-14 br-1-main input_outline max-h-44 shadow-sm"
-          />
-        </div>
-        <button
-          type="submit"
-          class="form__btn btn py-2 border-0 rounded-3 fs-6 fw-semibold text-white"
-        >
-          Đăng nhập
-        </button>
-        <div
-          class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between"
-        >
-          <a href="#" class="fs-14 text-blue">Quên mật khẩu</a>
-          <div class="d-flex align-items-center justify-content-start gap-2">
-            <span class="fs-14 text-gray">Bạn chưa có tài khoản!</span>
-            <a
-              href="./register.html"
-              class="fs-14 text-blue text-decoration-none"
-              >Đăng ký</a
-            >
-          </div>
-        </div>
-      </form>
-    </section> -->
     <div class="authform__container">
       <div
-        class="auth__form w-100 d-grid rounded-4 position-absolute top-50 start-50 translate-middle"
+        class="auth__form w-100 d-grid rounded-4 position-absolute top-50 start-50 translate-middle bg-white shadow-sm rounded-3 p-3 p-md-4"
       >
-        <div class="card mb-4 mt-5 mx-2 mx-sm-0 position-relative">
-          <div class="card-body p-sm-5">
-            <h2 class="fs-5 fw-bolder mb-4">Đăng nhập</h2>
-            <p class="fs-12 fw-medium text-black-sub">
-              Nhập tài khoản mật khẩu để đăng nhập !
-            </p>
-            <form class="w-100 mt-4 pt-2">
-              <div class="mb-4">
-                <input
-                  type="email"
-                  class="form-control fs-14"
-                  placeholder="Email / Tên"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="password"
-                  class="form-control fs-14"
-                  placeholder="Password"
-                  value=""
-                  required
-                />
-              </div>
-              <div class="d-flex align-items-center justify-content-between">
-                <div>
-                  <div
-                    class="d-flex align-items-center justify-content-start gap-1"
-                  >
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      id="rememberMe"
-                    />
-                    <label
-                      class="cursor-pointer select-none fs-14 fw-medium"
-                      for="rememberMe"
-                      >Nhớ tài khoản</label
-                    >
-                  </div>
-                </div>
-                <div>
-                  <a class="fs-12 text-primary">Quên mật khẩu ?</a>
-                </div>
-              </div>
-              <div class="mt-5">
-                <button
-                  type="submit"
-                  class="btn btn-lg btn-primary w-100 fw-semibold fs-14 py-2 bg-blue"
-                >
-                  Đăng nhập
-                </button>
-              </div>
-            </form>
-            <div class="w-100 mt-5 text-center mx-auto">
-              <div class="mb-4 border-bottom position-relative">
-                <span
-                  class="fs-12 py-1 px-3 text-uppercase text-black-sub bg-white position-absolute translate-middle"
-                  >hoặc</span
-                >
-              </div>
-              <div
-                class="d-flex align-items-center justify-content-center gap-2"
+        <div class="position-relative">
+          <h2 class="fs-4 fw-bolder mb-1">Đăng nhập</h2>
+          <p class="fs-14 fw-medium text-black-sub">
+            Nhập tài khoản mật khẩu để đăng nhập !
+          </p>
+          <form class="w-100 mt-4 pt-2">
+            <div class="mb-4">
+              <label
+                for="name"
+                class="form-label text-black-sub fs-14 fw-semibold"
+                >Tên</label
               >
-                <button
-                  class="btn button-primary text-white d-flex align-items-center justify-content-center"
+              <input
+                id="name"
+                type="text"
+                class="w-100 px-3 py-1 rounded-3 fs-14 h-btn-i input__login"
+                placeholder="Nhập tên"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                for="password"
+                class="form-label text-black-sub fs-14 fw-semibold"
+                >Mật khẩu</label
+              >
+              <input
+                type="password"
+                class="w-100 px-3 py-1 rounded-3 fs-14 h-btn-i input__login"
+                placeholder="Mật khẩu"
+                value=""
+                required
+              />
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <div
+                  class="d-flex align-items-center justify-content-start gap-1"
                 >
-                  <img
-                    class="size-30"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/640px-Facebook_Logo_%282019%29.png"
-                  />
-                </button>
-                <button
-                  class="btn button-primary text-white d-flex align-items-center justify-content-center"
-                >
-                  <img
-                    class="size-30"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
-                  />
-                </button>
+                  <input type="checkbox" id="rememberMe" />
+                  <label
+                    class="cursor-pointer select-none fs-14 fw-medium text-black-sub"
+                    for="rememberMe"
+                    >Nhớ tài khoản</label
+                  >
+                </div>
+              </div>
+              <div>
+                <a class="fs-12 text-primary">Quên mật khẩu?</a>
               </div>
             </div>
-            <div class="mt-5 text-black-sub fs-14">
-              <span> Bạn chưa có tài khoản?</span>
-              <a href="./register.html" class="fw-bold fs-14">Đăng ký</a>
+            <div class="mt-4">
+              <button
+                type="submit"
+                class="btn btn-lg btn-primary w-100 fw-semibold fs-14 py-2 bg-blue"
+              >
+                Đăng nhập
+              </button>
             </div>
+          </form>
+          <div class="w-100 mt-5 text-center mx-auto">
+            <div class="mb-4 border-bottom position-relative">
+              <span
+                class="fs-12 py-1 px-3 text-uppercase text-black-sub bg-white position-absolute translate-middle"
+                >hoặc</span
+              >
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <button
+                class="btn button-primary text-white d-flex align-items-center justify-content-center"
+              >
+                <img
+                  class="size-30"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/640px-Facebook_Logo_%282019%29.png"
+                />
+              </button>
+              <button
+                class="btn button-primary text-white d-flex align-items-center justify-content-center"
+              >
+                <img
+                  class="size-30"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="mt-4 text-black-sub fs-14">
+            <span> Bạn chưa có tài khoản?</span>
+            <a href="./register.html" class="fw-medium text-blue fs-14"
+              >Đăng ký</a
+            >
           </div>
         </div>
       </div>

@@ -801,8 +801,16 @@ select:focus {
   color: #e1501b;
 }
 
+.fill__red {
+  filter: invert(36%) sepia(83%) saturate(3450%) hue-rotate(352deg) brightness(96%) contrast(105%);
+}
+
 .fill__black-sub {
   filter: invert(1) brightness(0.4);
+}
+
+.fill__blue {
+  filter: invert(25%) sepia(88%) saturate(3000%) hue-rotate(220deg) brightness(95%) contrast(100%);
 }
 
 .icon__white {
@@ -1005,9 +1013,25 @@ select:focus {
   background-color: #f9fafb;
 }
 
+.btn__cancel__hover {
+  border: 0.5px solid transparent;
+}
 .btn__cancel__hover:hover {
+  background-color: inherit !important;
+  color: inherit !important;
+  opacity: 0.9;
+  border: 0.5px solid #999;
+}
+
+.btn__cancel__hover.bg-blue:hover {
+  color: white !important;
   background-color: #465fff !important;
   opacity: 0.9;
+}
+
+.input__filter {
+  min-width: 150px;
+  max-width: 160px;
 }
 
 .obf-cover {
@@ -1087,4 +1111,4 @@ select:focus {
   .auth__form {
     width: 95% !important;
   }
-}/*# sourceMappingURL=style.css.map */
+}

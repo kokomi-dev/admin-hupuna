@@ -15,12 +15,16 @@
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css"
+    />
     <link rel="stylesheet" href="scss/style.css" />
     <!-- editore -->
     <script src="./modules/tinymce/js/tinymce/tinymce.min.js"></script>
     <title>Trang chủ</title>
   </head>
-  <body>
+  <body translate="no" lang="vi">
     <main class="w-100 h-100">
       <div class="row g-0 grid__common">
         <!-- sidebar -->
@@ -37,12 +41,9 @@
                 class=""
                 src="https://cdn-icons-png.flaticon.com/512/8220/8220992.png"
               />
-              <!-- <img
-                style="width: 80px; height: 80px"
-                class=""
-                src="https://tr.rbxcdn.com/180DAY-566d44adfb1c8ea6de54900db4ef71f7/420/420/Image/Png/noFilter"
-              /> -->
-              <span class="fs-5 fw-bold text-black">Quản trị</span>
+              <span style="color: #101828" class="fs-4 fw-semibold text-black"
+                >Quản trị</span
+              >
             </div>
             <!-- menu -->
             <nav class="sidebar__menu ps-3">
@@ -53,6 +54,12 @@
                 <li>
                   <a data-page="trangchu" href="#">
                     <img src="./assets/icons/home.svg" />Trang chủ
+                  </a>
+                </li>
+                <li>
+                  <a data-page="quanlikhohang" href="#">
+                    <img src="./assets/icons/crm-computer.svg" />Quản lí kho
+                    hàng
                   </a>
                 </li>
                 <li>
@@ -72,7 +79,7 @@
                   <span>TÀI KHOẢN</span>
                 </li>
                 <li>
-                  <a data-page="quanlitaikhoan" href="#">
+                  <a data-page="quanlytaikhoan" href="#">
                     <img src="./assets/icons/lead-management.svg" />
                     Quản lí tài khoản
                   </a>
@@ -99,7 +106,7 @@
                   </a>
                 </li>
                 <li>
-                  <a data-page="dieukhoandichvu" href="./login.html">
+                  <a data-page="dieukhoandichvu">
                     <img
                       src="./assets/icons/confidential-discussion.svg"
                     />Quyền riêng tư
@@ -130,6 +137,12 @@
                   </a>
                 </li>
                 <li>
+                  <a data-page="quanlikhohang" href="#">
+                    <img src="./assets/icons/crm-computer.svg" />Quản lí kho
+                    hàng
+                  </a>
+                </li>
+                <li>
                   <a data-page="baiviet" href="#">
                     <img src="./assets/icons/blog-pencil.svg" />
                     Bài viết
@@ -146,7 +159,7 @@
                   <span>TÀI KHOẢN</span>
                 </li>
                 <li>
-                  <a data-page="quanlitaikhoan" href="#">
+                  <a data-page="quanlytaikhoan" href="#">
                     <img src="./assets/icons/lead-management.svg" />
                     Quản lí tài khoản
                   </a>
@@ -173,7 +186,7 @@
                   </a>
                 </li>
                 <li>
-                  <a data-page="dieukhoandichvu" href="./login.html">
+                  <a data-page="dieukhoandichvu">
                     <img
                       src="./assets/icons/confidential-discussion.svg"
                     />Quyền riêng tư
@@ -213,6 +226,7 @@
                 >
               </div>
               <div
+                id="test"
                 class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
               >
                 <img
@@ -224,12 +238,11 @@
                   >1</span
                 >
               </div>
-              <!-- action header -->
-              <div class="d-flex align-items-center">
-                <!-- profile -->
+              <!-- tài khoản -->
+              <div class="ms-2 d-flex align-items-center">
                 <div class="dropdown">
                   <div
-                    class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-2 text-decoration-none dropdown-toggle select-none"
+                    class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-1 text-decoration-none dropdown-toggle select-none"
                     id="dropdownUser1"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -244,7 +257,7 @@
                         class="object-fit-cover rounded-circle"
                       />
                     </div>
-                    <span class="d-none d-md-block">Admin</span>
+                    <span class="d-none d-md-block fs-14 fw-medium">Admin</span>
                   </div>
                   <div
                     aria-labelledby="dropdownUser1"
@@ -265,6 +278,8 @@
           <!-- show content page -->
           <div id="content" class="p-3 px-3 px-md-4 w-100 h-auto"></div>
         </div>
+        <!-- notify customs -->
+        <div id="notification-container"></div>
       </div>
       <!-- footer -->
       <footer class="bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
@@ -283,6 +298,44 @@
     ></script>
     <!-- chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js"></script>
+
     <script src="./index.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+      function showToast(message, type) {
+        let backgroundColor;
+        switch (type) {
+          case "success":
+            backgroundColor = "#4CAF50";
+            break;
+          case "error":
+            backgroundColor = "#F44336";
+            break;
+          case "info":
+            backgroundColor = "#2196F3";
+            break;
+          case "warning":
+            backgroundColor = "#FF9800";
+            break;
+          default:
+            backgroundColor = "#333";
+        }
+        Toastify({
+          text: message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor,
+          style: {
+            fontSize: "14px",
+            borderRadius: "6px",
+            textTransform: "capitalize",
+          },
+        }).showToast();
+      }
+    </script>
   </body>
 </html>

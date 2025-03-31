@@ -77,8 +77,16 @@ select:focus {
 .text-red-main {
   color: #e1501b;
 }
+.fill__red {
+  filter: invert(36%) sepia(83%) saturate(3450%) hue-rotate(352deg)
+    brightness(96%) contrast(105%);
+}
 .fill__black-sub {
   filter: invert(1) brightness(0.4);
+}
+.fill__blue {
+  filter: invert(25%) sepia(88%) saturate(3000%) hue-rotate(220deg)
+    brightness(95%) contrast(100%);
 }
 .icon__white {
   filter: invert(1) brightness(1000%);
@@ -179,6 +187,7 @@ select:focus {
   filter: invert(32%) sepia(98%) saturate(3000%) hue-rotate(220deg)
     brightness(95%) contrast(100%);
 }
+// header
 .header {
   border-bottom: 1px solid #e1e5eb;
 }
@@ -243,6 +252,7 @@ select:focus {
 .sidebar__mobile.show {
   left: 0;
 }
+// overlay
 .overlay {
   position: fixed;
   top: 0;
@@ -266,13 +276,28 @@ select:focus {
   min-height: 100vh;
   background-color: $bg-gray;
 }
+// hủy hover mặc định bootraps
 .btn__cancel__hover {
+  border: 0.5px solid transparent;
   &:hover {
+    background-color: inherit !important;
+    color: inherit !important;
+    opacity: 0.9;
+    border: 0.5px solid #999;
+  }
+}
+.btn__cancel__hover.bg-blue {
+  &:hover {
+    color: white !important;
     background-color: $bg-blue_main !important;
     opacity: 0.9;
   }
 }
 // end sidebar mobile
+.input__filter {
+  min-width: 150px;
+  max-width: 160px;
+}
 .obf-cover {
   object-fit: cover;
 }
@@ -280,7 +305,7 @@ select:focus {
 .resize__modal > div {
   min-width: 70vw !important;
 }
-// Table css
+// table css
 .table__main {
   border-collapse: collapse;
   th {

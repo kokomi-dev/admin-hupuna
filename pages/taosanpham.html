@@ -9,7 +9,7 @@
   </div>
 
   <h5 class="fs-5 fw-medium">Thêm mới sản phẩm</h5>
-  <form class="d-grid gap-3">
+  <form class="d-grid gap-3 gap-lg-4">
     <div class="row g-3">
       <div class="col-12 col-sm-6 col-md-6 col-lg-4">
         <label for="productName" class="form-label fs-14">Tên</label>
@@ -29,78 +29,78 @@
           required
         />
       </div>
-    </div>
-    <div class="row">
-      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
-        <label for="colorProduct" class="form-label fs-14">Màu</label>
-        <input
-          type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
-          id="colorProduct"
-          required
-        />
-      </div>
-      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
-        <label for="colorProduct" class="form-label fs-14">Thuộc tính</label>
-        <input
-          type="text"
-          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
-          id="colorProduct"
-          required
-        />
-      </div>
-      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
-        <label for="productType" class="form-label fs-14">Loại</label>
-        <select class="form-select h-btn-i" id="productType" required>
-          <option class="fs-14 p-3" value="">Chọn loại</option>
-          <option class="fs-14 p-3" value="1">Loại 1</option>
-          <option class="fs-14 p-3" value="2">Loại 2</option>
-          <option class="fs-14 p-3" value="3">Loại 3</option>
-        </select>
-      </div>
-      <div class="col-6 col-sm-4 col-md-6 col-lg-3">
-        <label for="kichThuoc" class="form-label fs-14">Kích thước</label>
-        <select class="form-select h-btn-i" id="kichThuoc" required>
-          <option class="fs-14" value="">15-25</option>
-          <option class="fs-14" value="1">20-35</option>
-          <option class="fs-14" value="2">40-45</option>
-          <option class="fs-14" value="3">Tùy chọn</option>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productCategory" class="form-label fs-14">Danh mục</label>
+        <select class="form-select h-btn-i fs-14" id="productCategory" required>
+          <option class="fs-14" value="">Chọn danh mục</option>
+          <option class="fs-14" value="1">Danh mục 1</option>
+          <option class="fs-14" value="2">Danh mục 2</option>
+          <option class="fs-14" value="3">Danh mục 3</option>
         </select>
       </div>
     </div>
-    <div class="mb-3">
-      <label for="productDescription" class="form-label fs-14">Mô tả</label>
-      <!-- -->
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productDiscount" class="form-label fs-14"
+          >Giảm giá (%)</label
+        >
+        <input
+          min="0"
+          max="100"
+          type="number"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+          id="productDiscount"
+          placeholder="Nhập % giảm giá"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productBrand" class="form-label fs-14">Thương hiệu</label>
+        <input
+          type="text"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+          id="productBrand"
+          placeholder="Nhập thương hiệu"
+        />
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productDate" class="form-label fs-14">Ngày sản xuất</label>
+        <input
+          type="date"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+          id="productDate"
+        />
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productMaterial" class="form-label fs-14">Chất liệu</label>
+        <input
+          type="text"
+          class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+          id="productMaterial"
+        />
+      </div>
+    </div>
+    <div class="">
+      <span class="fs-14 text-black mb-1 mb-md-2 d-block"
+        >Chi tiết sản phẩm</span
+      >
       <textarea
-        class="w-100 fs-14 p-2 p-lg-3 rounded-3"
-        rows="5"
         id="myEditor"
+        name="productDescription"
+        class="fs-14 fw-normal h-100"
       ></textarea>
     </div>
-    <div class="row">
-      <div class="col-6 col-md-4 col-lg-3">
-        <span class="fs-14 form-label"> Ảnh nổi bật</span>
-        <label
-          for="imageUpload"
-          class="form-label block fs-14 py-2 py-md-3 br-1-main rounded-4 d-flex align-items-center justify-content-center cursor-pointer gap-2"
-        >
-          Tải ảnh lên
-          <img
-            src="../assets/icons/upload-minimalistic-svgrepo-com.svg"
-            class="size-24"
-          />
-        </label>
+    <div class="row g-3">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+        <label for="productTags" class="form-label fs-14">Tags</label>
         <input
-          hidden
-          type="file"
-          lang="vi"
+          type="text"
           class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
-          id="imageUpload"
-          required
+          id="productTags"
+          placeholder="Nhập các tags"
         />
       </div>
-    </div>
-    <div class="row">
       <div class="col-12 col-sm-6 col-md-6 col-lg-4">
         <label for="productPrice" class="form-label fs-14"
           >Giá sản phẩm (VNĐ)</label
