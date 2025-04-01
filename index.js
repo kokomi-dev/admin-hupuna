@@ -212,6 +212,7 @@ async function loadPage(pageName) {
       });
       selectRowScreen();
       pagination();
+      handleLoadEditor();
     }
     if (pageName === "taosanpham" || pageName === "taobaiviet") {
       handleLoadEditor();
