@@ -183,13 +183,23 @@ function handleLoadEditor() {
 async function loadPage(pageName) {
   try {
     const contentDiv = document.getElementById("content");
+    const loader = document.getElementById("loading__content__page");
+
+    // loader.style.display = "flex";
+
     const response = await fetch(`pages/${pageName}.html`);
     if (!response.ok) {
       throw new Error("Trang không tồn tại");
     }
+
     const content = await response.text();
+
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+
     contentDiv.innerHTML = content;
     sessionStorage.setItem("currenPage", pageName);
+    // loader.style.display = "none";
+
     if (pageName === "trangchu") {
       handleLoadChartDashboard();
     }
@@ -200,6 +210,7 @@ async function loadPage(pageName) {
           loadPage("taosanpham");
         });
       }
+      handleLoadEditor();
       handleEventShowDetail();
     }
     if (pageName === "chitietsanpham") {
@@ -220,6 +231,12 @@ async function loadPage(pageName) {
     if (pageName === "taosanpham") {
       handleBackToListProduct();
     }
+    if(pageName === "quanlixuatkho"){
+      const btnCreateExport = document.getElementById("btn__create__product");
+      btnCreateExport.addEventListener("click", () => {
+        loadPage("taophieuxuatkho");
+      });
+    }
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
@@ -232,6 +249,9 @@ async function loadPage(pageName) {
 // toogle active nav
 function checkToolgeActiveDefault() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+  const listItemNavSub = document.querySelectorAll(
+    ".sidebar__menu ul li ul li a"
+  );
   const currentPage = sessionStorage.getItem("currenPage");
   listItemNav.forEach((item) => {
     if (
@@ -245,16 +265,59 @@ function checkToolgeActiveDefault() {
       } else return;
     }
   });
+  listItemNavSub.forEach((item) => {
+    if (
+      (currentPage && item.getAttribute("data-page") === currentPage) ||
+      (currentPage && currentPage?.includes(item.getAttribute("data-page")))
+    ) {
+      return item.classList.add("active");
+    } else {
+      if (!currentPage && item.getAttribute("data-page") === "trangchu") {
+        return item.classList.add("active");
+      } else return;
+    }
+  });
+}
+// handle clode accordtion
+function handleCloseAccordtion() {
+  const containerAccordtion = document.querySelector(
+    ".accordion-collapse.collapse"
+  );
+  const itemContainerAccordtion = document.querySelectorAll(
+    ".sidebar__menu ul li a"
+  );
+
+  itemContainerAccordtion.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      if (!containerAccordtion.contains(event.target)) {
+        if (containerAccordtion.classList.contains("show"))
+          containerAccordtion.classList.remove("show");
+        else return;
+      }
+    });
+  });
 }
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+  const containerAccordtion = document.querySelector(
+    ".accordion-collapse.collapse"
+  );
+  const items = document.querySelectorAll(".accordion-collapse.collapse li a");
+  items.forEach((item) => {
+    if (
+      item.classList.contains("active") &&
+      !containerAccordtion.classList.contains("show")
+    )
+      containerAccordtion.classList.add("show");
+  });
   checkToolgeActiveDefault();
   document
     .querySelector(".sidebar__menu")
     .addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
         const pageName = event.target.getAttribute("data-page");
+        handleCloseAccordtion();
         loadPage(pageName);
         listItemNav.forEach((item) => {
           if (item.classList.contains("active")) {

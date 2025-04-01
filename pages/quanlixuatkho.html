@@ -1,0 +1,149 @@
+<section class="d-grid gap-2 gap-md-3 gap-lg-4">
+
+    <!-- tieu de -->
+     <div class="d-grid gap-1">
+        <h4 class="fe-semibold">Quản lý xuất kho</h4>
+     </div>
+
+    <!-- Bộ lọc -->
+    <div class="d-grid gap-4 bg-white rounded-3 p-2 p-md-3 rounded-3 shadow-sm">
+        <h5 class="fs-6">Bộ lọc</h5>
+        <!-- form -->
+        <form class="fs-14" action="" method="post">
+            <div class="row g-3">
+                <div class="col-3">
+                  <label for="">Mã phiếu xuất:</label>
+                  <input type="text" class="form-control h-btn-i mt-1 fs-14" id="" name="" placeholder="Nhập mã phiếu xuất..." required>
+                </div>
+                <div class="col-3">
+                  <label for="">Ngày:</label>
+                  <input type="date" class="form-control h-btn-i mt-1 fs-14" id="" name="" required>
+                </div>
+                <div class="col-3">
+                  <label for="">Người xuất</label>
+                  <input type="text" class="form-control h-btn-i mt-1 fs-14" id="" name="" placeholder="Nhập tên người xuất..." required>
+                </div>
+                <div class="col-3">
+                  <label for="">Kho xuất hàng:</label>
+                  <select id="khoXuat" class="form-control h-btn-i mt-1 fs-14">
+                      <option>Kho A</option>
+                      <option>Kho B</option>
+                      <option>Kho C</option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <label for="">Mã lô hàng:</label>
+                  <input type="text" class="form-control h-btn-i mt-1 fs-14" id="" name="" placeholder="Nhập mã lô hàng..." required>
+                </div>
+                <div class="col-3">
+                  <label for="">Mã sản phẩm:</label>
+                  <input type="text" class="form-control h-btn-i mt-1 fs-14" id="" name="" placeholder="Nhập mã sản phẩm..." required>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+                  <div class="w-100 h-100 d-flex align-items-end justify-content-start gap-2">
+                    <button type="submit" class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1 py-2 h-btn-i">
+                      <img src="../assets/icons/filter-svgrepo-com.svg" class="size-20 icon__white"/>Lọc</button>
+                    <button type="submit" class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i">Xóa lọc</button>
+                  </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    
+    <!-- button thêm mới -->
+    <div class="w-100 d-flex justify-content-between align-items-center mt-2 fs-14">
+      <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
+        <button id="btn__create__product" class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1">
+          Tạo bài mới
+          <img src="../assets/icons/add-svgrepo-com.svg" class="size-20 icon__white"/>
+        </button>
+      </div>
+      <div class="d-none d-sm-flex align-items-center gap-2">
+        Hiển thị:
+        <div class="d-flex align-items-center gap-2 select-none">
+          <div class="bg-white cursor-pointer size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm">
+            <img class="size-20" src="../assets/icons/grid-4-svgrepo-com.svg" />
+          </div>
+          <div class="rounded-2 cursor-pointer size-30 d-flex align-items-center justify-content-center">
+            <img class="size-20" src="../assets/icons/list-ul-alt-svgrepo-com.svg"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bảng -->
+    <div class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 rounded-3 shadow-sm mb-5">
+      <h5>Danh sách phiếu xuất kho</h5>
+      <div class="crad">
+        <div class="card-header bg-white">
+          <div class="row d-sm-flex justify-content-between align-items-center fs-14 gap-2">
+            <div class="col-12 col-sm-5 col-lg-4 col-xl-3 col-xxl-3 d-flex align-items-center">
+              <label for="">Phiếu xuất:</label>
+              <span class="bg-secondary text-white fw-medium border rounded-3 shadow-sm p-2 px-3 ms-2">1000 Phiếu</span>
+            </div>
+            <div class="col-12 sol-sm-5 col-lg-4 col-xl-3 col-xxl-2 d-flex align-items-center">
+              <label for="">Dòng</label>
+              <select name="" id="rowSelect" name="status" class="form-select input_outline fs-14 ms-2">
+                <option value="5" selected>Số lượng</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="all">Tất cả</option>
+              </select>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="table-responsive border">
+        <table class="table table__main mb-0 fs-14">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ngày xuất kho</th>
+              <th>Mã nhân viên</th>
+              <th>Người thực hiện</th>
+              <th>Kho xuất hàng</th>
+              <th>Mã lô hàng</th>
+              <th>Số lô hàng xuất</th>
+              <th>Mã sản phẩm</th>
+              <th>Tên sản phẩm</th>
+              <th>Bên nhận</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td>1</td>
+              <td>12/11/2002</td>
+              <td>ma_nv_1</td>
+              <td>Nguyễn Văn Thuần</td>
+              <td>kho A</td>
+              <td>ma_lo_hang_1</td>
+              <td>10</td>
+              <td>ma_sp_1</td>
+              <td>Tên sản Phẩm 1</td>
+              <td>Người nhận 1</td>
+              <td>
+                <div class="btn-group" role="group">
+                  <button class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#view_detail_blog">
+                    <img src="/assets/icons/view-svgrepo-com.svg" alt="" class="size-20"/>
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit_blog" >
+                    <img src="/assets/icons/blog-comment-edit-svgrepo-com.svg" alt="" class="size-20"/>
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalConfirmDel">
+                    <img src="/assets/icons/delete-svgrepo-com.svg" alt="" class="size-20"/>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</section>
