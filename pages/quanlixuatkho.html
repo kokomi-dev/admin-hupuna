@@ -1,6 +1,6 @@
 <section class="d-grid gap-3 gap-lg-4">
   <!-- tiêu đề -->
-  <h1 class="fs-5 fw-semibold">Danh mục sản phẩm</h1>
+  <h1 class="fs-5 fw-semibold">Quản lí xuất kho</h1>
   <!-- main -->
   <div class="d-grid gap-4">
     <!-- bộ lọc -->
@@ -56,7 +56,6 @@
               Lọc
             </button>
             <button
-              onclick="showToast('xóa lọc thành công','success')"
               type="submit"
               class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i"
             >
@@ -66,6 +65,7 @@
         </div>
       </div>
     </div>
+    <div class="message-div"></div>
     <!-- button thêm mới -->
     <div class="w-100 d-flex justify-content-between align-items-center fs-14">
       <div
@@ -73,9 +73,9 @@
       >
         <button
           id="btn__create__product"
-          class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1"
+          class="btn btn-lg bg-blue btn__cancel__hover text-white fs-14 d-flex align-items-center gap-1"
         >
-          Thêm mới
+          Thêm bảng
           <img
             src="../assets/icons/add-svgrepo-com.svg"
             class="size-20 icon__white"
@@ -102,12 +102,31 @@
         </div>
       </div>
     </div>
-    <!-- danh mục  sản phẩm -->
+    <!-- danh mục hàng còn -->
     <div class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 shadow-sm mt-3">
+      <h4 class="fs-6">Hàng Có Sẵn</h4>
       <div class="card">
         <div class="card-header bg-white py-2">
           <div class="d-flex justify-content-between align-items-center fs-14">
-            <span class="text-blue-main fw-medium">Có tất cả 10 sản phẩm</span>
+            <div class="d-flex align-items-center justify-content-start gap-2">
+              <button
+                id="btn__create__product"
+                class="btn btn-sm btn__cancel__hover fs-14 d-flex align-items-center gap-2"
+              >
+                <span class="d-none d-sm-block text-blue-main">Tải Excel</span>
+                <img
+                  src="../assets/icons/upload-minimalistic-svgrepo-com.svg"
+                  class="size-18 fill__blue"
+                />
+              </button>
+              <button
+                id="btn__create__product"
+                class="btn btn-sm btn-outline-danger fs-14 d-flex align-items-center gap-2"
+              >
+                <span class="">Xuất Excel</span>
+                <!-- <img src="../assets/icons/file-export.svg" class="size-18" /> -->
+              </button>
+            </div>
             <div class="d-flex align-items-center gap-2">
               <label for="number__show" class="fs-14 text-nowrap"
                 >Số lượng:</label
@@ -154,35 +173,23 @@
                 <th>
                   <button
                     type="button"
-                    class="btn bg-transparent"
+                    class="btn bg-transparent btn-outline-dark fs-12 text-nowrap"
                     data-bs-toggle="tooltip"
                     data-bs-placement="top"
                     data-bs-title="This top tooltip is themed via CSS variables."
                   >
-                    <img
-                      src="../assets/icons/filter-svgrepo-com.svg"
-                      class="size-20"
-                    />
+                    Xóa lọc
                   </button>
                 </th>
                 <th></th>
                 <th>
-                  <input
-                    class="p-2 input__filter rounded-3 br-1-main"
-                    placeholder="...aaa"
-                  />
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
                 </th>
                 <th>
-                  <input
-                    class="p-2 input__filter rounded-3 br-1-main"
-                    placeholder="...aaa"
-                  />
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
                 </th>
                 <th>
-                  <input
-                    class="p-2 input__filter rounded-3 br-1-main"
-                    placeholder="...aaa"
-                  />
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
                 </th>
                 <th>
                   <select class="p-2 rounded-3 br-1-main">
@@ -192,10 +199,7 @@
                   </select>
                 </th>
                 <th>
-                  <input
-                    class="p-2 input__filter rounded-3 br-1-main"
-                    placeholder="...aaa"
-                  />
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
                 </th>
                 <th>
                   <input
@@ -212,7 +216,7 @@
                 <td class="position-relative">
                   <input
                     type="checkbox"
-                    class="size-20 input__filter position-absolute top-50 start-50 translate-middle"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
                   />
                 </td>
                 <td>1</td>
@@ -564,6 +568,338 @@
                 <td>Loại 3</td>
                 <td>900,000</td>
                 <td>90</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-warning product__view__detail"
+                    >
+                      Xem
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      class="btn btn-sm btn-outline-primary"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalConfirmDel"
+                      class="btn btn-sm btn-outline-danger"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div aria-label="Page navigation example">
+        <ul class="pagination justify-content-end fs-14">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true"><<</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">>></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- danh mục hàng còn -->
+    <div class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 shadow-sm mt-3">
+      <h4 class="fs-6">Hàng Tồn</h4>
+      <div class="card">
+        <div class="card-header bg-white py-2">
+          <div class="d-flex justify-content-between align-items-center fs-14">
+            <div class="d-flex align-items-center justify-content-start gap-2">
+              <button
+                id="btn__create__product"
+                class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1"
+              >
+                Tải lên Excel
+                <img
+                  src="../assets/icons/add-svgrepo-com.svg"
+                  class="size-20 icon__white"
+                />
+              </button>
+              <button
+                id="btn__create__product"
+                class="btn btn-lg bg-blue text-white btn__cancel__hover fs-14 d-flex align-items-center gap-1"
+              >
+                Xuất Excel
+                <img
+                  src="../assets/icons/add-svgrepo-com.svg"
+                  class="size-20 icon__white"
+                />
+              </button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <label for="number__show" class="fs-14 text-nowrap"
+                >Số lượng:</label
+              >
+              <select
+                id="number__show"
+                name="status"
+                class="form-select input_outline fs-14"
+              >
+                <option value="">5</option>
+                <option value="">10</option>
+                <option value="">25</option>
+                <option value="">50</option>
+                <option value="">100</option>
+                <option value="">Hiển thị tất cả</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- bảng danh sách sản phẩm-->
+          <table class="table table__main mb-0 fs-14">
+            <thead>
+              <tr>
+                <th class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </th>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Mã sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Loại</th>
+                <th>Giá sản phẩm (VNĐ)</th>
+                <th>Số lượng</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- bộ lọc -->
+              <tr>
+                <th>
+                  <button
+                    type="button"
+                    class="btn bg-transparent"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-title="This top tooltip is themed via CSS variables."
+                  >
+                    <img
+                      src="../assets/icons/filter-svgrepo-com.svg"
+                      class="size-20"
+                    />
+                  </button>
+                </th>
+                <th></th>
+                <th>
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+                </th>
+                <th>
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+                </th>
+                <th>
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+                </th>
+                <th>
+                  <select class="p-2 rounded-3 br-1-main">
+                    <option>Loại 1</option>
+                    <option>Loại 2</option>
+                    <option>Loại 3</option>
+                  </select>
+                </th>
+                <th>
+                  <input class="p-2 rounded-3 br-1-main" placeholder="...aaa" />
+                </th>
+                <th>
+                  <input
+                    style="width: 90px"
+                    type="number"
+                    class="p-2 rounded-3 br-1-main"
+                    placeholder="...aaa"
+                  />
+                </th>
+                <th></th>
+              </tr>
+              <!-- item -->
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>1</td>
+                <td>Sản phẩm A</td>
+                <td>SP001</td>
+                <td>Sản phẩm chất lượng cao</td>
+                <td>Loại 1</td>
+                <td>500,000</td>
+                <td>150</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-warning product__view__detail"
+                    >
+                      Xem
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalConfirmDel"
+                      class="btn btn-sm btn-outline-danger"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>2</td>
+                <td>Sản phẩm B</td>
+                <td>SP002</td>
+                <td>Sản phẩm mới nhất</td>
+                <td>Loại 2</td>
+                <td>750,000</td>
+                <td>200</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-warning product__view__detail"
+                    >
+                      Xem
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalConfirmDel"
+                      class="btn btn-sm btn-outline-danger"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>3</td>
+                <td>Sản phẩm C</td>
+                <td>SP003</td>
+                <td>Sản phẩm bán chạy</td>
+                <td>Loại 1</td>
+                <td>1,000,000</td>
+                <td>50</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-warning product__view__detail"
+                    >
+                      Xem
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      class="btn btn-sm btn-outline-primary"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalConfirmDel"
+                      class="btn btn-sm btn-outline-danger"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>4</td>
+                <td>Sản phẩm D</td>
+                <td>SP004</td>
+                <td>Sản phẩm tiện ích</td>
+                <td>Loại 3</td>
+                <td>850,000</td>
+                <td>100</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button
+                      class="btn btn-sm btn-outline-warning product__view__detail"
+                    >
+                      Xem
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      class="btn btn-sm btn-outline-primary"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalConfirmDel"
+                      class="btn btn-sm btn-outline-danger"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>5</td>
+                <td>Sản phẩm E</td>
+                <td>SP005</td>
+                <td>Sản phẩm tiết kiệm</td>
+                <td>Loại 2</td>
+                <td>600,000</td>
+                <td>300</td>
                 <td>
                   <div class="btn-group" role="group">
                     <button
