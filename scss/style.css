@@ -873,7 +873,9 @@ select:focus {
   background-color: #ecf3ff;
 }
 
-.sidebar__menu > ul > li > a {
+.sidebar__menu > ul > li > a,
+.sidebar__menu > ul > li > ul > li > a,
+.sidebar__menu > ul > li > span.accordion__button > span {
   text-decoration: none;
   font-weight: 500;
   padding: 11px 12px;
@@ -887,7 +889,9 @@ select:focus {
   color: #344055;
   transition: all 0.2s ease-in-out;
 }
-.sidebar__menu > ul > li > a:hover {
+.sidebar__menu > ul > li > a:hover,
+.sidebar__menu > ul > li > ul > li > a:hover,
+.sidebar__menu > ul > li > span.accordion__button > span:hover {
   color: #465fff;
 }
 
@@ -902,19 +906,45 @@ select:focus {
   cursor: default;
 }
 
-.sidebar__menu > ul > li > a.active {
+.sidebar__menu > ul > li > a.active,
+.sidebar__menu > ul > li > ul > li > a.active {
   color: #465fff;
   font-weight: 600;
 }
 
-.sidebar__menu > ul > li > a.active > img {
+.sidebar__menu > ul > li > a.active > img,
+.sidebar__menu > ul > li > ul > li > a.active > img {
   filter: invert(32%) sepia(98%) saturate(3000%) hue-rotate(220deg) brightness(95%) contrast(100%);
 }
 
-.sidebar__menu > ul > li > a > img {
+.sidebar__menu > ul > li > a > img,
+.sidebar__menu > ul > li > ul > li > a > img,
+.sidebar__menu > ul > li > span.accordion__button > span > img,
+.sidebar__menu > ul > li > span.accordion__button > img {
   width: 18px;
   height: 18px;
   filter: invert(1) brightness(0.6);
+}
+
+.sidebar__menu > ul > li > span.accordion__button > span {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex: 1;
+}
+
+.sidebar__menu > ul > li > span.accordion__button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sidebar__menu > ul > li > ul {
+  list-style: none;
+  margin-left: 16px;
 }
 
 .sidebar__menu > ul > li:hover {
@@ -1008,6 +1038,44 @@ select:focus {
   cursor: pointer;
 }
 
+.loading__content__page {
+  display: none;
+  visibility: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading__content__page.active {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 rgba(0, 0, 0, 0);
+  animation: l1 1s infinite;
+}
+
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
 #content {
   min-height: 100vh;
   background-color: #f9fafb;

@@ -57,10 +57,59 @@
                   </a>
                 </li>
                 <li>
-                  <a data-page="quanlikhohang" href="#">
-                    <img src="./assets/icons/crm-computer.svg" />Quản lí kho
-                    hàng
-                  </a>
+                  <span
+                    class="accordion__button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu__item__quanli"
+                    aria-expanded="false"
+                    aria-controls="menu__item__quanli"
+                    href="#"
+                  >
+                    <span>
+                      <img src="./assets/icons/crm-computer.svg" />Quản lí kho
+                      hàng
+                    </span>
+                    <img src="./assets//icons/angle-small-down.svg" />
+                  </span>
+                  <ul
+                    id="menu__item__quanli"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="menu_quanli"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <li>
+                      <a data-page="quanlinhapkho" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/add-document.svg"
+                        />Nhập kho
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="quanlixuatkho" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/file-export (1).svg"
+                        />Xuất kho
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="quanlitonkho" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/supplier-alt.svg"
+                        />Tồn kho
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="quanlikiemke" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/optimization.svg"
+                        />Quản lí kiểm kê
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   <a data-page="baiviet" href="#">
@@ -198,6 +247,8 @@
         </aside>
         <!-- overlay -->
         <div class="overlay" id="sidebarOverlay"></div>
+        <div class="loading__content__page" id="loading__content__page"></div>
+
         <!-- main-->
         <div class="">
           <!-- header -->
@@ -265,9 +316,6 @@
                   >
                     <ul>
                       <li><a href="#">Trang cá nhân</a></li>
-                      <li>
-                        <a href="./login.html">Đăng nhập</a>
-                      </li>
                       <li><a href="#">Đăng xuất</a></li>
                     </ul>
                   </div>
@@ -276,7 +324,11 @@
             </div>
           </header>
           <!-- show content page -->
-          <div id="content" class="p-3 px-3 px-md-4 w-100 h-auto"></div>
+          <div id="content" class="p-3 px-3 px-md-4 w-100 h-auto">
+            <div id="loading__content__page" class="loading__content__page">
+              <div class="loader"></div>
+            </div>
+          </div>
         </div>
         <!-- notify customs -->
         <div id="notification-container"></div>

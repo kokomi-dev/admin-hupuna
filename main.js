@@ -3,7 +3,7 @@ async function registerServiceWorker() {
     const registration = await navigator.serviceWorker.register(
       "/service-worker.js"
     );
-    showToast("thành công =>" + registration.scope);
+    console.log("thành công =>" + registration.scope);
     return registration;
   } catch (error) {
     showToast("Lỗi khi đăng ký Service Worker:", error);
@@ -21,8 +21,9 @@ async function sendPushNotification() {
 
     const registration = await navigator.serviceWorker.ready;
 
-    await registration.showNotification("Thông báo test", {
+    await registration.showNotification("Thông báo", {
       body: "test",
+      icon: "assets/icons/blog-pencil.svg",
       data: {
         url: window.location.href,
       },
