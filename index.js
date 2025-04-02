@@ -234,7 +234,8 @@ async function loadPage(pageName) {
     if(pageName === "quanlixuatkho"){
       const btnCreateExport = document.getElementById("btn__create__product");
       btnCreateExport.addEventListener("click", () => {
-        loadPage("taophieuxuatkho");
+        // loadPage("taophieuxuatkho");
+        loadPage("thuvienmedia")
       });
     }
   } catch (error) {
@@ -481,3 +482,35 @@ document.addEventListener("DOMContentLoaded", () => {
   handleEventSidebar();
   handleEventNav();
 });
+
+// ******media******
+//button onclick screen input
+function input_file_media() {
+  let uploadBox = document.getElementById("scren_input_file");
+
+  if (uploadBox.classList.contains("d-none")) {
+      uploadBox.classList.remove("d-none"); // Hiển thị
+  } else {
+      uploadBox.classList.add("d-none"); // Ẩn đi
+  }
+}
+//upload img input 
+function upload_img_screen(event) {
+  const file = event.target.files[0];  // Lấy tệp tin đã chọn
+  if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
+          const imgElement = document.querySelector("#img_load_screen img");
+          imgElement.src = e.target.result;  // Đặt nguồn ảnh cho phần tử img
+          document.getElementById("img_load_screen").classList.remove("d-none");  // Hiển thị phần tử chứa ảnh
+      }
+
+      reader.readAsDataURL(file);  // Đọc tệp tin như một DataURL
+  } else {
+      alert("Không có tệp tin nào được chọn.");
+  }
+}
+
+

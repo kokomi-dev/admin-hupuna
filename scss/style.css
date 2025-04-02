@@ -738,6 +738,11 @@ select:focus {
   border: solid #e1e5eb;
 }
 
+.size-16 {
+  width: 16px;
+  height: 16px;
+}
+
 .size-18 {
   width: 18px;
   height: 18px;
@@ -1142,6 +1147,20 @@ select:focus {
 .btn-group-lg > .btn,
 .btn-lg {
   --bs-btn-padding-y: 0.3rem !important;
+}
+
+.input_img_media {
+  border: 4px dashed rgb(188, 173, 173);
+}
+
+.section_img_media {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+
+.section_img_media > div {
+  margin: 5px;
+  border: 1px solid black;
 }
 
 /* RESPONSIVE */
