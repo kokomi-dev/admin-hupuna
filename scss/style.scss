@@ -16,6 +16,28 @@ select:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+// animation
+@keyframes expandHeight {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+@keyframes collapseHeight {
+  from {
+    max-height: 500px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
 // input
 .input_outline:focus {
   outline: none !important;
@@ -47,15 +69,18 @@ select:focus {
   height: 50px;
 }
 .max-h-44 {
-  max-height: 40px;
+  max-height: 36px;
 }
 .h-btn-i {
-  height: 40px;
+  height: 36px;
 }
 
 /* FONT SIZE */
 .fs-12 {
   font-size: 12px;
+}
+.fs-13 {
+  font-size: 13px;
 }
 .fs-14 {
   font-size: 14px !important;
@@ -370,11 +395,10 @@ select:focus {
 }
 // table css
 .table__main {
-  border-collapse: collapse;
+  border-collapse: collapse !important;
   th {
     background-color: $bg-gray;
     cursor: default;
-    min-width: 150px;
   }
   th:first-child {
     min-width: 50px;
@@ -384,21 +408,221 @@ select:focus {
     font-size: 14px;
     transition: all 0.1s ease-in-out;
     &:hover {
-      background-color: $bg-gray;
+      background-color: transparent;
       cursor: pointer;
     }
     td {
-      vertical-align: middle;
+      vertical-align: text-top;
     }
   }
 }
 .table__main.table > :not(caption) > * > * {
   padding: 0.8rem 0.5rem;
 }
+.table__main.tb_border {
+  th,
+  td {
+    border: 1px solid #999 !important;
+    text-align: center;
+    vertical-align: middle;
+  }
+  tbody {
+    tr {
+      background-color: white;
+    }
+  }
+}
+// check load tabke
+.table__main.table__qltk {
+  thead {
+    tr {
+      background-color: #6d757d;
+      th {
+        font-weight: 700;
+      }
+    }
+    .check__hidden {
+      display: none;
+    }
+  }
+  tbody {
+    tr {
+      background-color: white;
+    }
+  }
+}
+.table__main.table__qltk.admin {
+  thead {
+    .check__hidden {
+      display: table-cell;
+    }
+  }
+}
 // button
+.btn-gr {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.btn {
+  width: max-content;
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-size: 13px;
+  min-height: $height__main;
+  max-height: $height__main;
+}
+// varirant
+.btn.btn-ol-primary {
+  border: 0.5px solid $blue_main !important;
+  color: white;
+  background-color: $blue_main;
+  &:hover {
+    background-color: $blue_main;
+    opacity: 90;
+  }
+}
+.btn.btn-ol-primary {
+  border: 0.5px solid $blue_main !important;
+  color: $blue_main;
+  background-color: transparent;
+  &:hover {
+    background-color: $blue_main;
+    color: white !important;
+  }
+}
+.btn.btn-dark {
+  color: $black-main;
+  border: 0.5px solid $black-sub !important;
+  &:hover {
+    background-color: #999;
+  }
+}
+// size
 .btn-group-lg > .btn,
 .btn-lg {
   --bs-btn-padding-y: 0.3rem !important;
+}
+// select
+.select__main {
+  font-size: 14px;
+  font-weight: 400;
+  width: max-content;
+  padding: 4px 8px;
+  height: $height__main;
+  border-radius: 4px;
+  color: #2c3339;
+  border: 0.8px solid #2c3339 !important;
+  &:focus {
+    border: 0.8px solid $blue_main !important;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+// input
+.input__main {
+  padding: 6px 6px;
+  width: auto;
+  height: 100%;
+  min-height: $height__main;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.input__main.outline-primary {
+  border: 1px solid $blue_main !important;
+}
+.input__main.outline-dark {
+  border: 0.5px solid $black-sub !important;
+}
+
+// CSS LAYOUT Bài viết , sản phẩm chung
+
+.display__custom__wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out,
+    transform 0.3s ease-out, visibility 0s linear 0.3s;
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+.display__custom__wrapper.active {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  position: static;
+  pointer-events: auto;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out,
+    transform 0.3s ease-out, visibility 0s linear;
+}
+.display__custom__wrapper:not(.active) {
+  animation: collapseHeight 0.3s ease-in-out forwards;
+}
+// talbe css
+.list__item {
+  .item__tr {
+    height: 100%;
+    td {
+      text-align: start;
+    }
+    .col__name {
+      color: $blue_main;
+      font-weight: 600;
+      width: 22%;
+      .item__title {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .hover__wrapper {
+        margin-top: 4px;
+        color: $black-sub;
+        font-weight: 400;
+        visibility: hidden;
+        & span:nth-child(1) {
+          color: #999;
+        }
+        & span:nth-child(2),
+        span:nth-child(3),
+        span:nth-child(5),
+        span:nth-child(6) {
+          color: $blue_main;
+        }
+        & span:nth-child(4) {
+          color: rgb(239, 55, 55);
+        }
+      }
+    }
+    .col__category,
+    .col__brand {
+      color: $blue_main;
+    }
+    &:hover {
+      .col__name {
+        .hover__wrapper {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+// badge
+.badge__item {
+  font-size: 12px;
+  border: 0.5px solid #999;
+  border-radius: 4px;
+  padding: 8px 4px;
+}
+.badge__item.warning {
+  border: 0.5px solid $yellow_main;
+  background-color: $yellow_main;
+  color: black;
 }
 /* RESPONSIVE */
 @media (max-width: 1200px) {

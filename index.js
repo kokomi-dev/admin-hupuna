@@ -1,14 +1,3 @@
-const channel = new BroadcastChannel("notify-admin");
-
-function handleLoadEventNotify() {
-  console.log("load");
-  channel.addEventListener("message", (event) => {
-    const messagesDiv = document.getElementById("message-div");
-    const newMessage = document.createElement("p");
-    newMessage.textContent = `Tin nhắn: ${event.data}`;
-    messagesDiv.appendChild(newMessage);
-  });
-}
 // handle load chart dashboard
 function handleLoadChartDashboard() {
   const chartElement = document.getElementById("visitChart");
@@ -105,9 +94,7 @@ function handleLoadEditor() {
       automatic_uploads: true,
       images_reuse_filename: true,
       file_picker_callback: function (callback, value, meta) {
-        // Chỉ cho loại file ảnh
         if (meta.filetype === "image") {
-          // Tạo một phần tử input
           var input = document.createElement("input");
           input.setAttribute("type", "file");
           input.setAttribute("accept", "image/*");
@@ -117,17 +104,14 @@ function handleLoadEditor() {
             var reader = new FileReader();
 
             reader.onload = function () {
-              // Khi đọc file xong, sẽ gọi callback với data URL của ảnh
               callback(reader.result, {
                 alt: file.name,
               });
             };
 
-            // Đọc file dưới dạng data URL (base64)
             reader.readAsDataURL(file);
           };
 
-          // Mở hộp thoại chọn file
           input.click();
         }
       },
@@ -179,26 +163,55 @@ function handleLoadEditor() {
     });
   }
 }
+// handle reset filter
+function handleResetFilter() {
+  const btnResetFilter = document.getElementById("btn__reset__filter");
+  btnResetFilter.addEventListener("click", () => {
+    document.getElementById("searchFilter").value = "";
+    document.getElementById("dateFilter").value = "";
+    document.getElementById("statusFilter").value = "";
+    showToast("Xóa bộ lọc", "success");
+  });
+}
+// check load page theo pagename
+function loadPageFollowPageName(pagename) {
+  switch (pagename) {
+    case "quanlinhapkho_taomoi":
+      document
+        .getElementById("btn__back__warehouse")
+        .addEventListener("click", () => loadPage("quanlinhapkho"));
+      break;
+    case "quanlitonkho":
+      const roles = sessionStorage.getItem("roles");
+      if (roles) {
+        const tableQLTK = document.querySelector(".table__qltk");
+        if (roles == "admin" && tableQLTK) {
+          tableQLTK.classList.add("admin");
+        }
+      }
+      handleResetFilter();
+      renderTestTableTonKho();
+      break;
+    case "tatcasanpham":
+      handleActionHeadPage();
+      handleActionItemTr();
+
+    default:
+      break;
+  }
+}
 // load page show content
 async function loadPage(pageName) {
   try {
     const contentDiv = document.getElementById("content");
-    const loader = document.getElementById("loading__content__page");
-
-    // loader.style.display = "flex";
 
     const response = await fetch(`pages/${pageName}.html`);
     if (!response.ok) {
       throw new Error("Trang không tồn tại");
     }
-
     const content = await response.text();
-
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-
     contentDiv.innerHTML = content;
     sessionStorage.setItem("currenPage", pageName);
-    // loader.style.display = "none";
 
     if (pageName === "trangchu") {
       handleLoadChartDashboard();
@@ -210,6 +223,7 @@ async function loadPage(pageName) {
           loadPage("taosanpham");
         });
       }
+      handleResetFilter();
       handleLoadEditor();
       handleEventShowDetail();
     }
@@ -230,6 +244,15 @@ async function loadPage(pageName) {
     if (pageName === "taosanpham") {
       handleBackToListProduct();
     }
+    if (pageName === "quanlinhapkho") {
+      const btnCreateWareHouse = document.getElementById("create__warehouse");
+      if (btnCreateWareHouse) {
+        btnCreateWareHouse.addEventListener("click", () => {
+          loadPage("quanlinhapkho_taomoi");
+        });
+      }
+    }
+    loadPageFollowPageName(pageName);
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
@@ -280,30 +303,47 @@ function handleCloseAccordtion() {
     ".sidebar__menu ul li a"
   );
 
+  const containerAccordtion2 = document.querySelector(
+    ".accordion-collapse.collapse.ul__2"
+  );
   itemContainerAccordtion.forEach((item) => {
     item.addEventListener("click", (event) => {
-      if (!containerAccordtion.contains(event.target)) {
-        if (containerAccordtion.classList.contains("show"))
-          containerAccordtion.classList.remove("show");
-        else return;
+      if (
+        !containerAccordtion.contains(event.target) &&
+        containerAccordtion.classList.contains("show")
+      ) {
+        containerAccordtion.classList.remove("show");
+      }
+      if (
+        !containerAccordtion2.contains(event.target) &&
+        containerAccordtion2.classList.contains("show")
+      ) {
+        containerAccordtion2.classList.remove("show");
       }
     });
   });
 }
+//  check active menu sub
+function checkActiveMenuSub() {
+  const currentPage = sessionStorage.getItem("currenPage");
+  const menuItems = document.querySelectorAll("[data-page]");
+  let parentMenu = null;
+  menuItems.forEach((item) => {
+    if (item.getAttribute("data-page") === currentPage) {
+      parentMenu = item.closest(".accordion-collapse");
+    }
+  });
+  document
+    .querySelectorAll(".accordion-collapse")
+    .forEach((menu) => menu.classList.remove("show"));
+  if (parentMenu) {
+    parentMenu.classList.add("show");
+  }
+}
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-  const containerAccordtion = document.querySelector(
-    ".accordion-collapse.collapse"
-  );
-  const items = document.querySelectorAll(".accordion-collapse.collapse li a");
-  items.forEach((item) => {
-    if (
-      item.classList.contains("active") &&
-      !containerAccordtion.classList.contains("show")
-    )
-      containerAccordtion.classList.add("show");
-  });
+
   checkToolgeActiveDefault();
   document
     .querySelector(".sidebar__menu")
@@ -352,11 +392,7 @@ function handleEventSidebar() {
 // check handle load
 function handleCheckLoadPage() {
   const currentPage = sessionStorage.getItem("currenPage");
-  if (!currentPage) {
-    return loadPage("trangchu");
-  } else {
-    return loadPage(currentPage);
-  }
+  currentPage ? loadPage(currentPage) : loadPage("trangchu");
 }
 // handle event upload image
 function previewImage(event) {
@@ -401,10 +437,10 @@ function selectRowScreen() {
       }
     });
   }
-
-  rowSelect.addEventListener("change", function () {
-    updateTableRows(rowSelect.value);
-  });
+  if (tableBody)
+    rowSelect.addEventListener("change", function () {
+      updateTableRows(rowSelect.value);
+    });
 
   updateTableRows(5);
 }
@@ -468,9 +504,126 @@ function pagination() {
   renderTable(currentPage);
   updatePagination();
 }
+// load action hanle head page
+function handleActionHeadPage() {
+  const btnCustomDisplay = document.querySelector(".btn__custom__display");
+  const wrapperCustomDisplay = document.querySelector(
+    ".display__custom__wrapper"
+  );
 
+  btnCustomDisplay.addEventListener("click", () => {
+    wrapperCustomDisplay.classList.toggle("active");
+  });
+}
+
+// action page table
+function handleActionItemTr() {
+  const btnToEdit = document.querySelectorAll(".redirect__edit.product");
+  btnToEdit.forEach((item) =>
+    item.addEventListener("click", () => {
+      loadPage("chinhsua-sanpham");
+    })
+  );
+}
+
+// handle logout
+function handleLogout() {
+  document.getElementById("btn__logout").addEventListener("click", () => {
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("roles");
+    window.location.href = "login.html";
+  });
+}
+// load info acconut
+function infoAccount() {
+  if (sessionStorage.getItem("name")) {
+    document.getElementById("info__user__name").innerHTML =
+      sessionStorage.getItem("name");
+    document.getElementById("info__user__roles").innerHTML =
+      sessionStorage.getItem("roles");
+  }
+}
+// check roles
+function checkAuthentication() {
+  const roles = sessionStorage.getItem("roles");
+  if (roles) {
+    return;
+  } else window.location.href = "login.html";
+}
+function renderTestTableTonKho() {
+  const roles = sessionStorage.getItem("roles");
+
+  const wraperBody = document.querySelector(".render__tonkho");
+  const data = [
+    {
+      ms: "sp102",
+      ms2: "sp223",
+      ms3: "sp223",
+      name: "sp223",
+      tonKiot: "sp223",
+      tonhop: "sp223",
+      tonphoi: "sp223",
+      ms2: "sp223",
+      tongton: "34232",
+      tongban: "23323",
+      tb1tuanban: "231231",
+      tonnhieunhat: "213",
+      tonitNhat: "123123",
+      canhbao: "123123",
+    },
+    {
+      ms: "sp102",
+      ms2: "sp223",
+      ms3: "sp223",
+      name: "sp223",
+      tonKiot: "sp223",
+      tonhop: "sp223",
+      tonphoi: "sp223",
+      ms2: "sp223",
+      tongton: "34232",
+      tongban: "23323",
+      tb1tuanban: "231231",
+      tonnhieunhat: "213",
+      tonitNhat: "123123",
+      canhbao: "123123",
+    },
+  ];
+  let html = data
+    .map((item) => {
+      return `
+      <tr>
+        <td colspan="2">${item.ms}</td>
+        <td colspan="2">${item.ms2}</td>
+        <td colspan="2">${item.ms3}</td>
+        <td>${item.name}</td>
+        <td>${item.tonKiot}</td>
+        <td colspan="2">${item.tonhop}</td>
+        <td colspan="2">${item.tonphoi}</td>
+        ${
+          roles == "admin"
+            ? `
+          <td>${item.tongton}</td>
+          <td>${item.tongban}</td>
+          <td>${item.tb1tuanban}</td>
+          <td>${item.tonnhieunhat}</td>
+          <td>${item.tonitNhat}</td>
+          <td><span class="badge__item warning">Đặt SX</span></td>`
+            : ""
+        }
+      </tr>`;
+    })
+    .join("");
+  wraperBody.innerHTML = html;
+}
 document.addEventListener("DOMContentLoaded", () => {
+  checkAuthentication();
+  infoAccount();
+  checkActiveMenuSub();
   handleCheckLoadPage();
   handleEventSidebar();
   handleEventNav();
+  handleLogout();
 });
+
+// global
+window.loadPage = loadPage;

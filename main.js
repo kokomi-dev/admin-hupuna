@@ -1,3 +1,4 @@
+// khởi tạo
 async function registerServiceWorker() {
   try {
     const registration = await navigator.serviceWorker.register(
@@ -10,6 +11,7 @@ async function registerServiceWorker() {
     return null;
   }
 }
+// gửi thông báo
 async function sendPushNotification() {
   try {
     const permission = await Notification.requestPermission();

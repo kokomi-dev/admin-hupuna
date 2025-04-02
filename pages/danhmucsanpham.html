@@ -11,7 +11,7 @@
           <div class="d-grid gap-1 fs-14">
             <label for="searchInput">Tìm kiếm:</label>
             <input
-              id="searchInput"
+              id="searchFilter"
               type="search"
               class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
               placeholder="Tìm kiếm..."
@@ -20,11 +20,12 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-xl-3">
           <div class="d-grid gap-1 fs-14">
-            <label for="">Từ ngày:</label>
+            <label for="">Ngày:</label>
             <input
+              id="date__Filter"
               type="date"
               class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
-              placeholder="Từ ngày"
+              placeholder="Ngày"
             />
           </div>
         </div>
@@ -32,6 +33,7 @@
           <div class="d-grid gap-1 fs-14">
             <label for="">Trạng thái:</label>
             <select
+              id="statusFilter"
               name="status"
               class="form-select input_outline fs-14 h-btn-i"
             >
@@ -47,7 +49,7 @@
           >
             <button
               type="submit"
-              class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1 py-2 h-btn-i"
+              class="btn btn-primary text-white fs-14 border-1 d-flex align-items-center gap-1 py-2"
             >
               <img
                 src="../assets/icons/filter-svgrepo-com.svg"
@@ -56,9 +58,10 @@
               Lọc
             </button>
             <button
+              id="btn__reset__filter"
               onclick="showToast('xóa lọc thành công','success')"
               type="submit"
-              class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i"
+              class="btn btn-outline-danger fs-14 border-1 text-nowrap"
             >
               Xóa lọc
             </button>
@@ -107,7 +110,9 @@
       <div class="card">
         <div class="card-header bg-white py-2">
           <div class="d-flex justify-content-between align-items-center fs-14">
-            <span class="text-blue-main fw-medium">Có tất cả 10 sản phẩm</span>
+            <span class="text-blue-main fw-medium"
+              >Có tất cả 5 danh mục sản phẩm sản phẩm</span
+            >
             <div class="d-flex align-items-center gap-2">
               <label for="number__show" class="fs-14 text-nowrap"
                 >Số lượng:</label
@@ -140,30 +145,20 @@
                 </th>
                 <th>ID</th>
                 <th>Tên</th>
-                <th>Mã sản phẩm</th>
-                <th>Mô tả</th>
-                <th>Loại</th>
-                <th>Giá sản phẩm (VNĐ)</th>
-                <th>Số lượng</th>
+                <th>Mã danh mục</th>
+                <th>Ngày tạo</th>
+                <th>SP thuộc danh mục</th>
                 <th>Hành động</th>
               </tr>
             </thead>
             <tbody>
               <!-- bộ lọc -->
               <tr>
-                <th>
-                  <button
-                    type="button"
-                    class="btn bg-transparent"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    data-bs-title="This top tooltip is themed via CSS variables."
-                  >
-                    <img
-                      src="../assets/icons/filter-svgrepo-com.svg"
-                      class="size-20"
-                    />
-                  </button>
+                <th class="text-center">
+                  <img
+                    src="../assets/icons/filter-svgrepo-com.svg"
+                    class="size-18 mx-auto"
+                  />
                 </th>
                 <th></th>
                 <th>
@@ -184,24 +179,10 @@
                     placeholder="...aaa"
                   />
                 </th>
-                <th>
-                  <select class="p-2 rounded-3 br-1-main">
-                    <option>Loại 1</option>
-                    <option>Loại 2</option>
-                    <option>Loại 3</option>
-                  </select>
-                </th>
+
                 <th>
                   <input
                     class="p-2 input__filter rounded-3 br-1-main"
-                    placeholder="...aaa"
-                  />
-                </th>
-                <th>
-                  <input
-                    style="width: 90px"
-                    type="number"
-                    class="p-2 rounded-3 br-1-main"
                     placeholder="...aaa"
                   />
                 </th>
@@ -216,21 +197,15 @@
                   />
                 </td>
                 <td>1</td>
-                <td>Sản phẩm A</td>
-                <td>SP001</td>
-                <td>Sản phẩm chất lượng cao</td>
-                <td>Loại 1</td>
-                <td>500,000</td>
-                <td>150</td>
+                <td>Hộp Carton A</td>
+                <td>DM001</td>
+                <td>12/04/2019</td>
+                <td>SP01,SP09,SP22</td>
+
                 <td>
                   <div class="btn-group" role="group">
                     <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-primary"
+                      class="btn btn-sm btn-ol-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                     >
@@ -250,25 +225,19 @@
                 <td class="position-relative">
                   <input
                     type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                    class="size-20 input__filter position-absolute top-50 start-50 translate-middle"
                   />
                 </td>
                 <td>2</td>
-                <td>Sản phẩm B</td>
-                <td>SP002</td>
-                <td>Sản phẩm mới nhất</td>
-                <td>Loại 2</td>
-                <td>750,000</td>
-                <td>200</td>
+                <td>Bìa cứng</td>
+                <td>DM002</td>
+                <td>02/04/2019</td>
+                <td>SP01,SP09,SP22</td>
+
                 <td>
                   <div class="btn-group" role="group">
                     <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-primary"
+                      class="btn btn-sm btn-ol-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
                     >
@@ -288,27 +257,21 @@
                 <td class="position-relative">
                   <input
                     type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                    class="size-20 input__filter position-absolute top-50 start-50 translate-middle"
                   />
                 </td>
                 <td>3</td>
-                <td>Sản phẩm C</td>
-                <td>SP003</td>
-                <td>Sản phẩm bán chạy</td>
-                <td>Loại 1</td>
-                <td>1,000,000</td>
-                <td>50</td>
+                <td>Băng dính</td>
+                <td>DM001</td>
+                <td>23/04/2015</td>
+                <td>SP01,SP09,SP22</td>
+
                 <td>
                   <div class="btn-group" role="group">
                     <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
+                      class="btn btn-sm btn-ol-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
                     >
                       Sửa
                     </button>
@@ -326,27 +289,21 @@
                 <td class="position-relative">
                   <input
                     type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                    class="size-20 input__filter position-absolute top-50 start-50 translate-middle"
                   />
                 </td>
                 <td>4</td>
-                <td>Sản phẩm D</td>
-                <td>SP004</td>
-                <td>Sản phẩm tiện ích</td>
-                <td>Loại 3</td>
-                <td>850,000</td>
-                <td>100</td>
+                <td>Hộp cứng</td>
+                <td>DM004</td>
+                <td>19/011/2017</td>
+                <td>SP01,SP09,SP22</td>
+
                 <td>
                   <div class="btn-group" role="group">
                     <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
+                      class="btn btn-sm btn-ol-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
                     >
                       Sửa
                     </button>
@@ -364,217 +321,21 @@
                 <td class="position-relative">
                   <input
                     type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                    class="size-20 input__filter position-absolute top-50 start-50 translate-middle"
                   />
                 </td>
                 <td>5</td>
-                <td>Sản phẩm E</td>
-                <td>SP005</td>
-                <td>Sản phẩm tiết kiệm</td>
-                <td>Loại 2</td>
-                <td>600,000</td>
-                <td>300</td>
+                <td>PE</td>
+                <td>DM005</td>
+                <td>12/09/2019</td>
+                <td>SP01,SP09,SP22</td>
+
                 <td>
                   <div class="btn-group" role="group">
                     <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
+                      class="btn btn-sm btn-ol-primary"
                       data-bs-toggle="modal"
                       data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
-                    >
-                      Sửa
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalConfirmDel"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="position-relative">
-                  <input
-                    type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
-                  />
-                </td>
-                <td>6</td>
-                <td>Sản phẩm F</td>
-                <td>SP006</td>
-                <td>Sản phẩm bền bỉ</td>
-                <td>Loại 1</td>
-                <td>950,000</td>
-                <td>120</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
-                    >
-                      Sửa
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalConfirmDel"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="position-relative">
-                  <input
-                    type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
-                  />
-                </td>
-                <td>7</td>
-                <td>Sản phẩm G</td>
-                <td>SP007</td>
-                <td>Sản phẩm cao cấp</td>
-                <td>Loại 3</td>
-                <td>1,200,000</td>
-                <td>80</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
-                    >
-                      Sửa
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalConfirmDel"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="position-relative">
-                  <input
-                    type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
-                  />
-                </td>
-                <td>8</td>
-                <td>Sản phẩm H</td>
-                <td>SP008</td>
-                <td>Sản phẩm thông minh</td>
-                <td>Loại 2</td>
-                <td>700,000</td>
-                <td>180</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
-                    >
-                      Sửa
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalConfirmDel"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="position-relative">
-                  <input
-                    type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
-                  />
-                </td>
-                <td>9</td>
-                <td>Sản phẩm I</td>
-                <td>SP009</td>
-                <td>Sản phẩm hữu ích</td>
-                <td>Loại 1</td>
-                <td>650,000</td>
-                <td>210</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
-                    >
-                      Sửa
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalConfirmDel"
-                      class="btn btn-sm btn-outline-danger"
-                    >
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="position-relative">
-                  <input
-                    type="checkbox"
-                    class="size-20 position-absolute top-50 start-50 translate-middle"
-                  />
-                </td>
-                <td>10</td>
-                <td>Sản phẩm J</td>
-                <td>SP010</td>
-                <td>Sản phẩm mới lạ</td>
-                <td>Loại 3</td>
-                <td>900,000</td>
-                <td>90</td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      class="btn btn-sm btn-outline-warning product__view__detail"
-                    >
-                      Xem
-                    </button>
-                    <button
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      class="btn btn-sm btn-outline-primary"
                     >
                       Sửa
                     </button>
@@ -769,7 +530,7 @@
           >
             Đóng
           </button>
-          <button type="button" class="btn btn-primary fs-14">
+          <button type="button" class="btn btn-ol-primary fs-14">
             Lưu thay đổi
           </button>
         </div>
@@ -806,7 +567,7 @@
           >
             Hủy
           </button>
-          <button type="button" class="btn btn-primary">Xóa</button>
+          <button type="button" class="btn btn-ol-primary">Xóa</button>
         </div>
       </div>
     </div>
