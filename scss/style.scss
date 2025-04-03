@@ -416,6 +416,94 @@ select:focus {
   margin: 5px;
   border: 1px solid black;
 }
+
+/* Container chung cho dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+      /* Nút bấm dropdown */
+      .dropdown-toggle {
+        color: rgb(27, 25, 25);
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+    
+      /* Danh sách các mục trong dropdown (ẩn mặc định) */
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: white;
+        min-width: 300px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 10;
+        list-style: none;
+        padding: 10px;
+        margin: 5px 0;
+        
+        /* Các mục trong dropdown */
+        div {
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+          margin-top: 20px;
+
+          // button
+          button {
+            background: white;
+            color: $blue_main;
+            border: none;
+            padding: 0;
+          }
+        }
+        
+        li {
+          border-bottom: 1px solid #ddd;
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+        li:last-child {
+          border-bottom: none;
+        }
+
+        a {
+          display: flex;
+          font-size: 12px;  
+          align-items: center;
+          padding: 10px 15px;
+          text-decoration: none;
+          color: $black-main;
+          transition: 0.3s;
+
+          img {
+            height: 40px;
+            width: 40px;
+            border: 1px solid rgb(213, 199, 199);
+            border-radius: 20px;
+            margin-right: 10px;
+          }
+        }
+
+        a:hover {
+          background-color: #f1f1f1;
+          color: $blue_main;
+        }
+      }
+}
+
+/* Hiển thị dropdown khi có class 'show' */
+.dropdown-menu.show {
+  display: block;
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .grid__common {

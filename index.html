@@ -57,26 +57,13 @@
                   </a>
                 </li>
                 <li>
-                  <span
-                    class="accordion__button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu__item__quanli"
-                    aria-expanded="false"
-                    aria-controls="menu__item__quanli"
-                    href="#"
-                  >
-                    <span>
-                      <img src="./assets/icons/crm-computer.svg" />Quản lí kho
-                      hàng
+                    <span class="accordion__button" data-bs-toggle="collapse" data-bs-target="#menu__item__quanli" aria-expanded="false" aria-controls="menu__item__quanli" href="#">
+                        <span>
+                            <img src="./assets/icons/crm-computer.svg" />Quản lí kho hàng
+                        </span>
+                        <img src="./assets//icons/angle-small-down.svg" />
                     </span>
-                    <img src="./assets//icons/angle-small-down.svg" />
-                  </span>
-                  <ul
-                    id="menu__item__quanli"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="menu_quanli"
-                    data-bs-parent="#accordionExample"
-                  >
+                    <ul id="menu__item__quanli" class="accordion-collapse collapse" aria-labelledby="menu_quanli" data-bs-parent="#accordionExample" >
                     <li>
                       <a data-page="quanlinhapkho" href="#">
                         <img
@@ -252,74 +239,105 @@
         <!-- main-->
         <div class="">
           <!-- header -->
-          <header
-            class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-md-end align-items-center"
-          >
-            <div
-              id="mobileMenuToggle"
-              class="d-flex align-items-center justify-content-center d-md-none"
-            >
+          <header class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-md-end align-items-center">
+            <div id="mobileMenuToggle" class="d-flex align-items-center justify-content-center d-md-none" >
               <img src="./assets/icons/menu-svgrepo-com.svg" class="size-24" />
             </div>
 
             <div class="d-flex align-items-center justify-content-end gap-2">
               <!-- thông báo và tin nhắn -->
-              <div
-                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
-              >
-                <img
-                  src="./assets/icons/message-square-dots-svgrepo-com.svg"
-                  class="size-18 fill__black-sub"
-                />
-                <span
-                  class="position-absolute top-0 start-100 translate-middle bg-primary text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
-                  >1</span
-                >
+             <div class="dropdown">
+                  <div class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    <img src="./assets/icons/message-square-dots-svgrepo-com.svg" class="size-18 fill__black-sub"/>
+                    <span class="position-absolute top-0 start-100 translate-middle bg-primary text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center" >1</span>
+                  </div>
+
+                  <div class="dropdown-menu">
+                      <h5>Tin nhắn</h5>
+                      <div>
+                          <button>Tin mới</button>
+                          <button>Xem tất cả</button>
+                      </div>
+                      <li>
+                          <p>Tên của người gửi 1</p>
+                          <a href="#">
+                              <img src="assets/images/logo-img.png" alt="">
+                              <p>Người dùng 1 đã gửi cho bạn một tin nhắn mới</p>
+                          </a>
+                      </li>
+                      <li>
+                        <p>Tên của người gửi 2</p>
+                        <a href="#">
+                            <img src="assets/images/logo-img.png" alt="">
+                            <p>Người dùng 2 đã gửi cho bạn một tin nhắn mới</p>
+                        </a>
+                    </li>
+                    <li>
+                      <p>Tên của người gửi 3</p>
+                      <a href="#">
+                          <img src="assets/images/logo-img.png" alt="">
+                          <p>Người dùng 3 đã gửi cho bạn một tin nhắn mới</p>
+                      </a>
+                  </li>
+            
+                </div>
+             </div>
+
+              <div class="dropdown">
+                  <div id="test" class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                      <img src="./assets/icons/notification-svgrepo-com.svg" class="size-18 fill__black-sub"/>
+                      <span class="position-absolute top-0 start-100 translate-middle bg-danger text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center">1</span>
+                  </div>  
+                  <div class="dropdown-menu">
+                      <h5>Thông báo</h5>
+                      <div>
+                          <button>Mới</button>
+                          <button>Xem tất cả</button>
+                      </div>
+                      <li>
+                          <p>Tiêu đề thông báo bài viết 1</p>
+                          <a href="#">
+                              <img src="assets/images/logo-img.png" alt="">
+                              <p>Đây là mô tả thông báo bài viết 1 ấn vào xem đi bạn</p>
+                          </a>
+                      </li>
+                      <li>
+                        <p>Tiêu đề thông báo bài viết 2</p>
+                        <a href="#">
+                            <img src="assets/images/logo-img.png" alt="">
+                            <p>Đây là mô tả thông báo bài viết 2 ấn vào xem đi bạn</p>
+                        </a>
+                    </li>
+                    <li>
+                      <p>Tiêu đề thông báo bài viết 3</p>
+                      <a href="#">
+                          <img src="assets/images/logo-img.png" alt="">
+                          <p>Đây là mô tả thông báo bài viết 3 ấn vào xem đi bạn</p>
+                      </a>
+                  </li>
+            
               </div>
-              <div
-                id="test"
-                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
-              >
-                <img
-                  src="./assets/icons/notification-svgrepo-com.svg"
-                  class="size-18 fill__black-sub"
-                />
-                <span
-                  class="position-absolute top-0 start-100 translate-middle bg-danger text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
-                  >1</span
-                >
-              </div>
+          <div>
+
+        </div>
+      </div>
+
               <!-- tài khoản -->
               <div class="ms-2 d-flex align-items-center">
-                <div class="dropdown">
-                  <div
-                    class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-1 text-decoration-none dropdown-toggle select-none"
-                    id="dropdownUser1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <div
-                      class="action__img d-flex align-items-center justify-content-center select-none"
-                    >
-                      <img
-                        src="https://demo.tailadmin.com/src/images/user/owner.jpg"
-                        alt="Profile"
-                        style="width: 35px; height: 35px"
-                        class="object-fit-cover rounded-circle"
-                      />
-                    </div>
-                    <span class="d-none d-md-block fs-14 fw-medium">Admin</span>
+                  <div class="dropdown">
+                      <div class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-1 text-decoration-none dropdown-toggle select-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <div class="action__img d-flex align-items-center justify-content-center select-none">
+                              <img src="https://demo.tailadmin.com/src/images/user/owner.jpg" alt="Profile" style="width: 35px; height: 35px" class="object-fit-cover rounded-circle" />
+                          </div>
+                          <span class="d-none d-md-block fs-14 fw-medium">Admin</span>
+                      </div>
+                      <div aria-labelledby="dropdownUser1" class="dropdown-menu">
+                          <ul>
+                              <li><a href="#">Trang cá nhân</a></li>
+                              <li><a href="#">Đăng xuất</a></li>
+                          </ul>
+                      </div>
                   </div>
-                  <div
-                    aria-labelledby="dropdownUser1"
-                    class="dropdown-menu dropdown-menu-end dropdown__user"
-                  >
-                    <ul>
-                      <li><a href="#">Trang cá nhân</a></li>
-                      <li><a href="#">Đăng xuất</a></li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           </header>
