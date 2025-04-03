@@ -1,14 +1,3 @@
-const channel = new BroadcastChannel("notify-admin");
-
-function handleLoadEventNotify() {
-  console.log("load");
-  channel.addEventListener("message", (event) => {
-    const messagesDiv = document.getElementById("message-div");
-    const newMessage = document.createElement("p");
-    newMessage.textContent = `Tin nhắn: ${event.data}`;
-    messagesDiv.appendChild(newMessage);
-  });
-}
 // handle load chart dashboard
 function handleLoadChartDashboard() {
   const chartElement = document.getElementById("visitChart");
@@ -105,9 +94,7 @@ function handleLoadEditor() {
       automatic_uploads: true,
       images_reuse_filename: true,
       file_picker_callback: function (callback, value, meta) {
-        // Chỉ cho loại file ảnh
         if (meta.filetype === "image") {
-          // Tạo một phần tử input
           var input = document.createElement("input");
           input.setAttribute("type", "file");
           input.setAttribute("accept", "image/*");
@@ -117,126 +104,55 @@ function handleLoadEditor() {
             var reader = new FileReader();
 
             reader.onload = function () {
-              // Khi đọc file xong, sẽ gọi callback với data URL của ảnh
               callback(reader.result, {
                 alt: file.name,
               });
             };
 
-            // Đọc file dưới dạng data URL (base64)
             reader.readAsDataURL(file);
           };
 
-          // Mở hộp thoại chọn file
           input.click();
         }
-      },
-      setup: function (editor) {
-        editor.ui.registry.addButton("insertImageWithLayout", {
-          icon: "gallery",
-          tooltip: "Chèn ảnh với bố cục",
-          onAction: function () {
-            editor.windowManager.open({
-              title: "Chọn bố cục ảnh",
-              body: {
-                type: "panel",
-                items: [
-                  {
-                    type: "selectbox",
-                    name: "layout",
-                    label: "Chọn kiểu sắp xếp",
-                    items: [
-                      { text: "Grid", value: "image-grid" },
-                      { text: "Masonry", value: "image-masonry" },
-                      { text: "Flexbox", value: "image-flex" },
-                    ],
-                  },
-                ],
-              },
-              buttons: [
-                {
-                  text: "Chèn ảnh",
-                  type: "submit",
-                },
-                {
-                  text: "Hủy",
-                  type: "cancel",
-                },
-              ],
-              onSubmit: function (dialog) {
-                let data = dialog.getData();
-                editor.insertContent(
-                  `<div class="${
-                    data.layout
-                  }">${editor.selection.getContent()}</div>`
-                );
-                dialog.close();
-              },
-            });
-          },
-        });
       },
     });
   }
 }
-// load page show content
-async function loadPage(pageName) {
-  try {
-    const contentDiv = document.getElementById("content");
-    const loader = document.getElementById("loading__content__page");
-
-    // loader.style.display = "flex";
-
-    const response = await fetch(`pages/${pageName}.html`);
-    if (!response.ok) {
-      throw new Error("Trang không tồn tại");
-    }
-
-    const content = await response.text();
-
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    contentDiv.innerHTML = content;
-    sessionStorage.setItem("currenPage", pageName);
-    // loader.style.display = "none";
-
-    if (pageName === "trangchu") {
-      handleLoadChartDashboard();
-    }
-    if (pageName === "sanpham") {
-      const btnCreateProduct = document.getElementById("btn__create__product");
-      if (btnCreateProduct) {
-        btnCreateProduct.addEventListener("click", () => {
-          loadPage("taosanpham");
-        });
+// handle reset filter
+function handleResetFilter() {
+  const btnResetFilter = document.getElementById("btn__reset__filter");
+  btnResetFilter.addEventListener("click", () => {
+    document.getElementById("searchFilter").value = "";
+    document.getElementById("dateFilter").value = "";
+    document.getElementById("statusFilter").value = "";
+    showToast("Xóa bộ lọc", "success");
+  });
+}
+// check load page theo pagename
+function loadPageFollowPageName(pagename) {
+  switch (pagename) {
+    case "quanlinhapkho_taomoi":
+      document
+        .getElementById("btn__back__warehouse")
+        .addEventListener("click", () => loadPage("quanlinhapkho"));
+      break;
+    case "quanlitonkho":
+      const roles = sessionStorage.getItem("roles");
+      if (roles) {
+        const tableQLTK = document.querySelector(".table__qltk");
+        if (roles == "admin" && tableQLTK) {
+          tableQLTK.classList.add("admin");
+        }
       }
+      handleResetFilter();
+      renderTestTableTonKho();
+      break;
+    case "tatcasanpham":
+      handleActionHeadPage();
+    case "chinhsua-sanpham":
       handleLoadEditor();
-      handleEventShowDetail();
-    }
-    if (pageName === "chitietsanpham") {
-      handleBackToListProduct();
-    }
-    if (pageName === "baiviet") {
-      const btnCreateBlog = document.getElementById("btn__create__product");
-      btnCreateBlog.addEventListener("click", () => {
-        loadPage("taobaiviet");
-      });
-      selectRowScreen();
-      pagination();
-    }
-    if (pageName === "taosanpham" || pageName === "taobaiviet") {
-      handleLoadEditor();
-    }
-    if (pageName === "taosanpham") {
-      handleBackToListProduct();
-    }
-  } catch (error) {
-    document.getElementById("content").innerHTML = `
-           <div class="error">
-               <h2>Not Foud</h2>
-               <p>Hiện tại chưa có nội dung cho trang này ! </p>
-           </div>
-       `;
+    default:
+      break;
   }
 }
 // toogle active nav
@@ -280,19 +196,48 @@ function handleCloseAccordtion() {
     ".sidebar__menu ul li a"
   );
 
+  const containerAccordtion2 = document.querySelector(
+    ".accordion-collapse.collapse.ul__2"
+  );
   itemContainerAccordtion.forEach((item) => {
     item.addEventListener("click", (event) => {
-      if (!containerAccordtion.contains(event.target)) {
-        if (containerAccordtion.classList.contains("show"))
-          containerAccordtion.classList.remove("show");
-        else return;
+      if (
+        !containerAccordtion.contains(event.target) &&
+        containerAccordtion.classList.contains("show")
+      ) {
+        containerAccordtion.classList.remove("show");
+      }
+      if (
+        !containerAccordtion2.contains(event.target) &&
+        containerAccordtion2.classList.contains("show")
+      ) {
+        containerAccordtion2.classList.remove("show");
       }
     });
   });
 }
+//  check active menu sub
+function checkActiveMenuSub() {
+  // const containerAccordtion = document.querySelector(
+  //   "accordion-collapse collapse"
+  // );
+  // const itemContainerAccordtion = document.querySelectorAll(
+  //   ".accordion-collapse.collapse li a"
+  // );
+  // itemContainerAccordtion.forEach((item) => {
+  //   item.addEventListener("click", (event) => {
+  //     if (!containerAccordtion.contains(event.target)) {
+  //       if (containerAccordtion.classList.contains("show"))
+  //         containerAccordtion.classList.remove("show");
+  //       else return;
+  //     }
+  //   });
+  // });
+}
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
+
   const containerAccordtion = document.querySelector(
     ".accordion-collapse.collapse"
   );
@@ -349,15 +294,7 @@ function handleEventSidebar() {
     }
   });
 }
-// check handle load
-function handleCheckLoadPage() {
-  const currentPage = sessionStorage.getItem("currenPage");
-  if (!currentPage) {
-    return loadPage("trangchu");
-  } else {
-    return loadPage(currentPage);
-  }
-}
+
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
@@ -401,10 +338,10 @@ function selectRowScreen() {
       }
     });
   }
-
-  rowSelect.addEventListener("change", function () {
-    updateTableRows(rowSelect.value);
-  });
+  if (tableBody)
+    rowSelect.addEventListener("change", function () {
+      updateTableRows(rowSelect.value);
+    });
 
   updateTableRows(5);
 }
@@ -468,9 +405,375 @@ function pagination() {
   renderTable(currentPage);
   updatePagination();
 }
+// load action hanle head page
+function handleActionHeadPage() {
+  const btnCustomDisplay = document.querySelector(".btn__custom__display");
+  const wrapperCustomDisplay = document.querySelector(
+    ".display__custom__wrapper"
+  );
+
+  btnCustomDisplay.addEventListener("click", () => {
+    wrapperCustomDisplay.classList.toggle("active");
+  });
+}
+
+// action page table
+function handleActionItemTr() {
+  const btnToEdit = document.querySelectorAll(".redirect__edit.product");
+  btnToEdit.forEach((item) =>
+    item.addEventListener("click", () => {
+      loadPage("chinhsua-sanpham");
+    })
+  );
+}
+
+// handle logout
+function handleLogout() {
+  document.getElementById("btn__logout").addEventListener("click", () => {
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("roles");
+    window.location.href = "login.html";
+  });
+}
+// load info acconut
+function infoAccount() {
+  if (sessionStorage.getItem("name")) {
+    document.getElementById("info__user__name").innerHTML =
+      sessionStorage.getItem("name");
+    document.getElementById("info__user__roles").innerHTML =
+      sessionStorage.getItem("roles");
+  }
+}
+// check roles
+function checkAuthentication() {
+  const roles = sessionStorage.getItem("roles");
+  if (roles) {
+    return;
+  } else window.location.href = "login.html";
+}
+// render test table
+function renderTestTableTonKho() {
+  const roles = sessionStorage.getItem("roles");
+
+  const wraperBody = document.querySelector(".render__tonkho");
+  const data = [
+    {
+      ms: "sp102",
+      ms2: "sp223",
+      ms3: "sp223",
+      name: "sp223",
+      tonKiot: "sp223",
+      tonhop: "sp223",
+      tonphoi: "sp223",
+      ms2: "sp223",
+      tongton: "34232",
+      tongban: "23323",
+      tb1tuanban: "231231",
+      tonnhieunhat: "213",
+      tonitNhat: "123123",
+      canhbao: "123123",
+    },
+    {
+      ms: "sp102",
+      ms2: "sp223",
+      ms3: "sp223",
+      name: "sp223",
+      tonKiot: "sp223",
+      tonhop: "sp223",
+      tonphoi: "sp223",
+      ms2: "sp223",
+      tongton: "34232",
+      tongban: "23323",
+      tb1tuanban: "231231",
+      tonnhieunhat: "213",
+      tonitNhat: "123123",
+      canhbao: "123123",
+    },
+  ];
+  let html = data
+    .map((item) => {
+      return `
+      <tr>
+        <td colspan="2">${item.ms}</td>
+        <td colspan="2">${item.ms2}</td>
+        <td colspan="2">${item.ms3}</td>
+        <td>${item.name}</td>
+        <td>${item.tonKiot}</td>
+        <td colspan="2">${item.tonhop}</td>
+        <td colspan="2">${item.tonphoi}</td>
+        ${
+          roles == "admin"
+            ? `
+          <td>${item.tongton}</td>
+          <td>${item.tongban}</td>
+          <td>${item.tb1tuanban}</td>
+          <td>${item.tonnhieunhat}</td>
+          <td>${item.tonitNhat}</td>
+          <td><span class="badge__item warning">Đặt SX</span></td>`
+            : ""
+        }
+      </tr>`;
+    })
+    .join("");
+  wraperBody.innerHTML = html;
+}
+//button onclick screen input
+function input_file_media() {
+  let uploadBox = document.getElementById("scren_input_file");
+
+  if (uploadBox.classList.contains("d-none")) {
+    uploadBox.classList.remove("d-none"); // Hiển thị
+  } else {
+    uploadBox.classList.add("d-none"); // Ẩn đi
+  }
+}
+//upload img input
+function upload_img_screen(event) {
+  const file = event.target.files[0]; // Lấy tệp tin đã chọn
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
+      const imgElement = document.querySelector("#img_load_screen img");
+      imgElement.src = e.target.result; // Đặt nguồn ảnh cho phần tử img
+      document.getElementById("img_load_screen").classList.remove("d-none"); // Hiển thị phần tử chứa ảnh
+    };
+
+    reader.readAsDataURL(file); // Đọc tệp tin như một DataURL
+  } else {
+    alert("Không có tệp tin nào được chọn.");
+  }
+}
+// handle toogle open down menu
+function handleOpenDown() {
+  const toggleButtons = document.querySelectorAll(".open__down-toggle");
+  console.log(toggleButtons);
+  if (!toggleButtons.length) return;
+
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const menuItem = this.parentElement;
+      const dropdownContent = menuItem.querySelector(".open__down__content");
+      const isActive = menuItem.classList.contains("active");
+
+      document
+        .querySelectorAll(".open__down__item.active")
+        .forEach((activeItem) => {
+          if (activeItem !== menuItem) {
+            const activeContent = activeItem.querySelector(
+              ".open__down__content"
+            );
+
+            activeContent.style.maxHeight = "0";
+            activeContent.style.opacity = "0";
+            setTimeout(() => {
+              activeItem.classList.remove("active");
+              activeContent.style.display = "none";
+            }, 300);
+          }
+        });
+
+      if (!isActive) {
+        menuItem.classList.add("active");
+
+        dropdownContent.style.display = "block";
+        dropdownContent.style.maxHeight = "0";
+        dropdownContent.style.opacity = "0";
+
+        dropdownContent.offsetHeight;
+
+        dropdownContent.style.height = dropdownContent.scrollHeight + "px";
+        dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+
+        dropdownContent.style.opacity = "1";
+      } else {
+        dropdownContent.style.maxHeight = "0";
+        dropdownContent.style.opacity = "0";
+        setTimeout(() => {
+          menuItem.classList.remove("active");
+          dropdownContent.style.display = "none";
+        }, 300);
+      }
+    });
+  });
+}
+// handle tab list container
+function handleActiveOpenTab() {
+  const tabContainers = document.querySelectorAll(".tabs-container");
+
+  tabContainers.forEach((container) => {
+    const tabButtons = container.querySelectorAll(".tab-button");
+    const tabPanes = container.querySelectorAll(".tab-pane");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tabId = button.getAttribute("data-tab");
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabPanes.forEach((pane) => pane.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const targetPane = container.querySelector(`#${tabId}`);
+        if (targetPane) {
+          targetPane.classList.add("active");
+        }
+      });
+    });
+  });
+}
+// handle modal
+function initModals() {
+  // Thêm sự kiện cho các nút mở modal
+  document.querySelectorAll("[data-modal-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-modal-target");
+      openModal(modalId);
+    });
+  });
+
+  // Thêm sự kiện cho các nút đóng modal
+  document.querySelectorAll("[data-modal-close]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-modal-close");
+      closeModal(modalId);
+    });
+  });
+
+  // Đóng modal khi click vào overlay
+  document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+    overlay.addEventListener("click", function (e) {
+      // Chỉ đóng modal khi click vào overlay, không phải vào modal container
+      if (e.target === overlay) {
+        const modalId = overlay.getAttribute("id");
+        closeModal(modalId);
+      }
+    });
+  });
+
+  // Đóng modal khi nhấn phím ESC
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal-overlay.active").forEach((modal) => {
+        const modalId = modal.getAttribute("id");
+        closeModal(modalId);
+      });
+    }
+  });
+}
+// Hàm mở modal
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add("active");
+
+    // Ngăn scroll trang khi modal hiển thị
+    document.body.style.overflow = "hidden";
+  }
+}
+// Hàm đóng modal
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove("active");
+
+    // Cho phép scroll trang trở lại khi modal đóng
+    document.body.style.overflow = "";
+  }
+}
+// load hàm khi load xong content
+function loadFuntion() {
+  handleActionItemTr();
+  handleOpenDown();
+  handleActiveOpenTab();
+  initModals();
+}
+// load page show content
+async function loadPage(pageName) {
+  try {
+    const contentDiv = document.getElementById("content");
+
+    const response = await fetch(`pages/${pageName}.html`);
+    if (!response.ok) {
+      throw new Error("Trang không tồn tại");
+    }
+
+    const content = await response.text();
+
+    contentDiv.innerHTML = content;
+    sessionStorage.setItem("currenPage", pageName);
+
+    loadFuntion();
+    if (pageName === "trangchu") {
+      handleLoadChartDashboard();
+    }
+    if (pageName === "sanpham") {
+      const btnCreateProduct = document.getElementById("btn__create__product");
+      if (btnCreateProduct) {
+        btnCreateProduct.addEventListener("click", () => {
+          loadPage("taosanpham");
+        });
+      }
+      handleResetFilter();
+      handleLoadEditor();
+      handleEventShowDetail();
+    }
+    if (pageName === "chitietsanpham") {
+      handleBackToListProduct();
+    }
+    if (pageName === "baiviet") {
+      const btnCreateBlog = document.getElementById("btn__create__product");
+      btnCreateBlog.addEventListener("click", () => {
+        loadPage("taobaiviet");
+      });
+      selectRowScreen();
+      pagination();
+      handleLoadEditor();
+    }
+    if (pageName === "taosanpham" || pageName === "taobaiviet") {
+      handleLoadEditor();
+    }
+    if (pageName === "taosanpham") {
+      handleBackToListProduct();
+    }
+    if (pageName === "quanlinhapkho") {
+      const btnCreateWareHouse = document.getElementById("create__warehouse");
+      if (btnCreateWareHouse) {
+        btnCreateWareHouse.addEventListener("click", () => {
+          loadPage("quanlinhapkho_taomoi");
+        });
+      }
+    }
+    loadPageFollowPageName(pageName);
+    if (pageName === "quanlixuatkho") {
+      const btnCreateExport = document.getElementById("btn__create__product");
+      btnCreateExport.addEventListener("click", () => {
+        // loadPage("taophieuxuatkho");
+        loadPage("thuvienmedia");
+      });
+    }
+  } catch (error) {
+    document.getElementById("content").innerHTML = `
+           <div class="error">
+               <h2>Not Foud</h2>
+               <p>Hiện tại chưa có nội dung cho trang này ! </p>
+           </div>
+       `;
+  }
+}
+// check handle load
+function handleCheckLoadPage() {
+  const currentPage = sessionStorage.getItem("currenPage");
+  currentPage ? loadPage(currentPage) : loadPage("trangchu");
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+  checkAuthentication();
+  infoAccount();
+  checkActiveMenuSub();
   handleCheckLoadPage();
   handleEventSidebar();
   handleEventNav();
+  handleLogout();
 });

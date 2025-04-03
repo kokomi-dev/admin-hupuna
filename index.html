@@ -20,6 +20,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css"
     />
     <link rel="stylesheet" href="scss/style.css" />
+    <link rel=”icon” href=”assets/icons/favicon.png” type=”image/x-icon” />
+    <link rel=”shortcut icon” href=”assets/icons/favicon.png”
+    type=”image/x-icon” />
     <!-- editore -->
     <script src="./modules/tinymce/js/tinymce/tinymce.min.js"></script>
     <title>Trang chủ</title>
@@ -29,16 +32,15 @@
       <div class="row g-0 grid__common">
         <!-- sidebar -->
         <aside
-          class="border-bottom-0 d-none d-md-block sidebar h-auto br-1-main bg-white p-0"
+          class="sidebar__large border-bottom-0 d-none d-md-block sidebar h-auto border-top-0 br-1-main bg-white p-0"
         >
-          <div class="w-100 h-100 d-flex flex-column gap-1">
+          <div class="h-100 d-flex flex-column gap-1">
             <!-- logo -->
             <div
               class="logo__wrapper p-3 d-flex align-items-center justify-content-start gap-2 mt-2"
             >
               <img
-                style="width: 30px; height: 30px"
-                class=""
+                class="size-30"
                 src="https://cdn-icons-png.flaticon.com/512/8220/8220992.png"
               />
               <span style="color: #101828" class="fs-4 fw-semibold text-black"
@@ -118,10 +120,84 @@
                   </a>
                 </li>
                 <li>
-                  <a data-page="sanpham" href="#">
+                  <a data-page="thuvienmedia" href="#">
+                    <img src="./assets/icons/screen-play.svg" />
+                    Media
+                  </a>
+                </li>
+                <li>
+                  <!-- <a data-page="sanpham" href="#">
                     <img src="./assets/icons/box-open.svg" />
                     Sản phẩm
-                  </a>
+                  </a> -->
+                  <span
+                    class="accordion__button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu__item__sanpham"
+                    aria-expanded="false"
+                    aria-controls="menu__item__sanpham"
+                    href="#"
+                  >
+                    <span>
+                      <img src="./assets/icons/box-open.svg" />Sản phẩm
+                    </span>
+                    <img src="./assets//icons/angle-small-down.svg" />
+                  </span>
+                  <ul
+                    id="menu__item__sanpham"
+                    class="accordion-collapse collapse ul__2"
+                    aria-labelledby="menu_sanpham"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <li>
+                      <a data-page="tatcasanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/overview.svg"
+                        />Tất cả sản phẩm
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="danhmucsanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/dropdown-bar.svg"
+                        />Danh mục
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="danhsachsanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/overview.svg"
+                        />Thêm sản phẩm
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="danhsachsanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/overview.svg"
+                        />Thương hiệu
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="danhsachsanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/overview.svg"
+                        />Thẻ
+                      </a>
+                    </li>
+                    <li>
+                      <a data-page="danhsachsanpham" href="#">
+                        <img
+                          class="size-18"
+                          src="./assets/icons/overview.svg"
+                        />Các thuộc tính
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <!--  -->
                 <li>
@@ -247,7 +323,6 @@
         </aside>
         <!-- overlay -->
         <div class="overlay" id="sidebarOverlay"></div>
-        <div class="loading__content__page" id="loading__content__page"></div>
 
         <!-- main-->
         <div class="">
@@ -264,31 +339,101 @@
 
             <div class="d-flex align-items-center justify-content-end gap-2">
               <!-- thông báo và tin nhắn -->
-              <div
-                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
-              >
-                <img
-                  src="./assets/icons/message-square-dots-svgrepo-com.svg"
-                  class="size-18 fill__black-sub"
-                />
-                <span
-                  class="position-absolute top-0 start-100 translate-middle bg-primary text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
-                  >1</span
+              <div class="dropdown">
+                <div
+                  class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
+                  data-bs-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
                 >
+                  <img
+                    src="./assets/icons/message-square-dots-svgrepo-com.svg"
+                    class="size-18 fill__black-sub"
+                  />
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle bg-primary text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
+                    >1</span
+                  >
+                </div>
+
+                <div class="dropdown-menu">
+                  <h5>Tin nhắn</h5>
+                  <div>
+                    <button>Tin mới</button>
+                    <button>Xem tất cả</button>
+                  </div>
+                  <li>
+                    <p>Tên của người gửi 1</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Người dùng 1 đã gửi cho bạn một tin nhắn mới</p>
+                    </a>
+                  </li>
+                  <li>
+                    <p>Tên của người gửi 2</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Người dùng 2 đã gửi cho bạn một tin nhắn mới</p>
+                    </a>
+                  </li>
+                  <li>
+                    <p>Tên của người gửi 3</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Người dùng 3 đã gửi cho bạn một tin nhắn mới</p>
+                    </a>
+                  </li>
+                </div>
               </div>
-              <div
-                id="test"
-                class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
-              >
-                <img
-                  src="./assets/icons/notification-svgrepo-com.svg"
-                  class="size-18 fill__black-sub"
-                />
-                <span
-                  class="position-absolute top-0 start-100 translate-middle bg-danger text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
-                  >1</span
+
+              <div class="dropdown">
+                <div
+                  id="test"
+                  class="position-relative d-flex align-items-center justify-content-center rounded-circle p-2 flex-shrink-0 br-1-main cursor-pointer"
+                  data-bs-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
                 >
+                  <img
+                    src="./assets/icons/notification-svgrepo-com.svg"
+                    class="size-18 fill__black-sub"
+                  />
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle bg-danger text-white size-20 rounded-circle fs-12 d-flex align-items-center justify-content-center"
+                    >1</span
+                  >
+                </div>
+                <div class="dropdown-menu">
+                  <h5>Thông báo</h5>
+                  <div>
+                    <button>Mới</button>
+                    <button>Xem tất cả</button>
+                  </div>
+                  <li>
+                    <p>Tiêu đề thông báo bài viết 1</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Đây là mô tả thông báo bài viết 1 ấn vào xem đi bạn</p>
+                    </a>
+                  </li>
+                  <li>
+                    <p>Tiêu đề thông báo bài viết 2</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Đây là mô tả thông báo bài viết 2 ấn vào xem đi bạn</p>
+                    </a>
+                  </li>
+                  <li>
+                    <p>Tiêu đề thông báo bài viết 3</p>
+                    <a href="#">
+                      <img src="assets/images/logo-img.png" alt="" />
+                      <p>Đây là mô tả thông báo bài viết 3 ấn vào xem đi bạn</p>
+                    </a>
+                  </li>
+                </div>
+                <div></div>
               </div>
+
               <!-- tài khoản -->
               <div class="ms-2 d-flex align-items-center">
                 <div class="dropdown">
@@ -308,7 +453,16 @@
                         class="object-fit-cover rounded-circle"
                       />
                     </div>
-                    <span class="d-none d-md-block fs-14 fw-medium">Admin</span>
+                    <div class="d-grid">
+                      <span
+                        id="info__user__name"
+                        class="d-none d-md-block fs-14 fw-medium text-capitalize"
+                      ></span>
+                      <span
+                        id="info__user__roles"
+                        class="d-none d-md-block fs-12 text-blue-main fw-medium text-capitalize"
+                      ></span>
+                    </div>
                   </div>
                   <div
                     aria-labelledby="dropdownUser1"
@@ -316,19 +470,15 @@
                   >
                     <ul>
                       <li><a href="#">Trang cá nhân</a></li>
-                      <li><a href="#">Đăng xuất</a></li>
+                      <li><a id="btn__logout" href="#">Đăng xuất</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </header>
-          <!-- show content page -->
-          <div id="content" class="p-3 px-3 px-md-4 w-100 h-auto">
-            <div id="loading__content__page" class="loading__content__page">
-              <div class="loader"></div>
-            </div>
-          </div>
+          <!-- load content -->
+          <div id="content" class="w-100 h-100 p-3 px-3 px-md-4"></div>
         </div>
         <!-- notify customs -->
         <div id="notification-container"></div>
@@ -336,7 +486,7 @@
       <!-- footer -->
       <footer class="bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
         <p class="fs-14 text-center w-100 text-black-sub">
-          © 2025 Admin - Bản quyền thuộc về chưa có bản quyền.
+          © 2025 Admin - Bản quyền thuộc về HUPUNA GROUP.
         </p>
       </footer>
     </main>
@@ -353,6 +503,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js"></script>
 
     <script src="./index.js"></script>
+
     <script src="main.js"></script>
 
     <script>

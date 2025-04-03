@@ -1,1 +1,214 @@
-<section>Trang quản lí tài khoản</section>
+<section class="d-grid gap-3 gap-lg-4">
+  <!-- tiêu đề -->
+  <h1 class="fs-5 fw-semibold">Quản lí tài khoản</h1>
+  <!-- main -->
+  <div class="d-grid gap-4">
+    <!-- bộ lọc -->
+    <div class="d-grid gap-4 bg-white rounded-3 p-2 p-md-3 rounded-3 shadow-sm">
+      <h4 class="fs-6">Bộ lọc</h4>
+      <div class="row g-4 g-lg-5">
+        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+          <div class="d-grid gap-1 fs-14">
+            <label for="searchInput">Tìm kiếm:</label>
+            <input
+              id="searchInput"
+              type="search"
+              class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
+              placeholder="Tìm kiếm..."
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+          <div class="d-grid gap-1 fs-14">
+            <label for="">Từ ngày:</label>
+            <input
+              type="date"
+              class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
+              placeholder="Từ ngày"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+          <div class="d-grid gap-1 fs-14">
+            <label for="">Trạng thái:</label>
+            <select
+              name="status"
+              class="form-select input_outline fs-14 h-btn-i"
+            >
+              <option value="">Tất cả</option>
+              <option value="">Còn hoạt đông</option>
+              <option value="">Đã xóa</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-xl-3">
+          <div
+            class="w-100 h-100 d-flex align-items-end justify-content-start gap-2"
+          >
+            <button
+              type="submit"
+              class="btn btn-secondary text-white px-4 fs-14 border-1 d-flex align-items-center gap-1 py-2 h-btn-i"
+            >
+              <img
+                src="../assets/icons/filter-svgrepo-com.svg"
+                class="size-20 icon__white"
+              />
+              Lọc
+            </button>
+            <button
+              type="submit"
+              class="btn btn-outline-danger px-4 fs-14 border-1 text-nowrap h-btn-i"
+            >
+              Xóa lọc
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="message-div"></div>
+    <!-- button thêm mới -->
+    <div class="w-100 d-flex justify-content-between align-items-center fs-14">
+      <div
+        class="d-flex align-items-center justify-content-start gap-3 flex-wrap"
+      >
+        <button
+          id="btn__create__product"
+          class="btn btn-lg bg-blue btn__cancel__hover text-white fs-14 d-flex align-items-center gap-1"
+        >
+          Thêm tài khoản
+          <img
+            src="../assets/icons/add-svgrepo-com.svg"
+            class="size-20 icon__white"
+          />
+        </button>
+      </div>
+      <div class="d-none d-sm-flex align-items-center gap-2">
+        Hiển thị:
+        <div class="d-flex align-items-center gap-2 select-none">
+          <div
+            class="bg-white cursor-pointer size-30 d-flex align-items-center justify-content-center rounded-2 shadow-sm"
+          >
+            <img class="size-20" src="../assets/icons/grid-4-svgrepo-com.svg" />
+          </div>
+          <div
+            class="rounded-2 cursor-pointer size-30 d-flex align-items-center justify-content-center"
+          >
+            <img
+              class="size-20"
+              src="../assets/icons/list-ul-alt-svgrepo-com.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- list thông tin tai khoản -->
+    <div
+      class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 rounded-4 shadow-sm mt-3"
+    >
+      <div class="d-grid gap-3">
+        <h2 class="fs-6 fw-semibold">Thông tin tài khoản</h2>
+        <table class="table table__main">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tên tài khoản</th>
+              <th>Email</th>
+              <th>Số điện thoại</th>
+              <th>Vai trò</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Nguyễn Văn A</td>
+              <td>a.nguyen@example.com</td>
+              <td>0987654321</td>
+              <td>Quản trị viên</td>
+              <td><span class="badge bg-success">Hoạt động</span></td>
+              <td>
+                <button class="btn btn-ol-primary btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xóa</button>
+                <button class="btn btn-info btn-sm">Xem</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Trần Thị B</td>
+              <td>b.tran@example.com</td>
+              <td>0976543210</td>
+              <td>Nhân viên</td>
+              <td><span class="badge bg-warning">Đang chờ</span></td>
+              <td>
+                <button class="btn btn-ol-primary btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xóa</button>
+                <button class="btn btn-info btn-sm">Xem</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Phạm Văn C</td>
+              <td>c.pham@example.com</td>
+              <td>0965432109</td>
+              <td>Nhân viên</td>
+              <td><span class="badge bg-danger">Bị khóa</span></td>
+              <td>
+                <button class="btn btn-ol-primary btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xóa</button>
+                <button class="btn btn-info btn-sm">Xem</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Lê Thị D</td>
+              <td>d.le@example.com</td>
+              <td>0954321098</td>
+              <td>Quản trị viên</td>
+              <td><span class="badge bg-success">Hoạt động</span></td>
+              <td>
+                <button class="btn btn-ol-primary btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xóa</button>
+                <button class="btn btn-info btn-sm">Xem</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Hoàng Văn E</td>
+              <td>e.hoang@example.com</td>
+              <td>0943210987</td>
+              <td>Nhân viên</td>
+              <td><span class="badge bg-success">Hoạt động</span></td>
+              <td>
+                <button class="btn btn-ol-primary btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xóa</button>
+                <button class="btn btn-info btn-sm">Xem</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div aria-label="Page navigation example">
+        <ul class="pagination justify-content-end fs-14">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true"><<</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">>></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

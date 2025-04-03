@@ -1,0 +1,573 @@
+<section class="d-grid gap-3">
+  <div class="d-flex align-items-center justify-content-start gap-2">
+    <span class="fs-4">Sửa sản phẩm</span>
+    <button class="btn btn-ol-primary">Thêm sản phẩm mới</button>
+  </div>
+  <div class="row g-3">
+    <!-- left -->
+    <div class="col-12 col-md-8 col-lg-9">
+      <!-- edit wrapper -->
+      <div class="edit__wrapper d-grid gap-4">
+        <div class="edit__title">
+          <input class="w-100 px-2 py-3 br-1-main rounded-2 fill-blue" />
+        </div>
+        <!-- edit des -->
+        <div class="bg-white edit__component d-grid gap-2">
+          <div
+            class="edit__component__head border-bottom br-1-main fs-14 fw-medium p-2"
+          >
+            Mô tả sản phẩm
+          </div>
+          <div class="p-2 h-auto d-grid gap-2">
+            <button
+              class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2"
+            >
+              <img
+                src="../assets/icons/screen-play.svg"
+                class="size-16 fill__blue"
+              />
+              Thêm Media
+            </button>
+            <textarea
+              id="myEditor"
+              name="productDescription"
+              class="fs-14 fw-normal h-100 rounded-0"
+            ></textarea>
+          </div>
+        </div>
+        <!-- edit dữ liệu sản phẩm -->
+        <div class="bg-white edit__component d-grid gap-2">
+          <div
+            class="edit__component__head border-bottom br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            <span>Dữ liệu sản phẩm - </span>
+            <select name="select" class="select__main small">
+              <option value="">Sản phẩm đơn giản</option>
+              <option value="">Sản phẩm bên ngoài - liên kết</option>
+              <option value="">Sản phẩm có biến thể</option>
+              <option value="">Sản phẩm nhóm</option>
+            </select>
+            <span>|</span>
+            <div class="checkbox__item">
+              <input id="id1" type="checkbox" />
+              <label for="id1">Sản phẩm ảo</label>
+            </div>
+            <div class="checkbox__item">
+              <input id="id2" type="checkbox" />
+              <label for="id2">Có thể tải xuống</label>
+            </div>
+          </div>
+          <!-- body -->
+          <div
+            class="tabs-container d-flex align-items-start justify-content-start"
+            data-tabs="tab__category__product"
+          >
+            <div class="tabs-list w-full flex-column align-items-start">
+              <button
+                class="tab-button p-2 w-full active fs-12"
+                data-tab="data_product_1"
+              >
+                Tổng quan
+              </button>
+              <button
+                class="tab-button p-2 w-full fs-12"
+                data-tab="data_product_2"
+              >
+                Kiểm kê kho hàng
+              </button>
+              <button
+                class="tab-button p-2 w-full fs-12"
+                data-tab="data_product_3"
+              >
+                Giao hàng
+              </button>
+              <button
+                class="tab-button p-2 w-full fs-12"
+                data-tab="data_product_4"
+              >
+                Sản phẩm được liên kết
+              </button>
+              <button
+                class="tab-button p-2 w-full fs-12"
+                data-tab="data_product_5"
+              >
+                Các thuộc tính
+              </button>
+              <button
+                class="tab-button p-2 w-full fs-12"
+                data-tab="data_product_6"
+              >
+                Các biến thể
+              </button>
+            </div>
+            <div class="tabs-content h-100">
+              <div class="tab-pane active" id="data_product_1">
+                <div class="d-grid gap-2 p-2">
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-2"
+                  >
+                    <span class="fs-13 text-black-sub">Trạng thái thuế</span>
+                    <select class="select__main small fs-14">
+                      <option>Thuế</option>
+                      <option>Chỉ giao hàng</option>
+                      <option>Trống</option>
+                    </select>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-2"
+                  >
+                    <span class="fs-13 text-black-sub">Loại thuế</span>
+                    <select class="select__main small fs-14">
+                      <option>Chuẩn</option>
+                      <option>Đánh giá cao</option>
+                      <option>Đánh giá thấp</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="data_product_2">
+                <div class="d-grid gap-2 p-2">
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-4"
+                  >
+                    <input id="category-1" type="checkbox" />
+                    <label for="category-1">category</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="category_2_1" type="checkbox" />
+                    <label for="category_2_1">Hộp in offset</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="category_2_2" type="checkbox" />
+                    <label for="category_2_2">Hộp carton</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="category_2_3" type="checkbox" />
+                    <label for="category_2_3">Hộp carton nắp đối</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="category_2_4" type="checkbox" />
+                    <label for="category_2_4">Túi giấy</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="category_2_5" type="checkbox" />
+                    <label for="category_2_5">Hộp nắp gài</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- rigth -->
+    <div class="col-12 col-md-4 col-lg-3">
+      <div class="edit__wrapper d-grid gap-3">
+        <!-- xuât bản -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Xuất bản
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <div class="open__down__item fs-14">
+              Trạng thái: Đã xuất bản
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+              >
+                Chỉnh sửa
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex align-items-center justify-content-start gap-2 p-2"
+                >
+                  <select name="select" class="select__main small">
+                    <option value="">Đã xuất bản</option>
+                    <option value="">Chờ duyệt</option>
+                    <option value="">Bản nháp</option>
+                  </select>
+                  <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
+                </div>
+              </div>
+            </div>
+            <div class="open__down__item fs-14">
+              Hiển thị: Công khai
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+              >
+                Chỉnh sửa
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex align-items-center justify-content-start gap-1 fs-12 p-2"
+                >
+                  <select name="select" class="select__main small fs-12">
+                    <option value="">Công khai</option>
+                    <option value="">Bảo vệ mật khẩu</option>
+                    <option value="">Riêng tư</option>
+                  </select>
+                  <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
+                </div>
+              </div>
+            </div>
+            <div class="open__down__item fs-14">
+              Đã xuât bản: Th4 26, 2025, 16:04
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+              >
+                Chỉnh sửa
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex flex-wrap align-items-center justify-content-start gap-1 fs-12 p-2"
+                >
+                  <input type="date" class="input__main small bg-gray" />
+                  <input type="time" class="input__main small bg-gray" />
+                  <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
+                </div>
+              </div>
+            </div>
+            <div class="open__down__item fs-14">
+              Hiển thị danh mục: Cửa hàng và kết quả tìm kiếm
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+              >
+                Chỉnh sửa
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex flex-column align-items-start justify-content-start gap-3 fs-12 p-2"
+                >
+                  <p class="fs-13">
+                    Cài đặt này sẽ xác định sản phẩm các trang nào sẽ xuất hiện
+                    danh sách sản phẩm.
+                  </p>
+                  <div class="d-grid gap-1">
+                    <div class="checkbox__item">
+                      <input type="checkbox" id="1" />
+                      <label id="1">Cửa hàng và kết quả tìm kiếm</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input type="checkbox" id="1" />
+                      <label id="1">Chỉ cửa hàng</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input type="checkbox" id="1" />
+                      <label id="1">Chỉ kết quả tìm kiếm</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input type="checkbox" id="1" />
+                      <label id="1">Ẩn</label>
+                    </div>
+                  </div>
+                  <div class="checkbox__item">
+                    <input type="checkbox" id="1" />
+                    <label id="1">Đây là sản phẩm nổi bật</label>
+                  </div>
+                  <button class="btn btn-ol-primary fs-12 small">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- danh mục sản phẩm -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Danh mục sản phẩm
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <div class="tabs-container" data-tabs="tab__category__product">
+              <div class="tabs-list">
+                <button class="tab-button active fs-12" data-tab="product_1">
+                  Tất cả danh mục
+                </button>
+                <button class="tab-button fs-12" data-tab="product_2">
+                  Dùng nhiều nhất
+                </button>
+              </div>
+              <div class="tabs-content">
+                <div class="tab-pane active" id="product_1">
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="category-1" type="checkbox" />
+                      <label for="category-1">category</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-2" type="checkbox" />
+                      <label for="category-2">Băng dính</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-3" type="checkbox" />
+                      <label for="category-3">Hộp carton</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-4" type="checkbox" />
+                      <label for="category-4">Hộp Carton nắp đối</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-5" type="checkbox" />
+                      <label for="category-5">Hộp Carton nắp gài</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-6" type="checkbox" />
+                      <label for="category-6">Hộp Carton chuyển nhà</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-7" type="checkbox" />
+                      <label for="category-7">Hộp in ofset</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-8" type="checkbox" />
+                      <label for="category-8">Túi giấy</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="product_2">
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="category-1" type="checkbox" />
+                      <label for="category-1">category</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category_2_1" type="checkbox" />
+                      <label for="category_2_1">Hộp in offset</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category_2_2" type="checkbox" />
+                      <label for="category_2_2">Hộp carton</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category_2_3" type="checkbox" />
+                      <label for="category_2_3">Hộp carton nắp đối</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category_2_4" type="checkbox" />
+                      <label for="category_2_4">Túi giấy</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category_2_5" type="checkbox" />
+                      <label for="category_2_5">Hộp nắp gài</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="open__down__item fs-14">
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent fw-medium d-flex align-items-center justify-content-start gap-1"
+              >
+                <img
+                  src="../assets/icons/add-svgrepo-com.svg"
+                  class="size-18 fill__blue"
+                />
+                Thêm danh mục mới
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex flex-column align-items-start justify-content-start gap-2 p-2"
+                >
+                  <input class="input__main border w-100" />
+                  <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ảnh sản phẩm -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Ảnh sản phẩm
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <img
+              src="https://images.pexels.com/photos/4246118/pexels-photo-4246118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            />
+            <p class="fs-12 text-black-sub">
+              Nhấn vào ảnh để sửa hoặc cập nhật
+            </p>
+            <button class="btn btn__link-red fs-13">Xóa ảnh sản phẩm</button>
+          </div>
+        </div>
+        <!-- aibum hình ảnh sản phẩm -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Album hình ảnh sản phẩm
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <button
+              data-modal-target="modal1"
+              class="text-decoration-underline text-start text-blue-main bg-transparent modal-btn fs-13"
+            >
+              Thêm ảnh từ thư viện sản phẩm
+            </button>
+            <div id="modal1" class="modal-overlay">
+              <div class="modal-container h-75 w-75">
+                <div class="modal-header">
+                  <div class="fs-6 fw-semibold">Thêm ảnh vào thư viện</div>
+                  <button class="modal-close" data-modal-close="modal1">
+                    &times;
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div
+                    class="tabs-container"
+                    data-tabs="tab__category__product"
+                  >
+                    <div class="tabs-list">
+                      <button class="tab-button fs-14" data-tab="modal_1">
+                        Tải lên tệp mới
+                      </button>
+                      <button
+                        class="tab-button active fs-14"
+                        data-tab="modal_2"
+                      >
+                        Thêm thư viện từ media
+                      </button>
+                    </div>
+                    <div class="tabs-content">
+                      <div class="tab-pane active" id="modal_1">
+                        <div>
+                          <input type="file" />
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="modal_2">
+                        <div>Chọn ảnh từ thư viện media</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    class="modal-button modal-button-secondary"
+                    data-modal-close="modal1"
+                  >
+                    Đóng
+                  </button>
+                  <button class="modal-button modal-button-primary">
+                    Xác nhận
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- thẻ sản phẩm -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Thẻ sản phẩm
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <div class="d-flex align-items-center justify-content-start gap-2">
+              <input class="input__main br-1-main" /><button
+                class="btn btn-ol-primary"
+              >
+                Thêm
+              </button>
+            </div>
+            <p class="fs-12 text-black-sub">Phân cách các thẻ bằng dấu phẩy</p>
+            <div class="open__down__item fs-14">
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+              >
+                Chọn từ các thẻ được sử dụng nhiều nhất
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex align-items-center justify-content-start gap-2 p-2 fs-12"
+                >
+                  Chưa có thẻ nào được sử dụng gần đây
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- thương hiệu -->
+        <div class="edit__component">
+          <div
+            class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
+          >
+            Thương hiệu
+          </div>
+          <div class="d-grid gap-2 p-2 border br-1-main">
+            <div class="d-grid gap-2 p-2 border br-1-main">
+              <div class="tabs-container" data-tabs="tab__brand__product">
+                <div class="tabs-list">
+                  <button class="tab-button active fs-12" data-tab="product_1">
+                    Tất cả thương hiệu
+                  </button>
+                  <button class="tab-button fs-12" data-tab="product_2">
+                    Dùng nhiều nhất
+                  </button>
+                </div>
+                <div class="tabs-content">
+                  <div class="tab-pane active" id="product_1">
+                    <div class="d-grid gap-2 p-2">
+                      <div class="checkbox__item">
+                        <input id="brand-1" type="checkbox" />
+                        <label for="brand-1">Adidas</label>
+                      </div>
+                      <div class="checkbox__item">
+                        <input id="brand-2" type="checkbox" />
+                        <label for="brand-2">MLB</label>
+                      </div>
+                      <div class="checkbox__item">
+                        <input id="brand-3" type="checkbox" />
+                        <label for="brand-3">Nike</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="product_2">
+                    <div class="d-grid gap-2 p-2">
+                      <div class="checkbox__item">
+                        <input id="brand-1" type="checkbox" />
+                        <label for="brand-1">Adidas</label>
+                      </div>
+                      <div class="checkbox__item">
+                        <input id="brand_2_1" type="checkbox" />
+                        <label for="brand_2_1">Nike</label>
+                      </div>
+                      <div class="checkbox__item">
+                        <input id="brand_2_2" type="checkbox" />
+                        <label for="brand_2_2">Mlb</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="open__down__item fs-14">
+                <button
+                  class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent fw-medium d-flex align-items-center justify-content-start gap-1"
+                >
+                  <img
+                    src="../assets/icons/add-svgrepo-com.svg"
+                    class="size-18 fill__blue"
+                  />
+                  Thêm thương hiệu mới
+                </button>
+                <div class="open__down__content">
+                  <div
+                    class="d-flex flex-column align-items-start justify-content-start gap-2 p-2"
+                  >
+                    <input class="input__main border w-100" />
+                    <button class="btn btn-ol-primary fs-12 small">
+                      Đồng ý
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

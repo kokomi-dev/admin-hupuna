@@ -1,0 +1,374 @@
+<section>
+  <!-- nhập thông tin mới -->
+  <div class="d-grid gap-4">
+    <!-- quay lại -->
+    <div class="d-flex align-items-center justify-content-start">
+      <button
+        id="btn__back__warehouse"
+        class="btn btn-sm btn-ol-primary float-start"
+      >
+        &larr; Quay lại
+      </button>
+    </div>
+    <!-- button tải lên excel -->
+    <div class="w-100 d-flex justify-content-between align-items-center fs-14">
+      <div
+        class="d-flex align-items-center justify-content-start gap-3 flex-wrap"
+      >
+        <button
+          id="btn__create__product"
+          class="btn btn-lg bg-blue btn__cancel__hover text-white fs-14 d-flex align-items-center gap-1"
+        >
+          Nhập từ Excel
+          <img
+            src="../assets/icons/add-svgrepo-com.svg"
+            class="size-20 icon__white"
+          />
+        </button>
+        <button
+          id="btn__create__product"
+          class="btn btn-lg bg-blue btn__cancel__hover text-white fs-14 d-flex align-items-center gap-1"
+        >
+          Thêm từ hệ thống
+          <img
+            src="../assets/icons/add-svgrepo-com.svg"
+            class="size-20 icon__white"
+          />
+        </button>
+      </div>
+    </div>
+    <!-- thao tác -->
+    <div class="d-grid gap-2">
+      <h6 class="fs-6 fw-semibold">Thông tin nhà cung cấp</h6>
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14">Mã DN</label>
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14">Tên</label>
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14"
+            >Số điện thoại</label
+          >
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14">Địa chỉ</label>
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <h6 class="fs-6 fw-semibold">Thông tin người nhập</h6>
+      <div class="row g-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productDate" class="form-label fs-14"
+            >Ngày nhập kho</label
+          >
+          <input
+            type="date"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productDate"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14"
+            >Mã nhân viên</label
+          >
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <label for="productMaterial" class="form-label fs-14"
+            >Tên người nhập</label
+          >
+          <input
+            type="text"
+            class="form-control fs-14 p-2 p-lg-3 rounded-3 h-btn-i"
+            id="productMaterial"
+          />
+        </div>
+        <div class="col-12 cl-md-6 col-lg-4">
+          <div class="d-grid gap-1">
+            <label for="des" class="form-label fs-14">Ghi chú</label>
+            <textarea id="des" class="form-control" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- thông tin nhập hàng -->
+    <div
+      class="d-grid gap-2 shadow-sm bg-white p-2 p-md-3 shadow-sm mt-3 rounded-4"
+    >
+      <h4 class="fs-6">Thông tin nhập kho</h4>
+      <div class="card">
+        <div class="card-header bg-white py-2">
+          <div class="d-flex justify-content-between align-items-center fs-14">
+            <div class="d-flex align-items-center justify-content-start gap-2">
+              <button
+                id="btn__create__product"
+                class="btn btn-sm btn__cancel__hover fs-14 d-flex align-items-center gap-2"
+              >
+                <span class="d-none d-sm-block text-blue-main">Tải Excel</span>
+                <img
+                  src="../assets/icons/upload-minimalistic-svgrepo-com.svg"
+                  class="size-18 fill__blue"
+                />
+              </button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <label for="number__show" class="fs-14 text-nowrap"
+                >Số lượng:</label
+              >
+              <select
+                id="number__show"
+                name="status"
+                class="form-select input_outline fs-14"
+              >
+                <option value="">5</option>
+                <option value="">10</option>
+                <option value="">25</option>
+                <option value="">50</option>
+                <option value="">100</option>
+                <option value="">Hiển thị tất cả</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- bảng danh sách sản phẩm-->
+          <table class="table table__main mb-0 fs-14">
+            <thead>
+              <tr>
+                <th class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </th>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Mã sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Loại</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- item -->
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>1</td>
+                <td>Sản phẩm A</td>
+                <td>SP001</td>
+                <td>Sản phẩm chất lượng cao</td>
+                <td>Loại 1</td>
+                <td>500,000</td>
+                <td>150</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>2</td>
+                <td>Sản phẩm B</td>
+                <td>SP002</td>
+                <td>Sản phẩm mới nhất</td>
+                <td>Loại 2</td>
+                <td>750,000</td>
+                <td>200</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>3</td>
+                <td>Sản phẩm C</td>
+                <td>SP003</td>
+                <td>Sản phẩm bán chạy</td>
+                <td>Loại 1</td>
+                <td>1,000,000</td>
+                <td>50</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>4</td>
+                <td>Sản phẩm D</td>
+                <td>SP004</td>
+                <td>Sản phẩm tiện ích</td>
+                <td>Loại 3</td>
+                <td>850,000</td>
+                <td>100</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>5</td>
+                <td>Sản phẩm E</td>
+                <td>SP005</td>
+                <td>Sản phẩm tiết kiệm</td>
+                <td>Loại 2</td>
+                <td>600,000</td>
+                <td>300</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>6</td>
+                <td>Sản phẩm F</td>
+                <td>SP006</td>
+                <td>Sản phẩm bền bỉ</td>
+                <td>Loại 1</td>
+                <td>950,000</td>
+                <td>120</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>7</td>
+                <td>Sản phẩm G</td>
+                <td>SP007</td>
+                <td>Sản phẩm cao cấp</td>
+                <td>Loại 3</td>
+                <td>1,200,000</td>
+                <td>80</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>8</td>
+                <td>Sản phẩm H</td>
+                <td>SP008</td>
+                <td>Sản phẩm thông minh</td>
+                <td>Loại 2</td>
+                <td>700,000</td>
+                <td>180</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>9</td>
+                <td>Sản phẩm I</td>
+                <td>SP009</td>
+                <td>Sản phẩm hữu ích</td>
+                <td>Loại 1</td>
+                <td>650,000</td>
+                <td>210</td>
+                <td>20triệu</td>
+              </tr>
+              <tr>
+                <td class="position-relative">
+                  <input
+                    type="checkbox"
+                    class="size-20 position-absolute top-50 start-50 translate-middle"
+                  />
+                </td>
+                <td>10</td>
+                <td>Sản phẩm J</td>
+                <td>SP010</td>
+                <td>Sản phẩm mới lạ</td>
+                <td>Loại 3</td>
+                <td>900,000</td>
+                <td>90</td>
+                <td>20triệu</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-end gap-2 py-3">
+        <h3 class="fs-4 fw-bolder">Tổng tiền:</h3>
+        <span class="fs-5 text-blue-main fw-bolder">128.000.000 VNĐ</span>
+      </div>
+      <div aria-label="Page navigation example">
+        <ul class="pagination justify-content-end fs-14">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true"><<</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link text-black-sub" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">>></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
