@@ -1,0 +1,121 @@
+<section class="d-grid gap-2 gap-md-3 gap-lg-4 fs-14">
+  <!-- tieu de -->
+  <div class="d-flex gap-1">
+    <h4>Chọn từ thư viện Media</h4>
+    <button
+      type="button"
+      class="btn btn-sm btn-outline-primary"
+      onclick="input_file_media()"
+    >
+      Thêm tệp mới
+    </button>
+  </div>
+
+  <!-- input_img -->
+  <div
+    class="input_img_media row d-none justify-content-center p-2"
+    id="scren_input_file"
+  >
+    <button
+      type="button"
+      class="btn btn-sm border-0 d-flex justify-content-end fs-14"
+      onclick="input_file_media()"
+    >
+      <img src="/assets/icons/xmark-svgrepo-com.svg" alt="" class="size-24" />
+    </button>
+    <div class="col-5 text-center py-3">
+      <h5 class="mb-2">Thả các tệp tin để tải lên</h5>
+      <p class="mb-2">hoặc</p>
+      <button
+        type="button"
+        class="btn btn-sm btn-outline-primary fs-14 mb-2"
+        onclick="document.getElementById('input_img').click()"
+      >
+        Chọn tệp tin
+      </button>
+      <input
+        type="file"
+        class="d-none"
+        id="input_img"
+        accept="image/*"
+        onchange="upload_img_screen(event)"
+      />
+      <p>Kích thước tệp tin tải lên tối đa: 200MB</p>
+    </div>
+  </div>
+  <!-- menu -->
+  <div class="bg-white">
+    <div class="row border py-2 bg-white">
+      <div class="col-6 d-flex">
+        <button class="btn btn-sm px-1">
+          <img
+            src="/assets/icons/list-ul-alt-svgrepo-com.svg"
+            alt=""
+            class="size-24"
+          />
+        </button>
+        <button class="btn btn-sm px-1">
+          <img
+            src="/assets/icons/grid-4-svgrepo-com.svg"
+            alt=""
+            class="size-24"
+          />
+        </button>
+        <select name="" id="" class="border rounded fs-14 ms-2">
+          <option value="">Tất cả</option>
+          <option value="">HÌnh ảnh</option>
+          <option value="">file</option>
+          <option value="">cái gì thế này aaaaa</option>
+        </select>
+        <select name="" id="" class="border rounded fs-14 ms-2">
+          <option value="">Tất cả các ngày</option>
+          <option value="">HÌnh ảnh</option>
+          <option value="">file</option>
+        </select>
+        <button type="button" class="btn btn-sm btn-outline-primary ms-2">
+          Chọn nhiều
+        </button>
+      </div>
+      <div class="col-6 d-flex justify-content-end">
+        <label for="" class="mt-2">Tìm tệp media: </label>
+        <input type="text" class="border rounded ms-3 px-2" />
+      </div>
+    </div>
+  </div>
+  <!-- section img  -->
+  <div class="section_img_media">
+    <div id="img_load_screen" class="d-none">
+      <img src="" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+    <div>
+      <img src="/assets/images/logo-img.png" alt="" />
+    </div>
+  </div>
+</section>

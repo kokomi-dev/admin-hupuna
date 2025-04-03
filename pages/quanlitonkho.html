@@ -12,6 +12,7 @@
             <label for="searchInput">Tìm kiếm:</label>
             <input
               id="searchFilter"
+              id="searchInput"
               type="search"
               class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
               placeholder="Tìm kiếm..."
@@ -21,11 +22,13 @@
         <div class="col-12 col-sm-6 col-md-6 col-xl-3">
           <div class="d-grid gap-1 fs-14">
             <label for="">Ngày:</label>
+            <input id="dateFilter" type="date" class="form-control fs-14
+            input_outline fs-14 max-h-44 p-3" placeholder="Ngày" =======
+            <label for="">Từ ngày:</label>
             <input
-              id="dateFilter"
               type="date"
               class="form-control fs-14 input_outline fs-14 max-h-44 p-3"
-              placeholder="Ngày"
+              placeholder="Từ ngày"
             />
           </div>
         </div>
@@ -35,6 +38,7 @@
             <select
               name="statusFilter"
               id="statusFilter"
+              name="status"
               class="form-select input_outline fs-14 h-btn-i"
             >
               <option value="">Tất cả</option>
@@ -101,6 +105,3 @@
     </div>
   </div>
 </section>
-<script>
-  console.log(123);
-</script>

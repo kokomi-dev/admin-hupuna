@@ -38,16 +38,15 @@ select:focus {
     opacity: 0;
   }
 }
-// input
-.input_outline:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
 // BORDER
 .br-1-main {
   border: solid #e1e5eb;
 }
 // SIZE
+.size-16 {
+  width: 16px;
+  height: 16px;
+}
 .size-18 {
   width: 18px;
   height: 18px;
@@ -324,36 +323,7 @@ select:focus {
     cursor: pointer;
   }
 }
-.loading__content__page {
-  display: none;
-  visibility: hidden;
-  position: relative;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: red;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.loading__content__page.active {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* HTML: <div class="loader"></div> */
-.loader {
-  width: 50px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 8px solid;
-  border-color: #000 #0000;
-  animation: l1 1s infinite;
-}
+
 @keyframes l1 {
   to {
     transform: rotate(0.5turn);
@@ -363,23 +333,6 @@ select:focus {
 #content {
   min-height: 100vh;
   background-color: $bg-gray;
-}
-// hủy hover mặc định bootraps
-.btn__cancel__hover {
-  border: 0.5px solid transparent;
-  &:hover {
-    background-color: inherit !important;
-    color: inherit !important;
-    opacity: 0.9;
-    border: 0.5px solid #999;
-  }
-}
-.btn__cancel__hover.bg-blue {
-  &:hover {
-    color: white !important;
-    background-color: $bg-blue_main !important;
-    opacity: 0.9;
-  }
 }
 // end sidebar mobile
 .input__filter {
@@ -473,6 +426,30 @@ select:focus {
   min-height: $height__main;
   max-height: $height__main;
 }
+// size
+.btn.small {
+  width: max-content;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 13px;
+  min-height: 32px;
+  max-height: 32px;
+}
+// backgr
+.btn.btn__blue {
+  background-color: $blue_main;
+  color: white;
+  &:hover {
+    opacity: 0.92;
+  }
+}
+.btn.btn__link-red {
+  background-color: transparent;
+  color: $red_main;
+  text-decoration: underline;
+  border: none !important;
+  padding: 0;
+}
 // varirant
 .btn.btn-ol-primary {
   border: 0.5px solid $blue_main !important;
@@ -509,6 +486,7 @@ select:focus {
   font-size: 14px;
   font-weight: 400;
   width: max-content;
+  max-width: 100%;
   padding: 4px 8px;
   height: $height__main;
   border-radius: 4px;
@@ -520,6 +498,12 @@ select:focus {
   &:hover {
     cursor: pointer;
   }
+  option {
+    text-wrap: wrap;
+  }
+}
+.select__main.small {
+  height: 32px;
 }
 // input
 .input__main {
@@ -530,13 +514,21 @@ select:focus {
   font-size: 14px;
   border-radius: 4px;
 }
+.input__main.small {
+  height: 34px;
+  min-height: 34px;
+  font-size: 14px;
+}
 .input__main.outline-primary {
   border: 1px solid $blue_main !important;
 }
 .input__main.outline-dark {
   border: 0.5px solid $black-sub !important;
 }
-
+.input_outline:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 // CSS LAYOUT Bài viết , sản phẩm chung
 
 .display__custom__wrapper {
@@ -563,6 +555,7 @@ select:focus {
 .display__custom__wrapper:not(.active) {
   animation: collapseHeight 0.3s ease-in-out forwards;
 }
+// page edit
 // talbe css
 .list__item {
   .item__tr {
@@ -624,6 +617,194 @@ select:focus {
   background-color: $yellow_main;
   color: black;
 }
+// img_media
+.input_img_media {
+  border: 4px dashed rgb(188, 173, 173);
+}
+.section_img_media {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+.section_img_media > div {
+  margin: 5px;
+  border: 1px solid black;
+}
+// checkbox
+.checkbox__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 12px;
+  input,
+  label {
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+// accordtion down
+.open__down__content {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+.open__down__item.active .open__down__content {
+  opacity: 1;
+}
+.open__down__content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  display: none;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.open__down__item.active .open__down__content {
+  opacity: 1;
+  display: block;
+}
+// tab container
+.tabs-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+.tabs-list {
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid $bg-gray;
+}
+.tab-button {
+  padding: 4px 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 17.55px;
+  font-weight: 400;
+  color: $black-sub;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.tab-button:hover {
+  color: $blue_main;
+  background-color: #ecf3ff;
+}
+.tab-button.active {
+  color: $blue_main;
+  background-color: white;
+  border: 1px solid $border-1;
+  border-bottom: 0px solid transparent;
+}
+.tabs-content {
+  background-color: #fff;
+  border: 1px solid $border-1;
+}
+.tab-pane {
+  padding: 6px 4px;
+  display: none;
+  animation: fadeIn 0.3s ease forwards;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.tab-pane.active {
+  display: block;
+}
+// modal container
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-container {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50px);
+  transition: transform 0.4s;
+}
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+}
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s;
+}
+.modal-close:hover {
+  color: #333;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #e6e6e6;
+  text-align: right;
+}
+.modal-button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.modal-button-primary {
+  background-color: $blue_main;
+  color: white;
+}
+.modal-button-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.modal-button:hover {
+  opacity: 0.9;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.edit__component {
+  background-color: white;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .grid__common {

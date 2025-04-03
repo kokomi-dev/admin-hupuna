@@ -115,51 +115,6 @@ function handleLoadEditor() {
           input.click();
         }
       },
-      setup: function (editor) {
-        editor.ui.registry.addButton("insertImageWithLayout", {
-          icon: "gallery",
-          tooltip: "Chèn ảnh với bố cục",
-          onAction: function () {
-            editor.windowManager.open({
-              title: "Chọn bố cục ảnh",
-              body: {
-                type: "panel",
-                items: [
-                  {
-                    type: "selectbox",
-                    name: "layout",
-                    label: "Chọn kiểu sắp xếp",
-                    items: [
-                      { text: "Grid", value: "image-grid" },
-                      { text: "Masonry", value: "image-masonry" },
-                      { text: "Flexbox", value: "image-flex" },
-                    ],
-                  },
-                ],
-              },
-              buttons: [
-                {
-                  text: "Chèn ảnh",
-                  type: "submit",
-                },
-                {
-                  text: "Hủy",
-                  type: "cancel",
-                },
-              ],
-              onSubmit: function (dialog) {
-                let data = dialog.getData();
-                editor.insertContent(
-                  `<div class="${
-                    data.layout
-                  }">${editor.selection.getContent()}</div>`
-                );
-                dialog.close();
-              },
-            });
-          },
-        });
-      },
     });
   }
 }
@@ -194,72 +149,10 @@ function loadPageFollowPageName(pagename) {
       break;
     case "tatcasanpham":
       handleActionHeadPage();
-      handleActionItemTr();
-
+    case "chinhsua-sanpham":
+      handleLoadEditor();
     default:
       break;
-  }
-}
-// load page show content
-async function loadPage(pageName) {
-  try {
-    const contentDiv = document.getElementById("content");
-
-    const response = await fetch(`pages/${pageName}.html`);
-    if (!response.ok) {
-      throw new Error("Trang không tồn tại");
-    }
-    const content = await response.text();
-    contentDiv.innerHTML = content;
-    sessionStorage.setItem("currenPage", pageName);
-
-    if (pageName === "trangchu") {
-      handleLoadChartDashboard();
-    }
-    if (pageName === "sanpham") {
-      const btnCreateProduct = document.getElementById("btn__create__product");
-      if (btnCreateProduct) {
-        btnCreateProduct.addEventListener("click", () => {
-          loadPage("taosanpham");
-        });
-      }
-      handleResetFilter();
-      handleLoadEditor();
-      handleEventShowDetail();
-    }
-    if (pageName === "chitietsanpham") {
-      handleBackToListProduct();
-    }
-    if (pageName === "baiviet") {
-      const btnCreateBlog = document.getElementById("btn__create__product");
-      btnCreateBlog.addEventListener("click", () => {
-        loadPage("taobaiviet");
-      });
-      selectRowScreen();
-      pagination();
-    }
-    if (pageName === "taosanpham" || pageName === "taobaiviet") {
-      handleLoadEditor();
-    }
-    if (pageName === "taosanpham") {
-      handleBackToListProduct();
-    }
-    if (pageName === "quanlinhapkho") {
-      const btnCreateWareHouse = document.getElementById("create__warehouse");
-      if (btnCreateWareHouse) {
-        btnCreateWareHouse.addEventListener("click", () => {
-          loadPage("quanlinhapkho_taomoi");
-        });
-      }
-    }
-    loadPageFollowPageName(pageName);
-  } catch (error) {
-    document.getElementById("content").innerHTML = `
-           <div class="error">
-               <h2>Not Foud</h2>
-               <p>Hiện tại chưa có nội dung cho trang này ! </p>
-           </div>
-       `;
   }
 }
 // toogle active nav
@@ -325,25 +218,37 @@ function handleCloseAccordtion() {
 }
 //  check active menu sub
 function checkActiveMenuSub() {
-  const currentPage = sessionStorage.getItem("currenPage");
-  const menuItems = document.querySelectorAll("[data-page]");
-  let parentMenu = null;
-  menuItems.forEach((item) => {
-    if (item.getAttribute("data-page") === currentPage) {
-      parentMenu = item.closest(".accordion-collapse");
-    }
-  });
-  document
-    .querySelectorAll(".accordion-collapse")
-    .forEach((menu) => menu.classList.remove("show"));
-  if (parentMenu) {
-    parentMenu.classList.add("show");
-  }
+  // const containerAccordtion = document.querySelector(
+  //   "accordion-collapse collapse"
+  // );
+  // const itemContainerAccordtion = document.querySelectorAll(
+  //   ".accordion-collapse.collapse li a"
+  // );
+  // itemContainerAccordtion.forEach((item) => {
+  //   item.addEventListener("click", (event) => {
+  //     if (!containerAccordtion.contains(event.target)) {
+  //       if (containerAccordtion.classList.contains("show"))
+  //         containerAccordtion.classList.remove("show");
+  //       else return;
+  //     }
+  //   });
+  // });
 }
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
 
+  const containerAccordtion = document.querySelector(
+    ".accordion-collapse.collapse"
+  );
+  const items = document.querySelectorAll(".accordion-collapse.collapse li a");
+  items.forEach((item) => {
+    if (
+      item.classList.contains("active") &&
+      !containerAccordtion.classList.contains("show")
+    )
+      containerAccordtion.classList.add("show");
+  });
   checkToolgeActiveDefault();
   document
     .querySelector(".sidebar__menu")
@@ -389,11 +294,7 @@ function handleEventSidebar() {
     }
   });
 }
-// check handle load
-function handleCheckLoadPage() {
-  const currentPage = sessionStorage.getItem("currenPage");
-  currentPage ? loadPage(currentPage) : loadPage("trangchu");
-}
+
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
@@ -550,6 +451,7 @@ function checkAuthentication() {
     return;
   } else window.location.href = "login.html";
 }
+// render test table
 function renderTestTableTonKho() {
   const roles = sessionStorage.getItem("roles");
 
@@ -615,6 +517,257 @@ function renderTestTableTonKho() {
     .join("");
   wraperBody.innerHTML = html;
 }
+//button onclick screen input
+function input_file_media() {
+  let uploadBox = document.getElementById("scren_input_file");
+
+  if (uploadBox.classList.contains("d-none")) {
+    uploadBox.classList.remove("d-none"); // Hiển thị
+  } else {
+    uploadBox.classList.add("d-none"); // Ẩn đi
+  }
+}
+//upload img input
+function upload_img_screen(event) {
+  const file = event.target.files[0]; // Lấy tệp tin đã chọn
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
+      const imgElement = document.querySelector("#img_load_screen img");
+      imgElement.src = e.target.result; // Đặt nguồn ảnh cho phần tử img
+      document.getElementById("img_load_screen").classList.remove("d-none"); // Hiển thị phần tử chứa ảnh
+    };
+
+    reader.readAsDataURL(file); // Đọc tệp tin như một DataURL
+  } else {
+    alert("Không có tệp tin nào được chọn.");
+  }
+}
+// handle toogle open down menu
+function handleOpenDown() {
+  const toggleButtons = document.querySelectorAll(".open__down-toggle");
+  console.log(toggleButtons);
+  if (!toggleButtons.length) return;
+
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const menuItem = this.parentElement;
+      const dropdownContent = menuItem.querySelector(".open__down__content");
+      const isActive = menuItem.classList.contains("active");
+
+      document
+        .querySelectorAll(".open__down__item.active")
+        .forEach((activeItem) => {
+          if (activeItem !== menuItem) {
+            const activeContent = activeItem.querySelector(
+              ".open__down__content"
+            );
+
+            activeContent.style.maxHeight = "0";
+            activeContent.style.opacity = "0";
+            setTimeout(() => {
+              activeItem.classList.remove("active");
+              activeContent.style.display = "none";
+            }, 300);
+          }
+        });
+
+      if (!isActive) {
+        menuItem.classList.add("active");
+
+        dropdownContent.style.display = "block";
+        dropdownContent.style.maxHeight = "0";
+        dropdownContent.style.opacity = "0";
+
+        dropdownContent.offsetHeight;
+
+        dropdownContent.style.height = dropdownContent.scrollHeight + "px";
+        dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+
+        dropdownContent.style.opacity = "1";
+      } else {
+        dropdownContent.style.maxHeight = "0";
+        dropdownContent.style.opacity = "0";
+        setTimeout(() => {
+          menuItem.classList.remove("active");
+          dropdownContent.style.display = "none";
+        }, 300);
+      }
+    });
+  });
+}
+// handle tab list container
+function handleActiveOpenTab() {
+  const tabContainers = document.querySelectorAll(".tabs-container");
+
+  tabContainers.forEach((container) => {
+    const tabButtons = container.querySelectorAll(".tab-button");
+    const tabPanes = container.querySelectorAll(".tab-pane");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tabId = button.getAttribute("data-tab");
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        tabPanes.forEach((pane) => pane.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const targetPane = container.querySelector(`#${tabId}`);
+        if (targetPane) {
+          targetPane.classList.add("active");
+        }
+      });
+    });
+  });
+}
+// handle modal
+function initModals() {
+  // Thêm sự kiện cho các nút mở modal
+  document.querySelectorAll("[data-modal-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-modal-target");
+      openModal(modalId);
+    });
+  });
+
+  // Thêm sự kiện cho các nút đóng modal
+  document.querySelectorAll("[data-modal-close]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalId = button.getAttribute("data-modal-close");
+      closeModal(modalId);
+    });
+  });
+
+  // Đóng modal khi click vào overlay
+  document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+    overlay.addEventListener("click", function (e) {
+      // Chỉ đóng modal khi click vào overlay, không phải vào modal container
+      if (e.target === overlay) {
+        const modalId = overlay.getAttribute("id");
+        closeModal(modalId);
+      }
+    });
+  });
+
+  // Đóng modal khi nhấn phím ESC
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal-overlay.active").forEach((modal) => {
+        const modalId = modal.getAttribute("id");
+        closeModal(modalId);
+      });
+    }
+  });
+}
+// Hàm mở modal
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add("active");
+
+    // Ngăn scroll trang khi modal hiển thị
+    document.body.style.overflow = "hidden";
+  }
+}
+// Hàm đóng modal
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove("active");
+
+    // Cho phép scroll trang trở lại khi modal đóng
+    document.body.style.overflow = "";
+  }
+}
+// load hàm khi load xong content
+function loadFuntion() {
+  handleActionItemTr();
+  handleOpenDown();
+  handleActiveOpenTab();
+  initModals();
+}
+// load page show content
+async function loadPage(pageName) {
+  try {
+    const contentDiv = document.getElementById("content");
+
+    const response = await fetch(`pages/${pageName}.html`);
+    if (!response.ok) {
+      throw new Error("Trang không tồn tại");
+    }
+
+    const content = await response.text();
+
+    contentDiv.innerHTML = content;
+    sessionStorage.setItem("currenPage", pageName);
+
+    loadFuntion();
+    if (pageName === "trangchu") {
+      handleLoadChartDashboard();
+    }
+    if (pageName === "sanpham") {
+      const btnCreateProduct = document.getElementById("btn__create__product");
+      if (btnCreateProduct) {
+        btnCreateProduct.addEventListener("click", () => {
+          loadPage("taosanpham");
+        });
+      }
+      handleResetFilter();
+      handleLoadEditor();
+      handleEventShowDetail();
+    }
+    if (pageName === "chitietsanpham") {
+      handleBackToListProduct();
+    }
+    if (pageName === "baiviet") {
+      const btnCreateBlog = document.getElementById("btn__create__product");
+      btnCreateBlog.addEventListener("click", () => {
+        loadPage("taobaiviet");
+      });
+      selectRowScreen();
+      pagination();
+      handleLoadEditor();
+    }
+    if (pageName === "taosanpham" || pageName === "taobaiviet") {
+      handleLoadEditor();
+    }
+    if (pageName === "taosanpham") {
+      handleBackToListProduct();
+    }
+    if (pageName === "quanlinhapkho") {
+      const btnCreateWareHouse = document.getElementById("create__warehouse");
+      if (btnCreateWareHouse) {
+        btnCreateWareHouse.addEventListener("click", () => {
+          loadPage("quanlinhapkho_taomoi");
+        });
+      }
+    }
+    loadPageFollowPageName(pageName);
+    if (pageName === "quanlixuatkho") {
+      const btnCreateExport = document.getElementById("btn__create__product");
+      btnCreateExport.addEventListener("click", () => {
+        // loadPage("taophieuxuatkho");
+        loadPage("thuvienmedia");
+      });
+    }
+  } catch (error) {
+    document.getElementById("content").innerHTML = `
+           <div class="error">
+               <h2>Not Foud</h2>
+               <p>Hiện tại chưa có nội dung cho trang này ! </p>
+           </div>
+       `;
+  }
+}
+// check handle load
+function handleCheckLoadPage() {
+  const currentPage = sessionStorage.getItem("currenPage");
+  currentPage ? loadPage(currentPage) : loadPage("trangchu");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   infoAccount();
@@ -624,6 +777,3 @@ document.addEventListener("DOMContentLoaded", () => {
   handleEventNav();
   handleLogout();
 });
-
-// global
-window.loadPage = loadPage;
