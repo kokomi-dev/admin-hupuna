@@ -73,6 +73,10 @@ select:focus {
 .h-btn-i {
   height: 36px;
 }
+// line height
+.lh-18 {
+  line-height: 18px;
+}
 
 /* FONT SIZE */
 .fs-12 {
@@ -122,6 +126,9 @@ select:focus {
 .bg-blue {
   background-color: $bg-blue_main;
 }
+.bg-black-sub {
+  background-color: $black-sub;
+}
 // curosr
 .cursor-pointer {
   cursor: pointer;
@@ -148,7 +155,7 @@ select:focus {
 //
 .grid__common {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 17% 83%;
 }
 
 // sidebar
@@ -365,7 +372,7 @@ select:focus {
       cursor: pointer;
     }
     td {
-      vertical-align: text-top;
+      vertical-align: top;
     }
   }
 }
@@ -450,6 +457,13 @@ select:focus {
   border: none !important;
   padding: 0;
 }
+.btn.btn__link-blue {
+  background-color: transparent;
+  color: $blue_main;
+  text-decoration: underline;
+  border: none !important;
+  padding: 0;
+}
 // varirant
 .btn.btn-ol-primary {
   border: 0.5px solid $blue_main !important;
@@ -481,6 +495,17 @@ select:focus {
 .btn-lg {
   --bs-btn-padding-y: 0.3rem !important;
 }
+.redirect__btn {
+  user-select: none;
+  font-size: 13px;
+  transition: all 0.1s ease-in;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: $blue_main;
+    opacity: 0.95;
+  }
+}
 // select
 .select__main {
   font-size: 14px;
@@ -504,6 +529,7 @@ select:focus {
 }
 .select__main.small {
   height: 32px;
+  font-size: 13px;
 }
 // input
 .input__main {
@@ -513,6 +539,7 @@ select:focus {
   min-height: $height__main;
   font-size: 14px;
   border-radius: 4px;
+  border: 1px solid $border-1;
 }
 .input__main.small {
   height: 34px;
@@ -578,20 +605,13 @@ select:focus {
         color: $black-sub;
         font-weight: 400;
         visibility: hidden;
-        & span:nth-child(1) {
-          color: #999;
-        }
-        & span:nth-child(2),
-        span:nth-child(3),
-        span:nth-child(5),
-        span:nth-child(6) {
-          color: $blue_main;
-        }
-        & span:nth-child(4) {
-          color: rgb(239, 55, 55);
+        .delete {
+          color: $red_main;
         }
       }
     }
+    .col_admin,
+    .col_directory,
     .col__category,
     .col__brand {
       color: $blue_main;
@@ -708,6 +728,9 @@ select:focus {
   max-height: 200px;
   overflow-y: auto;
 }
+.tab-pane.max-h {
+  max-height: max-content;
+}
 .tab-pane.active {
   display: block;
 }
@@ -804,7 +827,10 @@ select:focus {
 .edit__component {
   background-color: white;
 }
-
+.divider {
+  border-top: 1px solid #dee2e6;
+  margin: 1.5rem 0;
+}
 /* css dropdown */
 .dropdown {
   position: relative;
@@ -830,18 +856,22 @@ select:focus {
     border-radius: 5px;
     z-index: 10;
     list-style: none;
-    padding: 10px;
+    padding: 16px 14px;
     margin: 5px 0;
     div {
       display: flex;
       justify-content: space-between;
-      font-size: 16px;
+      font-size: 15px;
       margin-top: 20px;
+      margin-bottom: 20px;
       button {
         background: white;
         color: $blue_main;
         border: none;
         padding: 0;
+      }
+      button:last-child {
+        font-size: 12px;
       }
     }
 
@@ -884,11 +914,48 @@ select:focus {
 .dropdown-menu.show {
   display: block;
 }
-
+// sửa nhanh
+.quick-edit-link {
+  color: #2196f3;
+  cursor: pointer;
+}
+.quick-edit-link:hover {
+  text-decoration: underline;
+}
+.active-row {
+  background-color: #f5f5f5;
+}
+#quick__edit {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+#quick__edit div {
+  background-color: white;
+  padding: 15px;
+}
+#close-quick-edit {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+.active-row {
+  background-color: #f5f5f5;
+}
+// hover item
+.hover__wrapper {
+  user-select: none;
+}
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .grid__common {
-    grid-template-columns: 24% 76%;
+    grid-template-columns: 22% 78%;
   }
 }
 @media (max-width: 992px) {
@@ -896,7 +963,7 @@ select:focus {
     width: 80vw !important;
   }
   .grid__common {
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 23% 77%;
   }
 }
 @media (max-width: 768px) {

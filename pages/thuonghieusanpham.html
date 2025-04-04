@@ -1,0 +1,121 @@
+<section class="d-grid gap-3">
+  <div class="fs-6 fw-semibold">Thương hiệu</div>
+  <div class="row">
+    <div class="col-4">
+      <div class="d-grid gap-2">
+        <p class="fs-13 text-black-sub">
+          Thương hiệu được thêm vào và quản lý từ màn hình này. Bạn có thể tùy
+          chọn tải lên hình ảnh thương hiệu để hiển thị trong các tiện ích
+          thương hiệu và trên kho lưu trữ thương hiệu
+        </p>
+        <div class="fs-14 fw-semibold">Thêm thương hiệu mới</div>
+        <div class="d-grid gap-1">
+          <label class="fs-13">Tên</label>
+          <input class="input__main w-100" />
+          <span class="fs-12 text-black-sub"
+            >Tên là cách nó xuất hiện trên trang web của bạn.</span
+          >
+        </div>
+        <div class="d-grid gap-1">
+          <label class="fs-13">Đường dẫn</label>
+          <input class="input__main w-100" />
+          <span class="fs-12 text-black-sub"
+            >“slug” là đường dẫn thân thiện của tên. Nó thường chỉ bao gồm kí tự
+            viết thường, số và dấu gạch ngang, không dùng tiếng Việt.</span
+          >
+        </div>
+        <div class="d-grid gap-1">
+          <label class="fs-13">Thương hiệu mẹ</label>
+          <select class="select__main small">
+            <option>Không có</option>
+            <option>Adidas</option>
+            <option>Mlb</option>
+            <option>Nike</option>
+          </select>
+          <span class="fs-12 text-black-sub"
+            >Chỉ định một danh mục cha để tạo đa cấp. Chẳng hạn, chuyên mục nhạc
+            sẽ là danh mục cha của Hiphop và Jazz.</span
+          >
+        </div>
+        <div class="d-grid gap-1">
+          <label class="fs-13">Mô tả</label>
+          <textarea class="input__main w-100" rows="5"></textarea>
+          <span class="fs-12 text-black-sub"
+            >Thông thường mô tả này không được sử dụng trong các giao diện, tuy
+            nhiên có vài giao diện có thể hiển thị mô tả này.</span
+          >
+        </div>
+        <button class="btn btn__blue">Thêm thẻ mới</button>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="table-responsive bg-white br-1-main border">
+        <!-- bảng danh sách sản phẩm-->
+        <table class="table table__main mb-0 fs-14">
+          <thead>
+            <tr>
+              <th class="position-relative">
+                <input
+                  type="checkbox"
+                  class="size-20 position-absolute top-50 start-50 translate-middle"
+                />
+              </th>
+              <th>Ảnh</th>
+              <th>Tên</th>
+              <th>Mô tả</th>
+              <th>Đường dẫn</th>
+              <th>Lượt</th>
+            </tr>
+          </thead>
+          <tbody class="list__item">
+            <!-- item -->
+            <tr class="item__tr">
+              <td style="vertical-align: top" class="text-center">
+                <input type="checkbox" class="size-20" />
+              </td>
+              <td>
+                <img
+                  style="width: 60px; height: 60px"
+                  src="https://inanmienbac.com/upload/2-24/mau-tui-giay-in-logo-mlb.jpg"
+                />
+              </td>
+              <td class="col__name">
+                <span class="item__title">MLB</span>
+                <div
+                  class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12"
+                >
+                  <span
+                    data-redirect-url="chinhsua-danhmucsanpham"
+                    class="redirect__btn text-black-main"
+                    >Chỉnh sửa</span
+                  >
+                  |<span class="quick__fix">Sửa nhanh</span> |
+                  <span>Xem</span> | <span class="delete">Xóa</span>
+                </div>
+              </td>
+              <td>-</td>
+              <td>adidas</td>
+              <td>11</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="quick__edit" style="display: none">
+        <div class="w-100 d-grid gap-2 fs-14">
+          <div class="row p-0 m-0">
+            <div class="col-3 py-0">Tên</div>
+            <div class="col-9 py-0"><input class="input__main w-100" /></div>
+          </div>
+          <div class="row p-0 m-0">
+            <div class="col-3 py-0">Đường dẫn</div>
+            <div class="col-9 py-0"><input class="input__main w-100" /></div>
+          </div>
+          <div class="d-flex align-items-center justify-content-start gap-2">
+            <button class="btn btn__blue">Cập nhật danh mục</button>
+            <button class="btn btn__red" id="close-quick-edit">Hủy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
