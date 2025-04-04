@@ -1176,11 +1176,11 @@ select:focus {
   max-height: 32px;
 }
 
-.btn.btn__blue {
+.btn .btn.btn__blue {
   background-color: #0e6efd;
   color: white;
 }
-.btn.btn__blue:hover {
+.btn .btn.btn__blue:hover {
   opacity: 0.92;
 }
 
