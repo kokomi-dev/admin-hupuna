@@ -749,6 +749,10 @@ async function loadPage(pageName) {
     }
 
     if (pageName === "baiviet") {
+      const btnCreateBlog = document.getElementById("btn__edit__blog");
+      btnCreateBlog.addEventListener("click", () => {
+        loadPage("chinhsua-baiviet");
+      });
       selectRowScreen();
       pagination();
       // handleLoadEditor();
