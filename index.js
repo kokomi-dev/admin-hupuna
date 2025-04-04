@@ -33,22 +33,6 @@ function handleLoadChartDashboard() {
     console.error("lỗi");
   }
 }
-// handle event view detail
-function handleEventShowDetail() {
-  document.querySelectorAll(".product__view__detail").forEach((item) => {
-    item.addEventListener("click", () => {
-      loadPage("chitietsanpham");
-    });
-  });
-}
-// handle action back to list prodcut
-function handleBackToListProduct() {
-  document
-    .getElementById("btn__back__listproduct")
-    .addEventListener("click", () => {
-      loadPage("sanpham");
-    });
-}
 // handle load editor
 function handleLoadEditor() {
   const editorId = "myEditor";
@@ -131,11 +115,6 @@ function handleResetFilter() {
 // check load page theo pagename
 function loadPageFollowPageName(pagename) {
   switch (pagename) {
-    case "quanlinhapkho_taomoi":
-      document
-        .getElementById("btn__back__warehouse")
-        .addEventListener("click", () => loadPage("quanlinhapkho"));
-      break;
     case "quanlitonkho":
       const roles = sessionStorage.getItem("roles");
       if (roles) {
@@ -195,7 +174,6 @@ function handleCloseAccordtion() {
   const itemContainerAccordtion = document.querySelectorAll(
     ".sidebar__menu ul li a"
   );
-
   const containerAccordtion2 = document.querySelector(
     ".accordion-collapse.collapse.ul__2"
   );
@@ -218,37 +196,29 @@ function handleCloseAccordtion() {
 }
 //  check active menu sub
 function checkActiveMenuSub() {
-  // const containerAccordtion = document.querySelector(
-  //   "accordion-collapse collapse"
-  // );
-  // const itemContainerAccordtion = document.querySelectorAll(
-  //   ".accordion-collapse.collapse li a"
-  // );
-  // itemContainerAccordtion.forEach((item) => {
-  //   item.addEventListener("click", (event) => {
-  //     if (!containerAccordtion.contains(event.target)) {
-  //       if (containerAccordtion.classList.contains("show"))
-  //         containerAccordtion.classList.remove("show");
-  //       else return;
-  //     }
-  //   });
-  // });
+  const currenPage = sessionStorage.getItem("currenPage");
+  const containerAccordtion = document.querySelector(
+    ".accordion-collapse.collapse"
+  );
+  const containerAccordtion2 = document.querySelector(
+    ".accordion-collapse.collapse ul__2"
+  );
+  const itemContainerAccordtion = document.querySelectorAll(
+    ".accordion-collapse.collapse li a"
+  );
+  const activeItems = document.querySelectorAll(
+    ".accordion-collapse li a.active"
+  );
+  itemContainerAccordtion.forEach((item) => {
+    if (item.getAttribute("data-page") === currenPage) {
+      let parentAccordion = item.closest(".accordion-collapse");
+      return parentAccordion.classList.add("show");
+    } else return;
+  });
 }
 // handle event change page pc
 function handleEventNav() {
   const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-
-  const containerAccordtion = document.querySelector(
-    ".accordion-collapse.collapse"
-  );
-  const items = document.querySelectorAll(".accordion-collapse.collapse li a");
-  items.forEach((item) => {
-    if (
-      item.classList.contains("active") &&
-      !containerAccordtion.classList.contains("show")
-    )
-      containerAccordtion.classList.add("show");
-  });
   checkToolgeActiveDefault();
   document
     .querySelector(".sidebar__menu")
@@ -416,7 +386,6 @@ function handleActionHeadPage() {
     wrapperCustomDisplay.classList.toggle("active");
   });
 }
-
 // action page table
 function handleActionItemTr() {
   const btnToEdit = document.querySelectorAll(".redirect__edit.product");
@@ -425,31 +394,6 @@ function handleActionItemTr() {
       loadPage("chinhsua-sanpham");
     })
   );
-}
-
-// handle logout
-function handleLogout() {
-  document.getElementById("btn__logout").addEventListener("click", () => {
-    sessionStorage.removeItem("name");
-    sessionStorage.removeItem("roles");
-    window.location.href = "login.html";
-  });
-}
-// load info acconut
-function infoAccount() {
-  if (sessionStorage.getItem("name")) {
-    document.getElementById("info__user__name").innerHTML =
-      sessionStorage.getItem("name");
-    document.getElementById("info__user__roles").innerHTML =
-      sessionStorage.getItem("roles");
-  }
-}
-// check roles
-function checkAuthentication() {
-  const roles = sessionStorage.getItem("roles");
-  if (roles) {
-    return;
-  } else window.location.href = "login.html";
 }
 // render test table
 function renderTestTableTonKho() {
@@ -548,7 +492,6 @@ function upload_img_screen(event) {
 // handle toogle open down menu
 function handleOpenDown() {
   const toggleButtons = document.querySelectorAll(".open__down-toggle");
-  console.log(toggleButtons);
   if (!toggleButtons.length) return;
 
   toggleButtons.forEach((button) => {
@@ -682,12 +625,104 @@ function closeModal(modalId) {
     document.body.style.overflow = "";
   }
 }
-// load hàm khi load xong content
+// handle event click rederict url page
+function handleClickRedirectUrlPage() {
+  const redirectButtons = document.querySelectorAll(".redirect__btn");
+
+  redirectButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const redirectUrl = this.getAttribute("data-redirect-url");
+      if (redirectUrl) {
+        loadPage(redirectUrl);
+      }
+    });
+  });
+}
+// hnndle sủa nhanh các bảng
+function handleEventQuickFix() {
+  const quickEditLinks = document.querySelectorAll(
+    ".hover__wrapper .quick__fix"
+  );
+  if (quickEditLinks) {
+    quickEditLinks.forEach((link) => {
+      link.classList.add("quick-edit-link");
+      link.style.cursor = "pointer";
+    });
+
+    const quickEditPanel = document.getElementById("quick__edit");
+    let activeRow = null;
+    document.addEventListener("click", function (event) {
+      if (event.target.classList.contains("quick-edit-link")) {
+        event.preventDefault();
+        const clickedRow = event.target.closest(".item__tr");
+        if (activeRow === clickedRow) {
+          if (quickEditPanel.style.display === "block") {
+            quickEditPanel.style.display = "none";
+            clickedRow.classList.remove("active-row");
+            activeRow = null;
+          } else {
+            positionPanel(clickedRow);
+          }
+        } else {
+          if (activeRow) {
+            activeRow.classList.remove("active-row");
+          }
+          activeRow = clickedRow;
+          activeRow.classList.add("active-row");
+          positionPanel(clickedRow);
+        }
+      }
+    });
+    function positionPanel(row) {
+      const rowRect = row.getBoundingClientRect();
+      const tableRect = row.closest("table").getBoundingClientRect();
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      quickEditPanel.style.display = "block";
+      quickEditPanel.style.position = "absolute";
+      quickEditPanel.style.top = rowRect.bottom + scrollTop + "px";
+      quickEditPanel.style.left = tableRect.left + "px";
+      quickEditPanel.style.width = tableRect.width + "px";
+      quickEditPanel.style.zIndex = "1000";
+    }
+
+    const closeButton = document.getElementById("close-quick-edit");
+    if (closeButton) {
+      closeButton.addEventListener("click", function () {
+        quickEditPanel.style.display = "none";
+
+        if (activeRow) {
+          activeRow.classList.remove("active-row");
+          activeRow = null;
+        }
+      });
+    }
+
+    document.addEventListener("click", function (event) {
+      if (
+        !event.target.closest("#quick__edit") &&
+        !event.target.classList.contains("quick-edit-link")
+      ) {
+        quickEditPanel.style.display = "none";
+
+        if (activeRow) {
+          activeRow.classList.remove("active-row");
+          activeRow = null;
+        }
+      }
+    });
+  } else return;
+}
 function loadFuntion() {
+  const currentPage = sessionStorage.getItem("currenPage");
   handleActionItemTr();
   handleOpenDown();
   handleActiveOpenTab();
   initModals();
+  handleLoadEditor();
+  handleClickRedirectUrlPage();
+  handleEventQuickFix();
 }
 // load page show content
 async function loadPage(pageName) {
@@ -709,50 +744,19 @@ async function loadPage(pageName) {
       handleLoadChartDashboard();
     }
     if (pageName === "sanpham") {
-      const btnCreateProduct = document.getElementById("btn__create__product");
-      if (btnCreateProduct) {
-        btnCreateProduct.addEventListener("click", () => {
-          loadPage("taosanpham");
-        });
-      }
       handleResetFilter();
-      handleLoadEditor();
-      handleEventShowDetail();
+      // handleLoadEditor();
     }
-    if (pageName === "chitietsanpham") {
-      handleBackToListProduct();
-    }
+
     if (pageName === "baiviet") {
-      const btnCreateBlog = document.getElementById("btn__create__product");
-      btnCreateBlog.addEventListener("click", () => {
-        loadPage("taobaiviet");
-      });
       selectRowScreen();
       pagination();
-      handleLoadEditor();
+      // handleLoadEditor();
     }
     if (pageName === "taosanpham" || pageName === "taobaiviet") {
-      handleLoadEditor();
-    }
-    if (pageName === "taosanpham") {
-      handleBackToListProduct();
-    }
-    if (pageName === "quanlinhapkho") {
-      const btnCreateWareHouse = document.getElementById("create__warehouse");
-      if (btnCreateWareHouse) {
-        btnCreateWareHouse.addEventListener("click", () => {
-          loadPage("quanlinhapkho_taomoi");
-        });
-      }
+      // handleLoadEditor();
     }
     loadPageFollowPageName(pageName);
-    if (pageName === "quanlixuatkho") {
-      const btnCreateExport = document.getElementById("btn__create__product");
-      btnCreateExport.addEventListener("click", () => {
-        // loadPage("taophieuxuatkho");
-        loadPage("thuvienmedia");
-      });
-    }
   } catch (error) {
     document.getElementById("content").innerHTML = `
            <div class="error">
@@ -767,10 +771,10 @@ function handleCheckLoadPage() {
   const currentPage = sessionStorage.getItem("currenPage");
   currentPage ? loadPage(currentPage) : loadPage("trangchu");
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   checkAuthentication();
   infoAccount();
+  handleCloseAccordtion();
   checkActiveMenuSub();
   handleCheckLoadPage();
   handleEventSidebar();
