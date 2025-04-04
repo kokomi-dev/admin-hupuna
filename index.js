@@ -688,6 +688,7 @@ function loadFuntion() {
   handleOpenDown();
   handleActiveOpenTab();
   initModals();
+  handleLoadEditor();
 }
 // load page show content
 async function loadPage(pageName) {
@@ -723,9 +724,9 @@ async function loadPage(pageName) {
       handleBackToListProduct();
     }
     if (pageName === "baiviet") {
-      const btnCreateBlog = document.getElementById("btn__create__product");
+      const btnCreateBlog = document.getElementById("btn__edit__blog");
       btnCreateBlog.addEventListener("click", () => {
-        loadPage("taobaiviet");
+        loadPage("chinhsua-baiviet")
       });
       selectRowScreen();
       pagination();
