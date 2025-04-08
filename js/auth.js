@@ -4,13 +4,16 @@ const listAuth = [
   { name: "sales", password: "1234", roles: "sales" },
 ];
 // handle logout
-function handleLogout() {
-  document.getElementById("btn__logout").addEventListener("click", () => {
-    sessionStorage.removeItem("name");
-    sessionStorage.removeItem("roles");
-    window.location.href = "login.html";
-  });
-}
+// function handleLogout() {
+//   const btnLogout = document.getElementById("btn__logout");
+//   if (btnLogout) {
+//     btnLogout.addEventListener("click", () => {
+//       sessionStorage.removeItem("name");
+//       sessionStorage.removeItem("roles");
+//       window.location.href = "login.html";
+//     });
+//   }
+// }
 // load info acconut
 function infoAccount() {
   if (sessionStorage.getItem("name")) {
@@ -25,7 +28,8 @@ function checkAuthentication() {
   const roles = sessionStorage.getItem("roles");
   if (roles) {
     return;
-  } else window.location.href = "login.html";
+  }
+  // window.location.href = "login.html";
 }
 document.addEventListener("DOMContentLoaded", () => {
   // login
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  handleLogout();
+  // handleLogout();
   infoAccount();
   checkAuthentication();
 });

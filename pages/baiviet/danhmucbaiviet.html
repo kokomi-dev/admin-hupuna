@@ -1,0 +1,260 @@
+<section class="d-grid gap-3 gap-lg-4">
+    <!-- tiêu đề -->
+    <h1 class="fs-5 fw-semibold">Danh mục bài viết</h1>
+    <!-- tìm kiếm -->
+    <div class="d-flex align-items-center justify-content-end">
+        <div class="d-flex align-items-center justify-content-end gap-2">
+            <input class="input__main br-1-main" />
+            <button class="fs-13 btn btn-ol-primary">Tìm kiếm danh mục</button>
+        </div>
+    </div>
+    <!-- bảng và thêm mới -->
+    <div class="row g-3">
+        <!-- thêm mới -->
+        <div class="col-12 col-md-4">
+            <form class="d-grid gap-3">
+            <p class="fs-13 text-black-sub">
+                Danh mục sản phẩm cho cửa hàng của bạn được quản lý ở đây. Để thay đổi
+                thứ tự danh mục hiển thị trên trang web, bạn có thể kéo thả chúng để
+                sắp xếp. Để xem chi tiết các danh mục, nhấp vào liên kết "Tùy chọn màn
+                hình" ở trên cùng của trang.
+            </p>
+            <div class="fs-14 fw-semibold">Thêm danh mục mới</div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Tên</label>
+                <input class="input__main w-100" />
+                <span class="fs-12 text-black-sub">Tên là cách nó xuất hiện trên trang web của bạn.</span>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Đường dẫn</label>
+                <input class="input__main w-100" />
+                <span class="fs-12 text-black-sub">
+                    “slug” là đường dẫn thân thiện của tên. Nó thường chỉ bao gồm kí tự viết thường, số và dấu gạch ngang, không dùng tiếng Việt.
+                </span>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Danh mục cha</label>
+                <select class="select__main small fs-13 w-100">
+                    <option>Không có</option>
+                    <option>Băng dính</option>
+                    <option>Category</option>
+                    <option>Hộp Carton</option>
+                    <option>Hộp Carton nắp đối</option>
+                    <option>Hộp Carton nắp gài</option>
+                    <option>Hộp Carton chuyển nhà</option>
+                    <option>Hộp inoffset</option>
+                    <option>Túi giấy</option>
+                </select>
+                <span class="fs-12 text-black-sub">
+                    Chỉ định một danh mục cha để tạo đa cấp. Chẳng hạn, chuyên mục nhạc sẽ là danh mục cha của Hiphop và Jazz..
+                </span>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Mô tả</label>
+                <textarea class="input__main w-100" rows="5"></textarea>
+                <span class="fs-12 text-black-sub">
+                    Thông thường mô tả này không được sử dụng trong các giao diện, tuy nhiên có vài giao diện có thể hiển thị mô tả này.
+                </span>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Chọn thuộc tính</label>
+                <select class="select__main small fs-13 w-100">
+                    <option>Không có</option>
+                    <option>Kích thước</option>
+                    <option>Màu sắc</option>
+                    <option>Số lượng</option>
+                </select>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Chọn số lượng</label>
+                <select class="select__main small fs-13 w-100">
+                    <option>Adidas</option>
+                    <option>MLB</option>
+                    <option>Nike</option>
+                </select>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Kiểu hiển thị</label>
+                <select class="select__main small fs-13 w-100">
+                    <option>Mặc định</option>
+                    <option>Sản phẩm</option>
+                    <option>Danh mục con</option>
+                    <option>Cả hai</option>
+                </select>
+            </div>
+            <div class="d-grid gap-1">
+                <label class="fs-13">Hình thu nhỏ</label>
+            </div>
+            <button class="btn small btn-ol-primary mt-4">Thêm danh mục mới</button>
+            </form>
+        </div>
+        <!-- danh sách -->
+        <div class="col-12 col-md-8">
+            <div class="w-100 d-grid gap-3">
+            <!-- action & phân trang -->
+            <div class="w-100 d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <!-- action -->
+                <div class="d-flex align-items-center justify-content-start gap-2">
+                <select class="select__main small">
+                    <option>Hành động hàng loạt</option>
+                    <option>Xóa</option>
+                </select>
+                <button class="btn btn-ol-primary">Áp dụng</button>
+                </div>
+                <!-- phân trang -->
+                <div aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end fs-14">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><<</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item">
+                            <a class="page-link text-black-sub" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-black-sub" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">>></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="table-responsive bg-white br-1-main border">
+                <!-- bảng danh sách sản phẩm-->
+                <table class="table table__main mb-0 fs-14">
+                    <thead>
+                        <tr>
+                        <th class="position-relative">
+                            <input type="checkbox" class="size-20 position-absolute top-50 start-50 translate-middle"/>
+                        </th>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Đường dẫn</th>
+                        <th>Lượt</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list__item">
+                        <!-- item -->
+                        <tr class="item__tr">
+                        <td style="vertical-align: top" class="text-center">
+                            <input type="checkbox" class="size-20" />
+                        </td>
+                        <td>1</td>
+                        <td class="col__name">
+                            <span class="item__title">category</span>
+                            <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
+                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main" >Chỉnh sửa</span>
+                                |<span class="quick__fix">Sửa nhanh</span> |
+                                <span>Xem</span> |<span>Đặt làm mặc định</span>
+                            </div>  
+                        </td>
+                        <td>DM001</td>
+                        <td>category</td>
+                        <td>5</td>
+                        </tr>
+        
+                        <tr class="item__tr">
+                        <td style="vertical-align: top" class="text-center">
+                            <input type="checkbox" class="size-20" />
+                        </td>
+                        <td>2</td>
+                        <td class="col__name">
+                            <span class="item__title">Hộp carton</span>
+                            <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
+                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">
+                                    Chỉnh sửa
+                                </span>
+                                |<span class="quick__fix">Sửa nhanh</span> |
+                                <span>Xem</span> |<span>Đặt làm mặc định</span>
+                            </div>
+                        </td>
+                        <td>DM001</td>
+                        <td>category</td>
+                        <td>5</td>
+                        </tr>
+                        <tr class="item__tr">
+                        <td style="vertical-align: top" class="text-center">
+                            <input type="checkbox" class="size-20" />
+                        </td>
+                        <td>3</td>
+                        <td class="col__name">
+                            <span class="item__title">Băng dính</span>
+                            <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12" >
+                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">Chỉnh sửa</span>
+                                |<span class="quick__fix">Sửa nhanh</span> |
+                                <span>Xem</span> |<span>Đặt làm mặc định</span>
+                            </div>
+                        </td>
+                        <td>DM001</td>
+                        <td>category</td>
+                        <td>5</td>
+                        </tr>
+                        <tr class="item__tr">
+                        <td style="vertical-align: top" class="text-center">
+                            <input type="checkbox" class="size-20" />
+                        </td>
+                        <td>4</td>
+                        <td class="col__name">
+                            <span class="item__title">Hộp Carton nắp đối</span>
+                            <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
+                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main" >Chỉnh sửa</span>
+                                |<span class="quick__fix">Sửa nhanh</span> |
+                                <span>Xem</span> |<span>Đặt làm mặc định</span>
+                            </div>
+                        </td>
+                        <td>DM001</td>
+                        <td>category</td>
+                        <td>5</td>
+                        </tr>
+                        <tr class="item__tr">
+                        <td style="vertical-align: top" class="text-center">
+                            <input type="checkbox" class="size-20" />
+                        </td>
+                        <td>5</td>
+                        <td class="col__name">
+                            <span class="item__title">Hộp Carton chuyển nhà</span>
+                            <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
+                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">Chỉnh sửa</span>
+                                |<span class="quick__fix">Sửa nhanh</span> |
+                                <span>Xem</span> |<span>Đặt làm mặc định</span>
+                            </div>
+                        </td>
+                        <td>DM001</td>
+                        <td>category</td>
+                        <td>5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="quick__edit" style="display: none">
+                <div class="w-100 d-grid gap-2 fs-14">
+                <div class="row p-0 m-0">
+                    <div class="col-3 py-0">Tên</div>
+                    <div class="col-9 py-0"><input class="input__main w-100" /></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3 py-0">Đường dẫn</div>
+                    <div class="col-9 py-0"><input class="input__main w-100" /></div>
+                </div>
+                <div class="d-flex align-items-center justify-content-start gap-2">
+                    <button class="btn btn__blue">Cập nhật danh mục</button>
+                    <button class="btn btn__red" id="close-quick-edit">Hủy</button>
+                </div>
+                </div>
+            </div>
+            <div class="fs-12 text-black-sub">
+                <span class="fw-semibold">Lưu ý:</span> Xoá danh mục không xoá các sản
+                phẩm trong danh mục. Thay vào đó, các sản phẩm sẽ được chuyển sang
+                danh mục mặc định category.
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+  

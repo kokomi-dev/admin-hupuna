@@ -1,10 +1,6 @@
 <section class="d-grid gap-3">
     <div class="d-flex align-items-center justify-content-start gap-2">
-        <span class="fs-4">Sửa bài viết</span>
-        <button class="btn btn-ol-primary">Thêm bài viết</button>
-    </div>
-    <div class="border bg-white sh fs-14 py-2 ps-3">
-        <p>Có bản lưu tự động của bài viết này mới hơn phiên bản dưới đây. <a href="">Xem bản lưu tự động</a></p>
+        <span class="fs-4">Thêm bài viết</span> 
     </div>
     <div class="row g-3">
         <!-- left -->
@@ -15,123 +11,31 @@
 
                 <!-- edit title -->
                 <div class="edit__title">
-                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" />
+                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" type="text" placeholder="Nhập tiêu đề bài viết" />
                 </div>
 
-                <!-- edit link -->
-                <div class="d-flex align-items-center fs-14">
-                    <span class="me-2">Đường dẫn cố định: </span>
-                    <a href="">Đây là link đường dẫn cố định của bài viết</a>
-                    <button class="btn small btn-ol-primary ms-1">Chỉnh sửa</button>
-                </div>
-
-                
                 <!-- edit des -->
-                <div class="bg-white edit__component d-grid gap-2">
+                <div class="bg-white edit__component border d-grid gap-2">
                     <div class="p-2 h-auto d-grid gap-2">
-                        <button class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2">
+                        <button class="fs-12 text-blue-main btn small btn-ol-primary d-flex align-items-center justify-content-center gap-2">
                             <img src="../assets/icons/screen-play.svg" class="size-16 fill__blue"/>
                             Thêm Media
                         </button>
                         <textarea id="myEditor" name="productDescription" class="fs-14 fw-normal h-100 rounded-0" ></textarea>
                     </div>
+                    <div class="bg-light d-flex justify-content-between align-items-center border px-2 py-1 fs-12 ">
+                        <div>Số từ : <span id="wordCount">0</span></div>
+                        <div>Chỉnh sửa lần cuối bởi admin <span id="lastEditTime">ngày 01 tháng 01, 2025 lúc 5:00</span></div>
+                    </div>
                 </div>
 
-                <!-- edit dữ liệu sản phẩm -->
-                <div class="bg-white edit__component d-grid gap-2">
-                    <div class="edit__component__head border-bottom br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        <span>Dữ liệu sản phẩm - </span>
-                        <select name="select" class="select__main small">
-                            <option value="">Sản phẩm đơn giản</option>
-                            <option value="">Sản phẩm bên ngoài - liên kết</option>
-                            <option value="">Sản phẩm có biến thể</option>
-                            <option value="">Sản phẩm nhóm</option>
-                        </select>
-                        <span>|</span>
-                        <div class="checkbox__item">
-                            <input id="id1" type="checkbox" />
-                            <label for="id1">Sản phẩm ảo</label>
-                        </div>
-                        <div class="checkbox__item">
-                            <input id="id2" type="checkbox" />
-                            <label for="id2">Có thể tải xuống</label>
-                        </div>
-                    </div>
-
-                    <!-- body -->
-                    <div class="tabs-container d-flex align-items-start justify-content-start" data-tabs="tab__category__product">
-                        <div class="tabs-list w-full flex-column align-items-start">
-                            <button class="tab-button p-2 w-full active fs-12" data-tab="data_product_1">
-                                Tổng quan
-                            </button>
-                            <button class="tab-button p-2 w-full fs-12" data-tab="data_product_2">
-                                Kiểm kê kho hàng
-                            </button>
-                            <button class="tab-button p-2 w-full fs-12" data-tab="data_product_3">
-                                Giao hàng
-                            </button>
-                            <button class="tab-button p-2 w-full fs-12" data-tab="data_product_4">
-                                Sản phẩm được liên kết
-                            </button>
-                            <button class="tab-button p-2 w-full fs-12" data-tab="data_product_5">
-                                Các thuộc tính
-                            </button>
-                            <button class="tab-button p-2 w-full fs-12" data-tab="data_product_6">
-                                Các biến thể
-                            </button>
-                        </div>
-
-                        <div class="tabs-content h-100">
-                            <div class="tab-pane active" id="data_product_1">
-                                <div class="d-grid gap-2 p-2">
-                                    <div class="d-flex align-items-center justify-content-start gap-2">
-                                        <span class="fs-13 text-black-sub">Trạng thái thuế</span>
-                                        <select class="select__main small fs-14">
-                                            <option>Thuế</option>
-                                            <option>Chỉ giao hàng</option>
-                                            <option>Trống</option>
-                                        </select>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-start gap-2">
-                                        <span class="fs-13 text-black-sub">Loại thuế</span>
-                                        <select class="select__main small fs-14">
-                                            <option>Chuẩn</option>
-                                            <option>Đánh giá cao</option>
-                                            <option>Đánh giá thấp</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane" id="data_product_2">
-                                <div class="d-grid gap-2 p-2">
-                                    <div class="d-flex align-items-center justify-content-start gap-4">
-                                        <input id="category-1" type="checkbox" />
-                                        <label for="category-1">category</label>
-                                    </div>
-                                    <div class="checkbox__item">
-                                        <input id="category_2_1" type="checkbox" />
-                                        <label for="category_2_1">Hộp in offset</label>
-                                    </div>
-                                    <div class="checkbox__item">
-                                        <input id="category_2_2" type="checkbox" />
-                                        <label for="category_2_2">Hộp carton</label>
-                                    </div>
-                                    <div class="checkbox__item">
-                                        <input id="category_2_3" type="checkbox" />
-                                        <label for="category_2_3">Hộp carton nắp đối</label>
-                                    </div>
-                                    <div class="checkbox__item">
-                                        <input id="category_2_4" type="checkbox" />
-                                        <label for="category_2_4">Túi giấy</label>
-                                    </div>
-                                    <div class="checkbox__item">
-                                        <input id="category_2_5" type="checkbox" />
-                                        <label for="category_2_5">Hộp nắp gài</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- trường tùy chỉnh -->
+                <div class="d-flex align-items-center justify-content-between bg-white border fs-14 px-2 ">
+                    Trường tùy chỉnh
+                    <div class="d-flex align-items-center justify-centent-end gap-2">
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
                     </div>
                 </div>
             </div>
@@ -142,17 +46,25 @@
             <div class="edit__wrapper d-grid gap-3">
                 <!-- xuất bản -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Xuất bản
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                       <div> Xuất bản</div>
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
-                    <div class="d-grid gap-2 p-2 border br-1-main">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-ol-primary">
+                    <div class="d-grid gap-2 p-2 border br-1-main gap-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn small btn-ol-primary">
                                 Xem trước
+                            </button>
+                            <button class="btn small btn-ol-primary">
+                                Lưu nháp
                             </button>
                         </div>
                         <div class="open__down__item fs-14">
-                            Trạng thái: <strong> Đã xuất bản</strong>
+                            Trạng thái: <strong class="fw-medium"> Đã xuất bản</strong>
                             <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
                                 Chỉnh sửa
                             </button>
@@ -169,7 +81,7 @@
                         </div>
 
                         <div class="open__down__item fs-14">
-                            Hiển thị: <strong>Công khai</strong>
+                            Hiển thị: <strong class="fw-medium">Công khai</strong>
                             <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
                                 Chỉnh sửa
                             </button>
@@ -185,25 +97,8 @@
                             </div>
                         </div>
 
-                        <div class="open_down_item fs-14">
-                            Bản sửa đổi: <strong>3</strong>
-                            <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
-                                Chỉnh sửa
-                            </button>
-                            <div class="open__down__content">
-                                <div class="d-flex align-items-center justify-content-start gap-2 p-2">
-                                    <select name="select" class="select__main small fs-12">
-                                        <option value="">3</option>
-                                        <option value="">2</option>
-                                        <option value="">1</option>
-                                    </select>
-                                    <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="open__down__item fs-14">
-                            Đã xuất bản: <strong> Th4 26, 2025, 16:04</strong>
+                            Xuất bản <strong class="fw-medium">ngay lập tức</strong>
                             <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
                                 Chỉnh sửa
                             </button>
@@ -216,17 +111,20 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="border d-flex justify-content-between align-items-center p-2 fs-13">
-                        <a href="">Bỏ và thùng rác</a>
-                        <button class="btn btn__blue">Cập nhập</button>
+                    <div class="d-flex align-items-center justify-content-end border gap-2 p-2 ">
+                        <button class="btn small btn-ol-primary">Xuất bản</button>
                     </div>
                 </div>
 
                 <!-- danh mục -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Danh mục
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                        <div>Danh mục</div>
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <div class="tabs-container" data-tabs="tab__category__product">
@@ -322,8 +220,13 @@
 
                 <!-- ảnh bài viết -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Ảnh bài viết
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                       <div> Ảnh bài viết</div>
+                       <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <img src="https://images.pexels.com/photos/4246118/pexels-photo-4246118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
@@ -336,8 +239,13 @@
 
                 <!-- aibum hình ảnh bài viết -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Album hình ảnh bài viết
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                        <div>Album hình ảnh bài viết</div>
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <button data-modal-target="modal1" class="text-decoration-underline text-start text-blue-main bg-transparent modal-btn fs-13">
@@ -388,8 +296,13 @@
 
                 <!-- thẻ sản phẩm -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Thẻ bài viết
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                        <div>Thẻ bài viết</div>
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <div class="d-flex align-items-center justify-content-start gap-2">
@@ -414,8 +327,13 @@
 
                 <!-- thương hiệu -->
                 <div class="edit__component">
-                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap">
-                        Thương hiệu
+                    <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                        <div>Thương hiệu</div>
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
                     </div>
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <div class="d-grid gap-2 p-2 border br-1-main">

@@ -11,20 +11,24 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.css"
     />
+    <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="scss/style.css" />
-    <link rel=”icon” href=”assets/icons/favicon.png” type=”image/x-icon” />
     <link rel=”shortcut icon” href=”assets/icons/favicon.png”
     type=”image/x-icon” />
     <!-- editore -->
     <script src="./modules/tinymce/js/tinymce/tinymce.min.js"></script>
+    <link rel=”icon” href=”assets/icons/favicon.png” type=”image/x-icon” />
+
     <title>Trang chủ</title>
   </head>
   <body translate="no" lang="vi">
@@ -54,12 +58,13 @@
                   <span>MENU</span>
                 </li>
                 <li>
-                  <a data-page="trangchu" href="#">
-                    <img src="./assets/icons/home.svg" />Trang chủ
+                  <a data-page="trangchu" data-page-parent="not" href="#">
+                    <img src="./assets/icons/navigation/home.svg" />Trang chủ
                   </a>
                 </li>
                 <li>
-                  <span class="accordion__button"
+                  <span
+                    class="accordion__button"
                     data-bs-toggle="collapse"
                     data-bs-target="#menu__item__quanli"
                     aria-expanded="false"
@@ -67,8 +72,9 @@
                     href="#"
                   >
                     <span>
-                      <img src="./assets/icons/crm-computer.svg" />Quản lí kho
-                      hàng
+                      <img
+                        src="./assets/icons/navigation/crm-computer.svg"
+                      />Quản lí kho hàng
                     </span>
                     <img src="./assets//icons/angle-small-down.svg" />
                   </span>
@@ -79,41 +85,58 @@
                     data-bs-parent="#accordionExample"
                   >
                     <li>
-                      <a data-page="quanlinhapkho" href="#">
+                      <a
+                        data-page-parent="quanlikho"
+                        data-page="quanlinhapkho"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/add-document.svg"
+                          src="./assets/icons/navigation/add-document.svg"
                         />Nhập kho
                       </a>
                     </li>
                     <li>
-                      <a data-page="quanlixuatkho" href="#">
+                      <a
+                        data-page-parent="quanlikho"
+                        data-page="quanlixuatkho"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/file-export (1).svg"
+                          src="./assets/icons/navigation/file-export.svg"
                         />Xuất kho
                       </a>
                     </li>
                     <li>
-                      <a data-page="quanlitonkho" href="#">
+                      <a
+                        data-page-parent="quanlikho"
+                        data-page="quanlitonkho"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/supplier-alt.svg"
+                          src="./assets/icons/navigation/supplier-alt.svg"
                         />Tồn kho
                       </a>
                     </li>
                     <li>
-                      <a data-page="quanlikiemke" href="#">
+                      <a
+                        data-page-parent="quanlikho"
+                        data-page="quanlikiemke"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/optimization.svg"
+                          src="./assets/icons/navigation/optimization.svg"
                         />Quản lí kiểm kê
                       </a>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <span class="accordion__button"
+                  <span
+                    class="accordion__button"
                     data-bs-toggle="collapse"
                     data-bs-target="#menu__item__baiviet"
                     aria-expanded="false"
@@ -121,38 +144,61 @@
                     href="#"
                   >
                     <span>
-                      <img src="./assets/icons/blog-pencil.svg" />
+                      <img src="./assets/icons/navigation/blog-pencil.svg" />
                       Bài viết
                     </span>
-                    <img src="/assets/icons/angle-small-down.svg" alt="">
+                    <img src="/assets/icons/angle-small-down.svg" alt="" />
                   </span>
-                  <ul id="menu__item__baiviet" class="accordion-collapse collapse">
+                  <ul
+                    id="menu__item__baiviet"
+                    class="accordion-collapse collapse"
+                  >
                     <li>
-                      <a data-page="tatcabaiviet" href="#">
-                        <img src="./assets/icons/overview.svg" />Tất cả bài viết
+                      <a
+                        data-page-parent="baiviet"
+                        data-page="tatcabaiviet"
+                        href="#"
+                      >
+                        <img src="./assets/icons/navigation/overview.svg" />Tất
+                        cả bài viết
                       </a>
                     </li>
                     <li>
-                      <a data-page="theloai" href="#">
-                        <img src="./assets/icons/dropdown-bar.svg" />Thêm bài viết
+                      <a
+                        data-page-parent="baiviet"
+                        data-page="thembaiviet"
+                        href="#"
+                      >
+                        <img
+                          src="./assets/icons/navigation/square-plus.svg"
+                        />Thêm bài viết
                       </a>
                     </li>
                     <li>
-                      <a data-page="danhmucbaiviet" href="#">
-                        <img src="./assets/icons/overview.svg" />Danh mục
+                      <a
+                        data-page-parent="baiviet"
+                        data-page="danhmucbaiviet"
+                        href="#"
+                      >
+                        <img
+                          src="./assets/icons/navigation/dropdown-bar.svg"
+                        />Danh mục
                       </a>
                     </li>
                     <li>
-                      <a data-page="danhsachbaiviet" href="#">
-                        <img src="./assets/icons/overview.svg" />Thẻ
+                      <a
+                        data-page-parent="baiviet"
+                        data-page="thebaiviet"
+                        href="#"
+                      >
+                        <img src="./assets/icons/navigation/tags.svg" />Thẻ
                       </a>
                     </li>
-
                   </ul>
                 </li>
                 <li>
-                  <a data-page="thuvienmedia" href="#">
-                    <img src="./assets/icons/screen-play.svg" />
+                  <a data-page-parent="not" data-page="thuvienmedia" href="#">
+                    <img src="./assets/icons/navigation/screen-play.svg" />
                     Media
                   </a>
                 </li>
@@ -166,7 +212,8 @@
                     href="#"
                   >
                     <span>
-                      <img src="./assets/icons/box-open.svg" />Sản phẩm
+                      <img src="./assets/icons/navigation/box-open.svg" />Sản
+                      phẩm
                     </span>
                     <img src="./assets//icons/angle-small-down.svg" />
                   </span>
@@ -177,50 +224,74 @@
                     data-bs-parent="#accordionExample"
                   >
                     <li>
-                      <a data-page="tatcasanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="tatcasanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/overview.svg"
+                          src="./assets/icons/navigation/overview.svg"
                         />Tất cả sản phẩm
                       </a>
                     </li>
                     <li>
-                      <a data-page="danhmucsanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="danhmucsanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/dropdown-bar.svg"
+                          src="./assets/icons/navigation/dropdown-bar.svg"
                         />Danh mục
                       </a>
                     </li>
                     <li>
-                      <a data-page="themmoisanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="themmoisanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/overview.svg"
+                          src="./assets/icons/navigation/square-plus.svg"
                         />Thêm sản phẩm
                       </a>
                     </li>
                     <li>
-                      <a data-page="thuonghieusanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="thuonghieusanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/overview.svg"
+                          src="./assets/icons/navigation/brand.svg"
                         />Thương hiệu
                       </a>
                     </li>
                     <li>
-                      <a data-page="thesanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="thesanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/overview.svg"
+                          src="./assets/icons/navigation/tags.svg"
                         />Thẻ
                       </a>
                     </li>
                     <li>
-                      <a data-page="thuoctinhsanpham" href="#">
+                      <a
+                        data-page-parent="sanpham"
+                        data-page="thuoctinhsanpham"
+                        href="#"
+                      >
                         <img
                           class="size-18"
-                          src="./assets/icons/overview.svg"
+                          src="./assets/icons/navigation/attribution-pencil.svg"
                         />Các thuộc tính
                       </a>
                     </li>
@@ -232,36 +303,30 @@
                 </li>
                 <li>
                   <a data-page="quanlytaikhoan" href="#">
-                    <img src="./assets/icons/lead-management.svg" />
+                    <img src="./assets/icons/navigation/lead-management.svg" />
                     Quản lí tài khoản
                   </a>
                 </li>
                 <li>
                   <a href="./login.html">
-                    <img src="./assets/icons/insert-alt.svg" />Đăng nhập
+                    <img src="./assets/icons/navigation/insert-alt.svg" />Đăng
+                    nhập
                   </a>
                 </li>
                 <li>
                   <a href="./register.html">
-                    <img src="./assets/icons/sign-out-alt.svg" />
+                    <img src="./assets/icons/navigation/sign-out-alt.svg" />
                     Đăng ký
                   </a>
                 </li>
                 <!--  -->
                 <li>
-                  <span>VỀ CHÚNG TÔI</span>
+                  <span>Cài đặt</span>
                 </li>
                 <li>
-                  <a data-page="lienhe" href="#">
-                    <img src="./assets/icons/headset.svg" />
-                    Liên hệ
-                  </a>
-                </li>
-                <li>
-                  <a data-page="dieukhoandichvu">
-                    <img
-                      src="./assets/icons/confidential-discussion.svg"
-                    />Quyền riêng tư
+                  <a data-page-parent="not" data-page="caidattongquan" href="#">
+                    <img src="./assets/icons/navigation/gears.svg" />
+                    Tổng quan
                   </a>
                 </li>
               </ul>
@@ -285,24 +350,24 @@
                 </li>
                 <li>
                   <a data-page="trangchu" href="#">
-                    <img src="./assets/icons/home.svg" />Trang chủ
+                    <img src="./assets/icons/navigation/home.svg" />Trang chủ
                   </a>
                 </li>
                 <li>
                   <a data-page="quanlikhohang" href="#">
-                    <img src="./assets/icons/crm-computer.svg" />Quản lí kho
-                    hàng
+                    <img src="./assets/icons/navigation/crm-computer.svg" />Quản
+                    lí kho hàng
                   </a>
                 </li>
                 <li>
                   <a data-page="baiviet" href="#">
-                    <img src="./assets/icons/blog-pencil.svg" />
+                    <img src="./assets/icons/navigation/blog-pencil.svg" />
                     Bài viết
                   </a>
                 </li>
                 <li>
                   <a data-page="sanpham" href="#">
-                    <img src="./assets/icons/box-open.svg" />
+                    <img src="./assets/icons/navigation/box-open.svg" />
                     Sản phẩm
                   </a>
                 </li>
@@ -312,18 +377,19 @@
                 </li>
                 <li>
                   <a data-page="quanlytaikhoan" href="#">
-                    <img src="./assets/icons/lead-management.svg" />
+                    <img src="./assets/icons/navigation/lead-management.svg" />
                     Quản lí tài khoản
                   </a>
                 </li>
                 <li>
                   <a href="./login.html">
-                    <img src="./assets/icons/insert-alt.svg" />Đăng nhập
+                    <img src="./assets/icons/navigation/insert-alt.svg" />Đăng
+                    nhập
                   </a>
                 </li>
                 <li>
                   <a href="./register.html">
-                    <img src="./assets/icons/sign-out-alt.svg" />
+                    <img src="./assets/icons/navigation/sign-out-alt.svg" />
                     Đăng ký
                   </a>
                 </li>
@@ -333,14 +399,14 @@
                 </li>
                 <li>
                   <a data-page="lienhe" href="#">
-                    <img src="./assets/icons/headset.svg" />
+                    <img src="./assets/icons/navigation/headset.svg" />
                     Liên hệ
                   </a>
                 </li>
                 <li>
                   <a data-page="dieukhoandichvu">
                     <img
-                      src="./assets/icons/confidential-discussion.svg"
+                      src="./assets/icons/navigation/confidential-discussion.svg"
                     />Quyền riêng tư
                   </a>
                 </li>
@@ -361,7 +427,10 @@
               id="mobileMenuToggle"
               class="d-flex align-items-center justify-content-center d-md-none"
             >
-              <img src="./assets/icons/menu-svgrepo-com.svg" class="size-24" />
+              <img
+                src="./assets/icons/navigation/menu-svgrepo-com.svg"
+                class="size-24"
+              />
             </div>
 
             <div class="d-flex align-items-center justify-content-end gap-2">
@@ -511,7 +580,7 @@
         <div id="notification-container"></div>
       </div>
       <!-- footer -->
-      <footer class="bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
+      <footer class="footer bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
         <p class="fs-14 text-center w-100 text-black-sub">
           © 2025 Admin - Bản quyền thuộc về HUPUNA GROUP.
         </p>
