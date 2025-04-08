@@ -1,10 +1,6 @@
 <section class="d-grid gap-3">
     <div class="d-flex align-items-center justify-content-start gap-2">
-        <span class="fs-4">Thêm bài viết</span>
-        <button class="btn btn-ol-primary">Thêm bài viết</button>
-    </div>
-    <div class="border bg-white sh fs-14 py-2 ps-3">
-        <p>Có bản lưu tự động của bài viết này mới hơn phiên bản dưới đây. <a href="">Xem bản lưu tự động</a></p>
+        <span class="fs-4">Thêm bài viết</span> 
     </div>
     <div class="row g-3">
         <!-- left -->
@@ -15,20 +11,13 @@
 
                 <!-- edit title -->
                 <div class="edit__title">
-                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" />
-                </div>
-
-                <!-- edit link -->
-                <div class="d-flex align-items-center fs-14">
-                    <span class="me-2">Đường dẫn cố định: </span>
-                    <a href="">Đây là link đường dẫn cố định của bài viết</a>
-                    <button class="btn small btn-ol-primary ms-1">Chỉnh sửa</button>
+                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" type="text" placeholder="Nhập tiêu đề bài viết" />
                 </div>
 
                 <!-- edit des -->
                 <div class="bg-white edit__component border d-grid gap-2">
                     <div class="p-2 h-auto d-grid gap-2">
-                        <button class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2">
+                        <button class="fs-12 text-blue-main btn small btn-ol-primary d-flex align-items-center justify-content-center gap-2">
                             <img src="../assets/icons/screen-play.svg" class="size-16 fill__blue"/>
                             Thêm Media
                         </button>
@@ -40,6 +29,15 @@
                     </div>
                 </div>
 
+                <!-- trường tùy chỉnh -->
+                <div class="d-flex align-items-center justify-content-between bg-white border fs-14 px-2 ">
+                    Trường tùy chỉnh
+                    <div class="d-flex align-items-center justify-centent-end gap-2">
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                        <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -56,10 +54,13 @@
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
                         </div>
                     </div>
-                    <div class="d-grid gap-2 p-2 border br-1-main">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-ol-primary">
+                    <div class="d-grid gap-2 p-2 border br-1-main gap-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn small btn-ol-primary">
                                 Xem trước
+                            </button>
+                            <button class="btn small btn-ol-primary">
+                                Lưu nháp
                             </button>
                         </div>
                         <div class="open__down__item fs-14">
@@ -96,25 +97,8 @@
                             </div>
                         </div>
 
-                        <div class="open_down_item fs-14">
-                            Bản sửa đổi: <strong class="fw-medium">3</strong>
-                            <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
-                                Chỉnh sửa
-                            </button>
-                            <div class="open__down__content">
-                                <div class="d-flex align-items-center justify-content-start gap-2 p-2">
-                                    <select name="select" class="select__main small fs-12">
-                                        <option value="">3</option>
-                                        <option value="">2</option>
-                                        <option value="">1</option>
-                                    </select>
-                                    <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="open__down__item fs-14">
-                            Đã xuất bản: <strong class="fw-medium"> Th4 26, 2025, 16:04</strong>
+                            Xuất bản <strong class="fw-medium">ngay lập tức</strong>
                             <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
                                 Chỉnh sửa
                             </button>
@@ -127,7 +111,9 @@
                             </div>
                         </div>
                     </div>
-                  
+                    <div class="d-flex align-items-center justify-content-end border gap-2 p-2 ">
+                        <button class="btn small btn-ol-primary">Xuất bản</button>
+                    </div>
                 </div>
 
                 <!-- danh mục -->

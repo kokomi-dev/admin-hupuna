@@ -1200,12 +1200,12 @@ select:focus {
   padding: 0;
 }
 
-.btn.btn-ol-primary {
+.btn.btn-blue {
   border: 0.5px solid #0e6efd !important;
   color: white;
   background-color: #0e6efd;
 }
-.btn.btn-ol-primary:hover {
+.btn.btn-blue:hover {
   background-color: #0e6efd;
   opacity: 90;
 }
@@ -1342,6 +1342,7 @@ select:focus {
 .list__item .item__tr .col__name .item__title {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -1727,6 +1728,11 @@ select:focus {
           user-select: none;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .grid__common {
@@ -1761,5 +1767,73 @@ select:focus {
 @media (max-width: 424px) {
   .auth__form {
     width: 95% !important;
+    position: f;
   }
+}
+.comment-box {
+  background: #f8f9fa;
+  padding: 16px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  border-radius: 4px;
+  font-family: sans-serif;
+}
+.comment-box .title {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+.comment-box .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.comment-box .toolbar button {
+  padding: 4px 8px;
+  font-size: 13px;
+  border: 1px solid #007bff;
+  background: #fff;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comment-box .toolbar button:hover {
+  background-color: #e6f0ff;
+}
+.comment-box textarea {
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  resize: vertical;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.comment-box .action-buttons {
+  display: flex;
+  gap: 8px;
+}
+.comment-box .action-buttons .btn-submit {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comment-box .action-buttons .btn-submit:hover {
+  background-color: #0056b3;
+}
+.comment-box .action-buttons .btn-cancel {
+  background-color: white;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comment-box .action-buttons .btn-cancel:hover {
+  background-color: #e6f0ff;
 }/*# sourceMappingURL=style.css.map */
