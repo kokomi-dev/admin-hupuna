@@ -1,160 +1,383 @@
 <section class="d-grid gap-3 gap-lg-3">
-    <!-- action và tiêu đề -->
-    <div class="d-flex align-items-center justify-content-between flex-wrap">
-        <div class="d-flex align-items-center justify-content-start">  
-            <h1 class="fs-5 fw-semibold me-2">Bài viết</h1>
-            <button type="button" class="btn btn-sm btn-outline-primary" onclick="input_file_media()">
-                Thêm bài viết
-            </button>
-        </div>
-        <div class="d-flex align-items-center justify-content-end">
-            <div class="btn-group">
-                <button class="btn__custom__display btn btn-outline-dark fs-12 fw-light me-2">
-                    Tùy chọn màn hình
-                </button>
-                <button class="btn__support btn btn-outline-dark fs-12 fw-light">
-                    Hỗ trợ
-                </button>
-            </div>
-        </div>
+  <!-- action và tiêu đề -->
+  <div class="d-flex align-items-center justify-content-between flex-wrap">
+    <div class="d-flex align-items-center justify-content-start">
+      <h1 class="fs-5 fw-semibold me-2">Bài viết</h1>
+      <button
+        type="button"
+        data-redirect-url="taobaiviet"
+        class="btn btn-sm btn__blue redirect__btn"
+      >
+        Thêm bài viết
+      </button>
     </div>
-    <!-- info -->
-    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 gap-md-3 fs-13" >
-        <div>
-            <span class="fw-bolder">Tất cả (12)</span>|
-            <span class="text-blue-main">Đã xuất bản (12)</span> |
-            <span class="text-blue-main">Thùng rác (4)</span> |
-            <span class="text-blue-main">Sắp xếp</span>
-        </div>
-        <div class="d-flex align-items-center justify-content-end gap-3">
-            <input class="input__main outline-dark" />
-            <button class="btn btn-ol-primary fs-13">Tìm sản phẩm</button>
-        </div>
-    </div>
-    <!-- bộ lọc -->
-    <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
-        <!-- filter -->
-        <div class="d-flex gap-2 flex-wrap">
-            <select name="select" class="select__main">
-                <option value="">Hành động hàng loạt</option>
-                <option value="">Băng dính</option>
-                <option value="">Caton</option>
-                <option value="">Hộp carton chuyển nhà</option>
-                <option value="">Hộp in ofset</option>
-                <option value="">Hộp nắp gài</option>
-                <option value="">Túi giấy</option>
-            </select>
-            <button class="btn btn__blue">Áp dụng</button>
-
-            <select name="select" class="select__main">
-                <option value="">Tất cả các ngày</option>
-                <option value="">Sản phẩm đơn giản</option>
-                <option value="">Sản phẩm ảo</option>
-                <option value="">Có thể tải xuống</option>
-                <option value="">Sản phẩm nhóm</option>
-                <option value="">Sản phẩm bên ngoài</option>
-                <option value="">Sản phẩm liên kết</option>
-            </select>
-            <select name="select" class="select__main">
-                <option value="">Tất cả danh mục</option>
-                <option value="">Còn hàng</option>
-                <option value="">Hết hàng</option>
-                <option value="">Chờ hàng</option>
-            </select>
-            <button class="btn btn__blue">Lọc</button>
-        </div>
-    </div>
-    <!-- danh mục bài viếtviết -->
-    <div class="d-grid gap-2 shadow-sm bg-white bg-white shadow-sm rounded-3 mt-3">
-        <div class="table-responsive br-1-main rounded-3">
-            <!-- bảng danh sách sản phẩm-->
-            <table class="table table__main mb-0 fs-14">
-            <thead>
-                <tr>
-                <th class="position-relative">
-                    <input type="checkbox" class="size-20 position-absolute top-50 start-50 translate-middle"/>
-                </th>
-                <th>
-                   <p> Tiêu đề</p>
-                </th>
-                <th>Tác giả</th>
-                <th>Danh mục</th>
-                <th>Thẻ</th>
-                <th>
-                    <img src="/assets/icons/message-square-dots-svgrepo-com.svg" alt="" class="fill__black-sub size-18 mx-auto">
-                </th>
-                <th>Thời gian</th>
-                <th>Tin nổi bật</th>
-                <th>Khuyến mại</th>
-                </tr>
-            </thead>
-            <tbody class="list__item">
-                <!-- item -->
-                <tr class="item__tr">
-                    <td style="vertical-align: top" class="text-center">
-                        <input type="checkbox" class="size-20" />
-                    </td>
-                    <td class="col__name">
-                        <span class="item__title">Đây là tiêu đề của bài viết 1</span>
-                        <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                            <span>ID:43890</span> |
-                            <span class="redirect__btn" data-redirect-url="chinhsua-baiviet">Chỉnh sửa</span> |
-                            <span>Sửa nhanh</span> | <span>Xóa tạm</span> |
-                            <span>Xem</span> |<span>Sao chép</span>
-                        </div>
-                    </td>
-                    <td class="col_admin">Admin1</td>
-                    <td class="col_directory">Tin tức</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>
-                        <span> Đã xuất bản</span><br>
-                        <span>20/03/2025</span><br>
-                        <span>lúc 9:30 sáng</span>
-                    </td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-
-                <tr class="item__tr">
-                    <td style="vertical-align: top" class="text-center">
-                        <input type="checkbox" class="size-20" />
-                    </td>
-                    <td class="col__name">
-                        <span class="item__title">Đây là tiêu đề của bài viết 2</span>
-                        <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                            <span>ID:43826</span> |
-                            <span class="redirect__edit product">Chỉnh sửa</span> |
-                            <span>Sửa nhanh</span> | <span>Xóa tạm</span> |
-                            <span>Xem</span> |<span>Sao chép</span>
-                        </div>
-                    </td>
-                    <td class="col_admin">Admin2</td>
-                    <td class="col_directory">Tin tức</td>
-                    <td>-</td>
-                    <td>
-                        <img src="/assets/icons/message-square-dots-svgrepo-com.svg" alt="" class="fill__black-sub size-18 mx-auto">
-                    </td>
-                    <td>
-                        <span> Đã xuất bản</span><br>
-                        <span>20/03/2025</span><br>
-                        <span>lúc 9:30 sáng</span>
-                    </td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="d-flex align-items-center justify-content-end">
+      <div class="btn-group">
+        <button
+          class="btn__custom__display btn btn-outline-dark fs-12 fw-light me-2"
+        >
+          Tùy chọn màn hình
+        </button>
+        <button class="btn__support btn btn-outline-dark fs-12 fw-light">
+          Hỗ trợ
+        </button>
       </div>
     </div>
-    <!-- footer action -->
-    <div class="d-flex align-items-center justify-content-start gap-2">
-      <select class="select__main">
-        <option value="">Hành động hàng loạt</option>
-        <option value="">Chỉnh sửa</option>
-        <option value="">Bỏ vào thùng rác</option>
-      </select>
-      <button class="btn btn-ol-primary h-100">Áp dụng</button>
+  </div>
+  <!-- info -->
+  <div
+    class="d-flex align-items-center justify-content-between flex-wrap gap-2 gap-md-3 fs-13"
+  >
+    <div>
+      <span class="fw-bolder">Tất cả (12)</span>|
+      <span class="text-blue-main">Đã xuất bản (12)</span> |
+      <span class="text-blue-main">Thùng rác (4)</span> |
+      <span class="text-blue-main">Sắp xếp</span>
     </div>
+    <div class="d-flex align-items-center justify-content-end gap-3">
+      <input class="input__main outline-dark w-100" />
+      <button class="btn btn-ol-primary fs-13 w-100">Tìm sản phẩm</button>
+    </div>
+  </div>
+  <!-- bộ lọc -->
+  <div class="d-flex align-items-center justify-content-start gap-3 flex-wrap">
+    <!-- filter -->
+    <div class="d-flex gap-2 flex-wrap">
+      <select name="select" class="select__main">
+        <option value="">Hành động hàng loạt</option>
+        <option value="">Băng dính</option>
+        <option value="">Caton</option>
+        <option value="">Hộp carton chuyển nhà</option>
+        <option value="">Hộp in ofset</option>
+        <option value="">Hộp nắp gài</option>
+        <option value="">Túi giấy</option>
+      </select>
+      <button class="btn btn-ol-primary">Áp dụng</button>
+
+      <select name="select" class="select__main">
+        <option value="">Tất cả các ngày</option>
+        <option value="">Sản phẩm đơn giản</option>
+        <option value="">Sản phẩm ảo</option>
+        <option value="">Có thể tải xuống</option>
+        <option value="">Sản phẩm nhóm</option>
+        <option value="">Sản phẩm bên ngoài</option>
+        <option value="">Sản phẩm liên kết</option>
+      </select>
+      <select name="select" class="select__main">
+        <option value="">Tất cả danh mục</option>
+        <option value="">Còn hàng</option>
+        <option value="">Hết hàng</option>
+        <option value="">Chờ hàng</option>
+      </select>
+      <button class="btn btn-blue">Lọc</button>
+    </div>
+  </div>
+  <!-- danh mục bài viếtviết -->
+  <div
+    class="d-grid gap-2 shadow-sm bg-white bg-white shadow-sm rounded-3 mt-3"
+  >
+    <div class="table-responsive br-1-main rounded-3">
+      <!-- bảng danh sách sản phẩm-->
+      <table class="table table__main mb-0 fs-14">
+        <thead>
+          <tr>
+            <th class="position-relative">
+              <input
+                type="checkbox"
+                class="size-20 position-absolute top-50 start-50 translate-middle"
+              />
+            </th>
+            <th>
+              <p>Tiêu đề</p>
+            </th>
+            <th>Tác giả</th>
+            <th>Danh mục</th>
+            <th>Thẻ</th>
+            <th>
+              <img
+                src="/assets/icons/message-square-dots-svgrepo-com.svg"
+                alt=""
+                class="fill__black-sub size-18 mx-auto"
+              />
+            </th>
+            <th>Thời gian</th>
+            <th>Tin nổi bật</th>
+            <th>Khuyến mại</th>
+          </tr>
+        </thead>
+        <tbody class="list__item">
+          <!-- item -->
+          <tr class="item__tr">
+            <td style="vertical-align: top" class="text-center">
+              <input type="checkbox" class="size-20" />
+            </td>
+            <td class="col__name">
+              <span class="item__title">Đây là tiêu đề của bài viết 1</span>
+              <div
+                class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12"
+              >
+                <span>ID:43890</span> |
+                <span class="redirect__btn" data-redirect-url="chinhsua-baiviet"
+                  >Chỉnh sửa</span
+                >
+                | <span class="quick__fix">Sửa nhanh</span> |
+                <span>Xóa tạm</span> | <span>Xem</span> |<span>Sao chép</span>
+              </div>
+            </td>
+            <td class="col_admin">Admin1</td>
+            <td class="col_directory">Tin tức</td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+              <span> Đã xuất bản</span><br />
+              <span>20/03/2025</span><br />
+              <span>lúc 9:30 sáng</span>
+            </td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="item__tr">
+            <td style="vertical-align: top" class="text-center">
+              <input type="checkbox" class="size-20" />
+            </td>
+            <td class="col__name">
+              <span class="item__title">Đây là tiêu đề của bài viết 2</span>
+              <div
+                class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12"
+              >
+                <span>ID:43826</span> |
+                <span class="redirect__edit product">Chỉnh sửa</span> |
+                <span class="quick__fix">Sửa nhanh</span> |
+                <span>Xóa tạm</span> | <span>Xem</span> |<span>Sao chép</span>
+              </div>
+            </td>
+            <td class="col_admin">Admin2</td>
+            <td class="col_directory">Tin tức</td>
+            <td>-</td>
+            <td>
+              <img
+                src="/assets/icons/message-square-dots-svgrepo-com.svg"
+                alt=""
+                class="fill__black-sub size-18 mx-auto"
+              />
+            </td>
+            <td>
+              <span> Đã xuất bản</span><br />
+              <span>20/03/2025</span><br />
+              <span>lúc 9:30 sáng</span>
+            </td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- bảng sửa nhanh sản phẩm -->
+    <div id="quick__edit" style="display: none">
+      <div>
+        <div class="fs-6 fw-semibold mb-1">Sửa nhanh</div>
+        <div class="row m-0 p-0 fs-13">
+          <!-- thông tin dữ liệu -->
+          <div class="col-12 col-md-6">
+            <div class="d-grid gap-3">
+              <!-- thông tin -->
+              <div class="d-grid gap-2">
+                <div class="p-0">
+                  <label class="mb-1">Tiêu đề</label>
+                  <input class="input__main br-1-main w-100" />
+                </div>
+                <div class="p-0">
+                  <label class="mb-1">Đường dẫn</label>
+                  <input class="input__main br-1-main w-100" />
+                </div>
+                <div class="p-0">
+                  <label class="mb-1">Thời gian</label>
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-1"
+                  >
+                    <select class="select__main small">
+                      <option>Thứ</option>
+                    </select>
+                    <input class="input__main small" />
+                    <input type="time" class="input__main small" />
+                  </div>
+                </div>
+                <div class="p-0">
+                  <label class="mb-1">Mật khẩu</label>
+                  <div
+                    class="d-flex align-items-center justify-content-start gap-2"
+                  >
+                    <input class="input__main br-1-main w-100" />
+                    <span class="flex-shrink-0 fs-12"> - hoặc - </span>
+                    <div class="checkbox__item flex-shrink-0">
+                      <input type="checkbox" /><label
+                        class="text-black-sub fs-13"
+                        >Riêng tư</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- dữ liệu -->
+              <div class="d-grid gap-2">
+                <div class="p-0">
+                  <label class="mb-1">Mã sản phẩm</label>
+                  <input class="input__main br-1-main w-100" />
+                </div>
+                <div
+                  class="p-0 d-flex align-items-center justify-content-start gap-3"
+                >
+                  <label class="mb-1">Trạng thái</label>
+                  <select class="select__main small">
+                    <option>Thuế</option>
+                    <option>Chỉ giao hàng</option>
+                    <option>Trống</option>
+                  </select>
+                </div>
+                <div
+                  class="p-0 d-flex align-items-center justify-content-start gap-3"
+                >
+                  <label class="mb-1">Loại thuế</label>
+                  <select class="select__main small">
+                    <option>Chuẩn</option>
+                    <option>Reduced rate</option>
+                    <option>Zero rate</option>
+                  </select>
+                </div>
+                <div class="p-0">
+                  <label class="mb-1">Trọng lượng</label>
+
+                  <input type="text" class="input__main small" />
+                </div>
+                <div class="p-0">
+                  <label class="mb-1">Kích thước</label>
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-2"
+                  >
+                    <input class="input__main br-1-main" placeholder="Dài" />
+                    <input class="input__main br-1-main" placeholder="Rộng" />
+                    <input class="input__main br-1-main" placeholder="Cao" />
+                  </div>
+                </div>
+                <div
+                  class="p-0 d-flex align-items-center justify-content-start gap-2"
+                >
+                  <label class="mb-1">Còn hàng</label>
+                  <select class="select__main small">
+                    <option>Không thay đổi</option>
+                    <option>Còn hàng</option>
+                    <option>Hết hàng</option>
+                    <option>Chờ hàng</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- thẻ thương hiệu, danh mục -->
+          <div class="col-12 col-md-6">
+            <div class="row g-2 p-t-0">
+              <div class="col-6 p-t-0">
+                <div class="d-grid gap-2">
+                  <div class="p-0">
+                    <label class="mb-1">Thẻ sản phẩm</label>
+                    <textarea
+                      class="input__main br-1-main w-100 mb-1"
+                      rows="4"
+                    ></textarea>
+                    <p class="fs-13 text-black-sub">
+                      Phân cách các thẻ bằng dấu phẩy
+                    </p>
+                  </div>
+                  <div class="p-0">
+                    <div class="checkbox__item">
+                      <input type="checkbox" />
+                      <label>Cho phép đánh giá</label>
+                    </div>
+                  </div>
+                  <div class="p-0">
+                    <div
+                      class="d-flex align-items-center justify-content-start gap-2"
+                    >
+                      <label>Trạng thái</label>
+
+                      <select class="select__main small">
+                        <option>Đã xuất bản</option>
+                        <option>Chờ duyệt</option>
+                        <option>Bản nháp</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 p-t-0">
+                <div class="br-1-main p-2 rounded-2">
+                  <span>Thương hiệu</span>
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="category-1" type="checkbox" />
+                      <label for="category-1">Adidas</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-2" type="checkbox" />
+                      <label for="category-2">Mlb</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-3" type="checkbox" />
+                      <label for="category-3">Nike</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="br-1-main p-2 rounded-2 mt-2">
+                  <span>Danh mục sản phẩm</span>
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="category-1" type="checkbox" />
+                      <label for="category-1">category</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-2" type="checkbox" />
+                      <label for="category-2">Băng dính</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-3" type="checkbox" />
+                      <label for="category-3">Hộp carton</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-4" type="checkbox" />
+                      <label for="category-4">Hộp Carton nắp đối</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-5" type="checkbox" />
+                      <label for="category-5">Hộp Carton nắp gài</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-6" type="checkbox" />
+                      <label for="category-6">Hộp Carton chuyển nhà</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-7" type="checkbox" />
+                      <label for="category-7">Hộp in ofset</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="category-8" type="checkbox" />
+                      <label for="category-8">Túi giấy</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer action -->
+  <div class="d-flex align-items-center justify-content-start gap-2">
+    <select class="select__main">
+      <option value="">Hành động hàng loạt</option>
+      <option value="">Chỉnh sửa</option>
+      <option value="">Bỏ vào thùng rác</option>
+    </select>
+    <button class="btn btn-ol-primary h-100">Áp dụng</button>
+  </div>
 </section>
-  

@@ -826,3 +826,50 @@ document.addEventListener("DOMContentLoaded", () => {
   handleEventSidebar();
   handleEventNav();
 });
+
+// comment box
+let openTags = [];
+  
+function insertTag(tag, attrs = "") {
+  const textarea = document.getElementById("comment-text");
+  const startTag = `<${tag}${attrs}>`;
+  const endTag = `</${tag}>`;
+
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const text = textarea.value;
+
+  // Chèn thẻ vào vị trí con trỏ
+  textarea.value = text.substring(0, start) + startTag + endTag + text.substring(end);
+  textarea.selectionStart = textarea.selectionEnd = start + startTag.length;
+
+  openTags.push(endTag);
+  
+  // Cập nhật vùng preview (vùng hiển thị bình luận có HTML)
+  updatePreview();
+}
+
+function closeTag() {
+  const textarea = document.getElementById("comment-text");
+
+  if (openTags.length > 0) {
+    const lastTag = openTags.pop();
+    const cursorPos = textarea.selectionStart;
+    const textBefore = textarea.value.substring(0, cursorPos);
+    const textAfter = textarea.value.substring(cursorPos);
+
+    textarea.value = textBefore + lastTag + textAfter;
+    textarea.selectionStart = textarea.selectionEnd = cursorPos + lastTag.length;
+    
+    // Cập nhật lại vùng preview
+    updatePreview();
+  }
+}
+
+function updatePreview() {
+  const textarea = document.getElementById("comment-text");
+  const preview = document.getElementById("comment-preview");
+
+  // Hiển thị nội dung của textarea dưới dạng HTML
+  preview.innerHTML = textarea.value;
+}
