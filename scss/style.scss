@@ -124,13 +124,13 @@ select:focus {
 }
 // backgr color
 .bg-gray {
-  background-color: $bg-gray;
+  background-color: $bg-gray !important ;
 }
 .bg-blue {
-  background-color: $bg-blue_main;
+  background-color: $bg-blue_main !important;
 }
 .bg-black-sub {
-  background-color: $black-sub;
+  background-color: $black-sub !important ;
 }
 // curosr
 .cursor-pointer {
@@ -171,7 +171,8 @@ select:focus {
 .sidebar__menu > ul > li {
   padding: 0;
 }
-.sidebar__menu > ul > li > a.active {
+.sidebar__menu > ul > li > a.active,
+.sidebar__menu > ul > li > ul > li > a.active {
   color: $blue_main;
   background-color: #ecf3ff;
 }
@@ -360,15 +361,11 @@ select:focus {
     font-weight: 600;
     tr {
       th {
-        background-color: #dee2e6;
+        background-color: #f7f8fb;
       }
     }
   }
   border-collapse: collapse !important;
-  th {
-    background-color: $bg-gray;
-    cursor: default;
-  }
   th:first-child {
     min-width: 50px;
   }
@@ -444,7 +441,6 @@ select:focus {
   max-height: $height__main;
   transition: all 0.2s ease-in-out;
 }
-// size
 .btn.small {
   width: max-content;
   padding: 4px 8px;
@@ -453,7 +449,6 @@ select:focus {
   min-height: 32px;
   max-height: 32px;
 }
-// backgr
 .btn.btn__blue {
   background-color: $blue_main !important;
   color: white;
@@ -475,7 +470,6 @@ select:focus {
   border: none !important;
   padding: 0;
 }
-// varirant
 .btn.btn-blue {
   border: 0.5px solid $blue_main !important;
   color: white;
@@ -495,6 +489,9 @@ select:focus {
   &:hover {
     background-color: $blue_main;
     color: white !important;
+    img {
+      filter: $fill_icon_white;
+    }
   }
 }
 .btn.btn-dark {
@@ -504,11 +501,12 @@ select:focus {
     background-color: #999;
   }
 }
-// size
 .btn-group-lg > .btn,
 .btn-lg {
   --bs-btn-padding-y: 0.3rem !important;
 }
+
+// custom btn theo chức năng
 .redirect__btn {
   user-select: none;
   font-size: 13px;
@@ -564,6 +562,9 @@ select:focus {
   border-radius: 4px;
   border: 1px solid $border-1;
 }
+.input__main.normal {
+  min-width: 240px;
+}
 .input__main.small {
   height: 34px;
   min-height: 34px;
@@ -579,8 +580,15 @@ select:focus {
   outline: none !important;
   box-shadow: none !important;
 }
-// CSS LAYOUT Bài viết , sản phẩm chung
+// text area
+.area__main {
+  font-size: 14px;
+  padding: 8px 8px;
+  border: 1px solid #6d757d;
+  border-radius: 6px;
+}
 
+// CSS LAYOUT Bài viết , sản phẩm chung
 .display__custom__wrapper {
   max-height: 0;
   overflow: hidden;
@@ -633,7 +641,7 @@ select:focus {
         visibility: hidden;
         span {
           &:hover {
-            color: $black-main;
+            text-decoration: underline;
           }
         }
         .delete {
@@ -897,19 +905,15 @@ select:focus {
     right: 0;
     top: 100%;
     background-color: white;
-    min-width: 300px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     z-index: 10;
     list-style: none;
-    padding: 16px 14px;
     margin: 5px 0;
+    ul {
+      list-style: none;
+    }
     div {
-      display: flex;
-      justify-content: space-between;
-      font-size: 15px;
-      margin-top: 20px;
-      margin-bottom: 20px;
       button {
         background: white;
         color: $blue_main;
@@ -922,9 +926,8 @@ select:focus {
     }
 
     li {
-      border-bottom: 1px solid #ddd;
+      // border-bottom: 1px solid #ddd;
       font-size: 14px;
-      margin-top: 10px;
     }
 
     li:last-child {
@@ -935,7 +938,6 @@ select:focus {
       display: flex;
       font-size: 12px;
       align-items: center;
-      padding: 10px 15px;
       text-decoration: none;
       color: $black-main;
       transition: 0.3s;
@@ -950,9 +952,12 @@ select:focus {
     }
 
     a:hover {
-      background-color: #f1f1f1;
+      // background-color: #f1f1f1;
       color: $blue_main;
     }
+  }
+  .dropdown-menu.w-300 {
+    min-width: 300px;
   }
 }
 
@@ -1006,6 +1011,23 @@ select:focus {
   position: fixed;
   bottom: 0;
 }
+#btn__upload-img {
+  display: none;
+}
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.img-wrapper {
+  border: 1px solid #ddd;
+  padding: 5px;
+  cursor: pointer;
+}
+.img-wrapper:hover {
+  border-color: #0077ff;
+}
 /* RESPONSIVE */
 @media (max-width: 1200px) {
   .grid__common {
@@ -1017,7 +1039,7 @@ select:focus {
     width: 80vw !important;
   }
   .grid__common {
-    grid-template-columns: 23% 77%;
+    grid-template-columns: 100%;
   }
 }
 @media (max-width: 768px) {

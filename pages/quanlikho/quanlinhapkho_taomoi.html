@@ -4,8 +4,8 @@
     <!-- quay lại -->
     <div class="d-flex align-items-center justify-content-start">
       <button
-        id="btn__back__warehouse"
-        class="btn btn-sm btn-ol-primary float-start"
+        data-redirect-url="quanlinhapkho"
+        class="redirect__btn btn btn-sm btn-ol-primary float-start"
       >
         &larr; Quay lại
       </button>
@@ -27,12 +27,12 @@
         </button>
         <button
           id="btn__create__product"
-          class="btn btn-lg bg-blue btn__cancel__hover text-white fs-14 d-flex align-items-center gap-1"
+          class="btn btn-lg btn-ol-primary fs-14 d-flex align-items-center gap-1"
         >
           Thêm từ hệ thống
           <img
             src="../assets/icons/add-svgrepo-com.svg"
-            class="size-20 icon__white"
+            class="size-20 fill__blue"
           />
         </button>
       </div>
@@ -113,7 +113,11 @@
         <div class="col-12 cl-md-6 col-lg-4">
           <div class="d-grid gap-1">
             <label for="des" class="form-label fs-14">Ghi chú</label>
-            <textarea id="des" class="form-control" rows="5"></textarea>
+            <textarea
+              id="des"
+              class="form-control area__main"
+              rows="5"
+            ></textarea>
           </div>
         </div>
       </div>

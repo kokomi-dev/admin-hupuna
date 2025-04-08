@@ -1,3 +1,36 @@
+function showToast(message, type) {
+  let backgroundColor;
+  switch (type) {
+    case "success":
+      backgroundColor = "#4CAF50";
+      break;
+    case "error":
+      backgroundColor = "#F44336";
+      break;
+    case "info":
+      backgroundColor = "#2196F3";
+      break;
+    case "warning":
+      backgroundColor = "#FF9800";
+      break;
+    default:
+      backgroundColor = "#333";
+  }
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top",
+    position: "right",
+    backgroundColor,
+    style: {
+      fontSize: "14px",
+      borderRadius: "6px",
+      textTransform: "capitalize",
+    },
+  }).showToast();
+}
+
 // handle load chart dashboard
 function handleLoadChartDashboard() {
   const chartElement = document.getElementById("visitChart");
@@ -491,18 +524,17 @@ function input_file_media() {
 }
 //upload img input
 function upload_img_screen(event) {
-  const file = event.target.files[0]; // Lấy tệp tin đã chọn
+  const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
-
     reader.onload = function (e) {
       // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
       const imgElement = document.querySelector("#img_load_screen img");
       imgElement.src = e.target.result; // Đặt nguồn ảnh cho phần tử img
       document.getElementById("img_load_screen").classList.remove("d-none"); // Hiển thị phần tử chứa ảnh
     };
-
-    reader.readAsDataURL(file); // Đọc tệp tin như một DataURL
+    document.getElementById("btn__upload-img").style.display = "block";
+    reader.readAsDataURL(file);
   } else {
     alert("Không có tệp tin nào được chọn.");
   }
@@ -586,15 +618,12 @@ function handleActiveOpenTab() {
 }
 // handle modal
 function initModals() {
-  // Thêm sự kiện cho các nút mở modal
   document.querySelectorAll("[data-modal-target]").forEach((button) => {
     button.addEventListener("click", () => {
       const modalId = button.getAttribute("data-modal-target");
       openModal(modalId);
     });
   });
-
-  // Thêm sự kiện cho các nút đóng modal
   document.querySelectorAll("[data-modal-close]").forEach((button) => {
     button.addEventListener("click", () => {
       const modalId = button.getAttribute("data-modal-close");
@@ -602,18 +631,14 @@ function initModals() {
     });
   });
 
-  // Đóng modal khi click vào overlay
   document.querySelectorAll(".modal-overlay").forEach((overlay) => {
     overlay.addEventListener("click", function (e) {
-      // Chỉ đóng modal khi click vào overlay, không phải vào modal container
       if (e.target === overlay) {
         const modalId = overlay.getAttribute("id");
         closeModal(modalId);
       }
     });
   });
-
-  // Đóng modal khi nhấn phím ESC
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       document.querySelectorAll(".modal-overlay.active").forEach((modal) => {
@@ -750,6 +775,7 @@ function handleEventQuickFix() {
     }
   });
 }
+
 function loadFuntion() {
   handleActionItemTr();
   handleOpenDown();
@@ -758,6 +784,7 @@ function loadFuntion() {
   handleLoadEditor();
   handleClickRedirectUrlPage();
   handleEventQuickFix();
+  handleEventUploadImgClound();
 }
 // load page show content
 async function loadPage(pageName, pageNameParent) {
@@ -808,6 +835,75 @@ async function loadPage(pageName, pageNameParent) {
        `;
   }
 }
+// handle open modal choose media
+function handleModalMedia() {
+  const allBtn = document.querySelectorAll(".media__modal");
+}
+// handle page image media
+function handleEventUploadImgClound() {
+  const cloudName = "dcyou1pdh";
+  const uploadPreset = "test__admin__hupuna";
+
+  const galleryContainer = document.getElementById("gallery");
+  const selectedUrlInput = document.getElementById("selectedUrl");
+  const btnUPload = document.getElementById("btn__upload-img");
+  if (btnUPload) {
+    btnUPload.addEventListener("click", () => {
+      uploadImage();
+    });
+  }
+  async function uploadImage() {
+    const fileInput = document.getElementById("input_img");
+    const previewImage = document.getElementById("img_load_screen");
+
+    const file = fileInput.files[0];
+    if (!file) return showToast("Vui lòng chọn file", "warning");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+    formData.append("folder", "hupuna__admin");
+    try {
+      const res = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        formData
+      );
+
+      const imageUrl = res.data.secure_url;
+      saveImage(imageUrl);
+      loadGallery();
+      showToast("Tải ảnh lên thành công", "success");
+      fileInput.value = "";
+      previewImage.classList.add("d-none");
+    } catch (err) {
+      console.error(err);
+      showToast("Upload lỗi", "error");
+    }
+  }
+  function saveImage(url) {
+    const images = JSON.parse(localStorage.getItem("mediaGallery") || "[]");
+    images.push(url);
+    localStorage.setItem("mediaGallery", JSON.stringify(images));
+  }
+  function loadGallery() {
+    if (galleryContainer) {
+      galleryContainer.innerHTML = "";
+      const images = JSON.parse(localStorage.getItem("mediaGallery") || "[]");
+      images.forEach((url) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "img-wrapper";
+        wrapper.innerHTML = `<img src="${url}" alt="">`;
+        wrapper.onclick = () => {
+          selectedUrlInput.value = url;
+          navigator.clipboard.writeText(url);
+          showToast("Sao chép địa chỉ ảnh thành công", "success");
+        };
+        galleryContainer.appendChild(wrapper);
+      });
+    }
+  }
+  loadGallery();
+}
 // check handle load
 function handleCheckLoadPage() {
   const currentPage = sessionStorage.getItem("currenPage");
@@ -826,10 +922,9 @@ document.addEventListener("DOMContentLoaded", () => {
   handleEventSidebar();
   handleEventNav();
 });
-
 // comment box
 let openTags = [];
-  
+
 function insertTag(tag, attrs = "") {
   const textarea = document.getElementById("comment-text");
   const startTag = `<${tag}${attrs}>`;
@@ -840,15 +935,15 @@ function insertTag(tag, attrs = "") {
   const text = textarea.value;
 
   // Chèn thẻ vào vị trí con trỏ
-  textarea.value = text.substring(0, start) + startTag + endTag + text.substring(end);
+  textarea.value =
+    text.substring(0, start) + startTag + endTag + text.substring(end);
   textarea.selectionStart = textarea.selectionEnd = start + startTag.length;
 
   openTags.push(endTag);
-  
+
   // Cập nhật vùng preview (vùng hiển thị bình luận có HTML)
   updatePreview();
 }
-
 function closeTag() {
   const textarea = document.getElementById("comment-text");
 
@@ -859,13 +954,13 @@ function closeTag() {
     const textAfter = textarea.value.substring(cursorPos);
 
     textarea.value = textBefore + lastTag + textAfter;
-    textarea.selectionStart = textarea.selectionEnd = cursorPos + lastTag.length;
-    
+    textarea.selectionStart = textarea.selectionEnd =
+      cursorPos + lastTag.length;
+
     // Cập nhật lại vùng preview
     updatePreview();
   }
 }
-
 function updatePreview() {
   const textarea = document.getElementById("comment-text");
   const preview = document.getElementById("comment-preview");
