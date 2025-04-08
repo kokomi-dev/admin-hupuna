@@ -99,6 +99,22 @@ function handleLoadEditor() {
           input.click();
         }
       },
+      init_instance_callback: function () {
+        const editWraper = document.querySelectorAll(".tox.tox-tinymce");
+        if (editWraper.length > 0) {
+          const promo = document.querySelectorAll(".tox-promotion");
+          editWraper.forEach((item) => {
+            const promo = item.querySelector(".tox-promotion");
+            const help = item.querySelector(".tox-statusbar__help-text");
+            const build = item.querySelector(".tox-statusbar__branding");
+            if (promo && help && build) {
+              promo.style.display = "none";
+              help.style.display = "none";
+              build.style.display = "none";
+            }
+          });
+        }
+      },
     });
   }
 }
@@ -225,8 +241,10 @@ function handleEventNav() {
     .addEventListener("click", (event) => {
       if (event.target.tagName === "A") {
         const pageName = event.target.getAttribute("data-page");
+        const pageNameParent = event.target.getAttribute("data-page-parent");
+
         handleCloseAccordtion();
-        loadPage(pageName);
+        loadPage(pageName, pageNameParent);
         listItemNav.forEach((item) => {
           if (item.classList.contains("active")) {
             item.classList.remove("active");
@@ -632,9 +650,10 @@ function handleClickRedirectUrlPage() {
   redirectButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const redirectUrl = this.getAttribute("data-redirect-url");
-      if (redirectUrl) {
-        loadPage(redirectUrl);
-      }
+      const parentPage = sessionStorage.getItem("currenPageParent");
+
+      if (redirectUrl && parentPage) loadPage(redirectUrl, parentPage);
+      else loadPage(redirectUrl);
     });
   });
 }
@@ -643,79 +662,95 @@ function handleEventQuickFix() {
   const quickEditLinks = document.querySelectorAll(
     ".hover__wrapper .quick__fix"
   );
-  if (quickEditLinks) {
-    quickEditLinks.forEach((link) => {
+  const quickEditPanel = document.getElementById("quick__edit");
+
+  if (!quickEditLinks.length || !quickEditPanel) {
+    return;
+  }
+
+  let activeRow = null;
+
+  quickEditLinks.forEach((link) => {
+    if (link) {
       link.classList.add("quick-edit-link");
       link.style.cursor = "pointer";
-    });
+    }
+  });
 
-    const quickEditPanel = document.getElementById("quick__edit");
-    let activeRow = null;
-    document.addEventListener("click", function (event) {
-      if (event.target.classList.contains("quick-edit-link")) {
-        event.preventDefault();
-        const clickedRow = event.target.closest(".item__tr");
-        if (activeRow === clickedRow) {
-          if (quickEditPanel.style.display === "block") {
-            quickEditPanel.style.display = "none";
-            clickedRow.classList.remove("active-row");
-            activeRow = null;
-          } else {
-            positionPanel(clickedRow);
-          }
+  document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("quick-edit-link")) {
+      event.preventDefault();
+      const clickedRow = event.target.closest(".item__tr");
+
+      if (!clickedRow) return;
+
+      if (activeRow === clickedRow) {
+        if (quickEditPanel.style.display === "block") {
+          quickEditPanel.style.display = "none";
+          clickedRow.classList.remove("active-row");
+          activeRow = null;
         } else {
-          if (activeRow) {
-            activeRow.classList.remove("active-row");
-          }
-          activeRow = clickedRow;
-          activeRow.classList.add("active-row");
           positionPanel(clickedRow);
         }
-      }
-    });
-    function positionPanel(row) {
-      const rowRect = row.getBoundingClientRect();
-      const tableRect = row.closest("table").getBoundingClientRect();
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      quickEditPanel.style.display = "block";
-      quickEditPanel.style.position = "absolute";
-      quickEditPanel.style.top = rowRect.bottom + scrollTop + "px";
-      quickEditPanel.style.left = tableRect.left + "px";
-      quickEditPanel.style.width = tableRect.width + "px";
-      quickEditPanel.style.zIndex = "1000";
-    }
-
-    const closeButton = document.getElementById("close-quick-edit");
-    if (closeButton) {
-      closeButton.addEventListener("click", function () {
-        quickEditPanel.style.display = "none";
-
+      } else {
         if (activeRow) {
           activeRow.classList.remove("active-row");
-          activeRow = null;
         }
-      });
+        activeRow = clickedRow;
+        activeRow.classList.add("active-row");
+        positionPanel(clickedRow);
+      }
     }
+  });
 
-    document.addEventListener("click", function (event) {
-      if (
-        !event.target.closest("#quick__edit") &&
-        !event.target.classList.contains("quick-edit-link")
-      ) {
+  function positionPanel(row) {
+    if (!row || !quickEditPanel) return;
+
+    const table = row.closest("table");
+    if (!table) return;
+
+    const rowRect = row.getBoundingClientRect();
+    const tableRect = table.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    quickEditPanel.style.display = "block";
+    quickEditPanel.style.position = "absolute";
+    quickEditPanel.style.top = rowRect.bottom + scrollTop + "px";
+    quickEditPanel.style.left = tableRect.left + "px";
+    quickEditPanel.style.width = tableRect.width + "px";
+    quickEditPanel.style.zIndex = "1000";
+  }
+
+  const closeButton = document.getElementById("close-quick-edit");
+  if (closeButton) {
+    closeButton.addEventListener("click", function () {
+      if (quickEditPanel) {
         quickEditPanel.style.display = "none";
+      }
 
-        if (activeRow) {
-          activeRow.classList.remove("active-row");
-          activeRow = null;
-        }
+      if (activeRow) {
+        activeRow.classList.remove("active-row");
+        activeRow = null;
       }
     });
-  } else return;
+  }
+
+  document.addEventListener("click", function (event) {
+    if (
+      quickEditPanel &&
+      !event.target.closest("#quick__edit") &&
+      !event.target.classList.contains("quick-edit-link")
+    ) {
+      quickEditPanel.style.display = "none";
+
+      if (activeRow) {
+        activeRow.classList.remove("active-row");
+        activeRow = null;
+      }
+    }
+  });
 }
 function loadFuntion() {
-  const currentPage = sessionStorage.getItem("currenPage");
   handleActionItemTr();
   handleOpenDown();
   handleActiveOpenTab();
@@ -725,19 +760,22 @@ function loadFuntion() {
   handleEventQuickFix();
 }
 // load page show content
-async function loadPage(pageName) {
+async function loadPage(pageName, pageNameParent) {
   try {
     const contentDiv = document.getElementById("content");
 
-    const response = await fetch(`pages/${pageName}.html`);
+    let response = null;
+    if (pageNameParent && pageNameParent !== "not")
+      response = await fetch(`pages/${pageNameParent}/${pageName}.html`);
+    else response = await fetch(`pages/${pageName}.html`);
     if (!response.ok) {
       throw new Error("Trang không tồn tại");
     }
-
     const content = await response.text();
 
     contentDiv.innerHTML = content;
     sessionStorage.setItem("currenPage", pageName);
+    sessionStorage.setItem("currenPageParent", pageNameParent);
 
     loadFuntion();
     if (pageName === "trangchu") {
@@ -773,17 +811,20 @@ async function loadPage(pageName) {
 // check handle load
 function handleCheckLoadPage() {
   const currentPage = sessionStorage.getItem("currenPage");
-  currentPage ? loadPage(currentPage) : loadPage("trangchu");
+  const currentPageParent = sessionStorage.getItem("currenPageParent");
+
+  currentPage && currentPageParent
+    ? loadPage(currentPage, currentPageParent)
+    : currentPage && !currentPageParent
+    ? loadPage(currentPage)
+    : loadPage("trangchu");
 }
 document.addEventListener("DOMContentLoaded", () => {
-  checkAuthentication();
-  infoAccount();
   handleCloseAccordtion();
   checkActiveMenuSub();
   handleCheckLoadPage();
   handleEventSidebar();
   handleEventNav();
-  handleLogout();
 });
 
 // comment box

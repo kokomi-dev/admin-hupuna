@@ -4,8 +4,10 @@
     <!-- tìm kiếm -->
     <div class="d-flex align-items-center justify-content-end">
         <div class="d-flex align-items-center justify-content-end gap-2">
-            <input class="input__main br-1-main" />
-            <button class="fs-13 btn btn-ol-primary">Tìm kiếm danh mục</button>
+          <input class="input__main br-1-main w-75" />
+          <button class="fs-13 btn btn-ol-primary flex-shrink-0">
+            Tìm kiếm danh mục
+          </button>
         </div>
     </div>
     <!-- bảng và thêm mới -->
@@ -149,7 +151,7 @@
                         <td class="col__name">
                             <span class="item__title">category</span>
                             <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main" >Chỉnh sửa</span>
+                                <span data-redirect-url="chinhsua-danhmucbaiviet" class="redirect__btn text-black-main" >Chỉnh sửa</span>
                                 |<span class="quick__fix">Sửa nhanh</span> |
                                 <span>Xem</span> |<span>Đặt làm mặc định</span>
                             </div>  
@@ -167,7 +169,7 @@
                         <td class="col__name">
                             <span class="item__title">Hộp carton</span>
                             <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">
+                                <span data-redirect-url="chinhsua-danhmucbaiviet" class="redirect__btn text-black-main">
                                     Chỉnh sửa
                                 </span>
                                 |<span class="quick__fix">Sửa nhanh</span> |
@@ -186,7 +188,7 @@
                         <td class="col__name">
                             <span class="item__title">Băng dính</span>
                             <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12" >
-                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">Chỉnh sửa</span>
+                                <span data-redirect-url="chinhsua-danhmucbaiviet" class="redirect__btn text-black-main">Chỉnh sửa</span>
                                 |<span class="quick__fix">Sửa nhanh</span> |
                                 <span>Xem</span> |<span>Đặt làm mặc định</span>
                             </div>
@@ -203,7 +205,7 @@
                         <td class="col__name">
                             <span class="item__title">Hộp Carton nắp đối</span>
                             <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main" >Chỉnh sửa</span>
+                                <span data-redirect-url="chinhsua-danhmucbaiviet" class="redirect__btn text-black-main" >Chỉnh sửa</span>
                                 |<span class="quick__fix">Sửa nhanh</span> |
                                 <span>Xem</span> |<span>Đặt làm mặc định</span>
                             </div>
@@ -220,7 +222,7 @@
                         <td class="col__name">
                             <span class="item__title">Hộp Carton chuyển nhà</span>
                             <div class="hover__wrapper flex align-items-center justify-content-start flex-wrap fs-12">
-                                <span data-redirect-url="chinhsua-danhmucsanpham" class="redirect__btn text-black-main">Chỉnh sửa</span>
+                                <span data-redirect-url="chinhsua-danhmucbaiviet" class="redirect__btn text-black-main">Chỉnh sửa</span>
                                 |<span class="quick__fix">Sửa nhanh</span> |
                                 <span>Xem</span> |<span>Đặt làm mặc định</span>
                             </div>
@@ -234,18 +236,19 @@
             </div>
             <div id="quick__edit" style="display: none">
                 <div class="w-100 d-grid gap-2 fs-14">
-                <div class="row p-0 m-0">
-                    <div class="col-3 py-0">Tên</div>
-                    <div class="col-9 py-0"><input class="input__main w-100" /></div>
-                </div>
-                <div class="row p-0 m-0">
-                    <div class="col-3 py-0">Đường dẫn</div>
-                    <div class="col-9 py-0"><input class="input__main w-100" /></div>
-                </div>
-                <div class="d-flex align-items-center justify-content-start gap-2">
-                    <button class="btn btn__blue">Cập nhật danh mục</button>
-                    <button class="btn btn__red" id="close-quick-edit">Hủy</button>
-                </div>
+                    <h6>Sửa nhanh</h6>
+                    <div class="row p-0 m-0">
+                        <div class="col-3 py-0">Tên</div>
+                        <div class="col-9 py-0"><input class="input__main w-100" /></div>
+                    </div>
+                    <div class="row p-0 m-0">
+                        <div class="col-3 py-0">Đường dẫn</div>
+                        <div class="col-9 py-0"><input class="input__main w-100" /></div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start gap-2">
+                        <button class="btn small btn__blue">Lưu các thay đổi</button>
+                        <button class="btn small btn__red" id="close-quick-edit">Hủy</button>
+                    </div>
                 </div>
             </div>
             <div class="fs-12 text-black-sub">

@@ -1,6 +1,15 @@
 <section class="d-grid gap-3">
+    <span
+        data-redirect-url="tatcabaiviet"
+        class="redirect__btn d-flex align-items-center justify-content-start gap-1"
+        >&larr; Quay lại</span
+    >
     <div class="d-flex align-items-center justify-content-start gap-2">
-        <span class="fs-4">Thêm bài viết</span> 
+        <span class="fs-4">Sửa bài viết</span>
+        <button class="btn small btn-ol-primary">Thêm bài viết</button>
+    </div>
+    <div class="border bg-white sh fs-14 py-2 ps-3">
+        <p>Có bản lưu tự động của bài viết này mới hơn phiên bản dưới đây. <a href="">Xem bản lưu tự động</a></p>
     </div>
     <div class="row g-3">
         <!-- left -->
@@ -11,14 +20,21 @@
 
                 <!-- edit title -->
                 <div class="edit__title">
-                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" type="text" placeholder="Nhập tiêu đề bài viết" />
+                    <input class="w-100 px-2 py-2 br-1-main rounded-2 fill-blue" />
                 </div>
 
+                <!-- edit link -->
+                <div class="d-flex align-items-center fs-14">
+                    <span class="me-2">Đường dẫn cố định: </span>
+                    <a href="">Đây là link đường dẫn cố định của bài viết</a>
+                    <button class="btn small btn-ol-primary ms-1">Chỉnh sửa</button>
+                </div>
+                
                 <!-- edit des -->
-                <div class="bg-white edit__component border d-grid gap-2">
+                <div class="bg-white edit__component d-grid gap-2">
                     <div class="p-2 h-auto d-grid gap-2">
                         <button class="fs-12 text-blue-main btn small btn-ol-primary d-flex align-items-center justify-content-center gap-2">
-                            <img src="../assets/icons/screen-play.svg" class="size-16 fill__blue"/>
+                            <img src="/assets/icons/navigation/screen-play.svg" class="size-16 fill__blue"/>
                             Thêm Media
                         </button>
                         <textarea id="myEditor" name="productDescription" class="fs-14 fw-normal h-100 rounded-0" ></textarea>
@@ -38,6 +54,82 @@
                         <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
                     </div>
                 </div>
+
+                <!-- bản sửa đổi -->
+                <div class="bg-white border d-grid gap-2">
+                    <div class="d-flex align-items-center justify-content-between border fs-14 px-2">
+                        Bản sửa đổi
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13">
+                        <img src="/assets/images/logo-img.png" alt="" class="size-30 me-2">
+                        <p>admin, 2 tuần (<a href="">Tháng 3 24,2025 @ 16:11:58</a>)[Tự động lưu]</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13">
+                        <img src="/assets/images/logo-img.png" alt="" class="size-30 me-2">
+                        <p>admin, 2 tuần (<a href="">Tháng 3 24,2025 @ 16:11:58</a>)[Tự động lưu]</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13">
+                        <img src="/assets/images/logo-img.png" alt="" class="size-30 me-2">
+                        <p>admin, 2 tuần (<a href="">Tháng 3 24,2025 @ 16:11:58</a>)[Tự động lưu]</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13">
+                        <img src="/assets/images/logo-img.png" alt="" class="size-30 me-2">
+                        <p>admin, 2 tuần (<a href="">Tháng 3 24,2025 @ 16:11:58</a>)[Tự động lưu]</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13 mb-4">
+                        <img src="/assets/images/logo-img.png" alt="" class="size-30 me-2">
+                        <p>admin, 2 tuần (<a href="">Tháng 3 24,2025 @ 16:11:58</a>)[Tự động lưu]</p>
+                    </div>
+                </div>
+
+                <!-- bình luận -->
+                <div class="bg-white border d-grid gap-2">
+                    <div class="d-flex align-items-center justify-content-between border fs-14 px-2">
+                        Bình luận
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
+                            <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13 mt-2">
+                        <button class="btn small btn-ol-primary"  onclick="input_file_media()">
+                            Thêm bình luận
+                        </button>
+                    </div>
+                    <div class="comment-box d-none" id="scren_input_file">
+                        <label class="fs-14 mb-2">Thêm bình luận mới</label>
+                        <div class="toolbar">
+                            <button onclick="insertTag('b')">b</button>
+                            <button onclick="insertTag('i')">i</button>
+                            <button onclick="insertTag('a', ' href=&quot;&quot;')">link</button>
+                            <button onclick="insertTag('blockquote', '')">b-quote</button>
+                            <button onclick="insertTag('del')">del</button>
+                            <button onclick="insertTag('ins')">ins</button>
+                            <button onclick="insertTag('img', ' src=&quot;&quot; alt=&quot;&quot;')">img</button>
+                            <button onclick="insertTag('ul')">ul</button>
+                            <button onclick="insertTag('ol')">ol</button>
+                            <button onclick="insertTag('li')">li</button>
+                            <button onclick="insertTag('code')">code</button>
+                            <button onclick="closeTag()">đóng thẻ</button>
+                        </div>
+                        <textarea id="comment-text" placeholder="Viết bình luận của bạn..."></textarea>
+                        <div class="action-buttons">
+                            <button class="btn small btn-blue">Thêm Bình luận</button>
+                            <button class="btn small btn-ol-primary" onclick="input_file_media()">Hủy</button>
+                        </div>
+                    </div>
+                      
+                    <div class="d-flex align-items-center justify-content-start px-2 fs-13 mt-2 mb-4">
+                        <p>không có bình luận</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -47,20 +139,17 @@
                 <!-- xuất bản -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                       <div> Xuất bản</div>
+                        Xuất bản
                         <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
                         </div>
                     </div>
-                    <div class="d-grid gap-2 p-2 border br-1-main gap-3">
-                        <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-grid gap-2 p-2 border br-1-main">
+                        <div class="d-flex justify-content-end">
                             <button class="btn small btn-ol-primary">
                                 Xem trước
-                            </button>
-                            <button class="btn small btn-ol-primary">
-                                Lưu nháp
                             </button>
                         </div>
                         <div class="open__down__item fs-14">
@@ -97,8 +186,25 @@
                             </div>
                         </div>
 
+                        <div class="open_down_item fs-14">
+                            Bản sửa đổi: <strong class="fw-medium">3</strong>
+                            <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
+                                Chỉnh sửa
+                            </button>
+                            <div class="open__down__content">
+                                <div class="d-flex align-items-center justify-content-start gap-2 p-2">
+                                    <select name="select" class="select__main small fs-12">
+                                        <option value="">3</option>
+                                        <option value="">2</option>
+                                        <option value="">1</option>
+                                    </select>
+                                    <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="open__down__item fs-14">
-                            Xuất bản <strong class="fw-medium">ngay lập tức</strong>
+                            Đã xuất bản: <strong class="fw-medium"> Th4 26, 2025, 16:04</strong>
                             <button class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent">
                                 Chỉnh sửa
                             </button>
@@ -111,15 +217,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-end border gap-2 p-2 ">
-                        <button class="btn small btn-ol-primary">Xuất bản</button>
+                    
+                    <div class="border d-flex justify-content-between align-items-center p-2 fs-13">
+                        <a href="">Bỏ và thùng rác</a>
+                        <button class="btn sm btn-ol-primary">Cập nhập</button>
                     </div>
                 </div>
 
                 <!-- danh mục -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <div>Danh mục</div>
+                        Danh mục
                         <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
@@ -221,8 +329,8 @@
                 <!-- ảnh bài viết -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                       <div> Ảnh bài viết</div>
-                       <div class="d-flex align-items-center justify-centent-end gap-2">
+                        Ảnh bài viết
+                        <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/up-small-svgrepo-com.svg" alt="" class="size-16"></button>
@@ -240,7 +348,7 @@
                 <!-- aibum hình ảnh bài viết -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <div>Album hình ảnh bài viết</div>
+                        Album hình ảnh bài viết
                         <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
@@ -297,7 +405,7 @@
                 <!-- thẻ sản phẩm -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <div>Thẻ bài viết</div>
+                        Thẻ bài viết
                         <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
@@ -307,7 +415,7 @@
                     <div class="d-grid gap-2 p-2 border br-1-main">
                         <div class="d-flex align-items-center justify-content-start gap-2">
                             <input class="input__main br-1-main" />
-                            <button class="btn btn-ol-primary">
+                            <button class="btn small btn-ol-primary">
                                 Thêm
                             </button>
                         </div>
@@ -328,7 +436,7 @@
                 <!-- thương hiệu -->
                 <div class="edit__component">
                     <div class="edit__component__head border-bottom-0 br-1-main fs-14 fw-medium px-2 d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <div>Thương hiệu</div>
+                        Thương hiệu
                         <div class="d-flex align-items-center justify-centent-end gap-2">
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-3-svgrepo-com.svg" alt="" class="size-16"></button>
                             <button class="btn smail border-0 p-0"><img src="/assets/icons/down-arrow-backup-2-svgrepo-com.svg" alt="" class="size-16"></button>
@@ -403,4 +511,4 @@
         </div>
     </div>
 </section>
-  
+
