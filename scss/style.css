@@ -1107,6 +1107,7 @@ select:focus {
 }
 .table__main thead tr th {
   background-color: #dee2e6;
+  min-width: 150px;
 }
 .table__main th {
   background-color: #f9fafb;
