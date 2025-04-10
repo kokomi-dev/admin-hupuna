@@ -1146,7 +1146,7 @@ select:focus {
   font-weight: 600;
 }
 .table__main thead tr th {
-  background-color: #f7f8fb;
+  background-color: #dee2e6;
 }
 .table__main th:first-child {
   min-width: 50px;
