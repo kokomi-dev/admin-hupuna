@@ -33,10 +33,10 @@
   </head>
   <body translate="no" lang="vi">
     <main class="w-100 h-100">
-      <div class="row g-0 grid__common">
+      <div class="row g-0">
         <!-- sidebar -->
         <aside
-          class="sidebar__large border-bottom-0 d-none d-md-block sidebar h-auto border-top-0 br-1-main bg-white p-0"
+          class="sidebar__large border-bottom-0 d-none d-lg-block sidebar h-100 overflow-auto border-top-0 br-1-main bg-white p-0"
         >
           <div class="h-100 d-flex flex-column gap-1">
             <!-- logo -->
@@ -418,14 +418,14 @@
         <div class="overlay" id="sidebarOverlay"></div>
 
         <!-- main-->
-        <div class="">
+        <div class="main__body">
           <!-- header -->
           <header
-            class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-md-end align-items-center"
+            class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-lg-end align-items-center"
           >
             <div
               id="mobileMenuToggle"
-              class="d-flex align-items-center justify-content-center d-md-none"
+              class="d-flex align-items-center justify-content-center d-lg-none"
             >
               <img
                 src="./assets/icons/navigation/menu-svgrepo-com.svg"
@@ -452,34 +452,37 @@
                   >
                 </div>
 
-                <div class="dropdown-menu">
-                  <h5>Tin nhắn</h5>
-                  <div>
-                    <button>Tin mới</button>
-                    <button>Xem tất cả</button>
+                <!-- <div class="dropdown-menu w-300">
+                  <div class="p-2 px-3 d-grid gap-1">
+                    <h5 class="fs-5 fw-semibold">Tin nhắn</h5>
+                    <div
+                      class="d-flex align-items-center justify-content-between fs-13 py-2"
+                    >
+                      <button>Xem tất cả</button>
+                    </div>
+                    <li>
+                      <p>Tên của người gửi 1</p>
+                      <a href="#">
+                        <img src="assets/images/logo-img.png" alt="" />
+                        <p>Người dùng 1 đã gửi cho bạn một tin nhắn mới</p>
+                      </a>
+                    </li>
+                    <li>
+                      <p>Tên của người gửi 2</p>
+                      <a href="#">
+                        <img src="assets/images/logo-img.png" alt="" />
+                        <p>Người dùng 2 đã gửi cho bạn một tin nhắn mới</p>
+                      </a>
+                    </li>
+                    <li>
+                      <p>Tên của người gửi 3</p>
+                      <a href="#">
+                        <img src="assets/images/logo-img.png" alt="" />
+                        <p>Người dùng 3 đã gửi cho bạn một tin nhắn mới</p>
+                      </a>
+                    </li>
                   </div>
-                  <li>
-                    <p>Tên của người gửi 1</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Người dùng 1 đã gửi cho bạn một tin nhắn mới</p>
-                    </a>
-                  </li>
-                  <li>
-                    <p>Tên của người gửi 2</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Người dùng 2 đã gửi cho bạn một tin nhắn mới</p>
-                    </a>
-                  </li>
-                  <li>
-                    <p>Tên của người gửi 3</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Người dùng 3 đã gửi cho bạn một tin nhắn mới</p>
-                    </a>
-                  </li>
-                </div>
+                </div> -->
               </div>
 
               <div class="dropdown">
@@ -499,33 +502,59 @@
                     >1</span
                   >
                 </div>
-                <div class="dropdown-menu">
-                  <h5>Thông báo</h5>
-                  <div>
-                    <button>Mới</button>
-                    <button>Xem tất cả</button>
+                <div class="dropdown-menu w-300">
+                  <div class="d-grid gap-1 p-2 px-3">
+                    <h5 class="fs-5 fw-semibold">Thông báo</h5>
+                    <div
+                      class="fs-13 text-black-sub d-flex align-items-center justify-content-start gap-2 py-2"
+                    >
+                      <button class="bg-gray fw-medium rounded-5 p-2">
+                        Tất cả
+                      </button>
+                      <button>Chưa đọc</button>
+                    </div>
+                    <ul style="gap: 1rem" class="d-grid gap-">
+                      <li>
+                        <a href="#">
+                          <img
+                            class="flex-shrink-0 rounded-circle obf-cover"
+                            src="https://images.pexels.com/photos/31452112/pexels-photo-31452112.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
+                            alt=""
+                          />
+                          <p class="fs-13">
+                            <span class="fw-semibold fs-13">Admin1</span>
+                            đây là mô tả thông báo bài viết 1 ấn vào xem đi bạn
+                          </p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <img
+                            class="flex-shrink-0 rounded-circle obf-cover"
+                            src="https://images.pexels.com/photos/30311847/pexels-photo-30311847/free-photo-of-c-p-doi-vui-v-cong-nhau-trong-v-n-xuan.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
+                            alt=""
+                          />
+                          <p class="fs-13">
+                            <span class="fw-semibold fs-13">Khách hàng</span>
+                            đã đặt thành công bìa carton hộp cứng
+                          </p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <img
+                            class="flex-shrink-0 rounded-circle obf-cover"
+                            src="https://images.pexels.com/photos/9471627/pexels-photo-9471627.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
+                            alt=""
+                          />
+                          <p class="fs-13">
+                            <span class="fw-semibold fs-13">Thành viên</span>
+                            Đây là mô tả thông báo bài viết 3 ấn vào xem đi bạn
+                          </p>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
-                  <li>
-                    <p>Tiêu đề thông báo bài viết 1</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Đây là mô tả thông báo bài viết 1 ấn vào xem đi bạn</p>
-                    </a>
-                  </li>
-                  <li>
-                    <p>Tiêu đề thông báo bài viết 2</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Đây là mô tả thông báo bài viết 2 ấn vào xem đi bạn</p>
-                    </a>
-                  </li>
-                  <li>
-                    <p>Tiêu đề thông báo bài viết 3</p>
-                    <a href="#">
-                      <img src="assets/images/logo-img.png" alt="" />
-                      <p>Đây là mô tả thông báo bài viết 3 ấn vào xem đi bạn</p>
-                    </a>
-                  </li>
                 </div>
                 <div></div>
               </div>
@@ -534,7 +563,7 @@
               <div class="ms-2 d-flex align-items-center">
                 <div class="dropdown">
                   <div
-                    class="header__action p-2 rounded-3 d-flex align-items-center justify-content-start gap-1 text-decoration-none dropdown-toggle select-none"
+                    class="header__action p-0 rounded-3 d-flex align-items-center justify-content-start gap-1 text-decoration-none dropdown-toggle select-none"
                     id="dropdownUser1"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
@@ -562,10 +591,11 @@
                   </div>
                   <div
                     aria-labelledby="dropdownUser1"
-                    class="dropdown-menu dropdown-menu-end dropdown__user"
+                    class="dropdown-menu dropdown-menu-end dropdown__user fs-14 p-0"
                   >
                     <ul>
                       <li><a href="#">Trang cá nhân</a></li>
+                      <li><a href="#">Cài đặt</a></li>
                       <li><a id="btn__logout" href="#">Đăng xuất</a></li>
                     </ul>
                   </div>
@@ -575,6 +605,129 @@
           </header>
           <!-- load content -->
           <div id="content" class="w-100 h-100 p-3 px-3 px-md-4"></div>
+          <!-- modal chosse img from media -->
+          <div id="modalChooseMedia" class="modal-overlay">
+            <div class="modal-container h-auto w-75 overflow-auto">
+              <div class="modal-header">
+                <div class="fs-6 fw-semibold">Chọn ảnh từ Media</div>
+                <button
+                  class="modal-close size-18"
+                  data-modal-close="modalChooseMedia"
+                >
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="d-flex align-items-center justify-content-between">
+                  <h2 class="fs-4">Danh sách ảnh đã tải lên</h2>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary"
+                    onclick="input_file_media()"
+                  >
+                    Thêm tệp mới
+                  </button>
+                </div>
+                <section class="d-grid gap-2 gap-md-3 gap-lg-4 fs-14 mt-3">
+                  <!-- input_img -->
+                  <div
+                    class="input_img_media row d-none justify-content-center p-2"
+                    id="scren_input_file"
+                  >
+                    <!-- btn close -->
+                    <div class="d-flex justify-content-end fs-14">
+                      <button
+                        type="button"
+                        class="btn btn-sm border-0"
+                        onclick="input_file_media()"
+                      >
+                        <img
+                          src="/assets/icons/xmark-svgrepo-com.svg"
+                          alt=""
+                          class="size-24"
+                        />
+                      </button>
+                    </div>
+                    <!-- main -->
+                    <div class="col-5 text-center py-3">
+                      <h5 class="mb-2">Thả các tệp tin để tải lên</h5>
+                      <p class="mb-2">hoặc</p>
+                      <div
+                        class="d-flex align-items-center justify-content-center gap-3"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary fs-14"
+                          onclick="document.getElementById('input_img').click()"
+                        >
+                          Chọn tệp tin
+                        </button>
+                        <button id="btn__upload-img" class="btn btn__blue px-4">
+                          Tải lên
+                        </button>
+                      </div>
+                      <input
+                        type="file"
+                        class="d-none"
+                        id="input_img"
+                        accept="image/*"
+                        onchange="upload_img_screen(event)"
+                      />
+                      <p>Kích thước tệp tin tải lên tối đa: 200MB</p>
+                      <div id="img_load_screen" class="d-none">
+                        <img src="" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- menu -->
+                  <div class="bg-white">
+                    <div class="row py-2 bg-white">
+                      <div class="col-6 d-flex">
+                        <select name="" id="" class="border rounded fs-14">
+                          <option value="">Tất cả</option>
+                          <option value="">HÌnh ảnh</option>
+                          <option value="">file</option>
+                          <option value="">cái gì thế này aaaaa</option>
+                        </select>
+                        <select name="" id="" class="border rounded fs-14 ms-2">
+                          <option value="">Tất cả các ngày</option>
+                          <option value="">HÌnh ảnh</option>
+                          <option value="">file</option>
+                        </select>
+                      </div>
+                      <div class="col-6 d-flex justify-content-end">
+                        <label for="" class="mt-2">Tìm tệp media: </label>
+                        <input type="text" class="border rounded ms-3 px-2" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h2 class="fs-4">Danh sách ảnh đã tải lên</h2>
+                    <div id="gallery"></div>
+                    <div class="fs-6">Đã chọn:</div>
+                    <input
+                      type="text"
+                      id="selectedUrl"
+                      style="width: 100%"
+                      readonly
+                    />
+                  </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="modal-button modal-button-secondary"
+                  data-modal-close="modalChooseMedia"
+                >
+                  Đóng
+                </button>
+                <button class="modal-button modal-button-primary">
+                  Xác nhận
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- notify customs -->
         <div id="notification-container"></div>
@@ -598,7 +751,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="./js/auth.js"></script>
+    <script src="./js/media.js"></script>
+
     <script src="main.js"></script>
     <script src="./index.js"></script>
 

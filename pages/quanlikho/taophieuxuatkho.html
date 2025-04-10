@@ -1,93 +1,181 @@
 <section class="d-grid gap-2 gap-md-3 gap-lg-4">
+  <!-- tieu de -->
+  <div class="d-grid gap-1">
+    <h4 class="fe-semibold">Quản lý xuất kho</h4>
+  </div>
 
-    <!-- tieu de -->
-     <div class="d-grid gap-1">
-        <h4 class="fe-semibold">Quản lý xuất kho</h4>
-     </div>
-
-    <!-- noi dung -->
-     <div class="d-grid gap-4 border bg-white rounded-3 p-4">
-        <h5>Nhập thông tin phiếu xuất kho</h5>
-        <!-- form dien thong tin xuat kho -->
-        <form class="fs-14 mt-3" action="" method="post">
-            <!-- thông tin đơn hàng -->
-            <div class="row g-3 border p-3 rounded-3">
-                <h6>Thông tin đơn hàng:</h6>
-                <div class="col-3">
-                    <label for="">Mã phiếu xuất kho:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Mã phiếu xuất kho..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Ngày xuất kho:</label>
-                    <input type="date" class="form-control mt-1" id="" name=""  required>
-                </div>
-                <div class="col-3">
-                    <label for="">Mã nhân viên:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Mã nhân viên..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Người thực hiện:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Người thực hiện..." required>              
-                </div>
-                <div class="col-3">
-                    <label for="khoXuat">Kho xuất hàng:</label>
-                    <select id="khoXuat" class="form-control mt-1">
-                        <option>Kho A</option>
-                        <option>Kho B</option>
-                        <option>Kho C</option>
-                    </select>
-                </div>
-                <div class="col-3">
-                      <label for="">Mã lô hàng:</label>
-                      <input type="text" class="form-control mt-1" id="" name="" placeholder="Mã lô hàng..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Số lô hàng xuất:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Số lô hàng xuất..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Sản phẩm trong 1 lô:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="số lượng sản phẩm..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Mã sản phẩm:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Mã sản phẩm..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Tên sản phẩm:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Tên sản phẩm..." required>
-                </div>
-            </div>
-
-            <!-- Thông tin người nhận -->
-            <div class="row g-3 border p-3 rounded-3 mt-4">
-                <h6>Thông tin người nhận hàng:</h6>
-                <div class="col-3">
-                    <label for="">Tên người nhận:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Tên người nhận..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Địa chỉ:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Địa chỉ..." required>
-                </div>
-                <div class="col-3">
-                    <label for="">Số điện thoại:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Số điện thoại..." required>              
-                </div>
-                <div class="col-3">
-                    <label for="">Email:</label>
-                    <input type="text" class="form-control mt-1" id="" name="" placeholder="Email..." required>
-                </div>
-            </div>
-            <div class="row g-3 rounded-3 mt-2">
-                <h6>Ghi chú:</h6>
-                <textarea class="form-control input_outline" id="" name="" rows="3" placeholder="Thêm thông tin ghi chú..."></textarea>
-            </div>
-            <div class="d-flex justify-content-end mt-4">
-                <button type="submit" class="btn btn-primary me-2">Xuất</button>
-                <button type="reset" class="btn btn-secondary">Hủy</button>
-            </div>
-        </form>
-
+  <!-- noi dung -->
+  <div class="d-grid gap-4 border bg-white rounded-3 p-4">
+    <h5>Nhập thông tin phiếu xuất kho</h5>
+    <!-- form dien thong tin xuat kho -->
+    <form class="fs-14 mt-3" action="" method="post">
+      <!-- thông tin đơn hàng -->
+      <div class="row g-3 border p-3 rounded-3">
+        <h6>Thông tin đơn hàng:</h6>
+        <div class="col-3">
+          <label for="">Mã phiếu xuất kho:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Mã phiếu xuất kho..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Ngày xuất kho:</label>
+          <input type="date" class="form-control mt-1" id="" name="" required />
+        </div>
+        <div class="col-3">
+          <label for="">Mã nhân viên:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Mã nhân viên..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Người thực hiện:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Người thực hiện..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="khoXuat">Kho xuất hàng:</label>
+          <select id="khoXuat" class="form-control mt-1">
+            <option>Kho A</option>
+            <option>Kho B</option>
+            <option>Kho C</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <label for="">Mã lô hàng:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Mã lô hàng..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Số lô hàng xuất:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Số lô hàng xuất..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Sản phẩm trong 1 lô:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="số lượng sản phẩm..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Mã sản phẩm:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Mã sản phẩm..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Tên sản phẩm:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Tên sản phẩm..."
+            required
+          />
+        </div>
       </div>
+
+      <!-- Thông tin người nhận -->
+      <div class="row g-3 border p-3 rounded-3 mt-4">
+        <h6>Thông tin người nhận hàng:</h6>
+        <div class="col-3">
+          <label for="">Tên người nhận:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Tên người nhận..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Địa chỉ:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Địa chỉ..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Số điện thoại:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Số điện thoại..."
+            required
+          />
+        </div>
+        <div class="col-3">
+          <label for="">Email:</label>
+          <input
+            type="text"
+            class="form-control mt-1"
+            id=""
+            name=""
+            placeholder="Email..."
+            required
+          />
+        </div>
+      </div>
+      <div class="row g-3 rounded-3 mt-2">
+        <h6>Ghi chú:</h6>
+        <textarea
+          class="area__main"
+          id=""
+          name=""
+          rows="3"
+          placeholder="Thêm thông tin ghi chú..."
+        ></textarea>
+      </div>
+      <div class="d-flex justify-content-end mt-4">
+        <button type="submit" class="btn btn-primary me-2">Xuất</button>
+        <button type="reset" class="btn btn-secondary">Hủy</button>
+      </div>
+    </form>
+  </div>
 </section>

@@ -1,9 +1,9 @@
 <section class="d-grid gap-3">
+  <button data-redirect-url="tatcasanpham" class="redirect__btn btn mb-3">
+    &larr; Quay lại
+  </button>
   <div class="d-flex align-items-center justify-content-start gap-2">
-    <span class="fs-4 fw-semibold">Sửa sản phẩm</span>
-    <button id="btn__create__product" class="btn btn-ol-primary">
-      Thêm sản phẩm mới
-    </button>
+    <span class="fs-4 fw-semibold">Chỉnh sửa sản phẩm</span>
   </div>
   <div class="row g-3">
     <!-- left -->
@@ -22,10 +22,11 @@
           </div>
           <div class="p-2 h-auto d-grid gap-2">
             <button
+              data-modal-target="modalChooseMedia"
               class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2"
             >
               <img
-                src="../assets/icons/screen-play.svg"
+                src="../assets/icons/navigation/screen-play.svg"
                 class="size-16 fill__blue"
               />
               Thêm Media
@@ -38,7 +39,9 @@
           </div>
         </div>
         <!-- edit dữ liệu sản phẩm -->
-        <div class="bg-white edit__component d-grid gap-2">
+        <div
+          class="bg-white edit__component edit__product__variable d-grid gap-2"
+        >
           <div
             class="edit__component__head border-bottom br-1-main fs-14 fw-medium p-2 d-flex align-items-center justify-content-start gap-3 flex-wrap"
           >
@@ -46,7 +49,7 @@
             <select name="select" class="select__main small">
               <option value="">Sản phẩm đơn giản</option>
               <option value="">Sản phẩm bên ngoài - liên kết</option>
-              <option value="">Sản phẩm có biến thể</option>
+              <option value="product__var">Sản phẩm có biến thể</option>
               <option value="">Sản phẩm nhóm</option>
             </select>
             <span>|</span>
@@ -67,37 +70,37 @@
                   class="tabs-list col-4 w-100 flex-column align-items-start"
                 >
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom active fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom active fs-12"
                     data-tab="data_product_1"
                   >
                     Tổng quan
                   </button>
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom fs-12"
                     data-tab="data_product_2"
                   >
                     Kiểm kê kho hàng
                   </button>
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom fs-12"
                     data-tab="data_product_3"
                   >
                     Giao hàng
                   </button>
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom fs-12"
                     data-tab="data_product_4"
                   >
                     Sản phẩm được liên kết
                   </button>
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom fs-12"
                     data-tab="data_product_5"
                   >
                     Các thuộc tính
                   </button>
                   <button
-                    class="tab-button p-2 w-100 text-start border-bottom fs-12"
+                    class="tab-button p-2 w-100 py-3 text-start border-bottom fs-12"
                     data-tab="data_product_6"
                   >
                     Nâng cao
@@ -214,7 +217,7 @@
                               <div class="col-12">
                                 <button
                                   type="button"
-                                  class="btn btn-outline-primary"
+                                  class="btn btn__blue btn-outline-primary"
                                 >
                                   <i class="fas fa-plus me-1"></i> Thêm tập tin
                                 </button>
@@ -269,7 +272,10 @@
                           >Trạng thái thuế</label
                         >
                         <div class="col-8">
-                          <select class="select__main fs-13" id="taxStatus">
+                          <select
+                            class="select__main fs-13 w-100"
+                            id="taxStatus"
+                          >
                             <option selected>Thuế</option>
                             <option>Chỉ giao hàng</option>
                             <option>Trống</option>
@@ -283,7 +289,10 @@
                           >Loại thuế</label
                         >
                         <div class="col-8">
-                          <select class="select__main fs-13" id="taxClass">
+                          <select
+                            class="select__main fs-13 w-100"
+                            id="taxClass"
+                          >
                             <option selected>Chuẩn</option>
                             <option>Đánh giá thấp</option>
                             <option>Đánh giá cao</option>
@@ -436,20 +445,25 @@
                     </div>
                   </div>
                   <!-- tab các thuộc tính -->
-                  <div class="tab-pane" id="data_product_5">
-                    <div class="d-grid gap-2 p-2 fs-14">
+                  <div class="tab-pane max-h" id="data_product_5">
+                    <div class="d-grid gap-2 p-2 fs-14 product__wrapper__attr">
                       <p class="fs-13 text-black-sub">
                         Thêm các thông tin mô tả mà khách hàng có thể sử dụng để
                         tìm kiếm sản phẩm này trên cửa hàng của bạn, chẳng hạn
                         như “Chất liệu” hoặc “Kích thước”.
                       </p>
-                      <div class="row">
+                      <div class="row mt-3">
                         <label class="col-4">Thêm mới</label>
                         <div class="col-8">
-                          <input
-                            type="text"
-                            class="input__main fs-14 br-1-main w-75"
-                          />
+                          <select class="select__main small w-100">
+                            <option value="">--Chọn--</option>
+                            <option value="Cấp đại lý">Cấp đại lý</option>
+                            <option value="Chất liệu">Chất liệu</option>
+                            <option value="Khu vực">Khu vực</option>
+                            <option value="Kích thước">Kích thước</option>
+                            <option value="Số lượng">Số lượng</option>
+                            <option value="Vị trí kho">Vị trí kho</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -676,7 +690,7 @@
                   <div
                     class="d-flex align-items-center justify-content-start gap-2"
                   >
-                    ><button class="btn small btn-ol-primary fs-13">
+                    <button class="btn small btn-ol-primary fs-13">
                       Nhập mới
                     </button>
                   </div>
@@ -706,10 +720,11 @@
                 Hướng dẫn sử dụng
               </div>
               <button
+                data-modal-target="modalChooseMedia"
                 class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2"
               >
                 <img
-                  src="../assets/icons/screen-play.svg"
+                  src="../assets/icons/navigation/screen-play.svg"
                   class="size-16 fill__blue"
                 />
                 Thêm Media
@@ -726,10 +741,11 @@
                 Hỗ trợ khách hàng
               </div>
               <button
+                data-modal-target="modalChooseMedia"
                 class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2"
               >
                 <img
-                  src="../assets/icons/screen-play.svg"
+                  src="../assets/icons/navigation/screen-play.svg"
                   class="size-16 fill__blue"
                 />
                 Thêm Media
@@ -744,10 +760,11 @@
             <div class="d-grid gap-2">
               <div class="fs-14 text-black-sub fw-semibold">Giá buôn sỉ</div>
               <button
+                data-modal-target="modalChooseMedia"
                 class="fs-12 text-blue-main btn btn-ol-primary d-flex align-items-center justify-content-center gap-2"
               >
                 <img
-                  src="../assets/icons/screen-play.svg"
+                  src="../assets/icons/navigation/screen-play.svg"
                   class="size-16 fill__blue"
                 />
                 Thêm Media
@@ -1078,7 +1095,7 @@
             <p class="fs-12 text-black-sub">Phân cách các thẻ bằng dấu phẩy</p>
             <div class="open__down__item fs-14">
               <button
-                class="text-start fs-13 lh-18 open__down-toggle text-decoration-underline text-blue-main bg-transparent"
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent lh-20"
               >
                 Chọn từ các thẻ được sử dụng nhiều nhất
               </button>
@@ -1100,70 +1117,66 @@
             Thương hiệu
           </div>
           <div class="d-grid gap-2 p-2 border br-1-main">
-            <div class="d-grid gap-2 p-2 border br-1-main">
-              <div class="tabs-container" data-tabs="tab__brand__product">
-                <div class="tabs-list">
-                  <button class="tab-button active fs-12" data-tab="product_1">
-                    Tất cả thương hiệu
-                  </button>
-                  <button class="tab-button fs-12" data-tab="product_2">
-                    Dùng nhiều nhất
-                  </button>
-                </div>
-                <div class="tabs-content">
-                  <div class="tab-pane active" id="product_1">
-                    <div class="d-grid gap-2 p-2">
-                      <div class="checkbox__item">
-                        <input id="brand-1" type="checkbox" />
-                        <label for="brand-1">Adidas</label>
-                      </div>
-                      <div class="checkbox__item">
-                        <input id="brand-2" type="checkbox" />
-                        <label for="brand-2">MLB</label>
-                      </div>
-                      <div class="checkbox__item">
-                        <input id="brand-3" type="checkbox" />
-                        <label for="brand-3">Nike</label>
-                      </div>
+            <div class="tabs-container" data-tabs="tab__brand__product">
+              <div class="tabs-list">
+                <button class="tab-button active fs-12" data-tab="product_1">
+                  Tất cả
+                </button>
+                <button class="tab-button fs-12" data-tab="product_2">
+                  Dùng nhiều nhất
+                </button>
+              </div>
+              <div class="tabs-content">
+                <div class="tab-pane active" id="product_1">
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="brand-1" type="checkbox" />
+                      <label for="brand-1">Adidas</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="brand-2" type="checkbox" />
+                      <label for="brand-2">MLB</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="brand-3" type="checkbox" />
+                      <label for="brand-3">Nike</label>
                     </div>
                   </div>
-                  <div class="tab-pane" id="product_2">
-                    <div class="d-grid gap-2 p-2">
-                      <div class="checkbox__item">
-                        <input id="brand-1" type="checkbox" />
-                        <label for="brand-1">Adidas</label>
-                      </div>
-                      <div class="checkbox__item">
-                        <input id="brand_2_1" type="checkbox" />
-                        <label for="brand_2_1">Nike</label>
-                      </div>
-                      <div class="checkbox__item">
-                        <input id="brand_2_2" type="checkbox" />
-                        <label for="brand_2_2">Mlb</label>
-                      </div>
+                </div>
+                <div class="tab-pane" id="product_2">
+                  <div class="d-grid gap-2 p-2">
+                    <div class="checkbox__item">
+                      <input id="brand-1" type="checkbox" />
+                      <label for="brand-1">Adidas</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="brand_2_1" type="checkbox" />
+                      <label for="brand_2_1">Nike</label>
+                    </div>
+                    <div class="checkbox__item">
+                      <input id="brand_2_2" type="checkbox" />
+                      <label for="brand_2_2">Mlb</label>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="open__down__item fs-14">
-                <button
-                  class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent fw-medium d-flex align-items-center justify-content-start gap-1"
+            </div>
+            <div class="open__down__item fs-14">
+              <button
+                class="fs-13 open__down-toggle text-decoration-underline text-blue-main bg-transparent fw-medium d-flex align-items-center justify-content-start gap-1"
+              >
+                <img
+                  src="../assets/icons/add-svgrepo-com.svg"
+                  class="size-18 fill__blue"
+                />
+                Thêm thương hiệu mới
+              </button>
+              <div class="open__down__content">
+                <div
+                  class="d-flex flex-column align-items-start justify-content-start gap-2 p-2"
                 >
-                  <img
-                    src="../assets/icons/add-svgrepo-com.svg"
-                    class="size-18 fill__blue"
-                  />
-                  Thêm thương hiệu mới
-                </button>
-                <div class="open__down__content">
-                  <div
-                    class="d-flex flex-column align-items-start justify-content-start gap-2 p-2"
-                  >
-                    <input class="input__main border w-100" />
-                    <button class="btn btn-ol-primary fs-12 small">
-                      Đồng ý
-                    </button>
-                  </div>
+                  <input class="input__main border w-100" />
+                  <button class="btn btn-ol-primary fs-12 small">Đồng ý</button>
                 </div>
               </div>
             </div>
