@@ -775,7 +775,148 @@ function handleEventQuickFix() {
     }
   });
 }
+// convert slug
+function convertToSlug(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+// dữ liệu sản phẩm có biến thể
+function dataProductVariable() {
+  const productTypeSelect = document.querySelector('select[name="select"]');
+  const tabsList = document.querySelector(".tabs-list");
+  const tabsContent = document.querySelector(".tabs-content");
+  if (productTypeSelect && tabsList && tabsContent) {
+    productTypeSelect.addEventListener("change", function () {
+      const variationsTabButton = document.querySelector(
+        '[data-tab="data_product_variations"]'
+      );
+      const variationsTabPane = document.getElementById(
+        "data_product_variations"
+      );
 
+      if (this.value === "product__var") {
+        // Check if the tab already exists
+        if (!variationsTabButton) {
+          // Add new tab button
+          const newTabButton = document.createElement("button");
+          newTabButton.className =
+            "tab-button p-2 w-100 py-3 text-start border-bottom fs-12";
+          newTabButton.setAttribute("data-tab", "data_product_variations");
+          newTabButton.textContent = "Các biến thể";
+          tabsList.appendChild(newTabButton);
+
+          // Add new tab pane
+          const newTabPane = document.createElement("div");
+          newTabPane.className = "tab-pane max-h";
+          newTabPane.id = "data_product_variations";
+          newTabPane.innerHTML = `
+          <div class="d-grid gap-2 p-2 fs-14">
+            <p class="fs-13 text-black-sub">
+              Thêm các biến thể cho sản phẩm của bạn, chẳng hạn như màu sắc hoặc kích thước.
+            </p>
+            <button class="btn btn__blue">Thêm biến thể mới</button>
+          </div>
+        `;
+          tabsContent.appendChild(newTabPane);
+
+          // Add event listener for tab switching
+          const tabButtons = document.querySelectorAll(".tab-button");
+          tabButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+              const targetTab = this.getAttribute("data-tab");
+              document
+                .querySelectorAll(".tab-pane")
+                .forEach((pane) => pane.classList.remove("active"));
+              document
+                .querySelectorAll(".tab-button")
+                .forEach((btn) => btn.classList.remove("active"));
+              this.classList.add("active");
+              document.getElementById(targetTab).classList.add("active");
+            });
+          });
+        }
+      } else {
+        // Remove the tab button and pane if they exist
+        if (variationsTabButton) {
+          variationsTabButton.remove();
+        }
+        if (variationsTabPane) {
+          variationsTabPane.remove();
+        }
+      }
+    });
+  }
+  const attributeSelect = document.querySelector("#data_product_5 select");
+  const attributeContainer = document.querySelector(
+    "#data_product_5 .product__wrapper__attr"
+  );
+
+  if (attributeSelect && attributeContainer) {
+    attributeSelect.addEventListener("change", function () {
+      const selectedValue = this.value;
+
+      if (
+        selectedValue &&
+        !document.querySelector(`[data-attribute="${selectedValue}"]`)
+      ) {
+        const newAttributeDiv = document.createElement("div");
+        newAttributeDiv.className =
+          "item__attr__product fs-14 border br-1-main rounded-1 p-1";
+        newAttributeDiv.setAttribute("data-attribute", selectedValue);
+        const slug = convertToSlug(selectedValue);
+
+        newAttributeDiv.innerHTML = `
+          <div class="d-flex align-items-center justify-content-between p-2 border-0 border-bottom br-1-main ">
+            <span class="fs-14 fw-medium">${selectedValue}</span>
+            <span class="fs-12 text-red-main remove-attribute text-decoration-underline cursor-pointer">Xóa</span>
+          </div>
+          <div class="d-grid gap-3 p-2 py-3">
+            <div class="row">
+              <div class='col-4'>
+                <div class='d-grid gap-2'>
+                  <div class="checkbox__item">
+                    <input id="attr_${slug}" type="checkbox"/>
+                    <label for="attr_${slug}" class="fs-12 text-black-sub">Hiển thị trên trang</label>
+                  </div>
+                  <div class="checkbox__item">
+                    <input id="attr_${slug}_2" type="checkbox"/>
+                    <label for="attr_${slug}_2" class="fs-12 text-black-sub">Dùng cho nhiều biến thể</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-8'>
+              <label class="mb-1">Giá trị</label>
+               <input class="input__main fs-14 w-100 br-1-main rounded-1 p-2"/>
+              </div>
+            </div>
+          </div>
+        `;
+
+        attributeContainer.appendChild(newAttributeDiv);
+        const removeButton = newAttributeDiv.querySelector(".remove-attribute");
+        removeButton.addEventListener("click", function () {
+          newAttributeDiv.remove();
+          const option = attributeSelect.querySelector(
+            `option[value="${selectedValue}"]`
+          );
+          if (option) option.disabled = false;
+        });
+
+        const option = attributeSelect.querySelector(
+          `option[value="${selectedValue}"]`
+        );
+        if (option) option.disabled = true;
+        this.value = "";
+      }
+    });
+  }
+}
 function loadFuntion() {
   handleActionItemTr();
   handleOpenDown();
@@ -785,6 +926,7 @@ function loadFuntion() {
   handleClickRedirectUrlPage();
   handleEventQuickFix();
   handleEventUploadImgClound();
+  dataProductVariable();
 }
 // load page show content
 async function loadPage(pageName, pageNameParent) {

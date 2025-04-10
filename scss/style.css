@@ -796,6 +796,10 @@ select:focus {
   line-height: 18px;
 }
 
+.lh-20 {
+  line-height: 20px;
+}
+
 /* FONT SIZE */
 .fs-12 {
   font-size: 12px;
@@ -894,11 +898,27 @@ select:focus {
   grid-template-columns: 17% 83%;
 }
 
+.main__body {
+  width: 100%;
+  flex: 1;
+  margin-left: 240px;
+}
+
+.sidebar__large {
+  width: 240px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 15;
+}
+
 .sidebar__menu > ul {
   display: grid;
   gap: 6px;
   list-style: none;
   padding-right: 24px;
+  padding-bottom: 2.5rem;
 }
 
 .sidebar__menu > ul > li {
@@ -980,6 +1000,23 @@ select:focus {
   cursor: pointer;
 }
 
+/* Scrollbar chung */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(228, 228, 228);
+  border-radius: 10px;
+}
+
 .sidebar__menu > ul > li > ul {
   list-style: none;
   margin-left: 16px;
@@ -1030,12 +1067,14 @@ select:focus {
 
 .dropdown__user ul {
   list-style: none;
+  padding: 12px 0px;
 }
 .dropdown__user ul li a {
   text-decoration: none;
   color: #111724;
-  padding: 6px 12px;
+  padding: 8px 12px;
   display: block;
+  font-size: 14px !important;
 }
 .dropdown__user ul li a:hover {
   color: #0e6efd;
@@ -1330,6 +1369,7 @@ select:focus {
 }
 
 .area__main {
+  width: 100%;
   font-size: 14px;
   padding: 8px 8px;
   border: 1px solid #6d757d;
@@ -1491,12 +1531,16 @@ select:focus {
 }
 
 .tabs-list {
+  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: white;
   border-bottom: 1px solid #f9fafb;
 }
 
 .tab-button {
+  width: 100%;
   padding: 4px 6px;
   background: none;
   border: none;
@@ -1753,7 +1797,6 @@ select:focus {
   color: white;
   border: none;
   padding: 6px 12px;
-  border-radius: 4px;
   cursor: pointer;
   float: right;
 }
@@ -1773,8 +1816,7 @@ select:focus {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
+  z-index: 10;
 }
 
 #btn__upload-img {
@@ -1805,6 +1847,9 @@ select:focus {
   }
 }
 @media (max-width: 992px) {
+  .main__body {
+    margin-left: 0px;
+  }
   .resize__modal > div {
     width: 80vw !important;
   }

@@ -33,10 +33,10 @@
   </head>
   <body translate="no" lang="vi">
     <main class="w-100 h-100">
-      <div class="row g-0 grid__common">
+      <div class="row g-0">
         <!-- sidebar -->
         <aside
-          class="sidebar__large border-bottom-0 d-none d-lg-block sidebar h-auto border-top-0 br-1-main bg-white p-0"
+          class="sidebar__large border-bottom-0 d-none d-lg-block sidebar h-100 overflow-auto border-top-0 br-1-main bg-white p-0"
         >
           <div class="h-100 d-flex flex-column gap-1">
             <!-- logo -->
@@ -418,7 +418,7 @@
         <div class="overlay" id="sidebarOverlay"></div>
 
         <!-- main-->
-        <div class="">
+        <div class="main__body">
           <!-- header -->
           <header
             class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-lg-end align-items-center"
@@ -591,10 +591,11 @@
                   </div>
                   <div
                     aria-labelledby="dropdownUser1"
-                    class="dropdown-menu dropdown-menu-end dropdown__user p-0"
+                    class="dropdown-menu dropdown-menu-end dropdown__user fs-14 p-0"
                   >
                     <ul>
                       <li><a href="#">Trang cá nhân</a></li>
+                      <li><a href="#">Cài đặt</a></li>
                       <li><a id="btn__logout" href="#">Đăng xuất</a></li>
                     </ul>
                   </div>

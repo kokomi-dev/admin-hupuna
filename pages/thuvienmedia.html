@@ -1,6 +1,6 @@
 <section class="d-grid gap-2 gap-md-3 gap-lg-4 fs-14">
   <!-- tieu de -->
-  <div class="d-flex gap-1">
+  <div class="d-flex gap-3">
     <h4>Thư viện Media</h4>
     <button
       type="button"
@@ -45,6 +45,7 @@
         class="d-none"
         id="input_img"
         accept="image/*"
+        multiple
         onchange="upload_img_screen(event)"
       />
       <p>Kích thước tệp tin tải lên tối đa: 200MB</p>
@@ -56,35 +57,37 @@
   <!-- menu -->
   <div class="bg-white">
     <div class="row border py-2 bg-white">
-      <div class="col-6 d-flex flex-wrap gap-3">
-        <div class="d-flex align-items-center justify-content-start gap-2">
-          <span class="fs-14 fw-medium">Hiển thị:</span>
-          <button class="btn btn-sm px-1">
-            <img
-              src="/assets/icons/list-ul-alt-svgrepo-com.svg"
-              alt=""
-              class="size-20"
-            />
-          </button>
-          <button class="btn btn-sm px-1">
-            <img
-              src="/assets/icons/grid-4-svgrepo-com.svg"
-              alt=""
-              class="size-20"
-            />
-          </button>
+      <div class="col-6">
+        <div class="d-flex flex-wrap gap-3">
+          <div class="d-flex align-items-center justify-content-start gap-2">
+            <span class="fs-14 fw-medium">Hiển thị:</span>
+            <button class="btn btn-sm px-1">
+              <img
+                src="/assets/icons/list-ul-alt-svgrepo-com.svg"
+                alt=""
+                class="size-20"
+              />
+            </button>
+            <button class="btn btn-sm px-1">
+              <img
+                src="/assets/icons/grid-4-svgrepo-com.svg"
+                alt=""
+                class="size-20"
+              />
+            </button>
+          </div>
+          <select name="" id="" class="select__main">
+            <option value="">Tất cả</option>
+            <option value="">HÌnh ảnh</option>
+            <option value="">file</option>
+            <option value="">cái gì thế này aaaaa</option>
+          </select>
+          <select name="" id="" class="select__main">
+            <option value="">Tất cả các ngày</option>
+            <option value="">HÌnh ảnh</option>
+            <option value="">file</option>
+          </select>
         </div>
-        <select name="" id="" class="border rounded fs-14 ms-2">
-          <option value="">Tất cả</option>
-          <option value="">HÌnh ảnh</option>
-          <option value="">file</option>
-          <option value="">cái gì thế này aaaaa</option>
-        </select>
-        <select name="" id="" class="border rounded fs-14 ms-2">
-          <option value="">Tất cả các ngày</option>
-          <option value="">HÌnh ảnh</option>
-          <option value="">file</option>
-        </select>
       </div>
       <div class="col-6 d-flex justify-content-end">
         <label for="" class="mt-2">Tìm tệp media: </label>
@@ -99,5 +102,3 @@
     <input type="text" id="selectedUrl" style="width: 100%" readonly />
   </div>
 </section>
-
-<div></div>
