@@ -1,40 +1,38 @@
 <section class="d-grid gap-2 gap-md-3 gap-lg-4">
-  <!-- tieu de -->
-  <div class="d-grid gap-1">
-    <h4 class="fe-semibold">Quản lý xuất kho</h4>
-  </div>
-
+  <button data-redirect-url="quanlixuatkho" class="redirect__btn btn">
+    &larr; Quay lại
+  </button>
   <!-- noi dung -->
   <div class="d-grid gap-4 border bg-white rounded-3 p-4">
     <h5>Nhập thông tin phiếu xuất kho</h5>
     <!-- form dien thong tin xuat kho -->
-    <form class="fs-14 mt-3" action="" method="post">
+    <form class="fs-14 mt-3 d-grid gap-4" action="" method="post">
       <!-- thông tin đơn hàng -->
-      <div class="row g-3 border p-3 rounded-3">
+      <div class="row g-4 border p-3 rounded-3">
         <h6>Thông tin đơn hàng:</h6>
         <div class="col-3">
           <label for="">Mã phiếu xuất kho:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Mã phiếu xuất kho..."
+            placeholder="..."
             required
           />
         </div>
         <div class="col-3">
           <label for="">Ngày xuất kho:</label>
-          <input type="date" class="form-control mt-1" id="" name="" required />
+          <input type="date" class="input__main mt-1" id="" name="" required />
         </div>
         <div class="col-3">
           <label for="">Mã nhân viên:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Mã nhân viên..."
+            placeholder="..."
             required
           />
         </div>
@@ -42,16 +40,16 @@
           <label for="">Người thực hiện:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Người thực hiện..."
+            placeholder="..."
             required
           />
         </div>
         <div class="col-3">
           <label for="khoXuat">Kho xuất hàng:</label>
-          <select id="khoXuat" class="form-control mt-1">
+          <select id="khoXuat" class="input__main mt-1">
             <option>Kho A</option>
             <option>Kho B</option>
             <option>Kho C</option>
@@ -61,10 +59,10 @@
           <label for="">Mã lô hàng:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Mã lô hàng..."
+            placeholder="..."
             required
           />
         </div>
@@ -72,10 +70,10 @@
           <label for="">Số lô hàng xuất:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Số lô hàng xuất..."
+            placeholder="..."
             required
           />
         </div>
@@ -83,10 +81,10 @@
           <label for="">Sản phẩm trong 1 lô:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="số lượng sản phẩm..."
+            placeholder="..."
             required
           />
         </div>
@@ -94,10 +92,10 @@
           <label for="">Mã sản phẩm:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Mã sản phẩm..."
+            placeholder="..."
             required
           />
         </div>
@@ -105,26 +103,25 @@
           <label for="">Tên sản phẩm:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Tên sản phẩm..."
+            placeholder="..."
             required
           />
         </div>
       </div>
-
       <!-- Thông tin người nhận -->
-      <div class="row g-3 border p-3 rounded-3 mt-4">
+      <div class="row g-3 border p-3 rounded-3">
         <h6>Thông tin người nhận hàng:</h6>
         <div class="col-3">
           <label for="">Tên người nhận:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Tên người nhận..."
+            placeholder="..."
             required
           />
         </div>
@@ -132,10 +129,10 @@
           <label for="">Địa chỉ:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Địa chỉ..."
+            placeholder="..."
             required
           />
         </div>
@@ -143,10 +140,10 @@
           <label for="">Số điện thoại:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Số điện thoại..."
+            placeholder="..."
             required
           />
         </div>
@@ -154,25 +151,25 @@
           <label for="">Email:</label>
           <input
             type="text"
-            class="form-control mt-1"
+            class="input__main mt-1"
             id=""
             name=""
-            placeholder="Email..."
+            placeholder="..."
             required
           />
         </div>
       </div>
-      <div class="row g-3 rounded-3 mt-2">
+      <div class="row g-3 rounded-3">
         <h6>Ghi chú:</h6>
         <textarea
           class="area__main"
           id=""
           name=""
-          rows="3"
+          rows="5"
           placeholder="Thêm thông tin ghi chú..."
         ></textarea>
       </div>
-      <div class="d-flex justify-content-end mt-4">
+      <div class="d-flex justify-content-end">
         <button type="submit" class="btn btn-primary me-2">Xuất</button>
         <button type="reset" class="btn btn-secondary">Hủy</button>
       </div>

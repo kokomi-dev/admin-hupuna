@@ -36,7 +36,7 @@
       <div class="row g-0">
         <!-- sidebar -->
         <aside
-          class="sidebar__large border-bottom-0 d-none d-lg-block sidebar h-100 overflow-auto border-top-0 br-1-main bg-white p-0"
+          class="sidebar__nav border-bottom-0 sidebar h-100 overflow-auto border-top-0 br-1-main bg-white p-0"
         >
           <div class="h-100 d-flex flex-column gap-1">
             <!-- logo -->
@@ -62,28 +62,19 @@
                     <img src="./assets/icons/navigation/home.svg" />Trang chủ
                   </a>
                 </li>
-                <li>
-                  <span
-                    class="accordion__button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu__item__quanli"
-                    aria-expanded="false"
-                    aria-controls="menu__item__quanli"
-                    href="#"
-                  >
+                <li class="menu-item-with-submenu">
+                  <span class="menu-toggle">
                     <span>
                       <img
                         src="./assets/icons/navigation/crm-computer.svg"
                       />Quản lí kho hàng
                     </span>
-                    <img src="./assets//icons/angle-small-down.svg" />
+                    <img
+                      class="menu-arrow size-16"
+                      src="./assets/icons/angle-small-down.svg"
+                    />
                   </span>
-                  <ul
-                    id="menu__item__quanli"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="menu_quanli"
-                    data-bs-parent="#accordionExample"
-                  >
+                  <ul class="submenu">
                     <li>
                       <a
                         data-page-parent="quanlikho"
@@ -134,25 +125,19 @@
                     </li>
                   </ul>
                 </li>
-                <li>
-                  <span
-                    class="accordion__button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu__item__baiviet"
-                    aria-expanded="false"
-                    aria-controls="menu__item__baiviet"
-                    href="#"
-                  >
+                <li class="menu-item-with-submenu">
+                  <span class="menu-toggle">
                     <span>
-                      <img src="./assets/icons/navigation/blog-pencil.svg" />
-                      Bài viết
+                      <img src="./assets/icons/navigation/blog-pencil.svg" />Bài
+                      viết
                     </span>
-                    <img src="/assets/icons/angle-small-down.svg" alt="" />
+                    <img
+                      class="menu-arrow size-16"
+                      src="./assets/icons/angle-small-down.svg"
+                      alt=""
+                    />
                   </span>
-                  <ul
-                    id="menu__item__baiviet"
-                    class="accordion-collapse collapse"
-                  >
+                  <ul class="submenu">
                     <li>
                       <a
                         data-page-parent="baiviet"
@@ -198,31 +183,21 @@
                 </li>
                 <li>
                   <a data-page-parent="not" data-page="thuvienmedia" href="#">
-                    <img src="./assets/icons/navigation/screen-play.svg" />
-                    Media
+                    <img src="./assets/icons/navigation/screen-play.svg" />Media
                   </a>
                 </li>
-                <li>
-                  <span
-                    class="accordion__button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menu__item__sanpham"
-                    aria-expanded="false"
-                    aria-controls="menu__item__sanpham"
-                    href="#"
-                  >
+                <li class="menu-item-with-submenu">
+                  <span class="menu-toggle">
                     <span>
                       <img src="./assets/icons/navigation/box-open.svg" />Sản
                       phẩm
                     </span>
-                    <img src="./assets//icons/angle-small-down.svg" />
+                    <img
+                      class="menu-arrow size-16"
+                      src="./assets/icons/angle-small-down.svg"
+                    />
                   </span>
-                  <ul
-                    id="menu__item__sanpham"
-                    class="accordion-collapse collapse ul__2"
-                    aria-labelledby="menu_sanpham"
-                    data-bs-parent="#accordionExample"
-                  >
+                  <ul class="submenu">
                     <li>
                       <a
                         data-page-parent="sanpham"
@@ -303,8 +278,9 @@
                 </li>
                 <li>
                   <a data-page="quanlytaikhoan" href="#">
-                    <img src="./assets/icons/navigation/lead-management.svg" />
-                    Quản lí tài khoản
+                    <img
+                      src="./assets/icons/navigation/lead-management.svg"
+                    />Quản lí tài khoản
                   </a>
                 </li>
                 <li>
@@ -315,8 +291,8 @@
                 </li>
                 <li>
                   <a href="./register.html">
-                    <img src="./assets/icons/navigation/sign-out-alt.svg" />
-                    Đăng ký
+                    <img src="./assets/icons/navigation/sign-out-alt.svg" />Đăng
+                    ký
                   </a>
                 </li>
                 <!--  -->
@@ -325,89 +301,7 @@
                 </li>
                 <li>
                   <a data-page-parent="not" data-page="caidattongquan" href="#">
-                    <img src="./assets/icons/navigation/gears.svg" />
-                    Tổng quan
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </aside>
-        <!-- sidebar mobile -->
-        <aside class="sidebar__mobile" id="mobileSidebar">
-          <div class="p-3">
-            <div
-              class="logo__wrapper p-3 d-flex align-items-center justify-content-start gap-2"
-            >
-              <img src="./assets/images/logo-img.png" />
-              <span class="fs-3 fw-bold text-primary">Admin</span>
-            </div>
-            <!-- menu -->
-            <nav class="sidebar__menu ps-3">
-              <ul>
-                <li>
-                  <span>MENU</span>
-                </li>
-                <li>
-                  <a data-page="trangchu" href="#">
-                    <img src="./assets/icons/navigation/home.svg" />Trang chủ
-                  </a>
-                </li>
-                <li>
-                  <a data-page="quanlikhohang" href="#">
-                    <img src="./assets/icons/navigation/crm-computer.svg" />Quản
-                    lí kho hàng
-                  </a>
-                </li>
-                <li>
-                  <a data-page="baiviet" href="#">
-                    <img src="./assets/icons/navigation/blog-pencil.svg" />
-                    Bài viết
-                  </a>
-                </li>
-                <li>
-                  <a data-page="sanpham" href="#">
-                    <img src="./assets/icons/navigation/box-open.svg" />
-                    Sản phẩm
-                  </a>
-                </li>
-                <!--  -->
-                <li>
-                  <span>TÀI KHOẢN</span>
-                </li>
-                <li>
-                  <a data-page="quanlytaikhoan" href="#">
-                    <img src="./assets/icons/navigation/lead-management.svg" />
-                    Quản lí tài khoản
-                  </a>
-                </li>
-                <li>
-                  <a href="./login.html">
-                    <img src="./assets/icons/navigation/insert-alt.svg" />Đăng
-                    nhập
-                  </a>
-                </li>
-                <li>
-                  <a href="./register.html">
-                    <img src="./assets/icons/navigation/sign-out-alt.svg" />
-                    Đăng ký
-                  </a>
-                </li>
-                <!--  -->
-                <li>
-                  <span>VỀ CHÚNG TÔI</span>
-                </li>
-                <li>
-                  <a data-page="lienhe" href="#">
-                    <img src="./assets/icons/navigation/headset.svg" />
-                    Liên hệ
-                  </a>
-                </li>
-                <li>
-                  <a data-page="dieukhoandichvu">
-                    <img
-                      src="./assets/icons/navigation/confidential-discussion.svg"
-                    />Quyền riêng tư
+                    <img src="./assets/icons/navigation/gears.svg" />Tổng quan
                   </a>
                 </li>
               </ul>
@@ -416,12 +310,11 @@
         </aside>
         <!-- overlay -->
         <div class="overlay" id="sidebarOverlay"></div>
-
         <!-- main-->
         <div class="main__body">
           <!-- header -->
           <header
-            class="header w-100 p-2 px-3 px-md-4 d-flex justify-content-between justify-content-lg-end align-items-center"
+            class="header w-100 position-sticky top-0 bg-white p-2 px-3 px-md-4 d-flex justify-content-between justify-content-lg-end align-items-center"
           >
             <div
               id="mobileMenuToggle"
@@ -733,7 +626,7 @@
         <div id="notification-container"></div>
       </div>
       <!-- footer -->
-      <footer class="footer bg-white w-100 h-auto p-2 p-lg-3 shadow-sm">
+      <footer class="bg-white w-100 h-auto shadow-sm">
         <p class="fs-14 text-center w-100 text-black-sub">
           © 2025 Admin - Bản quyền thuộc về HUPUNA GROUP.
         </p>
