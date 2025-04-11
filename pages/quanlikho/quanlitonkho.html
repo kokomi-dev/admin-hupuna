@@ -70,34 +70,212 @@
       </div>
     </div>
     <!-- bảng -->
-    <div class="bg-white p-3 rounded-3 table-responsive">
-      <div class="table-responsive">
-        <table class="table table__main table__qltk tb_border mb-0 fs-14">
-          <thead>
-            <tr>
-              <th class="text-center" colspan="6">Mã hàng</th>
-              <th rowspan="2">Tên Hàng</th>
-              <th rowspan="2">Tồn Kiot (hộp)</th>
-              <th class="text-center" colspan="4">Tồn Misa</th>
-              <th class="check__hidden" rowspan="2">Tổng tồn</th>
-              <th class="check__hidden" rowspan="2">Tổng bán</th>
-              <th class="check__hidden" rowspan="2">Trung bình bán (1 tuần)</th>
-              <th class="check__hidden" rowspan="2">Định mức tồn nhiều nhất</th>
-              <th class="check__hidden" rowspan="2">Định mức tồn ít nhất</th>
-              <th class="check__hidden" rowspan="2">Cảnh báo</th>
-            </tr>
-            <tr>
-              <th class="text-center" colspan="2">Kiot</th>
-              <th class="text-center" colspan="2">Misa</th>
-              <th class="text-center" colspan="2">Hupuna</th>
-              <th class="text-center" colspan="2">Tồn hộp</th>
-              <th class="text-center" colspan="2">Tồn phôi</th>
-            </tr>
-          </thead>
-          <tbody class="render__tonkho bg-white">
-            <!-- item -->
-          </tbody>
-        </table>
+    <div class="d-grid gap-3 bg-white rounded-4 p-2 p-md-3 shadow-sm">
+      <h6 class="fs-6 fw-medium">Danh sách phiếu tồn kho</h6>
+      <div class="card">
+        <div class="card-header bg-white py-2">
+          <div class="d-flex justify-content-between align-items-center fs-14">
+            <div
+              class="d-flex align-items-center justify-content-end gap-2"
+            ></div>
+            <div class="d-flex align-items-center gap-2">
+              <label for="number__show" class="fs-14 text-nowrap"
+                >Số lượng:</label
+              >
+              <select
+                id="number__show"
+                name="status"
+                class="form-select input_outline fs-14 cursor-pointer"
+              >
+                <option value="">5</option>
+                <option value="">10</option>
+                <option value="">25</option>
+                <option value="">50</option>
+                <option value="">100</option>
+                <option value="">Hiển thị tất cả</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table__main table__qltk tb_border mb-0 fs-14">
+            <thead>
+              <tr>
+                <th class="text-center" colspan="6">Mã hàng</th>
+                <th rowspan="2">Tên Hàng</th>
+                <th rowspan="2">Tồn Kiot (hộp)</th>
+                <th class="text-center" colspan="4">Tồn Misa</th>
+                <!-- check__hidden -->
+                <th class="" rowspan="2">Tổng tồn</th>
+                <th class="" rowspan="2">Tổng bán</th>
+                <th class="" rowspan="2">Trung bình bán (1 tuần)</th>
+                <th class="" rowspan="2">Định mức tồn nhiều nhất</th>
+                <th class="" rowspan="2">Định mức tồn ít nhất</th>
+                <th class="" rowspan="2">Cảnh báo</th>
+              </tr>
+              <tr>
+                <th class="text-center" colspan="2">Kiot</th>
+                <th class="text-center" colspan="2">Misa</th>
+                <th class="text-center" colspan="2">Hupuna</th>
+                <th class="text-center" colspan="2">Tồn hộp</th>
+                <th class="text-center" colspan="2">Tồn phôi</th>
+              </tr>
+            </thead>
+            <!-- render__tonkho  -->
+            <tbody class="bg-white">
+              <tr>
+                <td colspan="2">KV001</td>
+                <td colspan="2">MS001</td>
+                <td colspan="2">HP001</td>
+                <td>Kháng sinh Amoxicillin 500mg</td>
+                <td>120</td>
+                <td colspan="2">105</td>
+                <td colspan="2">210</td>
+                <td>435</td>
+                <td>78</td>
+                <td>13</td>
+                <td>150</td>
+                <td>50</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV002</td>
+                <td colspan="2">MS002</td>
+                <td colspan="2">HP002</td>
+                <td>Paracetamol 500mg</td>
+                <td>85</td>
+                <td colspan="2">92</td>
+                <td colspan="2">180</td>
+                <td>357</td>
+                <td>103</td>
+                <td>17.2</td>
+                <td>200</td>
+                <td>80</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV003</td>
+                <td colspan="2">MS003</td>
+                <td colspan="2">HP003</td>
+                <td>Vitamin C 1000mg</td>
+                <td>45</td>
+                <td colspan="2">38</td>
+                <td colspan="2">92</td>
+                <td>175</td>
+                <td>135</td>
+                <td>22.5</td>
+                <td>180</td>
+                <td>60</td>
+                <td>Cần nhập thêm</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV004</td>
+                <td colspan="2">MS004</td>
+                <td colspan="2">HP004</td>
+                <td>Omeprazole 20mg</td>
+                <td>160</td>
+                <td colspan="2">142</td>
+                <td colspan="2">290</td>
+                <td>592</td>
+                <td>45</td>
+                <td>7.5</td>
+                <td>150</td>
+                <td>60</td>
+                <td>Tồn kho cao</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV005</td>
+                <td colspan="2">MS005</td>
+                <td colspan="2">HP005</td>
+                <td>Diclofenac 50mg</td>
+                <td>72</td>
+                <td colspan="2">65</td>
+                <td colspan="2">130</td>
+                <td>267</td>
+                <td>89</td>
+                <td>14.8</td>
+                <td>180</td>
+                <td>70</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV006</td>
+                <td colspan="2">MS006</td>
+                <td colspan="2">HP006</td>
+                <td>Cetirizine 10mg</td>
+                <td>38</td>
+                <td colspan="2">42</td>
+                <td colspan="2">75</td>
+                <td>155</td>
+                <td>112</td>
+                <td>18.7</td>
+                <td>170</td>
+                <td>60</td>
+                <td>Cần nhập thêm</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV007</td>
+                <td colspan="2">MS007</td>
+                <td colspan="2">HP007</td>
+                <td>Dưỡng chất Omega-3</td>
+                <td>210</td>
+                <td colspan="2">195</td>
+                <td colspan="2">380</td>
+                <td>785</td>
+                <td>32</td>
+                <td>5.3</td>
+                <td>120</td>
+                <td>40</td>
+                <td>Tồn kho cao</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV008</td>
+                <td colspan="2">MS008</td>
+                <td colspan="2">HP008</td>
+                <td>Calcium 600mg</td>
+                <td>98</td>
+                <td colspan="2">105</td>
+                <td colspan="2">210</td>
+                <td>413</td>
+                <td>68</td>
+                <td>11.3</td>
+                <td>150</td>
+                <td>50</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV009</td>
+                <td colspan="2">MS009</td>
+                <td colspan="2">HP009</td>
+                <td>Thuốc bổ gan Silymarin</td>
+                <td>52</td>
+                <td colspan="2">48</td>
+                <td colspan="2">95</td>
+                <td>195</td>
+                <td>92</td>
+                <td>15.3</td>
+                <td>160</td>
+                <td>50</td>
+                <td>Bình thường</td>
+              </tr>
+              <tr>
+                <td colspan="2">KV010</td>
+                <td colspan="2">MS010</td>
+                <td colspan="2">HP010</td>
+                <td>Magnesi B6</td>
+                <td>28</td>
+                <td colspan="2">32</td>
+                <td colspan="2">65</td>
+                <td>125</td>
+                <td>108</td>
+                <td>18</td>
+                <td>150</td>
+                <td>60</td>
+                <td>Cần nhập thêm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

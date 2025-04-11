@@ -30,7 +30,6 @@ function showToast(message, type) {
     },
   }).showToast();
 }
-
 // handle load chart dashboard
 function handleLoadChartDashboard() {
   const chartElement = document.getElementById("visitChart");
@@ -173,149 +172,11 @@ function loadPageFollowPageName(pagename) {
         }
       }
       handleResetFilter();
-      renderTestTableTonKho();
       break;
-    case "tatcasanpham":
-      handleActionHeadPage();
-    case "chinhsua-sanpham":
-      handleLoadEditor();
     default:
       break;
   }
 }
-// toogle active nav
-function checkToolgeActiveDefault() {
-  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-  const listItemNavSub = document.querySelectorAll(
-    ".sidebar__menu ul li ul li a"
-  );
-  const currentPage = sessionStorage.getItem("currenPage");
-  listItemNav.forEach((item) => {
-    if (
-      (currentPage && item.getAttribute("data-page") === currentPage) ||
-      (currentPage && currentPage?.includes(item.getAttribute("data-page")))
-    ) {
-      return item.classList.add("active");
-    } else {
-      if (!currentPage && item.getAttribute("data-page") === "trangchu") {
-        return item.classList.add("active");
-      } else return;
-    }
-  });
-  listItemNavSub.forEach((item) => {
-    if (
-      (currentPage && item.getAttribute("data-page") === currentPage) ||
-      (currentPage && currentPage?.includes(item.getAttribute("data-page")))
-    ) {
-      return item.classList.add("active");
-    } else {
-      if (!currentPage && item.getAttribute("data-page") === "trangchu") {
-        return item.classList.add("active");
-      } else return;
-    }
-  });
-}
-// handle clode accordtion
-function handleCloseAccordtion() {
-  const containerAccordtion = document.querySelector(
-    ".accordion-collapse.collapse"
-  );
-  const itemContainerAccordtion = document.querySelectorAll(
-    ".sidebar__menu ul li a"
-  );
-  const containerAccordtion2 = document.querySelector(
-    ".accordion-collapse.collapse.ul__2"
-  );
-  itemContainerAccordtion.forEach((item) => {
-    item.addEventListener("click", (event) => {
-      if (
-        !containerAccordtion.contains(event.target) &&
-        containerAccordtion.classList.contains("show")
-      ) {
-        containerAccordtion.classList.remove("show");
-      }
-      if (
-        !containerAccordtion2.contains(event.target) &&
-        containerAccordtion2.classList.contains("show")
-      ) {
-        containerAccordtion2.classList.remove("show");
-      }
-    });
-  });
-}
-//  check active menu sub
-function checkActiveMenuSub() {
-  const currenPage = sessionStorage.getItem("currenPage");
-  const containerAccordtion = document.querySelector(
-    ".accordion-collapse.collapse"
-  );
-  const containerAccordtion2 = document.querySelector(
-    ".accordion-collapse.collapse ul__2"
-  );
-  const itemContainerAccordtion = document.querySelectorAll(
-    ".accordion-collapse.collapse li a"
-  );
-  const activeItems = document.querySelectorAll(
-    ".accordion-collapse li a.active"
-  );
-  itemContainerAccordtion.forEach((item) => {
-    if (item.getAttribute("data-page") === currenPage) {
-      let parentAccordion = item.closest(".accordion-collapse");
-      return parentAccordion.classList.add("show");
-    } else return;
-  });
-}
-// handle event change page pc
-function handleEventNav() {
-  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-  checkToolgeActiveDefault();
-  document
-    .querySelector(".sidebar__menu")
-    .addEventListener("click", (event) => {
-      if (event.target.tagName === "A") {
-        const pageName = event.target.getAttribute("data-page");
-        const pageNameParent = event.target.getAttribute("data-page-parent");
-
-        handleCloseAccordtion();
-        loadPage(pageName, pageNameParent);
-        listItemNav.forEach((item) => {
-          if (item.classList.contains("active")) {
-            item.classList.remove("active");
-          }
-          event.target.classList.add("active");
-        });
-      }
-    });
-}
-// handleEvent change page mobile
-function handleEventSidebar() {
-  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-  const mobileSidebar = document.getElementById("mobileSidebar");
-  const sidebarOverlay = document.getElementById("sidebarOverlay");
-  const listItemNav = document.querySelectorAll(".sidebar__menu ul li a");
-  checkToolgeActiveDefault();
-  function toggleSidebar() {
-    mobileSidebar.classList.toggle("show");
-    sidebarOverlay.classList.toggle("show");
-  }
-  mobileMenuToggle.addEventListener("click", toggleSidebar);
-  sidebarOverlay.addEventListener("click", toggleSidebar);
-  mobileSidebar.addEventListener("click", (event) => {
-    if (event.target.tagName === "A") {
-      listItemNav.forEach((item) => {
-        if (item.classList.contains("active")) {
-          item.classList.remove("active");
-        }
-        event.target.classList.add("active");
-      });
-      const pageName = event.target.getAttribute("data-page");
-      loadPage(pageName);
-      sessionStorage.setItem("currenPage", pageName);
-      toggleSidebar();
-    }
-  });
-}
-
 // handle event upload image
 function previewImage(event) {
   const input = event.target;
@@ -425,119 +286,6 @@ function pagination() {
   });
   renderTable(currentPage);
   updatePagination();
-}
-// load action hanle head page
-function handleActionHeadPage() {
-  const btnCustomDisplay = document.querySelector(".btn__custom__display");
-  const wrapperCustomDisplay = document.querySelector(
-    ".display__custom__wrapper"
-  );
-
-  btnCustomDisplay.addEventListener("click", () => {
-    wrapperCustomDisplay.classList.toggle("active");
-  });
-}
-// action page table
-function handleActionItemTr() {
-  const btnToEdit = document.querySelectorAll(".redirect__edit.product");
-  btnToEdit.forEach((item) =>
-    item.addEventListener("click", () => {
-      loadPage("chinhsua-sanpham");
-    })
-  );
-}
-// render test table
-function renderTestTableTonKho() {
-  const roles = sessionStorage.getItem("roles");
-
-  const wraperBody = document.querySelector(".render__tonkho");
-  const data = [
-    {
-      ms: "sp102",
-      ms2: "sp223",
-      ms3: "sp223",
-      name: "sp223",
-      tonKiot: "sp223",
-      tonhop: "sp223",
-      tonphoi: "sp223",
-      ms2: "sp223",
-      tongton: "34232",
-      tongban: "23323",
-      tb1tuanban: "231231",
-      tonnhieunhat: "213",
-      tonitNhat: "123123",
-      canhbao: "123123",
-    },
-    {
-      ms: "sp102",
-      ms2: "sp223",
-      ms3: "sp223",
-      name: "sp223",
-      tonKiot: "sp223",
-      tonhop: "sp223",
-      tonphoi: "sp223",
-      ms2: "sp223",
-      tongton: "34232",
-      tongban: "23323",
-      tb1tuanban: "231231",
-      tonnhieunhat: "213",
-      tonitNhat: "123123",
-      canhbao: "123123",
-    },
-  ];
-  let html = data
-    .map((item) => {
-      return `
-      <tr>
-        <td colspan="2">${item.ms}</td>
-        <td colspan="2">${item.ms2}</td>
-        <td colspan="2">${item.ms3}</td>
-        <td>${item.name}</td>
-        <td>${item.tonKiot}</td>
-        <td colspan="2">${item.tonhop}</td>
-        <td colspan="2">${item.tonphoi}</td>
-        ${
-          roles == "admin"
-            ? `
-          <td>${item.tongton}</td>
-          <td>${item.tongban}</td>
-          <td>${item.tb1tuanban}</td>
-          <td>${item.tonnhieunhat}</td>
-          <td>${item.tonitNhat}</td>
-          <td><span class="badge__item warning">Đặt SX</span></td>`
-            : ""
-        }
-      </tr>`;
-    })
-    .join("");
-  wraperBody.innerHTML = html;
-}
-//button onclick screen input
-function input_file_media() {
-  let uploadBox = document.getElementById("scren_input_file");
-
-  if (uploadBox.classList.contains("d-none")) {
-    uploadBox.classList.remove("d-none"); // Hiển thị
-  } else {
-    uploadBox.classList.add("d-none"); // Ẩn đi
-  }
-}
-//upload img input
-function upload_img_screen(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
-      const imgElement = document.querySelector("#img_load_screen img");
-      imgElement.src = e.target.result; // Đặt nguồn ảnh cho phần tử img
-      document.getElementById("img_load_screen").classList.remove("d-none"); // Hiển thị phần tử chứa ảnh
-    };
-    document.getElementById("btn__upload-img").style.display = "block";
-    reader.readAsDataURL(file);
-  } else {
-    alert("Không có tệp tin nào được chọn.");
-  }
 }
 // handle toogle open down menu
 function handleOpenDown() {
@@ -801,9 +549,7 @@ function dataProductVariable() {
       );
 
       if (this.value === "product__var") {
-        // Check if the tab already exists
         if (!variationsTabButton) {
-          // Add new tab button
           const newTabButton = document.createElement("button");
           newTabButton.className =
             "tab-button p-2 w-100 py-3 text-start border-bottom fs-12";
@@ -917,153 +663,129 @@ function dataProductVariable() {
     });
   }
 }
-function loadFuntion() {
-  handleActionItemTr();
-  handleOpenDown();
-  handleActiveOpenTab();
-  initModals();
-  handleLoadEditor();
-  handleClickRedirectUrlPage();
-  handleEventQuickFix();
-  handleEventUploadImgClound();
-  dataProductVariable();
-}
-// load page show content
-async function loadPage(pageName, pageNameParent) {
-  try {
-    const contentDiv = document.getElementById("content");
+function handleSidebarEventsMobile() {
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const mobileSidebar = document.querySelector(".sidebar__nav");
+  const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-    let response = null;
-    if (pageNameParent && pageNameParent !== "not")
-      response = await fetch(`pages/${pageNameParent}/${pageName}.html`);
-    else response = await fetch(`pages/${pageName}.html`);
-    if (!response.ok) {
-      throw new Error("Trang không tồn tại");
+  if (mobileSidebar.classList.contains("mobile")) {
+    function toggleSidebar() {
+      mobileSidebar.classList.toggle("show");
+      sidebarOverlay.classList.toggle("show");
     }
-    const content = await response.text();
-
-    contentDiv.innerHTML = content;
-    sessionStorage.setItem("currenPage", pageName);
-    sessionStorage.setItem("currenPageParent", pageNameParent);
-
-    loadFuntion();
-    if (pageName === "trangchu") {
-      handleLoadChartDashboard();
-    }
-    if (pageName === "sanpham") {
-      handleResetFilter();
-      // handleLoadEditor();
-    }
-
-    if (pageName === "baiviet") {
-      const btnCreateBlog = document.getElementById("btn__edit__blog");
-      btnCreateBlog.addEventListener("click", () => {
-        loadPage("chinhsua-baiviet");
-      });
-      selectRowScreen();
-      pagination();
-      // handleLoadEditor();
-    }
-    if (pageName === "taosanpham" || pageName === "taobaiviet") {
-      // handleLoadEditor();
-    }
-    loadPageFollowPageName(pageName);
-  } catch (error) {
-    document.getElementById("content").innerHTML = `
-           <div class="error">
-               <h2>Not Foud</h2>
-               <p>Hiện tại chưa có nội dung cho trang này ! </p>
-           </div>
-       `;
+    mobileMenuToggle.addEventListener("click", toggleSidebar);
+    sidebarOverlay.addEventListener("click", toggleSidebar);
   }
 }
-// handle open modal choose media
-function handleModalMedia() {
-  const allBtn = document.querySelectorAll(".media__modal");
-}
-// handle page image media
-function handleEventUploadImgClound() {
-  const cloudName = "dcyou1pdh";
-  const uploadPreset = "test__admin__hupuna";
 
-  const galleryContainer = document.getElementById("gallery");
-  const selectedUrlInput = document.getElementById("selectedUrl");
-  const btnUPload = document.getElementById("btn__upload-img");
-  if (btnUPload) {
-    btnUPload.addEventListener("click", () => {
-      uploadImage();
-    });
-  }
-  async function uploadImage() {
-    const fileInput = document.getElementById("input_img");
-    const previewImage = document.getElementById("img_load_screen");
+function handleSidebarEvents() {
+  const sidebarMenu = document.querySelector(".sidebar__menu");
+  const sidebarNav = document.querySelector(".sidebar__nav");
+  const sidebarOverlay = document.getElementById("sidebarOverlay");
+  if (!sidebarMenu) return;
 
-    const file = fileInput.files[0];
-    if (!file) return showToast("Vui lòng chọn file", "warning");
+  const savedPage = sessionStorage.getItem("currenPage");
+  const savedPageParent = sessionStorage.getItem("currenPageParent");
+  if (savedPage) {
+    const currentLink = document.querySelector(
+      `.sidebar__menu a[data-page="${savedPage}"]`
+    );
+    if (currentLink) {
+      currentLink.classList.add("active");
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
-    formData.append("folder", "hupuna__admin");
-    try {
-      const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        formData
-      );
-
-      const imageUrl = res.data.secure_url;
-      saveImage(imageUrl);
-      loadGallery();
-      showToast("Tải ảnh lên thành công", "success");
-      fileInput.value = "";
-      previewImage.classList.add("d-none");
-    } catch (err) {
-      console.error(err);
-      showToast("Upload lỗi", "error");
+      if (savedPageParent && savedPageParent !== "not") {
+        const parentItem = currentLink.closest(".menu-item-with-submenu");
+        if (parentItem) {
+          parentItem.classList.add("active");
+          const submenu = parentItem.querySelector(".submenu");
+          if (submenu) submenu.style.maxHeight = submenu.scrollHeight + "px";
+        }
+      }
     }
   }
-  function saveImage(url) {
-    const images = JSON.parse(localStorage.getItem("mediaGallery") || "[]");
-    images.push(url);
-    localStorage.setItem("mediaGallery", JSON.stringify(images));
-  }
-  function loadGallery() {
-    if (galleryContainer) {
-      galleryContainer.innerHTML = "";
-      const images = JSON.parse(localStorage.getItem("mediaGallery") || "[]");
-      images.forEach((url) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "img-wrapper";
-        wrapper.innerHTML = `<img src="${url}" alt="">`;
-        wrapper.onclick = () => {
-          selectedUrlInput.value = url;
-          navigator.clipboard.writeText(url);
-          showToast("Sao chép địa chỉ ảnh thành công", "success");
-        };
-        galleryContainer.appendChild(wrapper);
-      });
-    }
-  }
-  loadGallery();
-}
-// check handle load
-function handleCheckLoadPage() {
-  const currentPage = sessionStorage.getItem("currenPage");
-  const currentPageParent = sessionStorage.getItem("currenPageParent");
 
-  currentPage && currentPageParent
-    ? loadPage(currentPage, currentPageParent)
-    : currentPage && !currentPageParent
-    ? loadPage(currentPage)
-    : loadPage("trangchu");
+  sidebarMenu.addEventListener("click", function (e) {
+    const toggle = e.target.closest(".menu-toggle");
+    const menuItem = e.target.closest(".menu-item-with-submenu");
+    const link = e.target.closest("a");
+
+    if (toggle) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const submenu = menuItem.querySelector(".submenu");
+      const isActive = menuItem.classList.contains("active");
+
+      document
+        .querySelectorAll(".menu-item-with-submenu.active")
+        .forEach((item) => {
+          if (item !== menuItem) {
+            item.classList.remove("active");
+            const sub = item.querySelector(".submenu");
+            if (sub) sub.style.maxHeight = null;
+          }
+        });
+
+      menuItem.classList.toggle("active");
+      if (!isActive) {
+        submenu.style.maxHeight = submenu.scrollHeight + "px";
+      } else {
+        submenu.style.maxHeight = null;
+      }
+
+      return;
+    }
+
+    if (link) {
+      e.preventDefault();
+
+      const pageName = link.getAttribute("data-page");
+      const pageParent = link.getAttribute("data-page-parent");
+
+      if (pageName) {
+        loadPage(pageName, pageParent);
+
+        sessionStorage.setItem("activePage", pageName);
+        sessionStorage.setItem("activePageParent", pageParent || "not");
+        document
+          .querySelectorAll(".sidebar__menu a")
+          .forEach((a) => a.classList.remove("active"));
+        document
+          .querySelectorAll(".menu-item-with-submenu")
+          .forEach((item) => item.classList.remove("active"));
+        document
+          .querySelectorAll(".submenu")
+          .forEach((sub) => (sub.style.maxHeight = null));
+
+        link.classList.add("active");
+
+        if (pageParent && pageParent !== "not") {
+          const parentItem = link.closest(".menu-item-with-submenu");
+          if (parentItem) {
+            parentItem.classList.add("active");
+            const submenu = parentItem.querySelector(".submenu");
+            if (submenu) submenu.style.maxHeight = submenu.scrollHeight + "px";
+          }
+        }
+        if (sidebarNav.classList.contains("mobile")) {
+          sidebarNav.classList.remove("show");
+          sidebarOverlay.classList.remove("show");
+        }
+      }
+      return;
+    }
+
+    if (!menuItem) {
+      document
+        .querySelectorAll(".menu-item-with-submenu.active")
+        .forEach((item) => {
+          item.classList.remove("active");
+          const sub = item.querySelector(".submenu");
+          if (sub) sub.style.maxHeight = null;
+        });
+    }
+  });
 }
-document.addEventListener("DOMContentLoaded", () => {
-  handleCloseAccordtion();
-  checkActiveMenuSub();
-  handleCheckLoadPage();
-  handleEventSidebar();
-  handleEventNav();
-});
 // comment box
 let openTags = [];
 
@@ -1110,3 +832,180 @@ function updatePreview() {
   // Hiển thị nội dung của textarea dưới dạng HTML
   preview.innerHTML = textarea.value;
 }
+// open popup upload img
+function input_file_media() {
+  let uploadBox = document.getElementById("scren_input_file");
+
+  if (uploadBox.classList.contains("d-none")) {
+    uploadBox.classList.remove("d-none"); // Hiển thị
+  } else {
+    uploadBox.classList.add("d-none"); // Ẩn đi
+  }
+}
+//upload img input
+function upload_img_screen(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      // Đảm bảo rằng phần tử chứa ảnh có thể hiển thị
+      const imgElement = document.querySelector("#img_load_screen img");
+      imgElement.src = e.target.result; // Đặt nguồn ảnh cho phần tử img
+      document.getElementById("img_load_screen").classList.remove("d-none"); // Hiển thị phần tử chứa ảnh
+    };
+    document.getElementById("btn__upload-img").style.display = "block";
+    reader.readAsDataURL(file);
+  } else {
+    alert("Không có tệp tin nào được chọn.");
+  }
+}
+// handle page image media
+function handleEventUploadImgClound() {
+  const cloudName = "dcyou1pdh";
+  const uploadPreset = "test__admin__hupuna";
+  const galleryContainer = document.getElementById("gallery");
+  const selectedUrlInput = document.getElementById("selectedUrl");
+  const btnUPload = document.getElementById("btn__upload-img");
+
+  if (btnUPload) {
+    btnUPload.addEventListener("click", () => {
+      uploadImage();
+    });
+  }
+  function saveImage(url) {
+    const images = JSON.parse(sessionStorage.getItem("mediaGallery") || "[]");
+    images.push(url);
+    sessionStorage.setItem("mediaGallery", JSON.stringify(images));
+  }
+  async function uploadImage() {
+    const fileInput = document.getElementById("input_img");
+    const previewImage = document.getElementById("img_load_screen");
+
+    const file = fileInput.files[0];
+    if (!file) return showToast("Vui lòng chọn file", "warning");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+    formData.append("folder", "hupuna__admin");
+    try {
+      const res = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        formData
+      );
+
+      const imageUrl = res.data.secure_url;
+      saveImage(imageUrl);
+      loadGallery();
+      showToast("Tải ảnh lên thành công", "success");
+      fileInput.value = "";
+      previewImage.classList.add("d-none");
+    } catch (err) {
+      console.error(err);
+      showToast("Upload lỗi", "error");
+    }
+  }
+
+  function loadGallery() {
+    if (galleryContainer) {
+      galleryContainer.innerHTML = "";
+      const images = JSON.parse(localStorage.getItem("mediaGallery") || "[]");
+      images.forEach((url) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "img-wrapper";
+        wrapper.innerHTML = `<img src="${url}" alt="">`;
+        wrapper.onclick = () => {
+          selectedUrlInput.value = url;
+          navigator.clipboard.writeText(url);
+          showToast("Sao chép địa chỉ ảnh thành công", "success");
+        };
+        galleryContainer.appendChild(wrapper);
+      });
+    }
+  }
+  loadGallery();
+}
+// check handle load
+function handleCheckLoadPage() {
+  const currentPage = sessionStorage.getItem("currenPage");
+  const currentPageParent = sessionStorage.getItem("currenPageParent");
+  currentPage && currentPageParent
+    ? loadPage(currentPage, currentPageParent)
+    : currentPage && !currentPageParent
+    ? loadPage(currentPage)
+    : loadPage("trangchu");
+}
+function loadFuntion() {
+  handleOpenDown();
+  handleActiveOpenTab();
+  initModals();
+  handleLoadEditor();
+  handleClickRedirectUrlPage();
+  handleEventQuickFix();
+  dataProductVariable();
+  handleEventUploadImgClound();
+}
+// load page show content
+async function loadPage(pageName, pageNameParent) {
+  try {
+    const contentDiv = document.getElementById("content");
+
+    let response = null;
+    if (
+      pageNameParent &&
+      pageNameParent !== "not" &&
+      pageNameParent !== "undefined"
+    )
+      response = await fetch(`pages/${pageNameParent}/${pageName}.html`);
+    else response = await fetch(`pages/${pageName}.html`);
+    if (!response.ok) {
+      throw new Error("Trang không tồn tại");
+    }
+    const content = await response.text();
+
+    contentDiv.innerHTML = content;
+    window.scrollTo(0, 0);
+    sessionStorage.setItem("currenPage", pageName);
+    sessionStorage.setItem("currenPageParent", pageNameParent);
+
+    loadFuntion();
+    if (pageName === "trangchu") {
+      handleLoadChartDashboard();
+    }
+    if (pageName === "baiviet") {
+      selectRowScreen();
+      pagination();
+    }
+    loadPageFollowPageName(pageName);
+  } catch (error) {
+    document.getElementById("content").innerHTML = `
+           <div class="error">
+               <h2>Not Foud</h2>
+               <p>Hiện tại chưa có nội dung cho trang này ! </p>
+           </div>
+       `;
+  }
+}
+// handle resize sidebar
+function handleResizeSidebar() {
+  const sidebar = document.querySelector(".sidebar__nav");
+  function handleResize() {
+    if (window.innerWidth <= 992) {
+      sidebar.classList.add("mobile");
+    } else {
+      sidebar.classList.remove("mobile");
+    }
+  }
+  handleResize();
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleResize, 100);
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  handleResizeSidebar();
+  handleCheckLoadPage();
+  handleSidebarEventsMobile();
+  handleSidebarEvents();
+});
